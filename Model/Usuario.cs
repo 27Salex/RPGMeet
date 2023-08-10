@@ -49,7 +49,7 @@ namespace BackRPG.Model
         public override string ToString()
         {
             return "Usuario: id: " + IdUsuario + " Email: " + Email + " Pass: " + Pass + " Username: " + Username + " FKLocalidad: " + FKLocalidad + "FKFotoPerfil: " + FKFotoPerfil;
-    }
+        }
 
     }
 

@@ -16,11 +16,11 @@
     </div>
     <div>
         <asp:Label ID="Label3" runat="server" Text="Contraseña:"></asp:Label>
-        <asp:TextBox ID="TxtBoxRegisterPsw" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtBoxRegisterPsw" runat="server" TextMode="Password"></asp:TextBox>
     </div>
     <div>
         <asp:Label ID="Label4" runat="server" Text="Confirmar Contraseña:"></asp:Label>
-        <asp:TextBox ID="TxtBoxRegisterPswCon" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtBoxRegisterPswCon" runat="server" TextMode="Password"></asp:TextBox>
     </div>
     <div>
         <asp:Label ID="Label5" runat="server" Text="Localidad"></asp:Label>
@@ -33,6 +33,6 @@
         </select>
     </div>
     <div>
-        <asp:Button ID="BtnRegisterCrear" runat="server" Text="Crear Cuenta" OnClick="Button1_Click" />
+        <asp:Button ID="BtnRegisterCreate" runat="server" OnClick="BtnRegisterCreate_Click" Text="Crear Cuenta" />
     </div>
 </asp:Content>

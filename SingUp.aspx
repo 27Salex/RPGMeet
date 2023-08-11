@@ -34,5 +34,8 @@
     </div>
     <div>
         <asp:Button ID="BtnRegisterCreate" runat="server" OnClick="BtnRegisterCreate_Click" Text="Crear Cuenta" />
+        <br />
+        <asp:Label ID="Label6" runat="server" Text="Info User Creado:"></asp:Label>
+        <asp:Label ID="LbUserCreation" runat="server" Text="User"></asp:Label>
     </div>
 </asp:Content>

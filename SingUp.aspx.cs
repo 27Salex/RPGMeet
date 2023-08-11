@@ -1,5 +1,5 @@
 ﻿using BackRPG.Model;
-using RPGMeet.DAO;
+using RPGMeet.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace RPGMeet
 
         protected void BtnRegisterCreate_Click(object sender, EventArgs e)
         {
-            
+            CreateUser();
         }
 
         void CreateUser()
@@ -28,6 +28,18 @@ namespace RPGMeet
             string username = TxtBoxRegisterUser.Text;
             int localidad = 1;
             Usuario newUser = new Usuario(email, pass, username, localidad);
+            Usuario test = DalUsuario.Register(newUser);
+            
+            if (test != null) 
+            {
+                LbUserCreation.Text = test.ToString();
+            }
+            else
+            {
+                LbUserCreation.Text = "Error";
+            }
+            //LbUserCreation.Text = test.ToString();
+            
         }
 
         void CheckPass()

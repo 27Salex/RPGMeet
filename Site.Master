@@ -8,7 +8,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - RPG Meet</title>
-
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
@@ -38,18 +37,55 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark font-monospace">
             <div class="container">
                 <a class="navbar-brand" runat="server" href="~/">RPG Meet</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Encontrar Partida</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About"></a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>
+                <div class="collapse navbar-collapse d-sm-inline-flex mx-md-5">
+                    <ul class="navbar-nav flex-grow-1  justify-content-end">
+                       <!-- Navegacion a pagina buscar partidas-->
+                        <li class="nav-item mx-md-3">
+                            <a class="nav-link" runat="server" href="~/">
+                                Buscar Partida
+                            </a>
+                        </li>
+                        <!-- Navegacion a pagina mis partidas-->
+                        <li class="nav-item mx-md-3">
+                            <a class="nav-link" runat="server" href="~/">
+                                Mis Partidas
+                            </a>
+                        </li>
+                        <!-- Navegacion a pagina locales-->
+                        <li class="nav-item mx-md-3">
+                            <a class="nav-link" runat="server" href="~/">
+                                Locales
+                            </a>
+                        </li>
+                         <!-- Navegacion a pagina juegos-->
+                        <li class="nav-item mx-md-3">
+                            <a class="nav-link" runat="server" href="~/">
+                                Juegos
+                            </a>
+                        </li>
+                        <!-- Dropdown sobre nosotros-->
+                        <li class="nav-item dropdown mx-md-3">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sobre nosotros
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/About">Contacto</a></li>
+                            <li><a class="dropdown-item" href="#">Equipo</a></li>
+                            <li><a class="dropdown-item" href="#">Reporte de bugs</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" runat="server" href="~/">
+                                Bienvenid@ user
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -67,6 +103,6 @@
     </form>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+        <%: Scripts.Render("~/Scripts/bootstrap.bundle.js") %>
     </asp:PlaceHolder>
-</body>
 </html>

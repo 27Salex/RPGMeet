@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackRPG.DAO
+namespace RPGMeet.DAL
 {
         public class Conexion
     {

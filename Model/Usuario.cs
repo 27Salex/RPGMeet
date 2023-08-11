@@ -27,23 +27,13 @@ namespace BackRPG.Model
         }
 
         //Constructor para crear Usuarios a partir del formulario 
-        public Usuario( string email, string pass, string username)
+        public Usuario( string email, string pass, string username, int localidad)
         {
             Email = email;
             Pass = pass;
             Username = username;
-         
-        }
+            FKLocalidad = localidad;
 
-        // COMO DE CONVENIENTE ES ESTA IDEA 
-        public Usuario( SqlDataReader reader )
-        {
-            IdUsuario = (int)reader["IdUsuario"];
-            Email = reader["Email"].ToString();
-            Pass = reader["Pass"].ToString();
-            Username = reader["Username"].ToString();
-            FKLocalidad = (int)reader["FKLocalidad"];
-            FKFotoPerfil = (int)reader["FKFotoPerfil"];
         }
 
         public override string ToString()

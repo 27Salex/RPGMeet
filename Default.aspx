@@ -3,7 +3,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
-<<<<<<< HEAD
         <!-- meter este style en el sire.master/head acciendo referencia a la carpeta de estilos Home.css -->
         <style>
             .imagen-perfil
@@ -14,8 +13,6 @@
                 margin-bottom: 10px;
             }
         </style>
-=======
->>>>>>> 9256e6d5920110430a75a0faa1288e400426f828
         <div class="row">
         <!-- Presentación de la web -->
         <div class="col-md-12 mt-3 mb-3">
@@ -27,17 +24,12 @@
                 </div>
                 <!-- Imagen -->
                 <div class="col-md-6">
-<<<<<<< HEAD
-=======
                     <img alt="" src="" />
->>>>>>> 9256e6d5920110430a75a0faa1288e400426f828
                 </div>
                 <!-- Cambiar ID de este botón <3 -->
                 <asp:Button ID="Button1" runat="server" Text="Button" />
             </section>
         </div>
-<<<<<<< HEAD
-=======
 
         <div class="col-md-12 mt-3 mb-3">
             <section class="row">
@@ -56,8 +48,6 @@
         </div>
 </div>
     </main>
->>>>>>> 9256e6d5920110430a75a0faa1288e400426f828
-
         <div class="col-md-12 mt-3 mb-3">
             <section class="row">
                 <!-- Texto -->
@@ -81,6 +71,7 @@
                 <!-- Texto -->
                 <div class="col-md-6">
                     <!-- Cambiar ID del label <3 -->
+                    <h5>Descripción breve</h5>
                     <asp:Label ID="Label1" runat="server" CssClass="h6">Descripción breve</asp:Label>
                 </div>
                 <div class="col-md-6 d-flex flex-wrap justify-content-end">

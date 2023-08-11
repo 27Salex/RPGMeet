@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SingUp.aspx.cs" Inherits="RPGMeet.SingUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-            <asp:Image ID="Image1" runat="server" />
+        <asp:Image ID="LogoRegister" runat="server" />
     </div>
     <div>
         <h2>Crear Cuenta</h2>
@@ -25,6 +25,7 @@
     <div>
         <asp:Label ID="Label5" runat="server" Text="Localidad"></asp:Label>
         <select id="SelectRegisterLoc">
+            <option></option>
             <option>Lleida</option>
             <option>Girona</option>
             <option>Barcelona</option>
@@ -32,6 +33,6 @@
         </select>
     </div>
     <div>
-        <asp:Button ID="Btn" runat="server" Text="Button" OnClick="Button1_Click" />
+        <asp:Button ID="BtnRegisterCrear" runat="server" Text="Crear Cuenta" OnClick="Button1_Click" />
     </div>
 </asp:Content>

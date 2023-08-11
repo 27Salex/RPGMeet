@@ -15,13 +15,13 @@ namespace RPGMeet
     {
 
         /// <summary>
-        /// Control Image1.
+        /// Control LogoRegister.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.Image LogoRegister;
 
         /// <summary>
         /// Control Label1.
@@ -105,12 +105,12 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label Label5;
 
         /// <summary>
-        /// Control Btn.
+        /// Control BtnRegisterCrear.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn;
+        protected global::System.Web.UI.WebControls.Button BtnRegisterCrear;
     }
 }

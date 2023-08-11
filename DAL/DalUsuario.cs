@@ -13,9 +13,10 @@ namespace BackRPG.DAO
 
     /*
     - CREAR PARA VER TODOS LOS USUARIOS  --- SelectAll()
-    - CREAR PARA LOGIN 
-    - CREAR PARA INSERTAR UN USUARIO
-    - CREAR PARA MODIFICAR DATOS DE USUARIO CUANDO SU ID SEA ?? 
+    - CREAR PARA LOGIN  --- Login(User, Pass)
+    - CREAR PARA INSERTAR UN USUARIO --- Insert(User)
+    - CREAR PARA MODIFICAR DATOS DE USUARIO CUANDO SU ID SEA ?? --- Update(User)
+
     - CREAR PARA MODIFICAR EL PASSWORD CUANDO SU ID SEA ?? Y EL PASSQORD SEA EL ANTIGUO 
     - CREAR PARA ELIMINAR UN USUARIO CUANDO LA ID SEA ?? 
     
@@ -24,6 +25,8 @@ namespace BackRPG.DAO
      */
     public static class DalUsuario
     {
+        private static SqlConnection conexion = Conexion.Instance().Connection;
+
         private static String dataSource = "Data Source=185.253.153.20,54321;";
         private static String initialCatalog = "Initial Catalog=ManuelRPG;";
         private static String user = "User ID=sa;";
@@ -46,22 +49,19 @@ namespace BackRPG.DAO
             return usuario;
         }
 
-        /// <summary>
-        ///  Metodo que te devuelve todos los Usuarios de la tabla en un List<Usuario>
-        /// </summary>
+
         public static List<Usuario> SelectAll()
         {
-            //Conexion cn = Conexion.Instance();
-            String query = "SELECT * FROM usuario";
+            String selectQuery = "SELECT * FROM usuario";
             List<Usuario> list = new List<Usuario>();
 
-            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            //SqlConnection conexion = new SqlConnection(cadenaConexion);
 
             try 
             {
                 conexion.Open();
                
-                SqlCommand command = new SqlCommand(query, conexion);
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -82,17 +82,16 @@ namespace BackRPG.DAO
 
         public static Usuario Login(String email, String pass)
         {
-            //Conexion cn = Conexion.Instance();
-            String query = "SELECT * FROM usuario WHERE Email = @email AND Pass = @pass";
+            String selectQuery = "SELECT * FROM usuario WHERE Email = @email AND Pass = @pass";
             List<Usuario> list = new List<Usuario>();
 
-            SqlConnection conexion = new SqlConnection(cadenaConexion);
+           // SqlConnection conexion = new SqlConnection(cadenaConexion);
 
             try
             {
                 conexion.Open();
 
-                SqlCommand command = new SqlCommand(query, conexion);
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
                 command.Parameters.AddWithValue("@email", email);
                 command.Parameters.AddWithValue("@pass", pass);
 
@@ -105,27 +104,134 @@ namespace BackRPG.DAO
             }
             catch (Exception ex)
             {
+                Console.WriteLine("ERROR: DalUsuario Login\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list.Count > 0 ? list[0] : null;
+        }
+
+
+        public static Usuario Register(Usuario user)
+        {
+            String insertQuery = "INSERT INTO Usuario (Email, Pass, Username, FKLocalidad ) VALUES (@email, @pass, @username, @FKLocalidad);";
+            String selectQuery = "SELECT * FROM Usuario WHERE Email = @email";
+            Usuario insertado = null;
+            try
+            {
+                conexion.Open();
+
+                SqlCommand insertCommand = new SqlCommand(insertQuery, conexion);
+                insertCommand.Parameters.AddWithValue("@email", user.Email);
+                insertCommand.Parameters.AddWithValue("@pass", user.Pass);
+                insertCommand.Parameters.AddWithValue("@username", user.Username);
+                insertCommand.Parameters.AddWithValue("@FKLocalidad", user.FKLocalidad);
+
+
+                int rowsAffected = insertCommand.ExecuteNonQuery();
+
+
+                if (rowsAffected > 0) // AFECTAR A UNA COLUMNA ES LO MISMO QUE NSERTAR 
+                {
+                    SqlCommand selectCommand = new SqlCommand(selectQuery, conexion);
+                    selectCommand.Parameters.AddWithValue("@email", user.Email);
+
+                    SqlDataReader reader = selectCommand.ExecuteReader();
+
+                    insertado = ReaderUsuario(reader);
+                    reader.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalUsuario Register\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return insertado;
+
+        }
+
+        // hay que ver como sera el formulario de modificar informacion 
+        public static Usuario Update(Usuario user)
+        {
+            String updateQuery = "UPDATE Usuario SET  Pass = @pass, Username = @username, FKLocalidad = @FKLocalidad WHERE IdUsuario = @id";
+
+            String selectQuery = "SELECT * FROM Usuario WHERE IdUsuario = @id";
+            Usuario insertado = null;
+            try
+            {
+                conexion.Open();
+
+                SqlCommand insertCommand = new SqlCommand(updateQuery, conexion);
+                insertCommand.Parameters.AddWithValue("@id", user.IdUsuario);
+                insertCommand.Parameters.AddWithValue("@pass", user.Pass);
+                insertCommand.Parameters.AddWithValue("@username", user.Username);
+                insertCommand.Parameters.AddWithValue("@FKLocalidad", user.FKLocalidad);
+
+
+                int rowsAffected = insertCommand.ExecuteNonQuery();
+
+
+                if (rowsAffected > 0) // AFECTAR A UNA COLUMNA ES LO MISMO QUE NSERTAR 
+                {
+                    SqlCommand selectCommand = new SqlCommand(selectQuery, conexion);
+                    selectCommand.Parameters.AddWithValue("@id", user.IdUsuario);
+
+                    SqlDataReader reader = selectCommand.ExecuteReader();
+
+                    insertado = ReaderUsuario(reader);
+                    reader.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalUsuario Update\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return insertado;
+
+        }
+
+        public static Usuario SelectById(int idUsuario)
+        {
+            String selectQuery = "SELECT * FROM usuario WHERE IdUsuario = @id";
+            Usuario usuarioBuscado = null;
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand selectCommand = new SqlCommand(selectQuery, conexion);
+                selectCommand.Parameters.AddWithValue("@id", idUsuario);
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                usuarioBuscado = ReaderUsuario(reader);
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine("ERROR: DalUsuario SelectAll\n" + ex.Message);
             }
             finally
             {
                 conexion.Close();
             }
-
-            return list.Count > 0 ? list[0] : null;
-            /*
-            if (list.Count > 0)
-            {
-                // Retorna el usuario autenticado
-                return list[0];
-            }
-            else
-            {
-                // No se encontró ningún usuario que coincida con las credenciales, retorna null o lanza una excepción
-                return null;
-            }
-            */
+            return usuarioBuscado;
         }
 
     }
+
+
+    
 }

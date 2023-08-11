@@ -8,7 +8,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGMeet.DAO
+namespace RPGMeet.DAL
 {
 
     /*

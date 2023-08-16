@@ -3,6 +3,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
+        <link rel="stylesheet" href="" />
         <!-- meter este style en el sire.master/head acciendo referencia a la carpeta de estilos Home.css -->
         <style>
             :root {

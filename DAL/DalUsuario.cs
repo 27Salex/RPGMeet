@@ -1,5 +1,4 @@
-﻿
-using BackRPG.Model;
+﻿using BackRPG.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,7 +7,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackRPG.DAO
+namespace RPGMeet.DAL
 {
 
     /*

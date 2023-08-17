@@ -33,9 +33,8 @@
         </asp:DropDownList>
     </div>
     <div>
-        <asp:Button ID="BtnRegisterCreate" runat="server" OnClick="BtnRegisterCreate_Click" Text="Crear Cuenta" />
+        <asp:Label ID="LbCompulsoryCamps" runat="server" Text="Porfavor rellena los campos obligatorios" Font-Bold="True" Font-Italic="True" ForeColor="Red" Visible="False"></asp:Label>
         <br />
-        <asp:Label ID="Label6" runat="server" Text="Info User Creado:"></asp:Label>
-        <asp:Label ID="LbUserCreation" runat="server" Text="User"></asp:Label>
+        <asp:Button ID="BtnRegisterCreate" runat="server" OnClick="BtnRegisterCreate_Click" Text="Crear Cuenta" />
     </div>
 </asp:Content>

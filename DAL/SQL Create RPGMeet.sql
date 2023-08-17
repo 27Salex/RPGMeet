@@ -7,6 +7,7 @@
 		- Localidad
 		- Tema
 		- Tienda
+		- Juego
 */
 
 
@@ -17,7 +18,7 @@ CREATE TABLE Localidad (
 
 CREATE TABLE FotoPerfil (
 	IdFotoPerfil int IDENTITY(1,1) PRIMARY KEY,
-	RutaArchivo VARCHAR NOT NULL
+	RutaArchivo VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE Tema (
@@ -69,25 +70,12 @@ CREATE TABLE Tienda (
 	FOREIGN KEY (FKLocalidad) REFERENCES Localidad(IdLocalidad)
 );
 
--- Fuera de la base de datos 
-CREATE TABLE Campaing (
-	IdCampaing INT IDENTITY(1,1) PRIMARY KEY,
-	NombreCampaing VARCHAR(50) NOT NULL,
-	Genero VARCHAR(20),
-	FKJuego INT,
-	FOREIGN KEY (FKJuego) REFERENCES Juego(IdJuego)
-);
-
-
-	
 CREATE TABLE Grupo (
 	IdGrupo INT IDENTITY(1,1) PRIMARY KEY,
 	TituloParitda VARCHAR (50) NOT NULL,
 	Descripcion VARCHAR (255) ,
 	EstadoGrupo SMALLINT NOT NULL, -- FINALIZADA -1  BUSCANDO 0 FINALIZADA -1
 	MaxJugadores SMALLINT NOT NULL,
-	FKGameMaster INT NOT NULL,
-	FKJuego INT,
 	EsOnline BIT DEFAULT 0 NOT NULL,
 	QuedarLunes BIT DEFAULT 0 NOT NULL,		
     QuedarMartes BIT DEFAULT 0 NOT NULL, 
@@ -95,18 +83,19 @@ CREATE TABLE Grupo (
     QuedarJueves BIT DEFAULT 0 NOT NULL,	
     QuedarViernes BIT DEFAULT 0 NOT NULL, 
     QuedarSabado BIT DEFAULT 0 NOT NULL, 
-    QuedarDomingo BIT DEFAULT 0 NOT NULL
+    QuedarDomingo BIT DEFAULT 0 NOT NULL,
+	
+	FKGameMaster INT NOT NULL,
+	FKTemaPrincipal INT NOT NULL,
+	FKTemaSecundario INT,
+	FKJuego INT,
+
 	FOREIGN KEY (FKGameMaster) REFERENCES Usuario(IdUsuario),
-	FOREIGN KEY (FKCampaing) REFERENCES Campaing(IdCampaing)
+	FOREIGN KEY (FKTemaPrincipal) REFERENCES Tema(IdTema),
+	FOREIGN KEY (FKTemaSecundario) REFERENCES Tema(IdTema),
+	FOREIGN KEY (FKJuego) REFERENCES Juego(IdJuego)
 );
 
-CREATE TABLE TemaGrupo (
-	IdTemaGrupo INT IDENTITY(1,1) PRIMARY KEY,
-	FKTema INT,
-	FKGrupo INT,
-	FOREIGN KEY (FKTema) REFERENCES Tema(IdTema),
-	FOREIGN KEY (FKGrupo) REFERENCES Grupo(IdGrupo),
-);
 
 CREATE TABLE UsuarioGrupo (
 	IdUsuarioPartida INT IDENTITY(1,1) PRIMARY KEY,

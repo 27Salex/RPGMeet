@@ -12,11 +12,11 @@
                                 <div class="form-left h-100 py-5 px-5">
                                     <div class="row g-4">
                                             <div class="col-12">
-                                                <label>Username<span class="text-danger">*</span></label>
+                                                <label>Email<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <asp:TextBox TextMode="Password" runat="server" class="form-control" placeholder="Introduce tu email">
-                                                    </asp:TextBox>
+                                                        <asp:TextBox id="txtEmail" TextMode="Password" runat="server" class="form-control" placeholder="Introduce tu email">
+                                                        </asp:TextBox>
                                                 </div>
                                             </div>
 
@@ -24,7 +24,7 @@
                                                 <label>Password<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                    <asp:TextBox TextMode="Password" runat="server" class="form-control" placeholder="Introduce tu contraseña">
+                                                    <asp:TextBox id="txtPwd" TextMode="Password" runat="server" class="form-control" placeholder="Introduce tu contraseña">
                                                     </asp:TextBox>
                                                 </div>
                                             </div>
@@ -42,7 +42,7 @@
                                             </div>
 
                                             <div class="col-12">
-                                                <asp:Button runat="server" type="submit" class="btn btn-primary px-4 float-end mt-4" Text="login">
+                                                <asp:Button runat="server" type="submit" class="btn btn-primary px-4 float-end mt-4" Text="login" ID="btnLogin" OnClick="BtnLogin_Click">
                                                 </asp:Button>
                                             </div>
                                     </div>
@@ -50,7 +50,9 @@
                             </div>
                             <div class="col-md-5 ps-0 d-none d-md-block">
                                 <div class="form-right h-100 bg-dark text-white text-center pt-5">
-                                    <img width="100%" src="https://i.ibb.co/V26QgkG/Large-Logo-Inverted-Transparent.png"/>
+                                    <a href="/">
+                                        <img width="100%" src="https://i.ibb.co/V26QgkG/Large-Logo-Inverted-Transparent.png"/>
+                                    </a>
                                     <h2 class="fs-1">Bienvenido de nuevo!!!</h2>
                                 </div>
                             </div>

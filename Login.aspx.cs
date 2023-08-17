@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,15 @@ namespace RPGMeet
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void BtnLogin_Click(object sender, EventArgs e)
+        {
+            string email = txtEmail.Text;
+            string pwd = txtPwd.Text;
+            //Usuario user = null;
+
+           // DalUsuario.Login()
         }
     }
 }

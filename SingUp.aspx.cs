@@ -1,5 +1,5 @@
 ﻿using Antlr.Runtime.Misc;
-using BackRPG.Model;
+using RPGMeet.Model;
 using Microsoft.Ajax.Utilities;
 using RPGMeet.DAL;
 using System;
@@ -30,8 +30,9 @@ namespace RPGMeet
         {
             bool camps = CheckCamps();
             bool pass = CheckPass();
+            bool user = UsedUsername();
 
-            if (camps && pass) //Comprovar todas las condiciones antes de crear el Usuario
+            if (camps && user && pass) //Comprovar todas las condiciones antes de crear el Usuario
             {
                 CreateUser();
             }
@@ -78,9 +79,7 @@ namespace RPGMeet
                 TxtBoxRegisterPswCon.BackColor = Color.White;
                 LbCompulsoryCamps.Visible = false;
             }
-
             
-
             return correctCamps;
         }
 
@@ -114,6 +113,16 @@ namespace RPGMeet
             }
 
             return completePsw;
+        }
+
+        bool UsedUsername() //Devuelve si el Username ya esta seleccionado
+        {
+            bool notPicked = false;
+            if (!DalUsuario.CheckUsername(TxtBoxRegisterUser.Text))
+            {
+                notPicked = true;
+            }
+            return notPicked;
         }
     }
 }

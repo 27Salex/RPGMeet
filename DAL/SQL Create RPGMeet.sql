@@ -84,7 +84,7 @@ CREATE TABLE TemaCampaing (
 	FOREIGN KEY (FKTema) REFERENCES Tema(IdTema),
 	FOREIGN KEY (FKCampaing) REFERENCES Campaing(IdCampaing),
 );
-
+	
 CREATE TABLE Grupo (
 	IdGrupo INT IDENTITY(1,1) PRIMARY KEY,
 	TituloParitda VARCHAR (50) NOT NULL,

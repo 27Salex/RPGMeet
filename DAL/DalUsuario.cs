@@ -113,6 +113,8 @@ namespace RPGMeet.DAL
         }
 
 
+
+
         public static Usuario Register(Usuario user)
         {
             String insertQuery = "INSERT INTO Usuario (Email, Pass, Username, FKLocalidad ) VALUES (@email, @pass, @username, @FKLocalidad);";
@@ -229,6 +231,36 @@ namespace RPGMeet.DAL
             return usuarioBuscado;
         }
 
+
+        public static Usuario CheckUsername(String username)
+        {
+            String selectQuery = "SELECT * FROM usuario WHERE Username = @username";
+            List<Usuario> list = new List<Usuario>();
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@username", username);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderUsuario(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalUsuario Login\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list.Count > 0 ? list[0] : null;
+        }
     }
 
 

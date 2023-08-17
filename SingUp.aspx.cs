@@ -1,6 +1,7 @@
-﻿using Antlr.Runtime.Misc;
-using RPGMeet.Model;
+
+﻿using RPGMeet.Model;
 using Microsoft.Ajax.Utilities;
+﻿using Antlr.Runtime.Misc;
 using RPGMeet.DAL;
 using System;
 using System.Collections.Generic;

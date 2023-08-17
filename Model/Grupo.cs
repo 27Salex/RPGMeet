@@ -22,13 +22,13 @@ namespace RPGMeet.Models
 
         public Grupo() { }
 
-        public Grupo(int IdGrupo, string TituloParitda, short MaxJugadores,)
+        public Grupo(int IdGrupo, string TituloParitda)
         {
             IdGrupo = IdGrupo;
-            TituloParitda = TituloParitda
+            TituloParitda = TituloParitda;
         }
 
-        public
+        
 
 
     }

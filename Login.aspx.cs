@@ -1,4 +1,5 @@
-﻿
+﻿using RPGMeet.DAL;
+using RPGMeet.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,18 @@ namespace RPGMeet
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
+            string message = "";
             string email = txtEmail.Text;
             string pwd = txtPwd.Text;
-            //Usuario user = null;
+            Usuario user = null;
 
-           // DalUsuario.Login()
+            user = DalUsuario.Login(email, pwd);
+            if (user != null)
+                message = "El usuario o contraseña son incorrectos";
+            else
+                message = "Login exitoso";
+            Message.Text = message;
+            
         }
     }
 }

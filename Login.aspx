@@ -34,6 +34,7 @@
                                                     <asp:CheckBox runat="server" class="form-check-input" type="checkbox" id="inlineFormCheck">
                                                     </asp:CheckBox>
                                                     <label class="form-check-label" for="inlineFormCheck">Recuérdame</label>
+                                                    <asp:label ID="Message" runat="server" CssClass="text-danger"></asp:label>
                                                 </div>
                                             </div>
 

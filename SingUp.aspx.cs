@@ -1,4 +1,4 @@
-﻿using BackRPG.Model;
+﻿using RPGMeet.Model;
 using RPGMeet.DAL;
 using System;
 using System.Collections.Generic;

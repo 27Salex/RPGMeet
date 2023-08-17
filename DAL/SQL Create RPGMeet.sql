@@ -88,19 +88,18 @@ CREATE TABLE TemaCampaing (
 CREATE TABLE Grupo (
 	IdGrupo INT IDENTITY(1,1) PRIMARY KEY,
 	TituloParitda VARCHAR (50) NOT NULL,
-	DiasQuedada VARCHAR, -- se guardara dentro los dias que se puedan quedar LMXJVSD
 	EstadoGrupo SMALLINT NOT NULL, -- FINALIZADA -1  BUSCANDO 0 FINALIZADA -1
 	MaxJugadores SMALLINT NOT NULL,
 	FKGameMaster INT NOT NULL,
 	FKCampaing INT,
-	EsOnline BIT,
-	QuedarLunes BIT,
-	QuedarMartes BIT,
-	QuedarMiercoles BIT,
-	QuedarJueves BIT,
-	QuedarViernes BIT,
-	QuedarSabado BIT,
-	QuedarDomingo BIT,
+	EsOnline BIT DEFAULT 0 NOT NULL,
+	QuedarLunes BIT DEFAULT 0 NOT NULL,		
+    QuedarMartes BIT DEFAULT 0 NOT NULL, 
+    QuedarMiercoles BIT DEFAULT 0 NOT NULL, 
+    QuedarJueves BIT DEFAULT 0 NOT NULL,	
+    QuedarViernes BIT DEFAULT 0 NOT NULL, 
+    QuedarSabado BIT DEFAULT 0 NOT NULL, 
+    QuedarDomingo BIT DEFAULT 0 NOT NULL
 	FOREIGN KEY (FKGameMaster) REFERENCES Usuario(IdUsuario),
 	FOREIGN KEY (FKCampaing) REFERENCES Campaing(IdCampaing)
 );

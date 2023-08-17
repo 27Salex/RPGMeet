@@ -119,6 +119,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CreateParty.aspx" />
     <Content Include="DAL\SQL Create RPGMeet.sql" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -196,6 +197,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CreateParty.aspx.cs">
+      <DependentUpon>CreateParty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateParty.aspx.designer.cs">
+      <DependentUpon>CreateParty.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAL\Conexion.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

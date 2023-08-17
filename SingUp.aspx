@@ -36,5 +36,6 @@
         <asp:Label ID="LbCompulsoryCamps" runat="server" Text="Porfavor rellena los campos obligatorios" Font-Bold="True" Font-Italic="True" ForeColor="Red" Visible="False"></asp:Label>
         <br />
         <asp:Button ID="BtnRegisterCreate" runat="server" OnClick="BtnRegisterCreate_Click" Text="Crear Cuenta" />
+        <a href="/Login">Tienes una cuenta ya?</a>
     </div>
 </asp:Content>

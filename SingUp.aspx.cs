@@ -1,4 +1,3 @@
-
 ﻿using RPGMeet.Model;
 using Microsoft.Ajax.Utilities;
 ﻿using Antlr.Runtime.Misc;
@@ -16,8 +15,6 @@ namespace RPGMeet
 {
     //TO DO:
     //Cargar Localidad al Dropdown
-    //Comprobar Contraseñas
-    //Comprovar si el User existe
     //Mostrar si falla
     public partial class SingUp : System.Web.UI.Page
     {
@@ -51,34 +48,46 @@ namespace RPGMeet
 
         bool CheckCamps() //Mostrar si los campos estan vacios
         {
-            bool correctCamps;
-            if (TxtBoxRegisterMail.Text.IsNullOrWhiteSpace() || TxtBoxRegisterUser.Text.IsNullOrWhiteSpace() ||
-                TxtBoxRegisterPsw.Text.IsNullOrWhiteSpace() || TxtBoxRegisterPswCon.Text.IsNullOrWhiteSpace())
-            {
-                correctCamps = false;
-                LbCompulsoryCamps.Visible = true;
-            }
-            else
-            {
-                correctCamps = true;
-                LbCompulsoryCamps.Visible = false;
-            }
+            bool correctCamps = true;
 
-            if (correctCamps) //Marcar en rojo los campos obligatorios
+            if (TxtBoxRegisterUser.Text.IsNullOrWhiteSpace())
             {
                 TxtBoxRegisterUser.BackColor = Color.FromArgb(255, 155, 122);
-                TxtBoxRegisterMail.BackColor = Color.FromArgb(255, 155, 122);
-                TxtBoxRegisterPsw.BackColor = Color.FromArgb(255, 155, 122);
-                TxtBoxRegisterPswCon.BackColor = Color.FromArgb(255, 155, 122);
-                LbCompulsoryCamps.Visible = true;
+                correctCamps = false;
             }
             else
             {
                 TxtBoxRegisterUser.BackColor = Color.White;
+            }
+
+            if (TxtBoxRegisterUser.Text.IsNullOrWhiteSpace())
+            {
+                TxtBoxRegisterMail.BackColor = Color.FromArgb(255, 155, 122);
+                correctCamps = false;
+            }
+            else
+            {
                 TxtBoxRegisterMail.BackColor = Color.White;
+            }
+
+            if (TxtBoxRegisterPsw.Text.IsNullOrWhiteSpace())
+            {
+                TxtBoxRegisterPsw.BackColor = Color.FromArgb(255, 155, 122);
+                correctCamps = false;
+            }
+            else
+            {
                 TxtBoxRegisterPsw.BackColor = Color.White;
+            }
+
+            if (TxtBoxRegisterPswCon.Text.IsNullOrWhiteSpace())
+            {
+                TxtBoxRegisterPswCon.BackColor = Color.FromArgb(255, 155, 122);
+                correctCamps = false;
+            }
+            else
+            {
                 TxtBoxRegisterPswCon.BackColor = Color.White;
-                LbCompulsoryCamps.Visible = false;
             }
             
             return correctCamps;
@@ -119,9 +128,16 @@ namespace RPGMeet
         bool UsedUsername() //Devuelve si el Username ya esta seleccionado
         {
             bool notPicked = false;
-            if (!DalUsuario.CheckUsername(TxtBoxRegisterUser.Text))
+            Usuario test = DalUsuario.CheckUsername(TxtBoxRegisterUser.Text);
+            if (test == null)
             {
                 notPicked = true;
+                lbErrorUser.Visible = false;
+            }
+            else
+            {
+                TxtBoxRegisterUser.BackColor = Color.FromArgb(255, 155, 122);
+                lbErrorUser.Visible = true;
             }
             return notPicked;
         }

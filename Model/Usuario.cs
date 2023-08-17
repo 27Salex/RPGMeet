@@ -26,9 +26,25 @@ namespace RPGMeet.Model
             IdUsuario = idUsuario;
         }
 
-        //Constructor para crear Usuarios a partir del formulario 
+        /// <summary>
+        /// Usarlo para el Formulario de Crear Usuario
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="pass"></param>
+        /// <param name="username"></param>
+        /// <param name="localidad"></param>
         public Usuario( string email, string pass, string username, int localidad)
         {
+            Email = email;
+            Pass = pass;
+            Username = username;
+            FKLocalidad = localidad;
+
+        }
+
+        public Usuario(int IdUsuario, string email, string pass, string username, int localidad)
+        {
+            IdUsuario = IdUsuario;
             Email = email;
             Pass = pass;
             Username = username;

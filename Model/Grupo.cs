@@ -25,7 +25,7 @@ namespace RPGMeet.Models
         public Grupo(int IdGrupo, string TituloParitda)
         {
             IdGrupo = IdGrupo;
-            TituloParitda = TituloParitda
+            TituloParitda = TituloParitda;
         }
 
         

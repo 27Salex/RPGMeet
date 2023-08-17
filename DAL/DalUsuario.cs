@@ -1,4 +1,4 @@
-﻿using BackRPG.Model;
+﻿using RPGMeet.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -111,6 +111,8 @@ namespace RPGMeet.DAL
             }
             return list.Count > 0 ? list[0] : null;
         }
+
+
 
 
         public static Usuario Register(Usuario user)
@@ -229,6 +231,36 @@ namespace RPGMeet.DAL
             return usuarioBuscado;
         }
 
+
+        public static Usuario CheckUsername(String username)
+        {
+            String selectQuery = "SELECT * FROM usuario WHERE Username = @username";
+            List<Usuario> list = new List<Usuario>();
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@username", username);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderUsuario(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalUsuario Login\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list.Count > 0 ? list[0] : null;
+        }
     }
 
 

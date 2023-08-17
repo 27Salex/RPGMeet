@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackRPG.Model
+namespace RPGMeet.Model
 {
     using System;
     using System.Data.SqlClient;

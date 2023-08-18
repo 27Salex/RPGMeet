@@ -214,6 +214,7 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAL\DalGrupo.cs" />
+    <Compile Include="DAL\DalLocalidad.cs" />
     <Compile Include="DAL\DalTienda.cs" />
     <Compile Include="DAL\DalUsuario.cs" />
     <Compile Include="Default.aspx.cs">
@@ -227,6 +228,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\Grupo.cs" />
+    <Compile Include="Model\Localidad.cs" />
     <Compile Include="Model\Tienda.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

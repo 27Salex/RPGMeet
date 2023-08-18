@@ -28,18 +28,18 @@
     <div>
         <asp:Label ID="Label5" runat="server" Text="Temática principal:"></asp:Label>
         <asp:DropDownList ID="DropDownPri" runat="server">
-
+            <asp:ListItem>Selecciona una opción</asp:ListItem>
         </asp:DropDownList>
 
         <asp:Label ID="Label6" runat="server" Text="Temática secundaria:"></asp:Label>
         <asp:DropDownList ID="DropDownSec" runat="server">
-
+            <asp:ListItem>Selecciona una opción</asp:ListItem>
         </asp:DropDownList>
     </div>
     <div>
         <asp:Label ID="Label7" runat="server" Text="Juego:"></asp:Label>
         <asp:DropDownList ID="DropDownGame" runat="server">
-            
+            <asp:ListItem>Selecciona una opción</asp:ListItem>
         </asp:DropDownList>
     </div>
     <div>

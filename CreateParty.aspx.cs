@@ -93,5 +93,10 @@ namespace RPGMeet
             
             return correctCamps;
         }
+
+        void ChargeDropdowns()
+        {
+            
+        }
     }
 }

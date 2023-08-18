@@ -206,7 +206,7 @@ namespace RPGMeet.DAL
         public static Usuario SelectById(int idUsuario)
         {
             String selectQuery = "SELECT * FROM usuario WHERE IdUsuario = @id";
-            Usuario usuarioBuscado = null;
+            Usuario usuarioBuscado ;
 
             try
             {
@@ -215,7 +215,7 @@ namespace RPGMeet.DAL
                 SqlCommand selectCommand = new SqlCommand(selectQuery, conexion);
                 selectCommand.Parameters.AddWithValue("@id", idUsuario);
                 SqlDataReader reader = selectCommand.ExecuteReader();
-
+                reader.Read();
                 usuarioBuscado = ReaderUsuario(reader);
 
                 reader.Close();
@@ -223,6 +223,7 @@ namespace RPGMeet.DAL
             catch (Exception ex)
             {
                 Console.WriteLine("ERROR: DalUsuario SelectAll\n" + ex.Message);
+                return null;
             }
             finally
             {

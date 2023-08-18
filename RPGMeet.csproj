@@ -119,6 +119,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CreateParty.aspx" />
     <Content Include="DAL\SQL Create RPGMeet.sql" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -153,6 +154,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Login.aspx" />
+    <Content Include="ListaDePartidasFiltros.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -197,6 +199,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CreateParty.aspx.cs">
+      <DependentUpon>CreateParty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateParty.aspx.designer.cs">
+      <DependentUpon>CreateParty.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAL\Conexion.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -206,6 +215,7 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAL\DalGrupo.cs" />
+    <Compile Include="DAL\DalLocalidad.cs" />
     <Compile Include="DAL\DalTienda.cs" />
     <Compile Include="DAL\DalUsuario.cs" />
     <Compile Include="Default.aspx.cs">
@@ -219,6 +229,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\Grupo.cs" />
+    <Compile Include="Model\Localidad.cs" />
     <Compile Include="Model\Tienda.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,8 +265,15 @@
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+	  <Compile Include="Login.aspx.designer.cs">
+		  <DependentUpon>Login.aspx</DependentUpon>
+	  </Compile>
+    <Compile Include="ListaDePartidasFiltros.aspx.cs">
+      <DependentUpon>ListaDePartidasFiltros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaDePartidasFiltros.aspx.designer.cs">
+      <DependentUpon>ListaDePartidasFiltros.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿using BackRPG.Model;
+﻿using RPGMeet.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -27,13 +27,14 @@ namespace RPGMeet.DAL
             tienda.IdTienda = (int)reader["IdTienda"];
             tienda.NombreTienda = reader["NombreTienda"].ToString();
             tienda.Direccion = reader["Direccion"].ToString();
-            tienda.CodigoPostal = reader["CodigoPostal"].ToString();
+            tienda.CodigoPostal = (int)reader["CodigoPostal"];
 
+            /*
             tienda.HoraApertura = !reader.IsDBNull(reader.GetOrdinal("HoraApertura")) ? (TimeSpan)reader["HoraApertura"] : null;
             tienda.HoraCierre = !reader.IsDBNull(reader.GetOrdinal("HoraCierre")) ? (TimeSpan)reader["HoraCierre"] : null;
             tienda.FKLocalidad = !reader.IsDBNull(reader.GetOrdinal("FKLocalidad")) ? (int)reader["FKLocalidad"] : null;
-
-            return Tienda;
+*/
+            return tienda;
         }
 
 

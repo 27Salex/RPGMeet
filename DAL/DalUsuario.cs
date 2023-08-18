@@ -1,4 +1,4 @@
-﻿using BackRPG.Model;
+﻿using RPGMeet.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -26,14 +26,6 @@ namespace RPGMeet.DAL
     {
         private static SqlConnection conexion = Conexion.Instance().Connection;
 
-        private static String dataSource = "Data Source=185.253.153.20,54321;";
-        private static String initialCatalog = "Initial Catalog=ManuelRPG;";
-        private static String user = "User ID=sa;";
-        private static String pass = "Password=123456789;";
-
-        private static String cadenaConexion = dataSource + initialCatalog + user + pass;
-        
-        // todo lo de arriba es el objeto conection 
         public static Usuario ReaderUsuario(SqlDataReader reader)
         {
             Usuario usuario = new Usuario();
@@ -53,8 +45,6 @@ namespace RPGMeet.DAL
         {
             String selectQuery = "SELECT * FROM usuario";
             List<Usuario> list = new List<Usuario>();
-
-            //SqlConnection conexion = new SqlConnection(cadenaConexion);
 
             try 
             {
@@ -113,11 +103,10 @@ namespace RPGMeet.DAL
         }
 
 
-        public static Usuario Register(Usuario user)
+        public static bool Register(Usuario user)
         {
             String insertQuery = "INSERT INTO Usuario (Email, Pass, Username, FKLocalidad ) VALUES (@email, @pass, @username, @FKLocalidad);";
-            String selectQuery = "SELECT * FROM Usuario WHERE Email = @email";
-            Usuario insertado = null;
+           
             try
             {
                 conexion.Open();
@@ -128,32 +117,17 @@ namespace RPGMeet.DAL
                 insertCommand.Parameters.AddWithValue("@username", user.Username);
                 insertCommand.Parameters.AddWithValue("@FKLocalidad", user.FKLocalidad);
 
-
-                int rowsAffected = insertCommand.ExecuteNonQuery();
-
-
-                if (rowsAffected > 0) // AFECTAR A UNA COLUMNA ES LO MISMO QUE NSERTAR 
-                {
-                    SqlCommand selectCommand = new SqlCommand(selectQuery, conexion);
-                    selectCommand.Parameters.AddWithValue("@email", user.Email);
-
-                    SqlDataReader reader = selectCommand.ExecuteReader();
-
-                    insertado = ReaderUsuario(reader);
-                    reader.Close();
-
-                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("ERROR: DalUsuario Register\n" + ex.Message);
+                return false;
             }
             finally
             {
                 conexion.Close();
             }
-            return insertado;
-
+            return true;
         }
 
         // hay que ver como sera el formulario de modificar informacion 
@@ -204,7 +178,7 @@ namespace RPGMeet.DAL
         public static Usuario SelectById(int idUsuario)
         {
             String selectQuery = "SELECT * FROM usuario WHERE IdUsuario = @id";
-            Usuario usuarioBuscado = null;
+            Usuario usuarioBuscado ;
 
             try
             {
@@ -213,7 +187,7 @@ namespace RPGMeet.DAL
                 SqlCommand selectCommand = new SqlCommand(selectQuery, conexion);
                 selectCommand.Parameters.AddWithValue("@id", idUsuario);
                 SqlDataReader reader = selectCommand.ExecuteReader();
-
+                reader.Read();
                 usuarioBuscado = ReaderUsuario(reader);
 
                 reader.Close();
@@ -221,6 +195,7 @@ namespace RPGMeet.DAL
             catch (Exception ex)
             {
                 Console.WriteLine("ERROR: DalUsuario SelectAll\n" + ex.Message);
+                return null;
             }
             finally
             {
@@ -229,6 +204,36 @@ namespace RPGMeet.DAL
             return usuarioBuscado;
         }
 
+
+        public static Usuario CheckUsername(String username)
+        {
+            String selectQuery = "SELECT * FROM usuario WHERE Username = @username";
+            List<Usuario> list = new List<Usuario>();
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@username", username);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderUsuario(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalUsuario Login\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list.Count > 0 ? list[0] : null;
+        }
     }
 
 

@@ -15,13 +15,13 @@ namespace RPGMeet
     {
 
         /// <summary>
-        /// Control rbListDisponibilidad.
+        /// Control chkListDisponibilidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbListDisponibilidad;
+        protected global::System.Web.UI.WebControls.CheckBoxList chkListDisponibilidad;
 
         /// <summary>
         /// Control rdListNumJugadores.

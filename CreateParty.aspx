@@ -15,7 +15,7 @@
             <asp:TextBox ID="TxtBoxCreateMaxPly" runat="server" TextMode="Number"></asp:TextBox>
         </div>
         <asp:Label ID="Label3" runat="server" Text="Dias a jugar:"></asp:Label>
-        <asp:CheckBoxList ID="SelDays" runat="server">
+        <asp:CheckBoxList ID="CheckBoxDays" runat="server">
             <asp:ListItem>Lunes</asp:ListItem>
             <asp:ListItem>Martes</asp:ListItem>
             <asp:ListItem>Miercoles</asp:ListItem>
@@ -27,18 +27,18 @@
     </div>
     <div>
         <asp:Label ID="Label5" runat="server" Text="Temática principal:"></asp:Label>
-        <asp:DropDownList ID="SelPri" runat="server">
+        <asp:DropDownList ID="DropDownPri" runat="server">
 
         </asp:DropDownList>
 
         <asp:Label ID="Label6" runat="server" Text="Temática secundaria:"></asp:Label>
-        <asp:DropDownList ID="SelSec" runat="server">
+        <asp:DropDownList ID="DropDownSec" runat="server">
 
         </asp:DropDownList>
     </div>
     <div>
         <asp:Label ID="Label7" runat="server" Text="Juego:"></asp:Label>
-        <asp:DropDownList ID="SelGame" runat="server">
+        <asp:DropDownList ID="DropDownGame" runat="server">
             
         </asp:DropDownList>
     </div>

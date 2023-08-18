@@ -22,18 +22,16 @@ namespace RPGMeet
         {
             //Cargar lista de localidades de la base de datos a DropDownListRegisterLoc
         }
-
-        
+                
         protected void BtnRegisterCreate_Click(object sender, EventArgs e)
         {
             bool camps = CheckCamps();
             bool pass = CheckPass();
             bool user = UsedUsername();
+            //bool mail = UsedMail();
 
-            if (camps && user && pass) //Comprovar todas las condiciones antes de crear el Usuario
-            {
+            if (camps && user && pass/* && mail*/) //Comprovar todas las condiciones antes de crear el Usuario
                 CreateUser();
-            }
         }
 
         void CreateUser()
@@ -43,7 +41,11 @@ namespace RPGMeet
             string username = TxtBoxRegisterUser.Text;
             int localidad = DropDownListRegisterLoc.TabIndex;
             Usuario newUser = new Usuario(email, pass, username, localidad);
-            //Usuario createdUser = DalUsuario.Register(newUser);
+            
+            if (DalUsuario.Register(newUser))
+            {
+                Response.Redirect("/Login");
+            }           
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios
@@ -60,7 +62,7 @@ namespace RPGMeet
                 TxtBoxRegisterUser.BackColor = Color.White;
             }
 
-            if (TxtBoxRegisterUser.Text.IsNullOrWhiteSpace())
+            if (TxtBoxRegisterMail.Text.IsNullOrWhiteSpace())
             {
                 TxtBoxRegisterMail.BackColor = Color.FromArgb(255, 155, 122);
                 correctCamps = false;
@@ -128,10 +130,11 @@ namespace RPGMeet
         bool UsedUsername() //Devuelve si el Username ya esta seleccionado
         {
             bool notPicked = false;
-            Usuario test = DalUsuario.CheckUsername(TxtBoxRegisterUser.Text);
-            if (test == null)
+            Usuario user = DalUsuario.CheckUsername(TxtBoxRegisterUser.Text);
+            if (user == null)
             {
                 notPicked = true;
+                TxtBoxRegisterUser.BackColor = Color.White;
                 lbErrorUser.Visible = false;
             }
             else
@@ -141,5 +144,23 @@ namespace RPGMeet
             }
             return notPicked;
         }
+        /*
+        bool UsedMail() //Devuelve si el mail esta ya en la base de datos
+        {
+            bool notPicked = false;
+            Usuario mail = DalUsuario.
+            if (mail == null)
+            {
+                notPicked = true;
+                TxtBoxRegisterMail.BackColor = Color.White;
+                lbErrorMail.Visible = false;
+            }
+            else
+            {
+                TxtBoxRegisterMail.BackColor = Color.FromArgb(255, 155, 122);
+                lbErrorMail.Visible = true;
+            }
+            return notPicked;
+        }*/
     }
 }

@@ -13,7 +13,8 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Username"] != null)
+                Response.Redirect("/Profile");
         }
 
         protected void BtnLogin_Click(object sender, EventArgs e)
@@ -24,12 +25,18 @@ namespace RPGMeet
             Usuario user = null;
 
             user = DalUsuario.Login(email, pwd);
-            if (user != null)
+            if (user == null)
+            {
                 message = "El usuario o contraseña son incorrectos";
+                Message.Text = message;
+            }
             else
-                message = "Login exitoso";
-            Message.Text = message;
-            
+            {
+                message = user.ToString();
+                Session.Add("Username", user.Username);
+                Session.Add("UserID", user.IdUsuario);
+                Response.Redirect("/");
+            }
         }
     }
 }

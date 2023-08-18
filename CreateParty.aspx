@@ -42,6 +42,6 @@
         </select>
     </div>
     <div>
-        <asp:Button ID="BtnCreateParty" runat="server" Text="Button" />
+        <asp:Button ID="BtnCreateParty" runat="server" Text="Crear Partida" />
     </div>
 </asp:Content>

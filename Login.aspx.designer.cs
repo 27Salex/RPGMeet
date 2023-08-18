@@ -11,7 +11,7 @@ namespace RPGMeet
 {
 
 
-    public partial class WebForm1
+    public partial class Login
     {
 
         /// <summary>

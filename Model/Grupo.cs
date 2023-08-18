@@ -32,7 +32,6 @@ namespace RPGMeet.Models
 
         public Grupo() { }
 
-
         /// <summary>
         /// Constructor para peticion de allPartidas o PartidasFiltro
         /// </summary>

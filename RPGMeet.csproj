@@ -265,9 +265,9 @@
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-
+	  <Compile Include="Login.aspx.designer.cs">
+		  <DependentUpon>Login.aspx</DependentUpon>
+	  </Compile>
     <Compile Include="ListaDePartidasFiltros.aspx.cs">
       <DependentUpon>ListaDePartidasFiltros.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

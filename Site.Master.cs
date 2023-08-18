@@ -11,6 +11,7 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             if (Session["Username"] != null && Session["UserID"] != null)
             {
                 LoggedProfile.Visible = true;
@@ -21,6 +22,8 @@ namespace RPGMeet
                 LoggedProfile.Visible = false;
                 UnLoggedProfile.Visible = true;
             }
+            */
+            
         }
 
         protected void CerrarSesion(object sender, EventArgs e)

@@ -8,7 +8,7 @@
         </div>
         <div>
             <asp:Label ID="Label2" runat="server" Text="Descripción:"></asp:Label>
-            <textarea id="TextArea1" cols="20" rows="5"></textarea>
+            <textarea id="TxtAreaCreateDesc" cols="20" rows="5"></textarea>
         </div>
         <div>
             <asp:Label ID="Label4" runat="server" Text="Máximo de Jugadores:"></asp:Label>
@@ -27,18 +27,21 @@
     </div>
     <div>
         <asp:Label ID="Label5" runat="server" Text="Temática principal:"></asp:Label>
-        <select id="PriSel">
+        <select id="SelPri">
             <option></option>
         </select>
         <asp:Label ID="Label6" runat="server" Text="Temática secundaria:"></asp:Label>
-        <select id="SecSel">
+        <select id="SelSec">
             <option></option>
         </select>
     </div>
     <div>
         <asp:Label ID="Label7" runat="server" Text="Juego:"></asp:Label>
-        <select id="Game">
+        <select id="SelGame">
             <option></option>
         </select>
+    </div>
+    <div>
+        <asp:Button ID="BtnCreateParty" runat="server" Text="Button" />
     </div>
 </asp:Content>

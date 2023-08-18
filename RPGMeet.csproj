@@ -125,7 +125,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Img\pngegg.png" />
-    <Content Include="manuprueba.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -228,13 +227,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="manuprueba.aspx.cs">
-      <DependentUpon>manuprueba.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="manuprueba.aspx.designer.cs">
-      <DependentUpon>manuprueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model\Filtro.cs" />
     <Compile Include="Model\Grupo.cs" />

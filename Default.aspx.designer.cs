@@ -33,22 +33,22 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label lblDisponibilidad;
 
         /// <summary>
-        /// Control Label1.
+        /// Control lblTematica.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblTematica;
 
         /// <summary>
-        /// Control Label2.
+        /// Control lblNumJugadores.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblNumJugadores;
 
         /// <summary>
         /// Control Button1.

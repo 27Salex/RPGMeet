@@ -42,11 +42,18 @@ CREATE TABLE Usuario (
 	Pass varchar NOT NULL,
     Username varchar(30) UNIQUE NOT NULL,
 	FKLocalidad int,
-	FKFotoPerfil int,
-	FOREIGN KEY (FKLocalidad) REFERENCES Localidad(IdLocalidad), -- ponerlas fuera 
-	FOREIGN KEY (FKFotoPerfil) REFERENCES FotoPerfil(IdFotoPerfil)-- ponerlas fuera 
+	FKFotoPerfil int
+	--FOREIGN KEY (FKLocalidad) REFERENCES Localidad(IdLocalidad), -- ponerlas fuera 
+	-- FOREIGN KEY (FKFotoPerfil) REFERENCES FotoPerfil(IdFotoPerfil)-- ponerlas fuera 
 );
 
+-- CONSTRAINT 
+ ALTER TABLE Usuario 
+ ADD CONSTRAINT FkUsuarioLocalidad FOREIGN KEY (FKLocalidad) REFERENCES Localidad(IdLocalidad);
+ 
+ ALTER TABLE Usuario 
+ ADD CONSTRAINT FkUsuarioFotoPerfil FOREIGN KEY (FKFotoPerfil) REFERENCES FotoPerfil(IdFotoPerfil);
+	
 
 CREATE TABLE Historia (
 	IdHistoria INT IDENTITY(1,1) PRIMARY KEY,
@@ -54,9 +61,13 @@ CREATE TABLE Historia (
 	Sinopsis VARCHAR(50), 
 	Contenido TEXT NOT NULL,
 	EsPersonaje BIT NOT NULL, -- PARA CUANDO LAS HISTORIAS TENGAN INFORMACION DE PERSONAJES (IDEA FUTURA ES MEJOR CREAR UNA TABLA Y BORRAR ESTE ATRIBUTO LUEGO )
-	FKEscritor INT,
-	FOREIGN KEY (FKEscritor) REFERENCES Usuario(IdUsuario) -- ponerlas fuera 
+	FKEscritor INT
+	-- FOREIGN KEY (FKEscritor) REFERENCES Usuario(IdUsuario)
 );
+
+-- CONSTRAINT
+ALTER TABLE Historia 
+ADD CONSTRAINT FkHistoriaUsuario FOREIGN KEY (FKEscritor) REFERENCES Usuario(IdUsuario);
 
 
 CREATE TABLE Tienda (
@@ -69,14 +80,17 @@ CREATE TABLE Tienda (
 	FKLocalidad INT,
 	FOREIGN KEY (FKLocalidad) REFERENCES Localidad(IdLocalidad)
 );
+-- CONSTRAINT
+ALTER TABLE Usuario 
+ADD CONSTRAINT FkTiendaLocalidad FOREIGN KEY (FKLocalidad) REFERENCES Localidad(IdLocalidad);
 
 CREATE TABLE Grupo (
 	IdGrupo INT IDENTITY(1,1) PRIMARY KEY,
 	TituloParitda VARCHAR (50) NOT NULL,
 	Descripcion VARCHAR (255) ,
-	EstadoGrupo SMALLINT NOT NULL, -- FINALIZADA -1  BUSCANDO 0 FINALIZADA -1
+	-- EstadoGrupo SMALLINT NOT NULL, -- FINALIZADA -1  BUSCANDO 0 FINALIZADA -1
 	MaxJugadores SMALLINT NOT NULL,
-	EsOnline BIT DEFAULT 0 NOT NULL,
+	-- EsOnline BIT DEFAULT 0 NOT NULL,
 	QuedarLunes BIT DEFAULT 0 NOT NULL,		
     QuedarMartes BIT DEFAULT 0 NOT NULL, 
     QuedarMiercoles BIT DEFAULT 0 NOT NULL, 
@@ -84,11 +98,10 @@ CREATE TABLE Grupo (
     QuedarViernes BIT DEFAULT 0 NOT NULL, 
     QuedarSabado BIT DEFAULT 0 NOT NULL, 
     QuedarDomingo BIT DEFAULT 0 NOT NULL,
-	
 	FKGameMaster INT NOT NULL,
 	FKTemaPrincipal INT NOT NULL,
 	FKTemaSecundario INT,
-	FKJuego INT,
+	FKJuego INT NOT NULL,
 
 	FOREIGN KEY (FKGameMaster) REFERENCES Usuario(IdUsuario),
 	FOREIGN KEY (FKTemaPrincipal) REFERENCES Tema(IdTema),

@@ -7,6 +7,7 @@ namespace RPGMeet.Model
 {
     public class Filtro
     {
+
         private bool quedarCualquierDia = true;
         private bool quedarLunes=false;
         private bool quedarMartes=false;
@@ -47,5 +48,6 @@ namespace RPGMeet.Model
         public bool QuedarCualquierDia { get => quedarCualquierDia; set => quedarCualquierDia = value; }
         public int MinJugadores { get => minJugadores; set => minJugadores = value; }
         public int MaxJugadores { get => maxJugadores; set => maxJugadores = value; }
+
     }
 }

@@ -228,6 +228,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\Filtro.cs" />
     <Compile Include="Model\Grupo.cs" />
     <Compile Include="Model\Localidad.cs" />
     <Compile Include="Model\Tienda.cs" />
@@ -265,9 +266,9 @@
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-	  <Compile Include="Login.aspx.designer.cs">
-		  <DependentUpon>Login.aspx</DependentUpon>
-	  </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListaDePartidasFiltros.aspx.cs">
       <DependentUpon>ListaDePartidasFiltros.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

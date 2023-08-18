@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Lista de partidas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListaDePartidasFiltros.aspx.cs" Inherits="RPGMeet.WebForm1" %>
+﻿<%@ Page Title="Lista de partidas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListaDePartidasFiltros.aspx.cs" Inherits="RPGMeet.ListaDePartidasFiltros" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -47,7 +47,7 @@
                         <!-- Filtro Disponibilidad -->
                         <div class="form-group">
                             <h3>Disponibilidad</h3>
-                            <asp:RadioButtonList ID="rbListDisponibilidad" CssClass="form-check" runat="server">
+                            <asp:CheckBoxList ID="chkListDisponibilidad" CssClass="form-check" runat="server">
                                 <asp:ListItem Text="Lunes" Value="Lunes" />
                                 <asp:ListItem Text="Martes" Value="Martes" />
                                 <asp:ListItem Text="Miércoles" Value="Miercoles" />
@@ -55,7 +55,7 @@
                                 <asp:ListItem Text="Viernes" Value="Viernes" />
                                 <asp:ListItem Text="Sábado" Value="Sabado" />
                                 <asp:ListItem Text="Domingo" Value="Domingo" />
-                            </asp:RadioButtonList>
+                            </asp:CheckBoxList>
                         </div>
 
                         <!-- Filtro Número de Jugadores -->
@@ -71,8 +71,8 @@
 
                         <!-- Filtro Estado de la Partida -->
                         <div class="form-group">
-                            <h3>Estado de la partida</h3>
-                            <asp:RadioButtonList ID="rbListEstadoPartida" CssClass="form-check" runat="server">
+                            <h3>Estado de la partida</h3>        
+                            <asp:RadioButtonList ID="rbListEstadoPartida" CssClass="form-check" AutoPostBack="true" OnSelectedIndexChanged="ObtenerEstadoPartida_SelectedIndexChanged" runat="server">
                                 <asp:ListItem Text="Iniciada" Value="Iniciada" />
                                 <asp:ListItem Text="Por Iniciar" Value="PorIniciar" />
                                 <asp:ListItem Text="Acabada" Value="Acabada" />

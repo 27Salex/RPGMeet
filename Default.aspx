@@ -3,7 +3,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
-        <link rel="stylesheet" href="" />
         <!-- meter este style en el sire.master/head acciendo referencia a la carpeta de estilos Home.css -->
         <style>
             :root {
@@ -39,6 +38,9 @@
                 height: 500px;
                 background-color: var(--grey);
             }
+            .my-grey{
+                background-color: #D9D9D9;
+            }
         </style>
         <div class="row m-3">
             <div class="col-6">
@@ -46,7 +48,7 @@
                 <p>Expliación de la página: consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus. Ut venenatis tellus in metus. Id diam maecenas ultricies mi eget mauris pharetra et. Ullamcorper dignissim cras tincidunt lobortis.</p>
             </div>
             <div class="col-6 bg-black text-center text-white align-content-center">
-                <img /> Aquí va una imagen...
+                <p> Aquí va una imagen...</p>
             </div>
             <div class="col-6">
                 <asp:Button ID="btnCrearCuenta1" runat="server" Text="Crear cuenta" CssClass=""/>
@@ -81,9 +83,9 @@
                         <div>
                             <asp:Label ID="lblDisponibilidad" class="d-block" runat="server" Text="Disponibilidad: Fin de semana"></asp:Label>
 
-                            <asp:Label ID="Label1" class="d-block" runat="server" Text="Tematica: Medieval"></asp:Label>
+                            <asp:Label ID="lblTematica" class="d-block" runat="server" Text="Tematica: Medieval"></asp:Label>
 
-                            <asp:Label ID="Label2" class="d-block" runat="server" Text="Jugadores: 4/7"></asp:Label>
+                            <asp:Label ID="lblNumJugadores" class="d-block" runat="server" Text="Jugadores: 4/7"></asp:Label>
                         </div>
                     </div>
 
@@ -116,6 +118,5 @@
 
             </div>
         </div>
-</div>
     </main>
 </asp:Content>

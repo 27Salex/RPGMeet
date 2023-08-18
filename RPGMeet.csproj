@@ -218,6 +218,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\Filtro.cs" />
     <Compile Include="Model\Grupo.cs" />
     <Compile Include="Model\Tienda.cs" />
     <Compile Include="Model\Usuario.cs" />

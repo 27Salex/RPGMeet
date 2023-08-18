@@ -13,14 +13,14 @@ namespace RPGMeet.Models
 
         public short EstadoGrupo { get; set; }  // FINALIZADA -1  BUSCANDO 0 START 1
         public short MaxJugadores { get; set; }
- 
+
         public bool EsOnline { get; set; }  // mirar si implementarlo ya que todas seran fisicas
-        public bool QuedarLunes { get; set; } 
+        public bool QuedarLunes { get; set; }
         public bool QuedarMartes { get; set; }
-        public bool QuedarMiercoles { get; set; } 
-        public bool QuedarJueves { get; set; } 
-        public bool QuedarViernes { get; set; } 
-        public bool QuedarSabado { get; set; } 
+        public bool QuedarMiercoles { get; set; }
+        public bool QuedarJueves { get; set; }
+        public bool QuedarViernes { get; set; }
+        public bool QuedarSabado { get; set; }
         public bool QuedarDomingo { get; set; }
         public int FKJuego { get; set; }
         public int FKTemaPrincipal { get; set; }
@@ -51,17 +51,17 @@ namespace RPGMeet.Models
         /// <param name="FKGameMaster"></param>
         /// <param name="creador"></param>
         public Grupo(
-            int IdGrupo, 
-            string TituloParitda, 
+            int IdGrupo,
+            string TituloParitda,
             string Descripcion,
-            short MaxJugadores, 
+            short MaxJugadores,
             bool QuedarLunes,
-            bool QuedarMartes, 
+            bool QuedarMartes,
             bool QuedarMiercoles,
             bool QuedarJueves,
             bool QuedarViernes,
             bool QuedarSabado,
-            bool QuedarDomingo, 
+            bool QuedarDomingo,
             int FKJuego,
             int FKTemaPrincipal,
             int FKTemaSecundario,
@@ -85,6 +85,6 @@ namespace RPGMeet.Models
             FKGameMaster = FKGameMaster;
 
         }
-
+   
     }
 }

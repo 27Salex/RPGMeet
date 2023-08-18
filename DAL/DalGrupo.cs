@@ -97,5 +97,48 @@ namespace RPGMeet.DAL
             return grupoBuscado;
         }
 
+
+
+        public static bool Create(Grupo grupo)
+        {
+            String insertQuery =@"
+INSERT INTO Grupo (TituloParitda,  EstadoGrupo, MaxJugadores, EsOnline, FKGameMaster, FKTemaPrincipal, FKJuego) 
+VALUES (@TituloParitda, @EstadoGrupo, @MaxJugadores,@EsOnline, @FKGameMaster, @FKTemaPrincipal, @FKJuego); 
+SELECT CAST(SCOPE_IDENTITY() AS INT)";
+
+            // SELECT CAST(SCOPE_IDENTITY() AS INT)  al final de la sentencia sql esto devuelve el ultimo id insertado 
+            try
+            {
+                conexion.Open();
+
+                SqlCommand insertCommand = new SqlCommand(insertQuery, conexion);
+                insertCommand.Parameters.AddWithValue("@TituloParitda", grupo.TituloParitda);
+                insertCommand.Parameters.AddWithValue("@EstadoGrupo", grupo.EstadoGrupo);
+                insertCommand.Parameters.AddWithValue("@MaxJugadores", grupo.MaxJugadores);
+                insertCommand.Parameters.AddWithValue("@EsOnline", grupo.EsOnline);
+                insertCommand.Parameters.AddWithValue("@FKGameMaster", grupo.FKGameMaster);
+                insertCommand.Parameters.AddWithValue("@FKTemaPrincipal", grupo.FKTemaPrincipal);
+                insertCommand.Parameters.AddWithValue("@FKJuego", grupo.FKJuego);
+
+
+                int UltimoId = (int)insertCommand.ExecuteScalar();
+
+                grupo.IdGrupo = UltimoId;
+
+               
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalUsuario Register\n" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+
+        }
+
     }
 }

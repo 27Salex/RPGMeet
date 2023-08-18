@@ -65,24 +65,24 @@ namespace RPGMeet.Models
             int FKJuego,
             int FKTemaPrincipal,
             int FKTemaSecundario,
-            bool FKGameMaster,
+            int FKGameMaster,
             Usuario creador)
         {
-            IdGrupo = IdGrupo;
-            TituloParitda = TituloParitda;
-            Descripcion = Descripcion;
-            MaxJugadores = MaxJugadores;
-            QuedarLunes = QuedarLunes;
-            QuedarMartes = QuedarMartes;
-            QuedarMiercoles = QuedarMiercoles;
-            QuedarJueves = QuedarJueves;
-            QuedarViernes = QuedarViernes;
-            QuedarSabado = QuedarSabado;
-            QuedarDomingo = QuedarDomingo;
-            FKJuego = FKJuego;
-            FKTemaPrincipal = FKTemaPrincipal;
-            FKTemaSecundario = FKTemaSecundario;
-            FKGameMaster = FKGameMaster;
+            this.IdGrupo = IdGrupo;
+            this.TituloParitda = TituloParitda;
+            this.Descripcion = Descripcion;
+            this.MaxJugadores = MaxJugadores;
+            this.QuedarLunes = QuedarLunes;
+            this.QuedarMartes = QuedarMartes;
+            this.QuedarMiercoles = QuedarMiercoles;
+            this.QuedarJueves = QuedarJueves;
+            this.QuedarViernes = QuedarViernes;
+            this.QuedarSabado = QuedarSabado;
+            this.QuedarDomingo = QuedarDomingo;
+            this.FKJuego = FKJuego;
+            this.FKTemaPrincipal = FKTemaPrincipal;
+            this.FKTemaSecundario = FKTemaSecundario;
+            this.FKGameMaster = FKGameMaster;
 
         }
    

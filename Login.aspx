@@ -15,8 +15,8 @@
                                                 <label>Email<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                        <asp:TextBox id="txtEmail" TextMode="Password" runat="server" class="form-control" placeholder="Introduce tu email">
-                                                        </asp:TextBox>
+                                                    <asp:TextBox id="txtEmail" TextMode="Email" runat="server" class="form-control" placeholder="Introduce tu email">
+                                                    </asp:TextBox>
                                                 </div>
                                             </div>
 
@@ -24,7 +24,7 @@
                                                 <label>Password<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                    <asp:TextBox id="txtPwd" TextMode="Password" runat="server" class="form-control" placeholder="Introduce tu contraseña">
+                                                    <asp:TextBox id="txtPwd" TextMode="Password" runat="server" CssClass="form-control" placeholder="Introduce tu contraseña">
                                                     </asp:TextBox>
                                                 </div>
                                             </div>

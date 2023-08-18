@@ -154,6 +154,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Login.aspx" />
+    <Content Include="ListaDePartidasFiltros.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -266,6 +267,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+
+    <Compile Include="ListaDePartidasFiltros.aspx.cs">
+      <DependentUpon>ListaDePartidasFiltros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaDePartidasFiltros.aspx.designer.cs">
+      <DependentUpon>ListaDePartidasFiltros.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

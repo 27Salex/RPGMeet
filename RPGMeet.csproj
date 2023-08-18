@@ -243,7 +243,7 @@
     </Compile>
     <Compile Include="PruebaListaPartidas.aspx.designer.cs">
       <DependentUpon>PruebaListaPartidas.aspx</DependentUpon>
-
+	</Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

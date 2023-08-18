@@ -8,8 +8,8 @@
         </div>
         <div>
             <asp:Label ID="Label2" runat="server" Text="Descripción:"></asp:Label>
-            <textarea id="TxtAreaCreateDesc" cols="20" rows="5"></textarea>
-        </div>
+            <asp:TextBox ID="TxtAreaCreateDesc" runat="server" TextMode="MultiLine"></asp:TextBox>
+            &nbsp;</div>
         <div>
             <asp:Label ID="Label4" runat="server" Text="Máximo de Jugadores:"></asp:Label>
             <asp:TextBox ID="TxtBoxCreateMaxPly" runat="server" TextMode="Number"></asp:TextBox>
@@ -27,21 +27,22 @@
     </div>
     <div>
         <asp:Label ID="Label5" runat="server" Text="Temática principal:"></asp:Label>
-        <select id="SelPri">
-            <option></option>
-        </select>
+        <asp:DropDownList ID="SelPri" runat="server">
+
+        </asp:DropDownList>
+
         <asp:Label ID="Label6" runat="server" Text="Temática secundaria:"></asp:Label>
-        <select id="SelSec">
-            <option></option>
-        </select>
+        <asp:DropDownList ID="SelSec" runat="server">
+
+        </asp:DropDownList>
     </div>
     <div>
         <asp:Label ID="Label7" runat="server" Text="Juego:"></asp:Label>
-        <select id="SelGame">
-            <option></option>
-        </select>
+        <asp:DropDownList ID="SelGame" runat="server">
+            
+        </asp:DropDownList>
     </div>
     <div>
-        <asp:Button ID="BtnCreateParty" runat="server" Text="Crear Partida" />
+        <asp:Button ID="BtnCreateParty" runat="server" Text="Crear Partida" OnClick="BtnCreateParty_Click" />
     </div>
 </asp:Content>

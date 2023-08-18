@@ -42,6 +42,15 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
+        /// Control TxtAreaCreateDesc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtAreaCreateDesc;
+
+        /// <summary>
         /// Control Label4.
         /// </summary>
         /// <remarks>
@@ -87,6 +96,15 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label Label5;
 
         /// <summary>
+        /// Control SelPri.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList SelPri;
+
+        /// <summary>
         /// Control Label6.
         /// </summary>
         /// <remarks>
@@ -96,6 +114,15 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label Label6;
 
         /// <summary>
+        /// Control SelSec.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList SelSec;
+
+        /// <summary>
         /// Control Label7.
         /// </summary>
         /// <remarks>
@@ -103,6 +130,15 @@ namespace RPGMeet
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label7;
+
+        /// <summary>
+        /// Control SelGame.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList SelGame;
 
         /// <summary>
         /// Control BtnCreateParty.

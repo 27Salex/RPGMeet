@@ -11,8 +11,53 @@ namespace RPGMeet
 {
 
 
-    public partial class SingUp
+    public partial class WebForm1
     {
+
+        /// <summary>
+        /// Control rbListDisponibilidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rbListDisponibilidad;
+
+        /// <summary>
+        /// Control rdListNumJugadores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rdListNumJugadores;
+
+        /// <summary>
+        /// Control rbListEstadoPartida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rbListEstadoPartida;
+
+        /// <summary>
+        /// Control cbListTematica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList cbListTematica;
+
+        /// <summary>
+        /// Control lblDisponibilidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDisponibilidad;
 
         /// <summary>
         /// Control Label1.
@@ -24,24 +69,6 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Control TxtBoxRegisterUser.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtBoxRegisterUser;
-
-        /// <summary>
-        /// Control lbErrorUser.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbErrorUser;
-
-        /// <summary>
         /// Control Label2.
         /// </summary>
         /// <remarks>
@@ -51,22 +78,22 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// Control TxtBoxRegisterMail.
+        /// Control Button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtBoxRegisterMail;
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// Control lbErrorMail.
+        /// Control Button2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbErrorMail;
+        protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
         /// Control Label3.
@@ -78,24 +105,6 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// Control TxtBoxRegisterPsw.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtBoxRegisterPsw;
-
-        /// <summary>
-        /// Control lbErrorPsw.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbErrorPsw;
-
-        /// <summary>
         /// Control Label4.
         /// </summary>
         /// <remarks>
@@ -103,24 +112,6 @@ namespace RPGMeet
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label4;
-
-        /// <summary>
-        /// Control TxtBoxRegisterPswCon.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtBoxRegisterPswCon;
-
-        /// <summary>
-        /// Control lbErrorPswCon.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbErrorPswCon;
 
         /// <summary>
         /// Control Label5.
@@ -132,30 +123,21 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label Label5;
 
         /// <summary>
-        /// Control DropDownListRegisterLoc.
+        /// Control Button3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListRegisterLoc;
+        protected global::System.Web.UI.WebControls.Button Button3;
 
         /// <summary>
-        /// Control LbCompulsoryCamps.
+        /// Control Button4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LbCompulsoryCamps;
-
-        /// <summary>
-        /// Control BtnRegisterCreate.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnRegisterCreate;
+        protected global::System.Web.UI.WebControls.Button Button4;
     }
 }

@@ -14,27 +14,28 @@ namespace RPGMeet.Model
         public TimeSpan? HoraCierre { get; set; }
         public int CodigoPostal { get; set; }
         public int? FKLocalidad { get; set; }
+
+
+
+        public Tienda() { }
+
+        public Tienda(int IdTienda)
+        {
+            IdTienda = IdTienda;
+        }
+
+        public Tienda(int IdTienda, string NombreTienda, string Direccion, int CodigoPostal)
+        {
+            IdTienda = IdTienda;
+            NombreTienda = NombreTienda;
+            Direccion = Direccion;
+            CodigoPostal = CodigoPostal;
+        }
+
+        public override string ToString()
+        {
+            return "Tienda: id: " + IdTienda + " NombreTienda: " + NombreTienda + " Direccion: " + Direccion + " HoraApertura: " + HoraApertura + " HoraCierre: " + HoraCierre + "CodigoPostal: " + CodigoPostal + "FKLocalidad: " + FKLocalidad;
+        }
     }
-
-    public Tienda() { }
-
-    public Tienda(int IdTienda)
-    {
-        IdTienda = IdTienda;
-    }
-
-    public Tienda( int IdTienda, string NombreTienda, string Direccion, int CodigoPostal) 
-    {
-        IdTienda = IdTienda;
-        NombreTienda = NombreTienda;
-        Direccion = Direccion;
-        CodigoPostal = CodigoPostal;
-    }
-
-    public override string ToString()
-    {
-        return "Tienda: id: " + IdTienda + " NombreTienda: " + NombreTienda + " Direccion: " + Direccion + " HoraApertura: " + HoraApertura + " HoraCierre: " + FKLocHoraCierrealidad + "CodigoPostal: " + CodigoPostal+ "FKLocalidad: " + FKLocalidad;
-    }
-
 
 }

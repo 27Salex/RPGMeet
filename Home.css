@@ -8,3 +8,21 @@
     margin-right: 10px; /* Espacio entre imágenes */
     margin-bottom: 10px; /* Espacio entre filas de imágenes */
 }
+
+
+/* Estilos para la login page */
+.login-page > a {
+    text-decoration: none;
+}
+
+.login-page {
+    width: 100%;
+    height: 100vh;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+}
+
+.form-right i {
+    font-size: 100px;
+}

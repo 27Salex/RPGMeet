@@ -20,7 +20,7 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Cargar lista de localidades de la base de datos a DropDownListRegisterLoc
+            DropDownListRegisterLoc.DataSource = DalLocalidad.SelectAll();
         }
                 
         protected void BtnRegisterCreate_Click(object sender, EventArgs e)
@@ -41,6 +41,7 @@ namespace RPGMeet
             string username = TxtBoxRegisterUser.Text;
             int localidad = DropDownListRegisterLoc.TabIndex;
             Usuario newUser = new Usuario(email, pass, username, localidad);
+            
             
             if (DalUsuario.Register(newUser))
             {

@@ -11,133 +11,133 @@ namespace RPGMeet
 {
 
 
-    public partial class ListaDePartidasFiltros
+    public partial class Profile
     {
 
         /// <summary>
-        /// Control chkListDisponibilidad.
+        /// Control EditUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chkListDisponibilidad;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EditUser;
 
         /// <summary>
-        /// Control rdListNumJugadores.
+        /// Control TxtBoxUpdateUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdListNumJugadores;
+        protected global::System.Web.UI.WebControls.TextBox TxtBoxUpdateUser;
 
         /// <summary>
-        /// Control rbListEstadoPartida.
+        /// Control lbErrorUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbListEstadoPartida;
+        protected global::System.Web.UI.WebControls.Label lbErrorUser;
 
         /// <summary>
-        /// Control cbListTematica.
+        /// Control TxtBoxUpdatePsw.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbListTematica;
+        protected global::System.Web.UI.WebControls.TextBox TxtBoxUpdatePsw;
 
         /// <summary>
-        /// Control lblDisponibilidad.
+        /// Control lbErrorPsw.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDisponibilidad;
+        protected global::System.Web.UI.WebControls.Label lbErrorPsw;
 
         /// <summary>
-        /// Control Label1.
+        /// Control TxtBoxUpdatePswCon.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.TextBox TxtBoxUpdatePswCon;
 
         /// <summary>
-        /// Control Label2.
+        /// Control lbErrorPswCon.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lbErrorPswCon;
 
         /// <summary>
-        /// Control Button1.
+        /// Control DropDownListUpdateLoc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListUpdateLoc;
 
         /// <summary>
-        /// Control Button2.
+        /// Control LbCompulsoryCamps.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Label LbCompulsoryCamps;
 
         /// <summary>
-        /// Control Label3.
+        /// Control BtnUpdateCreate.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Button BtnUpdateCreate;
 
         /// <summary>
-        /// Control Label4.
+        /// Control ShowUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ShowUser;
 
         /// <summary>
-        /// Control Label5.
+        /// Control LbUsername.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label LbUsername;
 
         /// <summary>
-        /// Control Button3.
+        /// Control LbEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Label LbEmail;
 
         /// <summary>
-        /// Control Button4.
+        /// Control LbLocalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.Label LbLocalidad;
     }
 }

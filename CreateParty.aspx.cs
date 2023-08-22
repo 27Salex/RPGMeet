@@ -13,8 +13,6 @@ namespace RPGMeet
 {
     //TO DO:
     /*
-     - Juego recibe parametros de base de datos
-     - Tematicas recibe parametros de base de datos
      - Comprobacion de errores
             - Evitar Campos Vacios
             - Marcar Campos Obligatorios
@@ -24,7 +22,9 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Cargar Dropdown: Juego y Tematicas
+            DropDownGame.DataSource = DalJuego.SelectAll();
+            DropDownPri.DataSource = DalTema.SelectAll();
+            DropDownSec.DataSource = DalTema.SelectAll();
         }
 
         protected void BtnCreateParty_Click(object sender, EventArgs e)
@@ -92,11 +92,6 @@ namespace RPGMeet
             //Dropdowns de tematica principal y juego
             
             return correctCamps;
-        }
-
-        void ChargeDropdowns()
-        {
-
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SingUp.aspx.cs" Inherits="RPGMeet.SingUp" %>
+﻿<%@ Page Title="Registrarse" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SingUp.aspx.cs" Inherits="RPGMeet.SingUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <h2>Crear Cuenta</h2>
@@ -11,7 +11,7 @@
     <div>
         <asp:Label ID="Label2" runat="server" Text="Mail:"></asp:Label>
         <asp:TextBox ID="TxtBoxRegisterMail" runat="server" TextMode="Email"></asp:TextBox>
-        <asp:Label ID="lbErrorMail" runat="server" Text="Correo Erroneo" Font-Italic="True" ForeColor="#FF3300" Visible="False"></asp:Label>
+        <asp:Label ID="lbErrorMail" runat="server" Text="Correo ya existente" Font-Italic="True" ForeColor="#FF3300" Visible="False"></asp:Label>
     </div>
     <div>
         <asp:Label ID="Label3" runat="server" Text="Contraseña:"></asp:Label>

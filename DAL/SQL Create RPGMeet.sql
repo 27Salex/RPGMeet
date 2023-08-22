@@ -30,7 +30,7 @@ CREATE TABLE Tema (
 CREATE TABLE Juego (
     IdJuego int IDENTITY(1,1) PRIMARY KEY, --**
     NombreJuego VARCHAR(100) UNIQUE NOT NULL, 
-	Reglas VARCHAR NOT NULL,
+	Reglas VARCHAR(1000) NOT NULL,
 	MinJugadores SMALLINT,
 	MaxJugadores SMALLINT NOT NULL  
 );

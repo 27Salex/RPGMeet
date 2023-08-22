@@ -1,5 +1,6 @@
 ﻿using Microsoft.Ajax.Utilities;
 using RPGMeet.DAL;
+using RPGMeet.Model;
 using RPGMeet.Models;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,6 @@ namespace RPGMeet
 {
     //TO DO:
     /*
-     - Juego recibe parametros de base de datos
-     - Tematicas recibe parametros de base de datos
      - Comprobacion de errores
             - Evitar Campos Vacios
             - Marcar Campos Obligatorios
@@ -24,7 +23,26 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Cargar Dropdown: Juego y Tematicas
+            List<string> juegos = new List<string>();
+            List<string> temas = new List<string>();
+
+            foreach(Juego juego in DalJuego.SelectAll())
+            {
+                juegos.Add(juego.NombreJuego);
+            }
+
+            foreach(Tema tema in DalTema.SelectAll())
+            {
+                temas.Add(tema.NombreTema);
+            }
+
+            DropDownGame.DataSource = juegos;
+            DropDownPri.DataSource = temas;
+            DropDownSec.DataSource = temas;
+            DropDownGame.DataBind();
+            DropDownPri.DataBind();
+            DropDownSec.DataBind();
+            
         }
 
         protected void BtnCreateParty_Click(object sender, EventArgs e)
@@ -56,11 +74,11 @@ namespace RPGMeet
             Grupo grupo = new Grupo();
 
             grupo.TituloParitda = titulo;
-            grupo.EstadoGrupo = 1;
+            grupo.EstadoGrupo = 1; //Hardcoded
             grupo.MaxJugadores = maxPly;
-            grupo.FKGameMaster = 1;
-            grupo.FKTemaPrincipal = 1;
-            grupo.FKJuego = 1;
+            grupo.FKGameMaster = 1; //Hardcoded Por session
+            grupo.FKTemaPrincipal = 1; //Hardcoded Tiene que heredar de dropdown
+            grupo.FKJuego = 1; //Hardcoded Tiene que heredar de dropdown
 
             //Envia el grupo a la base de datos
             //DalGrupo.Create(grupo);
@@ -92,11 +110,6 @@ namespace RPGMeet
             //Dropdowns de tematica principal y juego
             
             return correctCamps;
-        }
-
-        void ChargeDropdowns()
-        {
-
         }
     }
 }

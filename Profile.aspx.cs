@@ -125,5 +125,15 @@ namespace RPGMeet
 
             return completePsw;
         }
+        public void ActivarEdicion(object sender, EventArgs e)
+        {
+            ShowUser.Visible = false;
+            EditUser.Visible = true;
+        }
+        public void DesactivarEdicion(object sender, EventArgs e)
+        {
+            ShowUser.Visible = true;
+            EditUser.Visible = false;
+        }
     }
 }

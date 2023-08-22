@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="RPGMeet.Login" %>
+﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="RPGMeet.Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="login-page bg-light">
@@ -30,12 +30,10 @@
                                             </div>
 
                                             <div class="col-sm-6">
-                                                <div class="form-check">
-                                                    <asp:CheckBox runat="server" class="form-check-input" type="checkbox" id="inlineFormCheck">
-                                                    </asp:CheckBox>
-                                                    <label class="form-check-label" for="inlineFormCheck">Recuérdame</label>
-                                                    <asp:label ID="Message" runat="server" CssClass="text-danger"></asp:label>
-                                                </div>
+                                                <asp:CheckBox runat="server" type="checkbox" id="inlineFormCheck">
+                                                </asp:CheckBox>
+                                                <label class="form-check-label" for="inlineFormCheck">Recuérdame</label>
+                                                <asp:label ID="Message" runat="server" CssClass="text-danger"></asp:label>
                                             </div>
 
                                             <div class="col-sm-6">

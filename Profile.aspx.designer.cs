@@ -42,15 +42,6 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label lbErrorUser;
 
         /// <summary>
-        /// Control TxtBoxUpdatePsw.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtBoxUpdatePsw;
-
-        /// <summary>
         /// Control lbErrorPsw.
         /// </summary>
         /// <remarks>
@@ -105,6 +96,15 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Button BtnUpdateCreate;
 
         /// <summary>
+        /// Control BtnCancelarEdicion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCancelarEdicion;
+
+        /// <summary>
         /// Control ShowUser.
         /// </summary>
         /// <remarks>
@@ -139,5 +139,14 @@ namespace RPGMeet
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LbLocalidad;
+
+        /// <summary>
+        /// Control BtnEditarPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnEditarPerfil;
     }
 }

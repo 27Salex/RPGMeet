@@ -74,11 +74,11 @@
                                     </a>
                                 </li>
                                     <!-- Navegacion a pagina juegos-->
-                                <li class="nav-item ">
+                                <%--<li class="nav-item ">
                                     <a class="nav-link" runat="server" href="~/">
                                         Juegos
                                     </a>
-                                </li>
+                                </li>--%>
                                 <!-- Dropdown sobre nosotros-->
                                 <li class="nav-item dropdown-center">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-target=".dropAbout" data-bs-toggle="dropdown" aria-expanded="false">

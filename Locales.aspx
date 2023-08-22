@@ -41,8 +41,8 @@
 </style>
 
 <asp:Panel CssClass="container" runat="server">
-    <asp:Panel CssClass="row" runat="server">
-        <asp:Panel ID="pnlLocales" CssClass="col-12 col-xl-6 ms-4 me-4 tarjeta bg-light shadow" runat="server">
+    <asp:Panel ID="pnlLocales" CssClass="row" runat="server">
+        <div class="col-12 col-xl-6 ms-4 me-4 tarjeta bg-light shadow">
             <div class="row">
                 <div class="col-12 text-center h3">
                     <asp:Label runat="server" Text="Nombre del local"></asp:Label>
@@ -77,7 +77,8 @@
                     </div>
                 </div>
             </div>
-        </asp:Panel>
+        </div>
     </asp:Panel>
 </asp:Panel>
+
 </asp:Content>

@@ -20,6 +20,7 @@ namespace RPGMeet
         protected void Page_Load(object sender, EventArgs e)
         {
             List<string> localidades = new List<string>();
+            localidades.Add("Selecciona una opción");
 
             foreach (Localidad localidad in DalLocalidad.SelectAll())
             {

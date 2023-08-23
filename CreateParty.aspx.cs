@@ -108,13 +108,16 @@ namespace RPGMeet
             grupo.QuedarDomingo = domingo;
 
             grupo.FKJuego = juego;
-            grupo.FKTemaPrincipal = temaPri; //Revisar al incorporar el otro dropdown
+            grupo.FKTemaPrincipal = temaPri;
             grupo.FKTemaSecundario = temaSec; //Mirar que no se pueda insertar el mismo tema en los 2 Dropdowns
-            grupo.FKGameMaster = gameMaster; //Hardcoded Por session
+            grupo.FKGameMaster = gameMaster;
             grupo.FKLocalidad = localidad;
             
             //Envia el grupo a la base de datos
             DalGrupo.Create(grupo);
+
+            //Mirar donde enviar al User tras crear una partida (Seguramente a "Mis Partidas")
+            //Response.Redirect("/Login");
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios

@@ -112,7 +112,8 @@ SELECT CAST(SCOPE_IDENTITY() AS INT)";
             String insertQuery = @"INSERT INTO Grupo (TituloParitda, Descripcion, EstadoGrupo, MaxJugadores,
 QuedarLunes, QuedarMartes, QuedarMiercoles, QuedarJueves, QuedarViernes, QuedarSabado, QuedarDomingo,
 FKJuego, FKTemaPrincipal, FKTemaSecundario, FKGameMaster, FKLocalidad)
-VALUES (@TituloPartida, @Descripcion, @EstadoGrupo, @MaxJugadores,
+
+VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 @QuedarLunes, @QuedarMartes, @QuedarMiercoles, @QuedarJueves, @QuedarViernes, @QuedarSabado, @QuedarDomingo,
 @FKJuego, @FKTemaPrincipal, @FKTemaSecundario, @FKGameMaster, @FKLocalidad)";
 
@@ -137,20 +138,22 @@ VALUES (@TituloPartida, @Descripcion, @EstadoGrupo, @MaxJugadores,
                 insertCommand.Parameters.AddWithValue("@QuedarDomingo", grupo.QuedarDomingo); //new line
                 insertCommand.Parameters.AddWithValue("@FKJuego", grupo.FKJuego);
                 insertCommand.Parameters.AddWithValue("@FKTemaPrincipal", grupo.FKTemaPrincipal);
-                insertCommand.Parameters.AddWithValue("@FKTematicaSecundario", grupo.FKTemaSecundario); //new line
+                insertCommand.Parameters.AddWithValue("@FKTemaSecundario", grupo.FKTemaSecundario); //new line
                 insertCommand.Parameters.AddWithValue("@FKGameMaster", grupo.FKGameMaster);
                 insertCommand.Parameters.AddWithValue("@FKLocalidad", grupo.FKLocalidad); //new line
 
+                SqlDataReader reader = insertCommand.ExecuteReader();
 
+                /*
                 int UltimoId = (int)insertCommand.ExecuteScalar();
 
                 grupo.IdGrupo = UltimoId;
-
+                */
                
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ERROR: DalUsuario Register\n" + ex.Message);
+                Console.WriteLine("ERROR: DalGrupo Create\n" + ex.Message);
                 return false;
             }
             finally

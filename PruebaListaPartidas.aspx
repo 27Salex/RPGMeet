@@ -12,14 +12,16 @@
         div[class*="col"] {
             margin: 1vh 0 1vh 0;
         }
-        .partida{
+        .tarjeta{
             border-radius: 3vh;
+            padding: 2vh 3vh 2vh 3vh;
         }
         .imagen-perfil {
             width: 2.25rem;
             height: 2.25rem;
-            margin-left: 0.5rem;
-            margin-bottom: 0.5rem;
+            margin: 0.25vh 0.5rem 0.25vh 0.5rem;
+            border: 0 0.5rem 0 0.5rem;
+            max-width: 100%;
         }
         .joined {
             background-color: #8DD761;
@@ -42,25 +44,19 @@
 
     <asp:Panel CssClass="container" runat="server">
         <asp:Panel CssClass="row" runat="server">
-            <asp:Panel ID="pnlFiltros" CssClass="col-3" runat="server">
+            <asp:Panel ID="pnlFiltros" CssClass="col-2" runat="server">
 
             </asp:Panel>
-            <asp:Panel ID="pnlPartidas" CssClass="col-9" runat="server">
-                <asp:Panel CssClass="row" runat="server">
-
-                    <asp:Panel ID="partida1" CssClass="col-lg-6 col-md-12 partida bg-grey pt-3 pb-3" runat="server">
+            <asp:Panel ID="pnlPartidas" CssClass="col-10" runat="server">
+                <asp:Panel ID="rowPartidas" CssClass="row" runat="server">
+                    <asp:Panel ID="pnlPartida1" CssClass="col-md-12 col-xl-5 ms-4 me-4 tarjeta bg-grey" runat="server">
                         <asp:Panel CssClass="row" runat="server">
-                            <asp:Panel ID="pnlTituloPartida" CssClass="col-6 h2" runat="server">
+                            <asp:Panel ID="pnlTituloPartida" CssClass="col-5 h4" runat="server">
                                 <asp:Label ID="lblTituloPartida1" runat="server" Text="Titulo partida"></asp:Label>
                             </asp:Panel>
-                            <asp:Panel ID="pnlFotoPerfil" CssClass="col-6 d-flex justify-content-end" runat="server">
-                                <asp:Image CssClass="imagen-perfil joined rounded-circle" ImageUrl="Img/pngegg.png" runat="server" />
-                                <asp:Image CssClass="imagen-perfil joined rounded-circle" ImageUrl="Img/pngegg.png" runat="server" />
-                                <asp:Image CssClass="imagen-perfil joined rounded-circle" ImageUrl="Img/pngegg.png" runat="server" />
-                                <asp:Image CssClass="imagen-perfil joined rounded-circle" ImageUrl="Img/pngegg.png" runat="server" />
-                                <asp:Image CssClass="imagen-perfil empty rounded-circle" ImageUrl="Img/pngegg.png" runat="server" />
-                                <asp:Image CssClass="imagen-perfil empty rounded-circle" ImageUrl="Img/pngegg.png" runat="server" />
-                                <asp:Image CssClass="imagen-perfil empty rounded-circle" ImageUrl="Img/pngegg.png" runat="server" />
+                            <asp:Panel ID="pnlFotoPerfil" CssClass="col-7 d-flex justify-content-end" runat="server">
+                                <asp:Panel CssClass="d-inline" runat="server">
+                                </asp:Panel>
                             </asp:Panel>
                             <asp:Panel ID="pnlDescripcion" CssClass="col-6 rounded-pill" runat="server">
                                 <asp:Label CssClass="h4 d-block" runat="server">Descripción: </asp:Label>
@@ -70,25 +66,24 @@
                             </asp:Panel>
                             <asp:Panel ID="pnlInfoCorta" CssClass="col-6 d-flex justify-content-end" runat="server">
                                 <asp:Panel CssClass="row" runat="server">
-
-                                    <asp:Panel CssClass="col-6 d-flex justify-content-end" runat="server">
+                                    <asp:Panel CssClass="col-12 col-md-6 d-flex justify-content-md-end" runat="server">
                                         <asp:Label runat="server" Text="Disponibilidad:"></asp:Label>
                                     </asp:Panel>
-                                    <asp:Panel CssClass="col-6" runat="server">
+                                    <asp:Panel CssClass="col-12 col-md-6" runat="server">
                                         <asp:Label ID="lblDisponibilidad" runat="server" Text="Fin de semana"></asp:Label>
                                     </asp:Panel>
 
-                                    <asp:Panel CssClass="col-6 d-flex justify-content-end" runat="server">
+                                    <asp:Panel CssClass="col-12 col-md-6 d-flex justify-content-md-end" runat="server">
                                         <asp:Label runat="server" Text="Tematica:"></asp:Label>
                                     </asp:Panel>
-                                    <asp:Panel CssClass="col-6" runat="server">
+                                    <asp:Panel CssClass="col-12 col-md-6" runat="server">
                                         <asp:Label ID="lblTematica" runat="server" Text="Medieval"></asp:Label>
                                     </asp:Panel>
 
-                                    <asp:Panel CssClass="col-6 d-flex justify-content-end" runat="server">
+                                    <asp:Panel CssClass="col-12 col-md-6 d-flex justify-content-md-end" runat="server">
                                         <asp:Label runat="server" Text="Jugadores:"></asp:Label>
                                     </asp:Panel>
-                                    <asp:Panel CssClass="col-6" runat="server">
+                                    <asp:Panel CssClass="col-12 col-md-6" runat="server">
                                         <asp:Label ID="lblNumJugadores" runat="server" Text="4/7"></asp:Label>
                                     </asp:Panel>
                                 </asp:Panel>
@@ -104,6 +99,5 @@
                 </asp:Panel>
             </asp:Panel>
         </asp:Panel>
-
-        </asp:Panel>
+    </asp:Panel>
 </asp:Content>

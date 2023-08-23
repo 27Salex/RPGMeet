@@ -49,7 +49,6 @@ namespace RPGMeet.Model
             Pass = pass;
             Username = username;
             FKLocalidad = localidad;
-
         }
 
         public override string ToString()

@@ -15,11 +15,8 @@ namespace RPGMeet
     //TO DO:
     /*
      - Comprobacion de errores
-            - Evitar Campos Vacios
             - Marcar Campos Obligatorios
-     - Recojer Id de GM (Del Session)
      - Configurar Segunda Tematica (todo)
-     - Pasar Objeto Grupo con todos los valores
 
      */
     public partial class CreateParty : System.Web.UI.Page
@@ -89,21 +86,35 @@ namespace RPGMeet
             bool sabado = CheckBoxDays.Items[5].Selected;
             bool domingo = CheckBoxDays.Items[6].Selected;
 
-            int temaPri = DropDownPri.SelectedIndex;
-            int temaSec = DropDownSec.SelectedIndex;
-            int juego = DropDownGame.SelectedIndex;
+            int juego = DalJuego.GetIdByName(DropDownGame.SelectedValue);
+            int temaPri = DalTema.GetIdByName(DropDownPri.SelectedValue);
+            int temaSec = DalTema.GetIdByName(DropDownPri.SelectedValue); //Mirar que no se duplique el valor
+            int gameMaster = int.Parse(Session["UserID"].ToString());
+            int localidad = DalLocalidad.GetIdByName(DropDownLoc.SelectedValue);
 
             Grupo grupo = new Grupo();
 
             grupo.TituloParitda = titulo;
-            grupo.EstadoGrupo = 1; //Hardcoded
+            grupo.Descripcion = descripcion;
+            grupo.EstadoGrupo = 0; // De base
             grupo.MaxJugadores = maxPly;
-            grupo.FKGameMaster = int.Parse(Session["UserID"].ToString()); //Hardcoded Por session
-            grupo.FKTemaPrincipal = DalJuego.GetIdByName(DropDownPri.SelectedValue); //Revisar al incorporar el otro dropdown
-            grupo.FKJuego = DalJuego.GetIdByName(DropDownGame.SelectedValue);
 
+            grupo.QuedarLunes = lunes;
+            grupo.QuedarMartes = martes;
+            grupo.QuedarMiercoles = miercoles;
+            grupo.QuedarJueves = jueves;
+            grupo.QuedarViernes = viernes;
+            grupo.QuedarSabado = sabado;
+            grupo.QuedarDomingo = domingo;
+
+            grupo.FKJuego = juego;
+            grupo.FKTemaPrincipal = temaPri; //Revisar al incorporar el otro dropdown
+            grupo.FKTemaSecundario = temaSec; //Mirar que no se pueda insertar el mismo tema en los 2 Dropdowns
+            grupo.FKGameMaster = gameMaster; //Hardcoded Por session
+            grupo.FKLocalidad = localidad;
+            
             //Envia el grupo a la base de datos
-            //DalGrupo.Create(grupo);
+            DalGrupo.Create(grupo);
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios

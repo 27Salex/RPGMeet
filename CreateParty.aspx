@@ -9,7 +9,8 @@
         <div>
             <asp:Label ID="Label2" runat="server" Text="Descripción:"></asp:Label>
             <asp:TextBox ID="TxtAreaCreateDesc" runat="server" TextMode="MultiLine"></asp:TextBox>
-            &nbsp;</div>
+            &nbsp;
+        </div>
         <div>
             <asp:Label ID="Label4" runat="server" Text="Máximo de Jugadores:"></asp:Label>
             <asp:TextBox ID="TxtBoxCreateMaxPly" runat="server" TextMode="Number"></asp:TextBox>

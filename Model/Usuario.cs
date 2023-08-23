@@ -42,9 +42,9 @@ namespace RPGMeet.Model
 
         }
 
-        public Usuario(int IdUsuario, string email, string pass, string username, int localidad)
+        public Usuario(int idUsuario, string email, string pass, string username, int localidad)
         {
-            IdUsuario = IdUsuario;
+            IdUsuario = idUsuario;
             Email = email;
             Pass = pass;
             Username = username;

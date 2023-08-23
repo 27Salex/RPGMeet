@@ -19,14 +19,20 @@ namespace RPGMeet
             - Marcar Campos Obligatorios
      - Recojer Id de GM (Del Session)
      - Configurar Segunda Tematica (todo)
+     - Pasar Objeto Grupo con todos los valores
+
      */
     public partial class CreateParty : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["UserID"] == null && Session["Username"] == null)
+            {
+                Response.Redirect("/Login");
+            }
+
             if (!IsPostBack)
             {
-
                 List<string> localidades = new List<string>();
                 List<string> juegos = new List<string>();
                 List<string> temas = new List<string>();
@@ -92,7 +98,7 @@ namespace RPGMeet
             grupo.TituloParitda = titulo;
             grupo.EstadoGrupo = 1; //Hardcoded
             grupo.MaxJugadores = maxPly;
-            grupo.FKGameMaster = 1; //Hardcoded Por session
+            grupo.FKGameMaster = int.Parse(Session["UserID"].ToString()); //Hardcoded Por session
             grupo.FKTemaPrincipal = DalJuego.GetIdByName(DropDownPri.SelectedValue); //Revisar al incorporar el otro dropdown
             grupo.FKJuego = DalJuego.GetIdByName(DropDownGame.SelectedValue);
 
@@ -123,15 +129,19 @@ namespace RPGMeet
             {
                 TxtBoxCreateMaxPly.BackColor = Color.White;
             }
-            //Dropdowns de tematica principal y juego
+
+            bool anyDaySel = CheckBoxDays.SelectedIndex != -1; //Mira si algún dia esta marcado
             
+            //Dropdowns de tematica principal y juego
             if(DropDownPri.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema prin y Loc
                 correctCamps = false;
             if(DropDownGame.SelectedIndex == 0)
                 correctCamps = false;
             if(DropDownLoc.SelectedIndex == 0)
                 correctCamps = false;
-            
+            if (!anyDaySel)
+                correctCamps = false;
+
             return correctCamps;
         }
     }

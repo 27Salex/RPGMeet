@@ -53,7 +53,7 @@ namespace RPGMeet.DAL
 
         public static Localidad SelectById(int idLocalidad)
         {
-            String selectQuery = "SELECT * FROM localidad WHERE IdLocalidad = @id";
+            String selectQuery = "SELECT * FROM Localidad WHERE IdLocalidad = @id";
             Localidad localidadBuscado;
 
             try

@@ -18,31 +18,53 @@ namespace RPGMeet
             - Evitar Campos Vacios
             - Marcar Campos Obligatorios
      - Recojer Id de GM (Del Session)
+     - Configurar Segunda Tematica (todo)
+     - Pasar Objeto Grupo con todos los valores
+
      */
     public partial class CreateParty : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<string> juegos = new List<string>();
-            List<string> temas = new List<string>();
-
-            foreach(Juego juego in DalJuego.SelectAll())
+            if(Session["UserID"] == null && Session["Username"] == null)
             {
-                juegos.Add(juego.NombreJuego);
+                Response.Redirect("/Login");
             }
 
-            foreach(Tema tema in DalTema.SelectAll())
+            if (!IsPostBack)
             {
-                temas.Add(tema.NombreTema);
-            }
+                List<string> localidades = new List<string>();
+                List<string> juegos = new List<string>();
+                List<string> temas = new List<string>();
 
-            DropDownGame.DataSource = juegos;
-            DropDownPri.DataSource = temas;
-            DropDownSec.DataSource = temas;
-            DropDownGame.DataBind();
-            DropDownPri.DataBind();
-            DropDownSec.DataBind();
+                localidades.Add("Selecciona una opción");
+                juegos.Add("Selecciona una opción");
+                temas.Add("Selecciona una opción");
+
+                foreach(Localidad localidad in DalLocalidad.SelectAll())
+                {
+                    localidades.Add(localidad.NombreLocalidad);
+                }
             
+                foreach(Juego juego in DalJuego.SelectAll())
+                {
+                    juegos.Add(juego.NombreJuego);
+                }
+            
+                foreach(Tema tema in DalTema.SelectAll())
+                {
+                    temas.Add(tema.NombreTema);
+                }
+
+                DropDownLoc.DataSource = localidades;
+                DropDownGame.DataSource = juegos;
+                DropDownPri.DataSource = temas;
+                DropDownSec.DataSource = temas;
+                DropDownLoc.DataBind();
+                DropDownGame.DataBind();
+                DropDownPri.DataBind();
+                DropDownSec.DataBind();
+            }
         }
 
         protected void BtnCreateParty_Click(object sender, EventArgs e)
@@ -76,9 +98,9 @@ namespace RPGMeet
             grupo.TituloParitda = titulo;
             grupo.EstadoGrupo = 1; //Hardcoded
             grupo.MaxJugadores = maxPly;
-            grupo.FKGameMaster = 1; //Hardcoded Por session
-            grupo.FKTemaPrincipal = 1; //Hardcoded Tiene que heredar de dropdown
-            grupo.FKJuego = 1; //Hardcoded Tiene que heredar de dropdown
+            grupo.FKGameMaster = int.Parse(Session["UserID"].ToString()); //Hardcoded Por session
+            grupo.FKTemaPrincipal = DalJuego.GetIdByName(DropDownPri.SelectedValue); //Revisar al incorporar el otro dropdown
+            grupo.FKJuego = DalJuego.GetIdByName(DropDownGame.SelectedValue);
 
             //Envia el grupo a la base de datos
             //DalGrupo.Create(grupo);
@@ -107,8 +129,19 @@ namespace RPGMeet
             {
                 TxtBoxCreateMaxPly.BackColor = Color.White;
             }
-            //Dropdowns de tematica principal y juego
+
+            bool anyDaySel = CheckBoxDays.SelectedIndex != -1; //Mira si algún dia esta marcado
             
+            //Dropdowns de tematica principal y juego
+            if(DropDownPri.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema prin y Loc
+                correctCamps = false;
+            if(DropDownGame.SelectedIndex == 0)
+                correctCamps = false;
+            if(DropDownLoc.SelectedIndex == 0)
+                correctCamps = false;
+            if (!anyDaySel)
+                correctCamps = false;
+
             return correctCamps;
         }
     }

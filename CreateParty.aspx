@@ -9,7 +9,8 @@
         <div>
             <asp:Label ID="Label2" runat="server" Text="Descripción:"></asp:Label>
             <asp:TextBox ID="TxtAreaCreateDesc" runat="server" TextMode="MultiLine"></asp:TextBox>
-            &nbsp;</div>
+            &nbsp;
+        </div>
         <div>
             <asp:Label ID="Label4" runat="server" Text="Máximo de Jugadores:"></asp:Label>
             <asp:TextBox ID="TxtBoxCreateMaxPly" runat="server" TextMode="Number"></asp:TextBox>
@@ -38,9 +39,13 @@
     </div>
     <div>
         <asp:Label ID="Label7" runat="server" Text="Juego:"></asp:Label>
-        <asp:DropDownList ID="DropDownGame" runat="server">
+        <asp:DropDownList ID="DropDownGame" runat="server" AutoPostBack="True">
             <asp:ListItem>Selecciona una opción</asp:ListItem>
         </asp:DropDownList>
+    </div>
+    <div>
+        <asp:Label ID="Label8" runat="server" Text="Localidad:"></asp:Label>
+        <asp:DropDownList ID="DropDownLoc" runat="server"></asp:DropDownList>
     </div>
     <div>
         <asp:Button ID="BtnCreateParty" runat="server" Text="Crear Partida" OnClick="BtnCreateParty_Click" />

@@ -1,4 +1,5 @@
 ﻿using RPGMeet.Model;
+using RPGMeet.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -52,6 +53,34 @@ namespace RPGMeet.DAL
             }
 
             return list;
+        }
+
+        public static int GetIdByName(string nombreJuego)
+        {
+            String selectQuery = "SELECT * FROM Juego WHERE NombreJuego = @nombreJuego";
+            Juego juegoBuscado = null;
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                selectCommand.Parameters.AddWithValue("@nombreJuego", nombreJuego);
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                juegoBuscado = ReaderJuego(reader);
+
+                reader.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("ERROR: DalJuego GetIdByName\n" + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return juegoBuscado.IdJuego;
         }
     }
 }

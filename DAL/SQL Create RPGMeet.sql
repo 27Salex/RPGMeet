@@ -68,6 +68,7 @@ CREATE TABLE Tienda (
 !! SI SE IMPLEMENNTA HAY QUE CAMBIAR **** MODELO **** DAL 
 
 CREATE TABLE Tienda (
+
     IdTienda INT IDENTITY(1,1) PRIMARY KEY,
     NombreTienda VARCHAR(50) NOT NULL,
     Descripcion VARCHAR(50) NOT NULL,
@@ -75,6 +76,7 @@ CREATE TABLE Tienda (
     Telefono VARCHAR(13),
     Web VARCHAR(50),
     FKLocalidad INT
+
 );
 
 */
@@ -166,67 +168,67 @@ INSERT INTO Localidad (NombreLocalidad) VALUES ('Badalona');
 INSERT INTO Localidad (NombreLocalidad) VALUES ('Sabadell');
 INSERT INTO Localidad (NombreLocalidad) VALUES ('Lleida');
 INSERT INTO Localidad (NombreLocalidad) VALUES ('Tarragona');
-INSERT INTO Localidad (NombreLocalidad) VALUES ('Mataró');
+INSERT INTO Localidad (NombreLocalidad) VALUES ('Matarï¿½');
 INSERT INTO Localidad (NombreLocalidad) VALUES ('Santa Coloma de Gramenet');
 INSERT INTO Localidad (NombreLocalidad) VALUES ('Reus');
 INSERT INTO Localidad (NombreLocalidad) VALUES ('Girona');
 
 
-INSERT INTO Tema (NombreTema) VALUES ('Fantasía Medieval Clásica');
-INSERT INTO Tema (NombreTema) VALUES ('Aventuras Épicas');
+INSERT INTO Tema (NombreTema) VALUES ('Fantasï¿½a Medieval Clï¿½sica');
+INSERT INTO Tema (NombreTema) VALUES ('Aventuras ï¿½picas');
 INSERT INTO Tema (NombreTema) VALUES ('Intriga y Misterio');
 INSERT INTO Tema (NombreTema) VALUES ('Horror');
 INSERT INTO Tema (NombreTema) VALUES ('Steampunk');
 INSERT INTO Tema (NombreTema) VALUES ('Apocalipsis y Postapocalipsis');
 INSERT INTO Tema (NombreTema) VALUES ('Viajes en el Tiempo');
-INSERT INTO Tema (NombreTema) VALUES ('Mundo Subterráneo');
-INSERT INTO Tema (NombreTema) VALUES ('Invasión Extraterrestre');
-INSERT INTO Tema (NombreTema) VALUES ('Intrusión de Planos Paralelos');
+INSERT INTO Tema (NombreTema) VALUES ('Mundo Subterrï¿½neo');
+INSERT INTO Tema (NombreTema) VALUES ('Invasiï¿½n Extraterrestre');
+INSERT INTO Tema (NombreTema) VALUES ('Intrusiï¿½n de Planos Paralelos');
 
 
 
 INSERT INTO Juego (NombreJuego, Reglas, MinJugadores, MaxJugadores) 
-VALUES ('Dungeon and Dragons 5e', 'Reglas de la 5ª edición de Dungeon and Dragons.', 2, 6);
+VALUES ('Dungeon and Dragons 5e', 'Reglas de la 5ï¿½ ediciï¿½n de Dungeon and Dragons.', 2, 6);
 
 INSERT INTO Juego (NombreJuego, Reglas, MinJugadores, MaxJugadores) 
-VALUES ('Dungeon and Dragons 3.5e', 'Reglas de la 3.5ª edición de Dungeon and Dragons.', 2, 8);
+VALUES ('Dungeon and Dragons 3.5e', 'Reglas de la 3.5ï¿½ ediciï¿½n de Dungeon and Dragons.', 2, 8);
 
 INSERT INTO Juego (NombreJuego, Reglas, MinJugadores, MaxJugadores) 
-VALUES ('Dungeon and Dragons 4e', 'Reglas de la 4ª edición de Dungeon and Dragons.', 3, 7);
+VALUES ('Dungeon and Dragons 4e', 'Reglas de la 4ï¿½ ediciï¿½n de Dungeon and Dragons.', 3, 7);
 
 
 
 
 -- PONER LOS ID QUE CORRESPONDAN A LAS SIGUIENTES  LOCALIDADES 
 
--- Generación X Barcelona: --> Barcelona.
+-- Generaciï¿½n X Barcelona: --> Barcelona.
 INSERT INTO Tienda (NombreTienda, Descripcion, Direccion, Telefono, Web, FKLocalidad)
-VALUES ('Generación X Barcelona', 'Una tienda muy conocida en el mundo de los juegos de mesa y rol, ubicada en Barcelona. Han sido reconocidos por su amplia selección de juegos y su apoyo a la comunidad de jugadores.', 'Dirección de Generación X', '123-456-789', 'https://generacionx.es/', 1);
+VALUES ('Generaciï¿½n X Barcelona', 'Una tienda muy conocida en el mundo de los juegos de mesa y rol, ubicada en Barcelona. Han sido reconocidos por su amplia selecciï¿½n de juegos y su apoyo a la comunidad de jugadores.', 'Direcciï¿½n de Generaciï¿½n X', '123-456-789', 'https://generacionx.es/', 1);
 
 -- Dungeon Marvels: --> Barcelona 
 INSERT INTO Tienda (NombreTienda, Descripcion, Direccion, Telefono, Web, FKLocalidad)
-VALUES ('Dungeon Marvels', 'Esta tienda en línea con base en Barcelona también ha organizado eventos y torneos para juegos de mesa y rol. Pueden tener opciones para participar en partidas de Dungeons & Dragons.', 'Dirección de Dungeon Marvels', '987-654-321', 'https://www.dungeonmarvels.com/', 1);
+VALUES ('Dungeon Marvels', 'Esta tienda en lï¿½nea con base en Barcelona tambiï¿½n ha organizado eventos y torneos para juegos de mesa y rol. Pueden tener opciones para participar en partidas de Dungeons & Dragons.', 'Direcciï¿½n de Dungeon Marvels', '987-654-321', 'https://www.dungeonmarvels.com/', 1);
 
 -- LaTorre de Daus: --> Barcelona 
 INSERT INTO Tienda (NombreTienda, Descripcion, Direccion, Telefono, Web, FKLocalidad)
-VALUES ('LaTorre de Daus', 'Ubicada en Barcelona, esta tienda ha sido un punto de encuentro para jugadores de juegos de mesa y cartas coleccionables. Es posible que también ofrezcan actividades de rol.', 'Dirección de LaTorre de Daus', '555-123-456', 'https://latorrededauss.com/', 1);
+VALUES ('LaTorre de Daus', 'Ubicada en Barcelona, esta tienda ha sido un punto de encuentro para jugadores de juegos de mesa y cartas coleccionables. Es posible que tambiï¿½n ofrezcan actividades de rol.', 'Direcciï¿½n de LaTorre de Daus', '555-123-456', 'https://latorrededauss.com/', 1);
 
 -- JugarXJugar: --> Barcelona 
 INSERT INTO Tienda (NombreTienda, Descripcion, Direccion, Telefono, Web, FKLocalidad)
-VALUES ('JugarXJugar', 'Con tiendas en varias ciudades de Cataluña, incluyendo Barcelona, JugarXJugar ha sido conocida por su variedad de juegos y eventos.', 'Dirección de JugarXJugar', '222-333-444', 'https://jugarxjugar.com/', 1);
+VALUES ('JugarXJugar', 'Con tiendas en varias ciudades de Cataluï¿½a, incluyendo Barcelona, JugarXJugar ha sido conocida por su variedad de juegos y eventos.', 'Direcciï¿½n de JugarXJugar', '222-333-444', 'https://jugarxjugar.com/', 1);
 
 -- Nostromo: --> Barcelona 
 INSERT INTO Tienda (NombreTienda, Descripcion, Direccion, Telefono, Web, FKLocalidad)
-VALUES ('Nostromo', 'Una tienda de cómics y juegos en Barcelona que podría tener opciones para juegos de rol y eventos de Dungeons & Dragons.', 'Dirección de Nostromo', '444-555-666', 'https://www.nostromocomics.com/', 1);
+VALUES ('Nostromo', 'Una tienda de cï¿½mics y juegos en Barcelona que podrï¿½a tener opciones para juegos de rol y eventos de Dungeons & Dragons.', 'Direcciï¿½n de Nostromo', '444-555-666', 'https://www.nostromocomics.com/', 1);
 
 -- Kaburi: -->  Girona 
 INSERT INTO Tienda (NombreTienda, Descripcion, Direccion, Telefono, Web, FKLocalidad)
-VALUES ('Kaburi', 'Situada en Girona, esta tienda también podría tener actividades de juegos de rol.', 'Dirección de Kaburi', '777-888-999', 'https://kaburi.cat/', 1);
+VALUES ('Kaburi', 'Situada en Girona, esta tienda tambiï¿½n podrï¿½a tener actividades de juegos de rol.', 'Direcciï¿½n de Kaburi', '777-888-999', 'https://kaburi.cat/', 1);
 
 -- El Club de la Lucha: --> Tarragona
 INSERT INTO Tienda (NombreTienda, Descripcion, Direccion, Telefono, Web, FKLocalidad)
-VALUES ('El Club de la Lucha', 'Ubicado en Tarragona, esta tienda se centra en juegos de mesa y cartas coleccionables, y podría tener eventos de rol.', 'Dirección de El Club de la Lucha', '111-222-333', 'https://www.elclubdelalucha.es/', 1);
+VALUES ('El Club de la Lucha', 'Ubicado en Tarragona, esta tienda se centra en juegos de mesa y cartas coleccionables, y podrï¿½a tener eventos de rol.', 'Direcciï¿½n de El Club de la Lucha', '111-222-333', 'https://www.elclubdelalucha.es/', 1);
 
 -- El dado dorado: --> Lleida 
 INSERT INTO Tienda (NombreTienda, Descripcion, Direccion, Telefono, Web, FKLocalidad)
-VALUES ('El dado dorado', 'En Lleida, esta tienda podría ser una opción para buscar actividades de rol.', 'Dirección de El dado dorado', '555-444-333', 'https://www.eldadodorado.com/', 1);
+VALUES ('El dado dorado', 'En Lleida, esta tienda podrï¿½a ser una opciï¿½n para buscar actividades de rol.', 'Direcciï¿½n de El dado dorado', '555-444-333', 'https://www.eldadodorado.com/', 1);

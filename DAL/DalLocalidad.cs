@@ -50,5 +50,33 @@ namespace RPGMeet.DAL
 
             return list;
         }
+
+        public static int GetIdByName(string nombreLocalidad)
+        {
+            String selectQuery = "SELECT * FROM Tema WHERE NombreLocalidad = @nombreLocalidad";
+            Localidad localidadBuscada = null;
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                selectCommand.Parameters.AddWithValue("@nombreLocalidad", nombreLocalidad);
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                localidadBuscada = ReaderLocalidad(reader);
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalLocalidad GetIdByName\n" + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return localidadBuscada.IdLocalidad;
+        }
     }
 }

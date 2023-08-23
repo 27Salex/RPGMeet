@@ -18,13 +18,12 @@ namespace RPGMeet
             - Evitar Campos Vacios
             - Marcar Campos Obligatorios
      - Recojer Id de GM (Del Session)
+     - Configurar Segunda Tematica (todo)
      */
     public partial class CreateParty : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //DalJuego.GetIdByName(DropDownGame.SelectedValue);
-
             if (!IsPostBack)
             {
 
@@ -51,9 +50,11 @@ namespace RPGMeet
                     temas.Add(tema.NombreTema);
                 }
 
+                DropDownLoc.DataSource = localidades;
                 DropDownGame.DataSource = juegos;
                 DropDownPri.DataSource = temas;
                 DropDownSec.DataSource = temas;
+                DropDownLoc.DataBind();
                 DropDownGame.DataBind();
                 DropDownPri.DataBind();
                 DropDownSec.DataBind();
@@ -92,9 +93,8 @@ namespace RPGMeet
             grupo.EstadoGrupo = 1; //Hardcoded
             grupo.MaxJugadores = maxPly;
             grupo.FKGameMaster = 1; //Hardcoded Por session
-            grupo.FKTemaPrincipal = 1; //Hardcoded Tiene que heredar de dropdown
-            string a = DropDownGame.SelectedValue;
-            grupo.FKJuego = DalJuego.GetIdByName(DropDownGame.SelectedValue); //Hardcoded Tiene que heredar de dropdown
+            grupo.FKTemaPrincipal = DalJuego.GetIdByName(DropDownPri.SelectedValue); //Revisar al incorporar el otro dropdown
+            grupo.FKJuego = DalJuego.GetIdByName(DropDownGame.SelectedValue);
 
             //Envia el grupo a la base de datos
             //DalGrupo.Create(grupo);
@@ -124,14 +124,14 @@ namespace RPGMeet
                 TxtBoxCreateMaxPly.BackColor = Color.White;
             }
             //Dropdowns de tematica principal y juego
-            /*
+            
             if(DropDownPri.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema prin y Loc
                 correctCamps = false;
             if(DropDownGame.SelectedIndex == 0)
                 correctCamps = false;
             if(DropDownLoc.SelectedIndex == 0)
                 correctCamps = false;
-            */
+            
             return correctCamps;
         }
     }

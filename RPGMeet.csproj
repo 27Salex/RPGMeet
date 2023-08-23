@@ -125,6 +125,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Img\pngegg.png" />
+    <Content Include="Locales.aspx" />
     <Content Include="PruebaListaPartidas.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -229,6 +230,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Locales.aspx.cs">
+      <DependentUpon>Locales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Locales.aspx.designer.cs">
+      <DependentUpon>Locales.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model\Filtro.cs" />
     <Compile Include="Model\Grupo.cs" />

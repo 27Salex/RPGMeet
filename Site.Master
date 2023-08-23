@@ -73,7 +73,7 @@
                                         Locales
                                     </a>
                                 </li>
-                                    <!-- Navegacion a pagina juegos-->
+                                <!-- Navegacion a pagina juegos-->
                                 <%--<li class="nav-item ">
                                     <a class="nav-link" runat="server" href="~/">
                                         Juegos

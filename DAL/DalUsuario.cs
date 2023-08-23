@@ -161,6 +161,8 @@ namespace RPGMeet.DAL
 
                     SqlDataReader reader = selectCommand.ExecuteReader();
 
+                    reader.Read();
+
                     insertado = ReaderUsuario(reader);
                     reader.Close();
 

@@ -236,21 +236,19 @@
     <Compile Include="Model\Tienda.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
     <Compile Include="PruebaListaPartidas.aspx.cs">
       <DependentUpon>PruebaListaPartidas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PruebaListaPartidas.aspx.designer.cs">
       <DependentUpon>PruebaListaPartidas.aspx</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
-
     </Compile>
     <Compile Include="SingUp.aspx.cs">
       <DependentUpon>SingUp.aspx</DependentUpon>

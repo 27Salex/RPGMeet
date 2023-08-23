@@ -9,7 +9,7 @@
                 <Label class="form-label">Nombre de Usuario:</Label>
                 <div class="input-group">
                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                    <asp:TextBox CssClass="form-Control" ID="TxtBoxUpdateUser" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TxtBoxUpdateUser" runat="server"></asp:TextBox>
                 </div>
                 <asp:Label ID="lbErrorUser" CssClass="form-text text-danger" runat="server" Text="Usuario no disponible" Visible="False"></asp:Label>
             </div>
@@ -26,7 +26,7 @@
                 <Label class="form-label">Nueva Contraseña:</Label>
                 <div class="input-group">
                     <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                    <asp:TextBox CssClass="form-Control" ID="TxtBoxUpdatePsw" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TxtBoxUpdatePsw" runat="server"></asp:TextBox>
                 </div>
                 <asp:Label ID="lbErrorPsw" runat="server" CssClass="form-text text-danger" Text="La contraseña debe tener: 8 caracteres, Mayuscula, Minuscula y un Simbolo" Visible="False"></asp:Label>
             </div>
@@ -35,7 +35,7 @@
                 <Label class="form-label">Confirmar Contraseña:</Label>
                 <div class="input-group">
                     <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                    <asp:TextBox CssClass="form-Control" ID="TxtBoxUpdatePswCon" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TxtBoxUpdatePswCon" runat="server" TextMode="Password"></asp:TextBox>
                 </div>
                 <asp:Label ID="lbErrorPswCon" runat="server" CssClass="form-text text-danger" Text="Las contraseñas no son iguales" Visible="False"></asp:Label>
             </div>

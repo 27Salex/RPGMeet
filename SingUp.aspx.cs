@@ -19,7 +19,16 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DropDownListRegisterLoc.DataSource = DalLocalidad.SelectAll();
+            List<string> localidades = new List<string>();
+            localidades.Add("Selecciona una opción");
+
+            foreach (Localidad localidad in DalLocalidad.SelectAll())
+            {
+                localidades.Add(localidad.NombreLocalidad);
+            }
+
+            DropDownListRegisterLoc.DataSource = localidades;
+            DropDownListRegisterLoc.DataBind();
         }
                 
         protected void BtnRegisterCreate_Click(object sender, EventArgs e)

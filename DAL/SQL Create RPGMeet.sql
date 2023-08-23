@@ -30,7 +30,7 @@ CREATE TABLE Tema (
 CREATE TABLE Juego (
     IdJuego int IDENTITY(1,1) PRIMARY KEY, --**
     NombreJuego VARCHAR(100) UNIQUE NOT NULL, 
-	Reglas VARCHAR NOT NULL,
+	Reglas VARCHAR(1000) NOT NULL,
 	MinJugadores SMALLINT,
 	MaxJugadores SMALLINT NOT NULL  
 );
@@ -74,9 +74,13 @@ CREATE TABLE Tienda (
 	IdTienda INT IDENTITY(1,1) PRIMARY KEY,
 	NombreTienda VARCHAR(50) NOT NULL,
 	Direccion VARCHAR NOT NULL,
+	Descripcion VARCHAR NOT NULL,
 	HoraApertura TIME,
 	HoraCierre TIME,
 	CodigoPostal INT NOT NULL,
+	Web VARCHAR(100),
+	Telefono INT,
+	ImgUrl VARCHAR(1000) NOT NULL,
 	FKLocalidad INT,
 	FOREIGN KEY (FKLocalidad) REFERENCES Localidad(IdLocalidad)
 );

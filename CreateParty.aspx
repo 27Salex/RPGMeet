@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateParty.aspx.cs" Inherits="RPGMeet.CreateParty" %>
+﻿<%@ Page Title="Crear Grupo" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateParty.aspx.cs" Inherits="RPGMeet.CreateParty" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <h2>Crear Partida</h2>
@@ -38,9 +38,13 @@
     </div>
     <div>
         <asp:Label ID="Label7" runat="server" Text="Juego:"></asp:Label>
-        <asp:DropDownList ID="DropDownGame" runat="server">
+        <asp:DropDownList ID="DropDownGame" runat="server" AutoPostBack="True">
             <asp:ListItem>Selecciona una opción</asp:ListItem>
         </asp:DropDownList>
+    </div>
+    <div>
+        <asp:Label ID="Label8" runat="server" Text="Localidad:"></asp:Label>
+        <asp:DropDownList ID="DropDownLoc" runat="server"></asp:DropDownList>
     </div>
     <div>
         <asp:Button ID="BtnCreateParty" runat="server" Text="Crear Partida" OnClick="BtnCreateParty_Click" />

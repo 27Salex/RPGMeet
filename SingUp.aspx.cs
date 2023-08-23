@@ -14,13 +14,21 @@ using System.Web.UI.WebControls;
 namespace RPGMeet
 {
     //TO DO:
-    //Cargar Localidad al Dropdown
     //Mostrar si falla
     public partial class SingUp : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DropDownListRegisterLoc.DataSource = DalLocalidad.SelectAll();
+            List<string> localidades = new List<string>();
+            localidades.Add("Selecciona una opción");
+
+            foreach (Localidad localidad in DalLocalidad.SelectAll())
+            {
+                localidades.Add(localidad.NombreLocalidad);
+            }
+
+            DropDownListRegisterLoc.DataSource = localidades;
+            DropDownListRegisterLoc.DataBind();
         }
                 
         protected void BtnRegisterCreate_Click(object sender, EventArgs e)
@@ -28,9 +36,9 @@ namespace RPGMeet
             bool camps = CheckCamps();
             bool pass = CheckPass();
             bool user = UsedUsername();
-            //bool mail = UsedMail();
+            bool mail = UsedMail();
 
-            if (camps && user && pass/* && mail*/) //Comprovar todas las condiciones antes de crear el Usuario
+            if (camps && user && pass && mail) //Comprovar todas las condiciones antes de crear el Usuario
                 CreateUser();
         }
 
@@ -101,7 +109,7 @@ namespace RPGMeet
             var regexItem = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
             bool completePsw = false;
 
-            if (regexItem.IsMatch(TxtBoxRegisterPsw.Text)) //La contraseña cumple con los parámetros
+            if (regexItem.IsMatch(TxtBoxRegisterPsw.Text.Trim().ToLower())) //La contraseña cumple con los parámetros
             {
                 lbErrorPsw.Visible = false;
             }
@@ -131,7 +139,7 @@ namespace RPGMeet
         bool UsedUsername() //Devuelve si el Username ya esta seleccionado
         {
             bool notPicked = false;
-            Usuario user = DalUsuario.CheckUsername(TxtBoxRegisterUser.Text);
+            Usuario user = DalUsuario.CheckUsername(TxtBoxRegisterUser.Text.Trim().ToLower());
             if (user == null)
             {
                 notPicked = true;
@@ -145,11 +153,11 @@ namespace RPGMeet
             }
             return notPicked;
         }
-        /*
+        
         bool UsedMail() //Devuelve si el mail esta ya en la base de datos
         {
             bool notPicked = false;
-            Usuario mail = DalUsuario.
+            Usuario mail = DalUsuario.CheckMail(TxtBoxRegisterMail.Text);
             if (mail == null)
             {
                 notPicked = true;
@@ -162,6 +170,6 @@ namespace RPGMeet
                 lbErrorMail.Visible = true;
             }
             return notPicked;
-        }*/
+        }
     }
 }

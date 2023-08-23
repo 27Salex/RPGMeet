@@ -10,9 +10,13 @@ namespace RPGMeet.Model
         public int IdTienda { get; set; }
         public string NombreTienda { get; set; }
         public string Direccion { get; set; }
+        public string Descripcion { get; set; }
         public TimeSpan? HoraApertura { get; set; }
         public TimeSpan? HoraCierre { get; set; }
         public int CodigoPostal { get; set; }
+        public string Web { get; set; }
+        public int Telefono { get; set; }
+        public string ImgUrl { get; set; }
         public int? FKLocalidad { get; set; }
 
 

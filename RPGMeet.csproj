@@ -219,7 +219,9 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAL\DalGrupo.cs" />
+    <Compile Include="DAL\DalJuego.cs" />
     <Compile Include="DAL\DalLocalidad.cs" />
+    <Compile Include="DAL\DalTema.cs" />
     <Compile Include="DAL\DalTienda.cs" />
     <Compile Include="DAL\DalUsuario.cs" />
     <Compile Include="Default.aspx.cs">
@@ -241,8 +243,13 @@
     </Compile>
     <Compile Include="Model\Filtro.cs" />
     <Compile Include="Model\Grupo.cs" />
+
     <Compile Include="Model\Local.cs" />
+
+    <Compile Include="Model\Juego.cs" />
+
     <Compile Include="Model\Localidad.cs" />
+    <Compile Include="Model\Tema.cs" />
     <Compile Include="Model\Tienda.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

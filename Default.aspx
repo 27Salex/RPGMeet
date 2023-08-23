@@ -41,6 +41,52 @@
             .my-grey{
                 background-color: #D9D9D9;
             }
+            .container{
+                display: flex;
+                justify-content: center;
+            }
+            .box{
+                border-radius: 10px;
+            }
+
+            .verde {
+                background-color: rgb(53, 232, 71);
+                width: 400px;
+                height: 225px;
+                position: relative;
+            }
+
+            .amarillo {
+                background-color: rgb(232, 223, 53);
+                position: absolute;
+                left: 50%;
+                transform: translate(0%, 50%);
+            }
+
+            .azul {
+                background-color: rgb(53, 166, 232);
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 50%);
+            }
+
+            .rojo {
+                background-color: rgb(232, 53, 53);
+                position: absolute;
+                left: 50%;
+                transform: translate(-100%, 50%);
+            }
+
+            .content{
+                height: 50%;
+                width: 33%;
+                transition: transform 1s ease-in-out, height 1s ease-in-out, opacity ;
+            }
+
+            .main {
+                height: 55%;
+                transform: translate(-50%, 40%);
+            }
         </style>
         <div class="row m-3">
             <div class="col-6">
@@ -51,7 +97,7 @@
                 <p> Aquí va una imagen...</p>
             </div>
             <div class="col-6">
-                <asp:Button ID="btnCrearCuenta1" runat="server" Text="Crear cuenta" CssClass=""/>
+                <asp:Button ID="btnCrearCuenta1" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"/>
             </div>
         </div>
 
@@ -98,7 +144,7 @@
                 </div>
             </div>
             <div class="col-6">
-                <asp:Button ID="btnCrearCuenta2" runat="server" Text="Crear cuenta" />
+                <asp:Button ID="btnCrearCuenta2" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"  />
             </div>
         </div>
 
@@ -112,11 +158,22 @@
                 <h2>Locales colaboradores</h2>
             </div>
             <div class="col-4 d-flex justify-content-end">
-                <asp:Button ID="btnCrearCuenta3" runat="server" Text="Crear cuenta" />
+                <asp:Button ID="btnCrearCuenta3" CssClass="btn btn-dark" runat="server" Text="Crear cuenta" />
             </div>
             <div class="col slider">
+                <button type="button" id="slider-left-btn" value="-1"><</button>
+                <div class="slider box verde">
+                    <div style="z-index: 1"class="slider-content box content amarillo ">
+                    </div>
+                    <div style="z-index: 2" class="slider-content main box content azul ">
+                    </div>
+                    <div style="z-index: 0" class="slider-content box content rojo ">
 
+                    </div>
+                </div>
+                <button type="button" id="slider-right-btn" value="1">></button>
             </div>
         </div>
+        <script type="module" src="Default.js"></script>
     </main>
 </asp:Content>

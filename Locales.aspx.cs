@@ -14,12 +14,12 @@ namespace RPGMeet
         {
             List<Local> locales = new List<Local>
             {
-                new Local("Kaburi" , "Local especializado en juegos de mesa, de rol, merchandising o cartas, con un café donde probar los artículos.", "https://www.carrerdesants.cat/media/carrerdesants/image/fotos//993_Foto.1648810055.png", "Pg. de St. Joan, 11, 08010 Barcelona", "www.kaburi.es", "932459508"),
+                new Local(0,"Kaburi" , "Local especializado en juegos de mesa, de rol, merchandising o cartas, con un café donde probar los artículos.", "https://www.carrerdesants.cat/media/carrerdesants/image/fotos//993_Foto.1648810055.png", "Pg. de St. Joan, 11, 08010 Barcelona", "www.kaburi.es", "932459508"),
             };
 
             for (int i = locales.Count; i < 19; i++)
             {
-                locales.Add(new Local($"Local {i}", $"Descripción del local {i}\n Vivamus molestie tristique justo, nec tincidunt velit bibendum quis. Nulla ac justo quis mauris consectetur aliquam. Vivamus et volutpat leo. Suspendisse ac porta nisi. Curabitur sed aliquam dui. Ut sodales sodales nibh, ac porttitor dui bibendum non. Etiam auctor lectus eget neque congue dictum. Praesent accumsan metus vitae arcu imperdiet, eu sodales sem congue.", "https://www.carrerdesants.cat/media/carrerdesants/image/fotos//993_Foto.1648810055.png", "Pg. de St. Joan, 11, 08010 Barcelona", "www.kaburi.es", "932459508"));
+                locales.Add(new Local(i ,$"Local {i}", $"Descripción del local {i}\n Vivamus molestie tristique justo, nec tincidunt velit bibendum quis. Nulla ac justo quis mauris consectetur aliquam. Vivamus et volutpat leo. Suspendisse ac porta nisi. Curabitur sed aliquam dui. Ut sodales sodales nibh, ac porttitor dui bibendum non. Etiam auctor lectus eget neque congue dictum. Praesent accumsan metus vitae arcu imperdiet, eu sodales sem congue.", "https://www.carrerdesants.cat/media/carrerdesants/image/fotos//993_Foto.1648810055.png", "Pg. de St. Joan, 11, 08010 Barcelona", "www.kaburi.es", "932459508"));
             }
             if (!IsPostBack)
             {
@@ -57,7 +57,7 @@ namespace RPGMeet
                                             <img src=""https://cdn-icons-png.flaticon.com/512/72/72626.png"" class=""img-fluid icon"" /> <!-- imagen icono de sitio web -->
                                         </div>
                                         <div class=""col-9 d-inline"">
-                                            <asp:HyperLink runat=""server"">{local.SitioWeb}</asp:HyperLink>
+                                            <a>{local.SitioWeb}</a>
                                         </div>
                                     </div>
                                 </div>

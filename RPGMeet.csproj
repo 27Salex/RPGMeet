@@ -122,6 +122,7 @@
     <Content Include="CreateParty.aspx" />
     <Content Include="DAL\SQL Create RPGMeet.sql" />
     <Content Include="Default.aspx" />
+    <Content Include="Default.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Img\pngegg.png" />

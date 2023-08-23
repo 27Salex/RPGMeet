@@ -21,14 +21,15 @@ namespace RPGMeet
     //Mostrar si falla
     public partial class Profile : System.Web.UI.Page
     {
+        private Usuario usuarioActivo;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Username"] != null && Session["UserID"] != null)
             {
-                Usuario usuario = DalUsuario.SelectById(int.Parse(Session["UserID"].ToString()));
-                LbUsername.Text = usuario.Username;
-                LbEmail.Text = usuario.Email;
-                LbLocalidad.Text = usuario.FKLocalidad.ToString();
+                usuarioActivo = DalUsuario.SelectById(int.Parse(Session["UserID"].ToString()));
+                LbUsername.Text = usuarioActivo.Username;
+                LbEmail.Text = usuarioActivo.Email;
+                LbLocalidad.Text = usuarioActivo.FKLocalidad.ToString();
             }
             else
                 Response.Redirect("/Login");
@@ -127,8 +128,15 @@ namespace RPGMeet
         }
         public void ActivarEdicion(object sender, EventArgs e)
         {
+            //Intercambiamos el formulario a modo edicion
             ShowUser.Visible = false;
             EditUser.Visible = true;
+
+            //Cargamos los valores del usuario activo
+            TxtBoxUpdateUser.Text = usuarioActivo.Username;
+            TxtBoxUpdatePsw.Text = usuarioActivo.Pass;
+            TxtBoxUpdatePswCon.Text = usuarioActivo.Pass;
+            
         }
         public void DesactivarEdicion(object sender, EventArgs e)
         {

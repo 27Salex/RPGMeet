@@ -14,7 +14,7 @@
                                             <div class="col-12">
                                                 <label>Email<span class="text-danger">*</span></label>
                                                 <div class="input-group">
-                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                    <div class="input-group-text"><i class="bi bi-envelope-fill"></i></div>
                                                     <asp:TextBox id="txtEmail" TextMode="Email" runat="server" class="form-control" placeholder="Introduce tu email">
                                                     </asp:TextBox>
                                                 </div>

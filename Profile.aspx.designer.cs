@@ -42,6 +42,24 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label lbErrorUser;
 
         /// <summary>
+        /// Control DropDownListUpdateLoc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListUpdateLoc;
+
+        /// <summary>
+        /// Control TxtBoxUpdatePsw.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtBoxUpdatePsw;
+
+        /// <summary>
         /// Control lbErrorPsw.
         /// </summary>
         /// <remarks>
@@ -67,15 +85,6 @@ namespace RPGMeet
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbErrorPswCon;
-
-        /// <summary>
-        /// Control DropDownListUpdateLoc.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListUpdateLoc;
 
         /// <summary>
         /// Control LbCompulsoryCamps.

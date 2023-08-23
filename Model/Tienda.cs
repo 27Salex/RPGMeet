@@ -19,17 +19,17 @@ namespace RPGMeet.Model
 
         public Tienda() { }
 
-        public Tienda(int IdTienda)
+        public Tienda(int idTienda)
         {
-            IdTienda = IdTienda;
+            IdTienda = idTienda;
         }
 
-        public Tienda(int IdTienda, string NombreTienda, string Direccion, int CodigoPostal)
+        public Tienda(int idTienda, string nombreTienda, string direccion, int codigoPostal)
         {
-            IdTienda = IdTienda;
-            NombreTienda = NombreTienda;
-            Direccion = Direccion;
-            CodigoPostal = CodigoPostal;
+            IdTienda = idTienda;
+            NombreTienda = nombreTienda;
+            Direccion = direccion;
+            CodigoPostal = codigoPostal;
         }
 
         public override string ToString()

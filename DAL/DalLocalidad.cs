@@ -53,7 +53,7 @@ namespace RPGMeet.DAL
 
         public static int GetIdByName(string nombreLocalidad)
         {
-            String selectQuery = "SELECT * FROM Tema WHERE NombreLocalidad = @nombreLocalidad";
+            String selectQuery = "SELECT * FROM Localidad WHERE NombreLocalidad = @nombreLocalidad";
             Localidad localidadBuscada = null;
 
             try

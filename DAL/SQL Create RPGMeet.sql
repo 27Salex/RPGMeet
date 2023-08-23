@@ -74,9 +74,13 @@ CREATE TABLE Tienda (
 	IdTienda INT IDENTITY(1,1) PRIMARY KEY,
 	NombreTienda VARCHAR(50) NOT NULL,
 	Direccion VARCHAR NOT NULL,
+	Descripcion VARCHAR NOT NULL,
 	HoraApertura TIME,
 	HoraCierre TIME,
 	CodigoPostal INT NOT NULL,
+	Web VARCHAR(100),
+	Telefono INT,
+	ImgUrl VARCHAR(1000) NOT NULL,
 	FKLocalidad INT,
 	FOREIGN KEY (FKLocalidad) REFERENCES Localidad(IdLocalidad)
 );

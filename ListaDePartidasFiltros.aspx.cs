@@ -64,16 +64,18 @@ namespace RPGMeet
             }
            
             // LABEL DE PRUEBAS
-            lblPrueba.Text=filtro.ToString();
-           /* filtro.ListTematicas.Clear();
+            
 
             foreach (ListItem tematicas in cbListTematica.Items ) 
             {
-                if (tematicas.Selected) 
+                if (tematicas.Selected== true)
                 {
+                    
                     filtro.ListTematicas.Add(tematicas.Value);
                 }
-            }*/
+                else { lblPrueba.Text = "no funciona"; }
+            }
+            lblPrueba.Text = filtro.ToString();
         }
 
 

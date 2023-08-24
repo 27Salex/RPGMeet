@@ -26,19 +26,27 @@ namespace RPGMeet
                     Response.Redirect("/Profile");
                 else
                 {
+                    if (!IsPostBack)
+                    {
+                        List<string> localidades = new List<string>();
+                        localidades.Add("Selecciona una opción");
+
+                        foreach (Localidad localidad in DalLocalidad.SelectAll())
+                        {
+                            localidades.Add(localidad.NombreLocalidad);
+                        }
+
+                        DropDownListUpdateLoc.DataSource = localidades;
+                        DropDownListUpdateLoc.DataBind();
+                    }
                     LbUsername.Text = usuarioActivo.Username;
                     LbEmail.Text = usuarioActivo.Email;
-                    LbLocalidad.Text = usuarioActivo.FKLocalidad.ToString();
+                    LbLocalidad.Text = DalLocalidad.SelectById(usuarioActivo.FKLocalidad).NombreLocalidad;
+                    DropDownListUpdateLoc.DataBind();
                 }
             }
             else
                 Response.Redirect("/Login");
-
-
-            if (IsPostBack)
-            {
-
-            }
         }
 
         
@@ -58,13 +66,19 @@ namespace RPGMeet
         {
             string pass = TxtBoxUpdatePsw.Text.Trim();
             string username = TxtBoxUpdateUser.Text.Trim();
-            int localidad = DropDownListUpdateLoc.TabIndex;
-            Usuario newUser = new Usuario(null, pass, username, localidad);
+            int? idLocalidad = null;
+            if (DropDownListUpdateLoc.SelectedIndex != 0)
+                idLocalidad = DalLocalidad.GetIdByName(DropDownListUpdateLoc.SelectedValue);
+
+            LbLocalidad.Text = DropDownListUpdateLoc.SelectedValue;
+            LbUsername.Text = TxtBoxUpdateUser.Text;
+
+            Usuario newUser = new Usuario(null, pass, username, idLocalidad);
             newUser.IdUsuario = int.Parse(Session["UserID"].ToString());
             Usuario createdUser = DalUsuario.Update(newUser);
             if (createdUser != null)
             {
-                DesactivarEdicion(createdUser, EventArgs.Empty);
+                DesactivarEdicion(null, EventArgs.Empty);
             }
         }
 
@@ -160,13 +174,20 @@ namespace RPGMeet
             //Cargamos los valores del usuario activo
             TxtBoxUpdateUser.Text = usuarioActivo.Username;
             TxtBoxUpdatePsw.Text = usuarioActivo.Pass;
-            TxtBoxUpdatePswCon.Text = usuarioActivo.Pass;
+            TxtBoxUpdatePswCon.Text = usuarioActivo.Pass; 
             
+            if (usuarioActivo.FKLocalidad != null)
+            {
+                DropDownListUpdateLoc.SelectedIndex = (int)usuarioActivo.FKLocalidad;
+            }
+
+           
         }
         public void DesactivarEdicion(object sender, EventArgs e)
         {
             ShowUser.Visible = true;
             EditUser.Visible = false;
+            // Response.r
         }
     }
 }

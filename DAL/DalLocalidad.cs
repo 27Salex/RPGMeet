@@ -51,7 +51,7 @@ namespace RPGMeet.DAL
             return list;
         }
 
-        public static Localidad SelectById(int idLocalidad)
+        public static Localidad SelectById(int? idLocalidad)
         {
             String selectQuery = "SELECT * FROM Localidad WHERE IdLocalidad = @id";
             Localidad localidadBuscado;

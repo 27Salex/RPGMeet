@@ -14,7 +14,8 @@
         </div>
         <div>
             <asp:Label ID="Label4" runat="server" Text="Máximo de Jugadores:"></asp:Label>
-            <asp:TextBox ID="TxtBoxCreateMaxPly" runat="server" TextMode="Number"></asp:TextBox>
+            <asp:DropDownList ID="DropDownMaxPly" runat="server">
+            </asp:DropDownList>
             <asp:Label ID="LbMaxPlyError" runat="server" Font-Italic="True" ForeColor="Red" Text="Se requiere un número de Jugadores Máximos" Visible="False"></asp:Label>
         </div>
         <asp:Label ID="Label3" runat="server" Text="Dias a jugar:"></asp:Label>

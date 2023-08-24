@@ -20,16 +20,13 @@ namespace RPGMeet.Model
     public class Tienda
     {
         public int IdTienda { get; set; }
-        public string NombreTienda { get; set; }
-        public string Direccion { get; set; }
+        public string Nombre { get; set; }
+        public string Direccion {get; set;}
         public string Descripcion { get; set; }
-        public TimeSpan? HoraApertura { get; set; }
-        public TimeSpan? HoraCierre { get; set; }
         public int CodigoPostal { get; set; }
         public string Web { get; set; }
         public int Telefono { get; set; }
         public string ImgUrl { get; set; }
-        public int? FKLocalidad { get; set; }
 
 
 
@@ -40,17 +37,20 @@ namespace RPGMeet.Model
             IdTienda = idTienda;
         }
 
-        public Tienda(int idTienda, string nombreTienda, string direccion, int codigoPostal)
+        public Tienda(int id, string nombre, string descripcion, string urlImagen = "", string direccion = "", string sitioWeb = "", int telefono = 0, int codigoPostal = 0)
         {
-            IdTienda = idTienda;
-            NombreTienda = nombreTienda;
+            IdTienda = id;
+            Nombre = nombre;
+            Descripcion = descripcion;
+            ImgUrl = urlImagen;
             Direccion = direccion;
+            Web = sitioWeb;
+            Telefono = telefono;
             CodigoPostal = codigoPostal;
         }
-
         public override string ToString()
         {
-            return "Tienda: id: " + IdTienda + " NombreTienda: " + NombreTienda + " Direccion: " + Direccion + " HoraApertura: " + HoraApertura + " HoraCierre: " + HoraCierre + "CodigoPostal: " + CodigoPostal + "FKLocalidad: " + FKLocalidad;
+            return "Tienda: id: " + IdTienda + " NombreTienda: " + Nombre + " Direccion: " + Direccion + "CodigoPostal: " + CodigoPostal;
         }
     }
 

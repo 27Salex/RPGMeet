@@ -55,10 +55,11 @@ CREATE TABLE Tienda (
     IdTienda INT IDENTITY(1,1) PRIMARY KEY,
     NombreTienda VARCHAR(50) NOT NULL,
     Direccion VARCHAR(50) NOT NULL,
-    HoraApertura TIME,
-    HoraCierre TIME,
+    Descripcion VARCHAR(200),
     CodigoPostal INT NOT NULL,
-    FKLocalidad INT,
+    Web VARCHAR(500),
+    Telefono INT (9),
+    UrlImg VARCHAR (1000),
 );
 /*
 -- POSIBLE CAMBIO EN LA BASE DE DATOS VER COMO QUEDA LA PARTE DE CREAR TIENDA

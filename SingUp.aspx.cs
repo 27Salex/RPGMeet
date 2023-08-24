@@ -63,42 +63,42 @@ namespace RPGMeet
 
             if (TxtBoxRegisterUser.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxRegisterUser.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxRegisterUser.CssClass = "form-control is-invalid";
                 correctCamps = false;
             }
             else
             {
-                TxtBoxRegisterUser.BackColor = Color.White;
+                TxtBoxRegisterUser.CssClass = "form-control is-valid";
             }
 
             if (TxtBoxRegisterMail.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxRegisterMail.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxRegisterMail.CssClass = "form-control is-invalid";
                 correctCamps = false;
             }
             else
             {
-                TxtBoxRegisterMail.BackColor = Color.White;
+                TxtBoxRegisterMail.CssClass = "form-control is-valid";
             }
 
             if (TxtBoxRegisterPsw.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxRegisterPsw.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxRegisterPsw.CssClass = "form-control is-invalid";
                 correctCamps = false;
             }
             else
             {
-                TxtBoxRegisterPsw.BackColor = Color.White;
+                TxtBoxRegisterPsw.CssClass = "form-control is-valid";
             }
 
             if (TxtBoxRegisterPswCon.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxRegisterPswCon.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxRegisterPswCon.CssClass = "form-control is-invalid";
                 correctCamps = false;
             }
             else
             {
-                TxtBoxRegisterPswCon.BackColor = Color.White;
+                TxtBoxRegisterPswCon.CssClass = "form-control is-valid";
             }
             
             return correctCamps;
@@ -143,12 +143,12 @@ namespace RPGMeet
             if (user == null)
             {
                 notPicked = true;
-                TxtBoxRegisterUser.BackColor = Color.White;
+                TxtBoxRegisterUser.CssClass = "form-control is-valid";
                 lbErrorUser.Visible = false;
             }
             else
             {
-                TxtBoxRegisterUser.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxRegisterUser.CssClass = "form-control is-invalid";
                 lbErrorUser.Visible = true;
             }
             return notPicked;
@@ -161,12 +161,12 @@ namespace RPGMeet
             if (mail == null)
             {
                 notPicked = true;
-                TxtBoxRegisterMail.BackColor = Color.White;
+                TxtBoxRegisterMail.CssClass = "form-control is-valid";
                 lbErrorMail.Visible = false;
             }
             else
             {
-                TxtBoxRegisterMail.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxRegisterMail.CssClass = "form-control is-invalid";
                 lbErrorMail.Visible = true;
             }
             return notPicked;

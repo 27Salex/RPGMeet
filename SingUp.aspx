@@ -15,35 +15,35 @@
                                     <div class="col-12">
                                         <label>Nombre de usuario<span class="text-danger">*</span></label>
 					                    <asp:TextBox ID="TxtBoxRegisterUser" CssClass="form-control" placeholder="Introduce un nombre de usuario" runat="server"></asp:TextBox>
-					                    <asp:Label ID="lbErrorUser" runat="server" Text="Usuario no disponible" Font-Italic="True" ForeColor="#FF3300" Visible="False"></asp:Label>
+					                    <asp:Label ID="lbErrorUser" runat="server" Text="Usuario no disponible" CssClass="form-text text-danger" Visible="False"></asp:Label>
                                     </div>
 
 				                    <div class="col-12">
                                         <label>Email<span class="text-danger">*</span></label>
 					                    <asp:TextBox ID="TxtBoxRegisterMail" CssClass="form-control" placeholder="Introduce un email" runat="server" TextMode="Email"></asp:TextBox>
-					                    <asp:Label ID="lbErrorMail" runat="server" Text="Correo ya existente" Font-Italic="True" ForeColor="#FF3300" Visible="False"></asp:Label>
+					                    <asp:Label ID="lbErrorMail" runat="server" Text="Correo ya existente" CssClass="form-text text-danger" Visible="False"></asp:Label>
                                     </div>
 
 				                    <div class="col-12">
                                         <label>Contraseña<span class="text-danger">*</span></label>
 					                    <asp:TextBox ID="TxtBoxRegisterPsw" CssClass="form-control" placeholder="Introduce una contraseña" runat="server" TextMode="Password"></asp:TextBox>
-					                    <asp:Label ID="lbErrorPsw" runat="server" Text="La contraseña debe tener: 8 caracteres, Mayuscula, Minuscula y un Simbolo" Font-Italic="True" ForeColor="#FF3300" Visible="False"></asp:Label>
+					                    <asp:Label ID="lbErrorPsw" runat="server" Text="La contraseña debe tener: 8 caracteres, Mayuscula, Minuscula y un Simbolo" CssClass="form-text text-danger" Visible="False"></asp:Label>
                                     </div>
 
 				                    <div class="col-12">
                                         <label>Repite tu contraseña<span class="text-danger">*</span></label>
 					                    <asp:TextBox ID="TxtBoxRegisterPswCon" CssClass="form-control" placeholder="Confirma tu contraseña" runat="server" TextMode="Password"></asp:TextBox>
-					                    <asp:Label ID="lbErrorPswCon" runat="server" Text="Las contraseñas no son iguales" Font-Italic="True" ForeColor="#FF3300" Visible="False"></asp:Label>
+					                    <asp:Label ID="lbErrorPswCon" runat="server" Text="Las contraseñas no son iguales" CssClass="form-text text-danger" Visible="False"></asp:Label>
                                     </div>
 
 				                    <div class="col-12">
-                                        <label>Localidad<span class="text-danger">*</span></label>
+                                        <label>Localidad</label>
 					                    <asp:DropDownList ID="DropDownListRegisterLoc" CssClass="form-select" runat="server">           
 					                    </asp:DropDownList>
                                     </div>
 
                                     <div class="col-sm-6">
-					                    <asp:Label ID="LbCompulsoryCamps" runat="server" Text="Porfavor rellena los campos obligatorios" Font-Bold="True" Font-Italic="True" ForeColor="Red" Visible="False"></asp:Label>
+					                    <asp:Label ID="LbCompulsoryCamps" runat="server" Text="Porfavor rellena los campos obligatorios" CssClass="text-danger" Visible="False"></asp:Label>
                                     </div>
 
                                     <div class="col-sm-6">

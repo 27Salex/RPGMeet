@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        :root {
+         :root {
             --grey: #D9D9D9;
         }
         .bg-grey{
@@ -12,14 +12,16 @@
         div[class*="col"] {
             margin: 1vh 0 1vh 0;
         }
-        .partida{
+        .tarjeta{
             border-radius: 3vh;
+            padding: 2vh 3vh 2vh 3vh;
         }
         .imagen-perfil {
             width: 2.25rem;
             height: 2.25rem;
-            margin-left: 0.5rem;
-            margin-bottom: 0.5rem;
+            margin: 0.25vh 0.5rem 0.25vh 0.5rem;
+            border: 0 0.5rem 0 0.5rem;
+            max-width: 100%;
         }
         .joined {
             background-color: #8DD761;
@@ -35,6 +37,13 @@
             height: 500px;
             background-color: var(--grey);
         }
+        .my-grey{
+            background-color: #D9D9D9;
+        }
+        .scrollable-panel {
+            max-height: 700px; 
+            overflow-y: auto; 
+        }
     </style>
 
     <div class="container">
@@ -46,7 +55,7 @@
 
                         <!-- Filtro Disponibilidad -->
                         <div class="form-group">
-                            <h3>Disponibilidad</h3>
+                            <h4>Disponibilidad</h4>
                             <asp:CheckBoxList ID="chkListDisponibilidad" CssClass="form-check" runat="server" >
                                 <asp:ListItem Text="Lunes" Value="Lunes" />
                                 <asp:ListItem Text="Martes" Value="Martes" />
@@ -60,14 +69,13 @@
 
                         <!-- Filtro Número de Jugadores -->
                         <div class="form-group">
-                            <h3>Número de jugadores </h3>
-                            <asp:TextBox ID="txtMaxJugadores" runat="server" CssClass="form-control" type="number" max="50"></asp:TextBox>
-                           
+                            <h4>Número de jugadores </h4>
+                            <asp:TextBox ID="txtMaxJugadores" runat="server" CssClass="form-control" type="number" max="10" min="2"></asp:TextBox>
                         </div>
 
                         <!-- Filtro Temática -->
                         <div class="form-group">
-                            <h3>Temática</h3>
+                            <h4>Temática</h4>
                             <asp:CheckBoxList ID="cbListTematica" CssClass="form-check" runat="server">
                                 <asp:ListItem Text="Fantasía medieval" Value="FantasiaMedieval" />
                                 <asp:ListItem Text="Ciencia ficción espacial" Value="CienciaFiccionEspacial" />
@@ -81,91 +89,64 @@
                                 <asp:ListItem Text="Fantasía oscura" Value="FantasiaOscura" />
                             </asp:CheckBoxList>
                             <br />
-                            <asp:Button ID="btnAplicarFiltros" runat="server" Text="Button" OnClick="btnAplicarFiltros_Click" />
+                            <asp:Button ID="btnAplicarFiltros" runat="server" Text="Aplicar filtros" OnClick="btnAplicarFiltros_Click" />
                             <br />
-                            <asp:Label ID="lblPrueba" runat="server" Text="Label"></asp:Label>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-9">
-                <div class="row">
-                    <!-- Partida de Ejemplo -->
-                    <div class="col-6 partida bg-grey pt-3 pb-3 m-1 d-flex justify-content-start">
-                        <div class="row">
-                            <!-- Encabezado -->
-                            <div class="col-6 rounded-pill">
-                                <h2>Titulo partida</h2>
-                            </div>
-                            <div class="col-6 d-flex justify-content-end">
-                                <!-- Imágenes de Perfil -->
-                                <img class="imagen-perfil joined rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                                <!-- Otras imágenes de perfil -->
-                            </div>
+            <asp:Panel ID="pnlPartidas" CssClass="col-9 scrollable-panel" runat="server">
+                <asp:Panel ID="rowPartidas" CssClass="row" runat="server">
+                    <asp:Panel ID="pnlPartida1" CssClass="col-md-12 col-xl-5 ms-4 me-4 tarjeta bg-grey" runat="server">
+                        <asp:Panel CssClass="row" runat="server">
+                            <asp:Panel ID="pnlTituloPartida" CssClass="col-5 h4" runat="server">
+                                <asp:Label ID="lblTituloPartida1" runat="server" Text="Titulo partida"></asp:Label>
+                            </asp:Panel>
+                            <asp:Panel ID="pnlFotoPerfil" CssClass="col-7 d-flex justify-content-end" runat="server">
+                                <asp:Panel CssClass="d-inline" runat="server">
+                                </asp:Panel>
+                            </asp:Panel>
+                            <asp:Panel ID="pnlDescripcion" CssClass="col-6 rounded-pill" runat="server">
+                                <asp:Label CssClass="h4 d-block" runat="server">Descripción: </asp:Label>
+                                <asp:Label ID="lblDescripcion" runat="server" Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown">
+                                </asp:Label>
+                            </asp:Panel>
+                            <asp:Panel ID="pnlInfoCorta" CssClass="col-6 d-flex justify-content-end" runat="server">
+                                <asp:Panel CssClass="row" runat="server">
+                                    <asp:Panel CssClass="col-12 col-md-6 d-flex justify-content-md-end" runat="server">
+                                        <asp:Label runat="server" Text="Disponibilidad:"></asp:Label>
+                                    </asp:Panel>
+                                    <asp:Panel CssClass="col-12 col-md-6" runat="server">
+                                        <asp:Label ID="lblDisponibilidad" runat="server" Text="Fin de semana"></asp:Label>
+                                    </asp:Panel>
 
-                            <!-- Descripción -->
-                            <div class="col-6">
-                                <h4>Descripcíón breve:</h4>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown </p>
-                            </div>
+                                    <asp:Panel CssClass="col-12 col-md-6 d-flex justify-content-md-end" runat="server">
+                                        <asp:Label runat="server" Text="Tematica:"></asp:Label>
+                                    </asp:Panel>
+                                    <asp:Panel CssClass="col-12 col-md-6" runat="server">
+                                        <asp:Label ID="lblTematica" runat="server" Text="Medieval"></asp:Label>
+                                    </asp:Panel>
 
-                            <!-- Detalles -->
-                            <div class="col-6 d-flex justify-content-end">
-                                <div>
-                                    <asp:Label ID="lblDisponibilidad" class="d-block" runat="server" Text="Disponibilidad: Fin de semana"></asp:Label>
-                                    <asp:Label ID="Label1" class="d-block" runat="server" Text="Tematica: Medieval"></asp:Label>
-                                    <asp:Label ID="Label2" class="d-block" runat="server" Text="Jugadores: 4/7"></asp:Label>
-                                </div>
-                            </div>
-
-                            <!-- Botones -->
-                            <div class="col-6">
+                                    <asp:Panel CssClass="col-12 col-md-6 d-flex justify-content-md-end" runat="server">
+                                        <asp:Label runat="server" Text="Jugadores:"></asp:Label>
+                                    </asp:Panel>
+                                    <asp:Panel CssClass="col-12 col-md-6" runat="server">
+                                        <asp:Label ID="lblNumJugadores" runat="server" Text="4/7"></asp:Label>
+                                    </asp:Panel>
+                                </asp:Panel>
+                            </asp:Panel>
+                            <asp:Panel ID="pnlBtnInfo" CssClass="col-6" runat="server">
                                 <asp:Button ID="Button1" class="btn btn-partida" runat="server" Text="Mas información" />
-                            </div>
-                            <div class="col-6 d-flex justify-content-end">
+                            </asp:Panel>
+                            <asp:Panel ID="pnlBtnApuntarse" CssClass="col-6 d-flex justify-content-end" runat="server">
                                 <asp:Button ID="Button2" class="btn btn-partida" runat="server" Text="Apuntarse" />
-                       </div>
-                </div>
-                    </div>
-                    <div class="col-6 partida bg-grey pt-3 pb-3 m-1 d-flex justify-content-end">
-                        <div class="row">
-                            <!-- Encabezado -->
-                            <div class="col-6 rounded-pill">
-                                <h2>Titulo partida</h2>
-                            </div>
-                            <div class="col-6 d-flex justify-content-end">
-                                <!-- Imágenes de Perfil -->
-                                <img class="imagen-perfil joined rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                                <!-- Otras imágenes de perfil -->
-                            </div>
-
-                            <!-- Descripción -->
-                            <div class="col-6">
-                                <h4>Descripcíón breve:</h4>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown </p>
-                            </div>
-
-                            <!-- Detalles -->
-                            <div class="col-6 d-flex justify-content-end">
-                                <div>
-                                    <asp:Label ID="Label3" class="d-block" runat="server" Text="Disponibilidad: Fin de semana"></asp:Label>
-                                    <asp:Label ID="Label4" class="d-block" runat="server" Text="Tematica: Medieval"></asp:Label>
-                                    <asp:Label ID="Label5" class="d-block" runat="server" Text="Jugadores: 4/7"></asp:Label>
-                                </div>
-                            </div>
-
-                            <!-- Botones -->
-                            <div class="col-6">
-                                <asp:Button ID="Button3" class="btn btn-partida" runat="server" Text="Mas información" />
-                            </div>
-                            <div class="col-6 d-flex justify-content-end">
-                                <asp:Button ID="Button4" class="btn btn-partida" runat="server" Text="Apuntarse" />
-                       </div>
-                </div>
-                    </div>
-                </div>
-            </div>
+                            </asp:Panel>
+                        </asp:Panel>
+                    </asp:Panel>
+                </asp:Panel>
+            </asp:Panel>
         </div>
     </div>
     

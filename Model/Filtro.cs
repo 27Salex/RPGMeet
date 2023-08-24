@@ -7,47 +7,47 @@ namespace RPGMeet.Model
 {
     public class Filtro
     {
-
-        private bool quedarCualquierDia = true;
-        private bool quedarLunes=false;
-        private bool quedarMartes=false;
-        private bool quedarMiercoles=false;
-        private bool quedarJueves=false;
-        private bool quedarViernes=false;
-        private bool quedarSabado=false;
-        private bool quedarDomingo=false;
-        private int minJugadores=0;
-        private int maxJugadores=0;
-
-
-
-        public Filtro(bool quedarLunes, bool quedarMartes,
-            bool quedarMiercoles, bool quedarJueves, bool quedarViernes, 
-            bool quedarSabado, bool quedarDomingo, bool quedarCualquierDia,
-            int minJugadores, int maxJugadores)
-        {
-            this.quedarLunes = quedarLunes;
-            this.quedarMartes = quedarMartes;
-            this.quedarMiercoles = quedarMiercoles;
-            this.quedarJueves = quedarJueves;
-            this.quedarViernes = quedarViernes;
-            this.quedarSabado = quedarSabado;
-            this.quedarDomingo = quedarDomingo;
-            this.quedarCualquierDia = quedarCualquierDia;
-            this.minJugadores = minJugadores;
-            this.maxJugadores= maxJugadores;
+        public List<string> ListTematicas { get; set; }
+        public bool QuedarLunes { get; set; }
+        public bool QuedarMartes { get; set; }
+        public bool QuedarMiercoles { get; set; }
+        public bool QuedarJueves { get; set; }
+        public bool QuedarViernes { get; set; }
+        public bool QuedarSabado { get; set; }
+        public bool QuedarDomingo { get; set; }
+       
+        public bool QuedarCualquierDia {
+            get
+            {
+                return (!QuedarLunes && !QuedarMartes && !QuedarMiercoles && !QuedarJueves
+                         && !QuedarViernes && !QuedarSabado && !QuedarDomingo) ||
+                        (QuedarLunes && QuedarMartes && QuedarMiercoles && 
+                        QuedarJueves && QuedarViernes && QuedarSabado && QuedarDomingo);
+            }
         }
+            
+        public short MaxJugadores { get; set; }
 
-        public bool QuedarLunes { get => quedarLunes; set => quedarLunes = value; }
-        public bool QuedarMartes { get => quedarMartes; set => quedarMartes = value; }
-        public bool QuedarMiercoles { get => quedarMiercoles; set => quedarMiercoles = value; }
-        public bool QuedarJueves { get => quedarJueves; set => quedarJueves = value; }
-        public bool QuedarViernes { get => quedarViernes; set => quedarViernes = value; }
-        public bool QuedarSabado { get => quedarSabado; set => quedarSabado = value; }
-        public bool QuedarDomingo { get => quedarDomingo; set => quedarDomingo = value; }
-        public bool QuedarCualquierDia { get => quedarCualquierDia; set => quedarCualquierDia = value; }
-        public int MinJugadores { get => minJugadores; set => minJugadores = value; }
-        public int MaxJugadores { get => maxJugadores; set => maxJugadores = value; }
-
+        public Filtro(bool quedarLunes = false, bool quedarMartes = false,
+            bool quedarMiercoles = false, bool quedarJueves = false, bool quedarViernes = false, 
+            bool quedarSabado = false, bool quedarDomingo = false,
+             short maxJugadores = 50)
+        {
+            QuedarLunes = quedarLunes;
+            QuedarMartes = quedarMartes;
+            QuedarMiercoles = quedarMiercoles;
+            QuedarJueves = quedarJueves;
+            QuedarViernes = quedarViernes;
+            QuedarSabado = quedarSabado;
+            QuedarDomingo = quedarDomingo;
+            MaxJugadores= maxJugadores;
+        }
+        public override string ToString()
+        {
+            return $"QuedarLunes: {QuedarLunes}, QuedarMartes: {QuedarMartes}, " +
+                   $"QuedarMiercoles: {QuedarMiercoles}, QuedarJueves: {QuedarJueves}, " +
+                   $"QuedarViernes: {QuedarViernes}, QuedarSabado: {QuedarSabado}, " +
+                   $"QuedarDomingo: {QuedarDomingo}, MaxJugadores: {MaxJugadores}, "+ $"tematicas = {ListTematicas}, ";
+        }
     }
 }

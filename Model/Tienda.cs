@@ -5,31 +5,47 @@ using System.Web;
 
 namespace RPGMeet.Model
 {
+
+    /*
+     CREATE TABLE Tienda (
+    IdTienda INT IDENTITY(1,1) PRIMARY KEY,
+    NombreTienda VARCHAR(50) NOT NULL,
+    Direccion VARCHAR(50) NOT NULL,
+    HoraApertura TIME,
+    HoraCierre TIME,
+    CodigoPostal INT NOT NULL,
+    FKLocalidad INT,
+);
+     */
     public class Tienda
     {
         public int IdTienda { get; set; }
         public string NombreTienda { get; set; }
         public string Direccion { get; set; }
+        public string Descripcion { get; set; }
         public TimeSpan? HoraApertura { get; set; }
         public TimeSpan? HoraCierre { get; set; }
         public int CodigoPostal { get; set; }
+        public string Web { get; set; }
+        public int Telefono { get; set; }
+        public string ImgUrl { get; set; }
         public int? FKLocalidad { get; set; }
 
 
 
         public Tienda() { }
 
-        public Tienda(int IdTienda)
+        public Tienda(int idTienda)
         {
-            IdTienda = IdTienda;
+            IdTienda = idTienda;
         }
 
-        public Tienda(int IdTienda, string NombreTienda, string Direccion, int CodigoPostal)
+        public Tienda(int idTienda, string nombreTienda, string direccion, int codigoPostal)
         {
-            IdTienda = IdTienda;
-            NombreTienda = NombreTienda;
-            Direccion = Direccion;
-            CodigoPostal = CodigoPostal;
+            IdTienda = idTienda;
+            NombreTienda = nombreTienda;
+            Direccion = direccion;
+            CodigoPostal = codigoPostal;
         }
 
         public override string ToString()

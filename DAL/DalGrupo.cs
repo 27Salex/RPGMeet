@@ -101,10 +101,22 @@ namespace RPGMeet.DAL
 
         public static bool Create(Grupo grupo)
         {
+            /*
             String insertQuery =@"
 INSERT INTO Grupo (TituloParitda,  EstadoGrupo, MaxJugadores, EsOnline, FKGameMaster, FKTemaPrincipal, FKJuego) 
 VALUES (@TituloParitda, @EstadoGrupo, @MaxJugadores,@EsOnline, @FKGameMaster, @FKTemaPrincipal, @FKJuego); 
 SELECT CAST(SCOPE_IDENTITY() AS INT)";
+            */
+
+            //POL: Creo que con el cambio en base de datos y modelo no se crean las partidas, comentaré el code anterior por si acaso
+            String insertQuery = @"INSERT INTO Grupo (TituloParitda, Descripcion, EstadoGrupo, MaxJugadores,
+QuedarLunes, QuedarMartes, QuedarMiercoles, QuedarJueves, QuedarViernes, QuedarSabado, QuedarDomingo,
+FKJuego, FKTemaPrincipal, FKTemaSecundario, FKGameMaster, FKLocalidad)
+
+VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
+@QuedarLunes, @QuedarMartes, @QuedarMiercoles, @QuedarJueves, @QuedarViernes, @QuedarSabado, @QuedarDomingo,
+@FKJuego, @FKTemaPrincipal, @FKTemaSecundario, @FKGameMaster, @FKLocalidad)";
+
 
             // SELECT CAST(SCOPE_IDENTITY() AS INT)  al final de la sentencia sql esto devuelve el ultimo id insertado 
             try
@@ -113,23 +125,35 @@ SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
                 SqlCommand insertCommand = new SqlCommand(insertQuery, conexion);
                 insertCommand.Parameters.AddWithValue("@TituloParitda", grupo.TituloParitda);
+                insertCommand.Parameters.AddWithValue("@Descripcion", grupo.Descripcion); //new line
                 insertCommand.Parameters.AddWithValue("@EstadoGrupo", grupo.EstadoGrupo);
                 insertCommand.Parameters.AddWithValue("@MaxJugadores", grupo.MaxJugadores);
-                insertCommand.Parameters.AddWithValue("@EsOnline", grupo.EsOnline);
-                insertCommand.Parameters.AddWithValue("@FKGameMaster", grupo.FKGameMaster);
-                insertCommand.Parameters.AddWithValue("@FKTemaPrincipal", grupo.FKTemaPrincipal);
+                //insertCommand.Parameters.AddWithValue("@EsOnline", grupo.EsOnline); //No se aplica
+                insertCommand.Parameters.AddWithValue("@QuedarLunes", grupo.QuedarLunes); //new line
+                insertCommand.Parameters.AddWithValue("@QuedarMartes", grupo.QuedarMartes); //new line
+                insertCommand.Parameters.AddWithValue("@QuedarMiercoles", grupo.QuedarMiercoles); //new line
+                insertCommand.Parameters.AddWithValue("@QuedarJueves", grupo.QuedarJueves); //new line
+                insertCommand.Parameters.AddWithValue("@QuedarViernes", grupo.QuedarViernes); //new line
+                insertCommand.Parameters.AddWithValue("@QuedarSabado", grupo.QuedarSabado); //new line
+                insertCommand.Parameters.AddWithValue("@QuedarDomingo", grupo.QuedarDomingo); //new line
                 insertCommand.Parameters.AddWithValue("@FKJuego", grupo.FKJuego);
+                insertCommand.Parameters.AddWithValue("@FKTemaPrincipal", grupo.FKTemaPrincipal);
+                insertCommand.Parameters.AddWithValue("@FKTemaSecundario", grupo.FKTemaSecundario); //new line
+                insertCommand.Parameters.AddWithValue("@FKGameMaster", grupo.FKGameMaster);
+                insertCommand.Parameters.AddWithValue("@FKLocalidad", grupo.FKLocalidad); //new line
 
+                SqlDataReader reader = insertCommand.ExecuteReader();
 
+                /*
                 int UltimoId = (int)insertCommand.ExecuteScalar();
 
                 grupo.IdGrupo = UltimoId;
-
+                */
                
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ERROR: DalUsuario Register\n" + ex.Message);
+                Console.WriteLine("ERROR: DalGrupo Create\n" + ex.Message);
                 return false;
             }
             finally

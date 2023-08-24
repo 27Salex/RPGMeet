@@ -5,6 +5,7 @@
         <div>
             <asp:Label ID="Label1" runat="server" Text="Título:"></asp:Label>
             <asp:TextBox ID="TxtBoxCreateTitle" runat="server"></asp:TextBox>
+            <asp:Label ID="LbTitleError" runat="server" Font-Italic="True" ForeColor="Red" Text="Se requiere un titulo" Visible="False"></asp:Label>
         </div>
         <div>
             <asp:Label ID="Label2" runat="server" Text="Descripción:"></asp:Label>
@@ -14,6 +15,7 @@
         <div>
             <asp:Label ID="Label4" runat="server" Text="Máximo de Jugadores:"></asp:Label>
             <asp:TextBox ID="TxtBoxCreateMaxPly" runat="server" TextMode="Number"></asp:TextBox>
+            <asp:Label ID="LbMaxPlyError" runat="server" Font-Italic="True" ForeColor="Red" Text="Se requiere un número de Jugadores Máximos" Visible="False"></asp:Label>
         </div>
         <asp:Label ID="Label3" runat="server" Text="Dias a jugar:"></asp:Label>
         <asp:CheckBoxList ID="CheckBoxDays" runat="server">
@@ -25,12 +27,15 @@
             <asp:ListItem>Sabado</asp:ListItem>
             <asp:ListItem>Domingo</asp:ListItem>
         </asp:CheckBoxList>
+        <asp:Label ID="LbDaysError" runat="server" Font-Italic="True" ForeColor="Red" Text="Selecciona un dia mínimo" Visible="False"></asp:Label>
     </div>
     <div>
         <asp:Label ID="Label5" runat="server" Text="Temática principal:"></asp:Label>
         <asp:DropDownList ID="DropDownPri" runat="server">
             <asp:ListItem>Selecciona una opción</asp:ListItem>
         </asp:DropDownList>
+
+        <asp:Label ID="LbTemaPriError" runat="server" Font-Italic="True" ForeColor="Red" Text="Selecciona una temática principal" Visible="False"></asp:Label>
 
         <asp:Label ID="Label6" runat="server" Text="Temática secundaria:"></asp:Label>
         <asp:DropDownList ID="DropDownSec" runat="server">
@@ -42,6 +47,7 @@
         <asp:DropDownList ID="DropDownGame" runat="server" AutoPostBack="True">
             <asp:ListItem>Selecciona una opción</asp:ListItem>
         </asp:DropDownList>
+        <asp:Label ID="LbGameError" runat="server" Font-Italic="True" ForeColor="Red" Text="Selecciona un juego" Visible="False"></asp:Label>
     </div>
     <div>
         <asp:Label ID="Label8" runat="server" Text="Localidad:"></asp:Label>

@@ -13,8 +13,8 @@ namespace RPGMeet.Models
 
         public short EstadoGrupo { get; set; }  // FINALIZADA -1  BUSCANDO 0 START 1
         public short MaxJugadores { get; set; }
-
-        public bool EsOnline { get; set; }  // mirar si implementarlo ya que todas seran fisicas
+        
+        public bool EsOnline { get; set; }  // NO IMPLEMENTADO mirar si implementarlo ya que todas seran fisicas
         public bool QuedarLunes { get; set; }
         public bool QuedarMartes { get; set; }
         public bool QuedarMiercoles { get; set; }
@@ -26,6 +26,7 @@ namespace RPGMeet.Models
         public int FKTemaPrincipal { get; set; }
         public int FKTemaSecundario { get; set; }
         public int FKGameMaster { get; set; }
+        public int FKLocalidad { get; set; }
 
         //AL IGUAL QUE USUARIO CREAR FKJuego, FKTemaPrincipal, FKTemaSecundario
         public Usuario Creador { get; set; }
@@ -85,6 +86,39 @@ namespace RPGMeet.Models
             this.FKGameMaster = FKGameMaster;
 
         }
-   
+
+        public Grupo(
+            
+            string TituloParitda,
+            string Descripcion,
+            short MaxJugadores,
+            bool QuedarLunes,
+            bool QuedarMartes,
+            bool QuedarMiercoles,
+            bool QuedarJueves,
+            bool QuedarViernes,
+            bool QuedarSabado,
+            bool QuedarDomingo,
+            int FKJuego,
+            int FKTemaPrincipal,
+            int FKTemaSecundario,
+            int FKGameMaster)
+        {
+            this.TituloParitda = TituloParitda;
+            this.Descripcion = Descripcion;
+            this.MaxJugadores = MaxJugadores;
+            this.QuedarLunes = QuedarLunes;
+            this.QuedarMartes = QuedarMartes;
+            this.QuedarMiercoles = QuedarMiercoles;
+            this.QuedarJueves = QuedarJueves;
+            this.QuedarViernes = QuedarViernes;
+            this.QuedarSabado = QuedarSabado;
+            this.QuedarDomingo = QuedarDomingo;
+            this.FKJuego = FKJuego;
+            this.FKTemaPrincipal = FKTemaPrincipal;
+            this.FKTemaSecundario = FKTemaSecundario;
+            this.FKGameMaster = FKGameMaster;
+        }
+
     }
 }

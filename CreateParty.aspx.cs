@@ -12,9 +12,9 @@ using System.Web.UI.WebControls;
 
 namespace RPGMeet
 {
-    //TO DO:
+    //TO DO a futuro:
     /*
-     - Configurar Segunda Tematica (todo) Acabar de hablar si es necesario
+     - Configurar Segunda Tematica (No repetir con la 1ra tematica)
      */
     public partial class CreateParty : System.Web.UI.Page
     {

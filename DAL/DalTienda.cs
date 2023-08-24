@@ -27,7 +27,11 @@ namespace RPGMeet.DAL
             tienda.IdTienda = (int)reader["IdTienda"];
             tienda.NombreTienda = reader["NombreTienda"].ToString();
             tienda.Direccion = reader["Direccion"].ToString();
+            tienda.Descripcion = reader["Descripcion"].ToString();
             tienda.CodigoPostal = (int)reader["CodigoPostal"];
+            tienda.Web = reader["Web"].ToString();
+            tienda.Telefono = (int)reader["Telefono"];
+            tienda.ImgUrl = reader["UrlImg"].ToString();
 
             /*
             tienda.HoraApertura = !reader.IsDBNull(reader.GetOrdinal("HoraApertura")) ? (TimeSpan)reader["HoraApertura"] : null;

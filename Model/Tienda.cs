@@ -23,13 +23,10 @@ namespace RPGMeet.Model
         public string NombreTienda { get; set; }
         public string Direccion { get; set; }
         public string Descripcion { get; set; }
-        public TimeSpan? HoraApertura { get; set; }
-        public TimeSpan? HoraCierre { get; set; }
         public int CodigoPostal { get; set; }
         public string Web { get; set; }
         public int Telefono { get; set; }
         public string ImgUrl { get; set; }
-        public int? FKLocalidad { get; set; }
 
 
 
@@ -50,7 +47,7 @@ namespace RPGMeet.Model
 
         public override string ToString()
         {
-            return "Tienda: id: " + IdTienda + " NombreTienda: " + NombreTienda + " Direccion: " + Direccion + " HoraApertura: " + HoraApertura + " HoraCierre: " + HoraCierre + "CodigoPostal: " + CodigoPostal + "FKLocalidad: " + FKLocalidad;
+            return "Tienda: id: " + IdTienda + " NombreTienda: " + NombreTienda + " Direccion: " + Direccion + "CodigoPostal: " + CodigoPostal;
         }
     }
 

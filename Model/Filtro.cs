@@ -47,10 +47,10 @@ namespace RPGMeet.Model
         }
         public override string ToString()
         {
-            return $"QuedarLunes: {QuedarLunes}, QuedarMartes: {QuedarMartes}, " +
-                   $"QuedarMiercoles: {QuedarMiercoles}, QuedarJueves: {QuedarJueves}, " +
-                   $"QuedarViernes: {QuedarViernes}, QuedarSabado: {QuedarSabado}, " +
-                   $"QuedarDomingo: {QuedarDomingo}, MaxJugadores: {MaxJugadores}, "+ $"tematicas = {ListTematicas}, ";
+            string tematicas = string.Join(", ", ListTematicas);
+            string dias = $"Lunes: {QuedarLunes}, Martes: {QuedarMartes}, Miércoles: {QuedarMiercoles}, Jueves: {QuedarJueves}, Viernes: {QuedarViernes}, Sábado: {QuedarSabado}, Domingo: {QuedarDomingo}";
+
+            return $"Temáticas: {tematicas}\nDías: {dias} \nNumJugadores: {MaxJugadores}";
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Lista de partidas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListaDePartidasFiltros.aspx.cs" Inherits="RPGMeet.ListaDePartidasFiltros" %>
+﻿<%@ Page Title="Lista de partidas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Partidas.aspx.cs" Inherits="RPGMeet.Partidas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>

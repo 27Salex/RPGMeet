@@ -11,7 +11,7 @@ namespace RPGMeet
 {
 
 
-    public partial class ListaDePartidasFiltros
+    public partial class Partidas
     {
 
         /// <summary>

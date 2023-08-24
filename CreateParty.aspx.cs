@@ -14,7 +14,7 @@ namespace RPGMeet
 {
     //TO DO:
     /*
-     - Configurar Segunda Tematica (todo)
+     - Configurar Segunda Tematica (todo) Acabar de hablar si es necesario
      */
     public partial class CreateParty : System.Web.UI.Page
     {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -117,6 +118,8 @@ namespace RPGMeet.DAL
                 insertCommand.Parameters.AddWithValue("@username", user.Username);
                 insertCommand.Parameters.AddWithValue("@FKLocalidad", user.FKLocalidad);
 
+                SqlDataReader reader = insertCommand.ExecuteReader();
+
             }
             catch (Exception ex)
             {
@@ -157,6 +160,8 @@ namespace RPGMeet.DAL
                     selectCommand.Parameters.AddWithValue("@id", user.IdUsuario);
 
                     SqlDataReader reader = selectCommand.ExecuteReader();
+
+                    reader.Read();
 
                     insertado = ReaderUsuario(reader);
                     reader.Close();
@@ -226,7 +231,7 @@ namespace RPGMeet.DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ERROR: DalUsuario Login\n" + ex.Message);
+                Console.WriteLine("ERROR: DalUsuario CheckUsername\n" + ex.Message);
             }
             finally
             {
@@ -234,8 +239,36 @@ namespace RPGMeet.DAL
             }
             return list.Count > 0 ? list[0] : null;
         }
-    }
+        
+        public static Usuario CheckMail(String mail)
+        {
+            String selectedQuery = "SELECT * FROM usuario WHERE Email = @email";
+            List<Usuario> list = new List<Usuario>();
 
+            try
+            {
+                conexion.Open();
 
-    
+                SqlCommand command = new SqlCommand(selectedQuery, conexion);
+                command.Parameters.AddWithValue("@email", mail);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderUsuario(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalUsuario CheckMail\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+            return list.Count > 0 ? list[0] : null;
+        }
+    }  
 }

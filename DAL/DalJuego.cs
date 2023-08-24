@@ -67,7 +67,8 @@ namespace RPGMeet.DAL
                 SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
                 selectCommand.Parameters.AddWithValue("@nombreJuego", nombreJuego);
                 SqlDataReader reader = selectCommand.ExecuteReader();
-
+                
+                reader.Read();
                 juegoBuscado = ReaderJuego(reader);
 
                 reader.Close();

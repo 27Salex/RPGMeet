@@ -33,6 +33,15 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.TextBox TxtBoxCreateTitle;
 
         /// <summary>
+        /// Control LbTitleError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbTitleError;
+
+        /// <summary>
         /// Control Label2.
         /// </summary>
         /// <remarks>
@@ -69,6 +78,15 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.TextBox TxtBoxCreateMaxPly;
 
         /// <summary>
+        /// Control LbMaxPlyError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbMaxPlyError;
+
+        /// <summary>
         /// Control Label3.
         /// </summary>
         /// <remarks>
@@ -87,6 +105,15 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxDays;
 
         /// <summary>
+        /// Control LbDaysError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbDaysError;
+
+        /// <summary>
         /// Control Label5.
         /// </summary>
         /// <remarks>
@@ -103,6 +130,15 @@ namespace RPGMeet
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownPri;
+
+        /// <summary>
+        /// Control LbTemaPriError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbTemaPriError;
 
         /// <summary>
         /// Control Label6.
@@ -139,6 +175,15 @@ namespace RPGMeet
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownGame;
+
+        /// <summary>
+        /// Control LbGameError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbGameError;
 
         /// <summary>
         /// Control Label8.

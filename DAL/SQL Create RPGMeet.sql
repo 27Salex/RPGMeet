@@ -35,8 +35,8 @@ CREATE TABLE Juego (
 
 CREATE TABLE Usuario (
     IdUsuario INT IDENTITY(1,1) PRIMARY KEY,
-    Email VARCHAR UNIQUE NOT NULL,
-    Pass VARCHAR NOT NULL,
+    Email VARCHAR (100) UNIQUE NOT NULL,
+    Pass VARCHAR (100) NOT NULL,
     Username VARCHAR(30) UNIQUE NOT NULL,
     FKLocalidad INT,
     FKFotoPerfil INT
@@ -81,10 +81,12 @@ CREATE TABLE Tienda (
 
 */
 
+-- FALTA LO DE ES ONLINE 
 CREATE TABLE Grupo (
     IdGrupo INT IDENTITY(1,1) PRIMARY KEY,
     TituloParitda VARCHAR (50) NOT NULL,
     Descripcion VARCHAR (255),
+    EstadoGrupo SMALLINT NOT NULL,  -- -1 ACABADO    0 BUSCANDO     1 EMPEZADO 
     MaxJugadores SMALLINT NOT NULL,
     QuedarLunes BIT DEFAULT 0 NOT NULL,
     QuedarMartes BIT DEFAULT 0 NOT NULL,
@@ -93,10 +95,11 @@ CREATE TABLE Grupo (
     QuedarViernes BIT DEFAULT 0 NOT NULL,
     QuedarSabado BIT DEFAULT 0 NOT NULL,
     QuedarDomingo BIT DEFAULT 0 NOT NULL,
-    FKGameMaster INT NOT NULL,
+    FKJuego INT NOT NULL,
     FKTemaPrincipal INT NOT NULL,
     FKTemaSecundario INT,
-    FKJuego INT NOT NULL
+    FKGameMaster INT NOT NULL,
+    FKLocalidad INT
 );
 
 CREATE TABLE UsuarioGrupo (
@@ -200,6 +203,8 @@ VALUES ('Dungeon and Dragons 4e', 'Reglas de la 4� edici�n de Dungeon and Dr
 
 
 -- PONER LOS ID QUE CORRESPONDAN A LAS SIGUIENTES  LOCALIDADES 
+
+-- PONER LA URL CON LA IMAGEN 
 
 -- Generaci�n X Barcelona: --> Barcelona.
 INSERT INTO Tienda (NombreTienda, Descripcion, Direccion, Telefono, Web, FKLocalidad)

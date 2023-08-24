@@ -5,6 +5,18 @@ using System.Web;
 
 namespace RPGMeet.Model
 {
+
+    /*
+     CREATE TABLE Tienda (
+    IdTienda INT IDENTITY(1,1) PRIMARY KEY,
+    NombreTienda VARCHAR(50) NOT NULL,
+    Direccion VARCHAR(50) NOT NULL,
+    HoraApertura TIME,
+    HoraCierre TIME,
+    CodigoPostal INT NOT NULL,
+    FKLocalidad INT,
+);
+     */
     public class Tienda
     {
         public int Id { get; set; }

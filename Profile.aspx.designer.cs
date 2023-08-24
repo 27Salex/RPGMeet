@@ -42,6 +42,15 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label lbErrorUser;
 
         /// <summary>
+        /// Control DropDownListUpdateLoc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListUpdateLoc;
+
+        /// <summary>
         /// Control TxtBoxUpdatePsw.
         /// </summary>
         /// <remarks>
@@ -78,15 +87,6 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label lbErrorPswCon;
 
         /// <summary>
-        /// Control DropDownListUpdateLoc.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListUpdateLoc;
-
-        /// <summary>
         /// Control LbCompulsoryCamps.
         /// </summary>
         /// <remarks>
@@ -103,6 +103,15 @@ namespace RPGMeet
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnUpdateCreate;
+
+        /// <summary>
+        /// Control BtnCancelarEdicion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCancelarEdicion;
 
         /// <summary>
         /// Control ShowUser.
@@ -139,5 +148,14 @@ namespace RPGMeet
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LbLocalidad;
+
+        /// <summary>
+        /// Control BtnEditarPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnEditarPerfil;
     }
 }

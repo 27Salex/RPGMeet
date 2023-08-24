@@ -93,6 +93,7 @@ namespace RPGMeet.DAL
                 selectCommand.Parameters.AddWithValue("@nombreLocalidad", nombreLocalidad);
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
+                reader.Read();
                 localidadBuscada = ReaderLocalidad(reader);
 
                 reader.Close();

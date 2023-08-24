@@ -14,10 +14,7 @@ namespace RPGMeet
 {
     //TO DO:
     /*
-     - Comprobacion de errores
-            - Marcar Campos Obligatorios
      - Configurar Segunda Tematica (todo)
-
      */
     public partial class CreateParty : System.Web.UI.Page
     {
@@ -96,7 +93,7 @@ namespace RPGMeet
 
             grupo.TituloParitda = titulo;
             grupo.Descripcion = descripcion;
-            grupo.EstadoGrupo = 0; // De base
+            grupo.EstadoGrupo = 0; // De base va a estar buscando, luego el creador podrá elejir si cerrar o no
             grupo.MaxJugadores = maxPly;
 
             grupo.QuedarLunes = lunes;
@@ -117,7 +114,7 @@ namespace RPGMeet
             DalGrupo.Create(grupo);
 
             //Mirar donde enviar al User tras crear una partida (Seguramente a "Mis Partidas")
-            //Response.Redirect("/Login");
+            //Response.Redirect("/Mis Partidas");
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios
@@ -126,35 +123,54 @@ namespace RPGMeet
             
             if (TxtBoxCreateTitle.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxCreateTitle.BackColor = Color.FromArgb(255, 155, 122);
                 correctCamps = false;
+                TxtBoxCreateTitle.BackColor = Color.FromArgb(255, 155, 122);
+                LbTitleError.Visible = true;
             }
             else
             {
                 TxtBoxCreateTitle.BackColor = Color.White;
+                LbTitleError.Visible = false;
             }
 
             if (TxtBoxCreateMaxPly.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxCreateMaxPly.BackColor = Color.FromArgb(255, 155, 122);
                 correctCamps = false;
+                TxtBoxCreateMaxPly.BackColor = Color.FromArgb(255, 155, 122);
+                LbMaxPlyError.Visible = true;
             }
             else
             {
                 TxtBoxCreateMaxPly.BackColor = Color.White;
+                LbMaxPlyError.Visible = false;
             }
 
             bool anyDaySel = CheckBoxDays.SelectedIndex != -1; //Mira si algún dia esta marcado
-            
+
             //Dropdowns de tematica principal y juego
-            if(DropDownPri.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema prin y Loc
+            if (DropDownPri.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema prin
+            { 
                 correctCamps = false;
-            if(DropDownGame.SelectedIndex == 0)
+                LbTemaPriError.Visible = true;
+            }
+            else
+                LbTemaPriError.Visible = false;
+
+            if (DropDownGame.SelectedIndex == 0)
+            {
                 correctCamps = false;
-            if(DropDownLoc.SelectedIndex == 0)
+                LbGameError.Visible = true;
+            }
+            else
+                LbGameError.Visible = false;
+
+            if (!anyDaySel)     //Fuerza a seleccionar un dia minimo de la CheckBoxList
+            { 
                 correctCamps = false;
-            if (!anyDaySel)
-                correctCamps = false;
+                LbDaysError.Visible = true;
+            }
+            else
+                LbDaysError.Visible = false;
 
             return correctCamps;
         }

@@ -3,7 +3,7 @@
     <div>
         <h2>Perfil</h2>
     </div>
-    <div id="EditUser" class="container h5 p-5 bg-white shadow rounded" runat="server" visible="false">
+    <div id="EditUser" class="container h5 p-5 bg-white shadow rounded animate__animated animate__fadeInLeft" runat="server" visible="false">
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <Label class="form-label">Nombre de Usuario:</Label>
@@ -51,7 +51,7 @@
     </div>
     
 
-    <div id="ShowUser" class="container h5 bg-white p-5 shadow rounded" runat="server">
+    <div id="ShowUser" class="container h5 bg-white p-5 shadow rounded animate__animated animate__fadeInRight" runat="server">
         <div class="row">
             <!--Campos User -->
             <div class="col-md-6 col-sm-12">

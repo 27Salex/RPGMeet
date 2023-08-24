@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
               <h3 class="mb-3">Crear Cuenta</h3>
-                <div class="bg-white shadow rounded">
+                <div class="bg-white shadow rounded animate__animated animate__fadeInUp">
                     <div class="row">
                         <!-- Aqui empieza el cuadrado izquierdo-->
                         <div class="col-md-7 pe-0">

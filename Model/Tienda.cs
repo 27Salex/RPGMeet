@@ -7,38 +7,27 @@ namespace RPGMeet.Model
 {
     public class Tienda
     {
-        public int IdTienda { get; set; }
-        public string NombreTienda { get; set; }
-        public string Direccion { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public TimeSpan? HoraApertura { get; set; }
-        public TimeSpan? HoraCierre { get; set; }
-        public int CodigoPostal { get; set; }
-        public string Web { get; set; }
-        public int Telefono { get; set; }
-        public string ImgUrl { get; set; }
-        public int? FKLocalidad { get; set; }
+        public string UrlImagen { get; set; }
+        public string Direccion { get; set; }
+        public string SitioWeb { get; set; }
+        public string Telefono { get; set; }
 
-
-
-        public Tienda() { }
-
-        public Tienda(int idTienda)
+        public Tienda(int id, string nombre, string descripcion, string urlImagen = "", string direccion = "", string sitioWeb = "", string telefono = "123 45 67 89")
         {
-            IdTienda = idTienda;
-        }
-
-        public Tienda(int idTienda, string nombreTienda, string direccion, int codigoPostal)
-        {
-            IdTienda = idTienda;
-            NombreTienda = nombreTienda;
+            Id = id;
+            Nombre = nombre;
+            Descripcion = descripcion;
+            UrlImagen = urlImagen;
             Direccion = direccion;
-            CodigoPostal = codigoPostal;
+            SitioWeb = sitioWeb;
+            Telefono = telefono;
         }
-
         public override string ToString()
         {
-            return "Tienda: id: " + IdTienda + " NombreTienda: " + NombreTienda + " Direccion: " + Direccion + " HoraApertura: " + HoraApertura + " HoraCierre: " + HoraCierre + "CodigoPostal: " + CodigoPostal + "FKLocalidad: " + FKLocalidad;
+            return $"ID: ${Id}, Nombre: ${Nombre}, Descripción: ${Descripcion}, Imagen: ${UrlImagen}, Dirección: ${Direccion}, Web: ${SitioWeb}, Teléfono: ${Telefono}";
         }
     }
 

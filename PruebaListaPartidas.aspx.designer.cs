@@ -33,13 +33,22 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Panel pnlPartidas;
 
         /// <summary>
-        /// Control partida1.
+        /// Control rowPartidas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel partida1;
+        protected global::System.Web.UI.WebControls.Panel rowPartidas;
+
+        /// <summary>
+        /// Control pnlPartida1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlPartida1;
 
         /// <summary>
         /// Control pnlTituloPartida.

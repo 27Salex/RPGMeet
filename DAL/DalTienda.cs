@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace RPGMeet.DAL
 {
 
-  
+    // !! REVISAR EN FUNCION DEL MODELO 
     public static class DalTienda
     {
         private static SqlConnection conexion = Conexion.Instance().Connection;

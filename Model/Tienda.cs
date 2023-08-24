@@ -19,8 +19,10 @@ namespace RPGMeet.Model
      */
     public class Tienda
     {
-        public int Id { get; set; }
+        public int IdTienda { get; set; }
         public string Nombre { get; set; }
+        public string Direccion { get; set; }
+
         public string Descripcion { get; set; }
         public int CodigoPostal { get; set; }
         public string Web { get; set; }
@@ -36,20 +38,20 @@ namespace RPGMeet.Model
             IdTienda = idTienda;
         }
 
-        public Tienda(int id, string nombre, string descripcion, string urlImagen = "", string direccion = "", string sitioWeb = "", string telefono = "123 45 67 89", string codigoPostal = null)
+        public Tienda(int id, string nombre, string descripcion, string urlImagen = "", string direccion = "", string sitioWeb = "", int telefono = 0, int codigoPostal = 0)
         {
-            Id = id;
+            IdTienda = id;
             Nombre = nombre;
             Descripcion = descripcion;
-            UrlImagen = urlImagen;
+            ImgUrl = urlImagen;
             Direccion = direccion;
-            SitioWeb = sitioWeb;
+            Web = sitioWeb;
             Telefono = telefono;
             CodigoPostal = codigoPostal;
         }
         public override string ToString()
         {
-            return "Tienda: id: " + IdTienda + " NombreTienda: " + NombreTienda + " Direccion: " + Direccion + "CodigoPostal: " + CodigoPostal;
+            return "Tienda: id: " + IdTienda + " NombreTienda: " + Nombre + " Direccion: " + Direccion + "CodigoPostal: " + CodigoPostal;
         }
     }
 

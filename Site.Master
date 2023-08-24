@@ -57,19 +57,19 @@
                             <ul class=" d-flex align-items-center navbar-nav flex-grow-1 justify-content-end">
                                 <!-- Navegacion a pagina buscar partidas-->
                                 <li class="nav-item">
-                                    <a class="nav-link" runat="server" href="~/">
+                                    <a class="nav-link" runat="server" href="Partidas">
                                         Buscar Partida
                                     </a>
                                 </li>
                                 <!-- Navegacion a pagina mis partidas-->
                                 <li class="nav-item">
-                                    <a class="nav-link" runat="server" href="~/">
+                                    <a class="nav-link" runat="server" href="/MisPartidas">
                                         Mis Partidas
                                     </a>
                                 </li>
                                 <!-- Navegacion a pagina locales-->
                                 <li class="nav-item">
-                                    <a class="nav-link" runat="server" href="~/">
+                                    <a class="nav-link" runat="server" href="/Locales">
                                         Locales
                                     </a>
                                 </li>

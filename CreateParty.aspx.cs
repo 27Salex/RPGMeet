@@ -12,21 +12,21 @@ using System.Web.UI.WebControls;
 
 namespace RPGMeet
 {
-    //TO DO:
+    //TO DO a futuro:
     /*
-     - Comprobacion de errores
-            - Evitar Campos Vacios
-            - Marcar Campos Obligatorios
-     - Recojer Id de GM (Del Session)
-     - Configurar Segunda Tematica (todo)
+     - Configurar Segunda Tematica (No repetir con la 1ra tematica)
      */
     public partial class CreateParty : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["UserID"] == null && Session["Username"] == null)
+            {
+                Response.Redirect("/Login");
+            }
+
             if (!IsPostBack)
             {
-
                 List<string> localidades = new List<string>();
                 List<string> juegos = new List<string>();
                 List<string> temas = new List<string>();
@@ -83,21 +83,38 @@ namespace RPGMeet
             bool sabado = CheckBoxDays.Items[5].Selected;
             bool domingo = CheckBoxDays.Items[6].Selected;
 
-            int temaPri = DropDownPri.SelectedIndex;
-            int temaSec = DropDownSec.SelectedIndex;
-            int juego = DropDownGame.SelectedIndex;
+            int juego = DalJuego.GetIdByName(DropDownGame.SelectedValue);
+            int temaPri = DalTema.GetIdByName(DropDownPri.SelectedValue);
+            int temaSec = DalTema.GetIdByName(DropDownPri.SelectedValue); //Mirar que no se duplique el valor
+            int gameMaster = int.Parse(Session["UserID"].ToString());
+            int localidad = DalLocalidad.GetIdByName(DropDownLoc.SelectedValue);
 
             Grupo grupo = new Grupo();
 
             grupo.TituloParitda = titulo;
-            grupo.EstadoGrupo = 1; //Hardcoded
+            grupo.Descripcion = descripcion;
+            grupo.EstadoGrupo = 0; // De base va a estar buscando, luego el creador podrá elejir si cerrar o no
             grupo.MaxJugadores = maxPly;
-            grupo.FKGameMaster = 1; //Hardcoded Por session
-            grupo.FKTemaPrincipal = DalJuego.GetIdByName(DropDownPri.SelectedValue); //Revisar al incorporar el otro dropdown
-            grupo.FKJuego = DalJuego.GetIdByName(DropDownGame.SelectedValue);
 
+            grupo.QuedarLunes = lunes;
+            grupo.QuedarMartes = martes;
+            grupo.QuedarMiercoles = miercoles;
+            grupo.QuedarJueves = jueves;
+            grupo.QuedarViernes = viernes;
+            grupo.QuedarSabado = sabado;
+            grupo.QuedarDomingo = domingo;
+
+            grupo.FKJuego = juego;
+            grupo.FKTemaPrincipal = temaPri;
+            grupo.FKTemaSecundario = temaSec; //Mirar que no se pueda insertar el mismo tema en los 2 Dropdowns
+            grupo.FKGameMaster = gameMaster;
+            grupo.FKLocalidad = localidad;
+            
             //Envia el grupo a la base de datos
-            //DalGrupo.Create(grupo);
+            DalGrupo.Create(grupo);
+
+            //Mirar donde enviar al User tras crear una partida (Seguramente a "Mis Partidas")
+            //Response.Redirect("/Mis Partidas");
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios
@@ -106,32 +123,55 @@ namespace RPGMeet
             
             if (TxtBoxCreateTitle.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxCreateTitle.BackColor = Color.FromArgb(255, 155, 122);
                 correctCamps = false;
+                TxtBoxCreateTitle.BackColor = Color.FromArgb(255, 155, 122);
+                LbTitleError.Visible = true;
             }
             else
             {
                 TxtBoxCreateTitle.BackColor = Color.White;
+                LbTitleError.Visible = false;
             }
 
             if (TxtBoxCreateMaxPly.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxCreateMaxPly.BackColor = Color.FromArgb(255, 155, 122);
                 correctCamps = false;
+                TxtBoxCreateMaxPly.BackColor = Color.FromArgb(255, 155, 122);
+                LbMaxPlyError.Visible = true;
             }
             else
             {
                 TxtBoxCreateMaxPly.BackColor = Color.White;
+                LbMaxPlyError.Visible = false;
             }
+
+            bool anyDaySel = CheckBoxDays.SelectedIndex != -1; //Mira si algún dia esta marcado
+
             //Dropdowns de tematica principal y juego
-            
-            if(DropDownPri.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema prin y Loc
+            if (DropDownPri.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema prin
+            { 
                 correctCamps = false;
-            if(DropDownGame.SelectedIndex == 0)
+                LbTemaPriError.Visible = true;
+            }
+            else
+                LbTemaPriError.Visible = false;
+
+            if (DropDownGame.SelectedIndex == 0)
+            {
                 correctCamps = false;
-            if(DropDownLoc.SelectedIndex == 0)
+                LbGameError.Visible = true;
+            }
+            else
+                LbGameError.Visible = false;
+
+            if (!anyDaySel)     //Fuerza a seleccionar un dia minimo de la CheckBoxList
+            { 
                 correctCamps = false;
-            
+                LbDaysError.Visible = true;
+            }
+            else
+                LbDaysError.Visible = false;
+
             return correctCamps;
         }
     }

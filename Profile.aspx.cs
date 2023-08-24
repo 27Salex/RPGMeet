@@ -14,27 +14,31 @@ using System.Web.UI.WebControls;
 
 namespace RPGMeet
 {
-    //TO DO:
-    //Cargar Localidad al Dropdown
-    //Comprobar Contraseñas
-    //Comprovar si el User existe
-    //Mostrar si falla
     public partial class Profile : System.Web.UI.Page
     {
+        private Usuario usuarioActivo;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Username"] != null && Session["UserID"] != null)
             {
-                Usuario usuario = DalUsuario.SelectById(int.Parse(Session["UserID"].ToString()));
-                LbUsername.Text = usuario.Username;
-                LbEmail.Text = usuario.Email;
-                LbLocalidad.Text = usuario.FKLocalidad.ToString();
+                usuarioActivo = DalUsuario.SelectById(int.Parse(Session["UserID"].ToString()));
+                if (usuarioActivo == null)
+                    Response.Redirect("/Profile");
+                else
+                {
+                    LbUsername.Text = usuarioActivo.Username;
+                    LbEmail.Text = usuarioActivo.Email;
+                    LbLocalidad.Text = usuarioActivo.FKLocalidad.ToString();
+                }
             }
             else
                 Response.Redirect("/Login");
-            
-            
-            //Cargar lista de localidades de la base de datos a DropDownListUpdateLoc
+
+
+            if (IsPostBack)
+            {
+
+            }
         }
 
         
@@ -42,8 +46,9 @@ namespace RPGMeet
         {
             bool camps = CheckCamps();
             bool pass = CheckPass();
+            bool user = UsedUsername();
 
-            if (camps && pass) //Comprovar todas las condiciones antes de crear el Usuario
+            if (camps && pass && user) //Comprovar todas las condiciones antes de crear el Usuario
             {
                 UpdateUser();
             }
@@ -51,49 +56,70 @@ namespace RPGMeet
 
         void UpdateUser()
         {
-            string pass = TxtBoxUpdatePsw.Text;
-            string username = TxtBoxUpdateUser.Text;
+            string pass = TxtBoxUpdatePsw.Text.Trim();
+            string username = TxtBoxUpdateUser.Text.Trim();
             int localidad = DropDownListUpdateLoc.TabIndex;
             Usuario newUser = new Usuario(null, pass, username, localidad);
             newUser.IdUsuario = int.Parse(Session["UserID"].ToString());
             Usuario createdUser = DalUsuario.Update(newUser);
+            if (createdUser != null)
+            {
+                DesactivarEdicion(createdUser, EventArgs.Empty);
+            }
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios
         {
-            bool correctCamps;
-            if (TxtBoxUpdateUser.Text.IsNullOrWhiteSpace() ||
-                TxtBoxUpdatePsw.Text.IsNullOrWhiteSpace() || TxtBoxUpdatePswCon.Text.IsNullOrWhiteSpace())
-            {
-                correctCamps = false;
-                LbCompulsoryCamps.Visible = true;
-            }
-            else
-            {
-                correctCamps = true;
-                LbCompulsoryCamps.Visible = false;
-            }
+            bool correctCamps = true;
 
-            if (correctCamps) //Marcar en rojo los campos obligatorios
+            if (TxtBoxUpdateUser.Text.IsNullOrWhiteSpace())
             {
                 TxtBoxUpdateUser.BackColor = Color.FromArgb(255, 155, 122);
-                TxtBoxUpdatePsw.BackColor = Color.FromArgb(255, 155, 122);
-                TxtBoxUpdatePswCon.BackColor = Color.FromArgb(255, 155, 122);
-                LbCompulsoryCamps.Visible = true;
+                correctCamps = false;
             }
             else
             {
                 TxtBoxUpdateUser.BackColor = Color.White;
+            }
+            if (TxtBoxUpdatePsw.Text.IsNullOrWhiteSpace())
+            {
+                TxtBoxUpdatePsw.BackColor = Color.FromArgb(255, 155, 122);
+                correctCamps = false;
+            }
+            else
+            {
                 TxtBoxUpdatePsw.BackColor = Color.White;
-                TxtBoxUpdatePswCon.BackColor = Color.White;
-                LbCompulsoryCamps.Visible = false;
             }
 
-            
+            if (TxtBoxUpdatePswCon.Text.IsNullOrWhiteSpace())
+            {
+                TxtBoxUpdatePswCon.BackColor = Color.FromArgb(255, 155, 122);
+                correctCamps = false;
+            }
+            else
+            {
+                TxtBoxUpdatePswCon.BackColor = Color.White;
+            }
 
             return correctCamps;
         }
-
+        bool UsedUsername() //Devuelve si el Username ya esta seleccionado
+        {
+            bool notPicked = false;
+            Usuario user = DalUsuario.CheckUsername(TxtBoxUpdateUser.Text.Trim().ToLower());
+            if (user == null || TxtBoxUpdateUser.Text.Trim().ToLower() == Session["Username"].ToString().ToLower())
+            {
+                notPicked = true;
+                TxtBoxUpdateUser.BackColor = Color.White;
+                lbErrorUser.Visible = false;
+            }
+            else
+            {
+                TxtBoxUpdateUser.BackColor = Color.FromArgb(255, 155, 122);
+                lbErrorUser.Visible = true;
+            }
+            return notPicked;
+        }
         bool CheckPass() //Comprovar que la contraseña cumple los requisitos y mostrarle al usuario si no es el caso
         {
             var regexItem = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
@@ -124,6 +150,23 @@ namespace RPGMeet
             }
 
             return completePsw;
+        }
+        public void ActivarEdicion(object sender, EventArgs e)
+        {
+            //Intercambiamos el formulario a modo edicion
+            ShowUser.Visible = false;
+            EditUser.Visible = true;
+
+            //Cargamos los valores del usuario activo
+            TxtBoxUpdateUser.Text = usuarioActivo.Username;
+            TxtBoxUpdatePsw.Text = usuarioActivo.Pass;
+            TxtBoxUpdatePswCon.Text = usuarioActivo.Pass;
+            
+        }
+        public void DesactivarEdicion(object sender, EventArgs e)
+        {
+            ShowUser.Visible = true;
+            EditUser.Visible = false;
         }
     }
 }

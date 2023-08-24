@@ -64,6 +64,7 @@ namespace RPGMeet.DAL
                 selectCommand.Parameters.AddWithValue("@nombreTema", nombreTema);
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
+                reader.Read();
                 temaBuscado = ReaderTema(reader);
 
                 reader.Close();

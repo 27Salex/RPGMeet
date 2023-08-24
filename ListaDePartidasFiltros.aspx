@@ -47,7 +47,7 @@
                         <!-- Filtro Disponibilidad -->
                         <div class="form-group">
                             <h3>Disponibilidad</h3>
-                            <asp:CheckBoxList ID="chkListDisponibilidad" CssClass="form-check" runat="server">
+                            <asp:CheckBoxList ID="chkListDisponibilidad" CssClass="form-check" runat="server" >
                                 <asp:ListItem Text="Lunes" Value="Lunes" />
                                 <asp:ListItem Text="Martes" Value="Martes" />
                                 <asp:ListItem Text="Miércoles" Value="Miercoles" />
@@ -60,23 +60,9 @@
 
                         <!-- Filtro Número de Jugadores -->
                         <div class="form-group">
-                            <h3>Número de jugadores</h3>
-                            <asp:RadioButtonList ID="rdListNumJugadores" CssClass="form-check" runat="server">
-                                <asp:ListItem Text="Corto (1 a 3 jugadores)" Value="Corto" />
-                                <asp:ListItem Text="Mediano (3 a 7 jugadores)" Value="Mediano" />
-                                <asp:ListItem Text="Grande (7 a 12 jugadores)" Value="Grande" />
-                                <asp:ListItem Text="Extra Grande (12 o más jugadores)" Value="ExtraGrande" />
-                            </asp:RadioButtonList>
-                        </div>
-
-                        <!-- Filtro Estado de la Partida -->
-                        <div class="form-group">
-                            <h3>Estado de la partida</h3>        
-                            <asp:RadioButtonList ID="rbListEstadoPartida" CssClass="form-check" AutoPostBack="true" OnSelectedIndexChanged="ObtenerEstadoPartida_SelectedIndexChanged" runat="server">
-                                <asp:ListItem Text="Iniciada" Value="Iniciada" />
-                                <asp:ListItem Text="Por Iniciar" Value="PorIniciar" />
-                                <asp:ListItem Text="Acabada" Value="Acabada" />
-                            </asp:RadioButtonList>
+                            <h3>Número de jugadores </h3>
+                            <asp:TextBox ID="txtMaxJugadores" runat="server" CssClass="form-control" type="number" max="50"></asp:TextBox>
+                           
                         </div>
 
                         <!-- Filtro Temática -->
@@ -94,6 +80,10 @@
                                 <asp:ListItem Text="Espionaje y conspiraciones" Value="EspionajeConspiraciones" />
                                 <asp:ListItem Text="Fantasía oscura" Value="FantasiaOscura" />
                             </asp:CheckBoxList>
+                            <br />
+                            <asp:Button ID="btnAplicarFiltros" runat="server" Text="Button" OnClick="btnAplicarFiltros_Click" />
+                            <br />
+                            <asp:Label ID="lblPrueba" runat="server" Text="Label"></asp:Label>
                         </div>
                     </div>
                 </div>

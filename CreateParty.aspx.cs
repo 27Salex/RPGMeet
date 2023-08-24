@@ -19,7 +19,11 @@ namespace RPGMeet
     public partial class CreateParty : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {   
+        {
+            Filtro filtro = new Filtro();
+            filtro.QuedarMartes = true;
+            filtro.QuedarViernes = true;
+            DalGrupo.AplicarFiltros(filtro);
             for (int i = 2; i < 11; i++) //Rellenar MaxPly
             {
                 DropDownMaxPly.Items.Add(new ListItem(i.ToString()));

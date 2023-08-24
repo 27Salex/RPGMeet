@@ -165,7 +165,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 
         }
 
-        public static List<Grupo> AplicarFiltros(Filtro filtro)
+        public static List<Grupo> AplicarFiltros(Filtro filtro) //COMPROBAR QUE DEVUELVE LA QUERY
         {
             String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores = @maxJugadores";
             List<Grupo> list = new List<Grupo>();
@@ -177,31 +177,31 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
             {
                 if (filtro.QuedarLunes)
                 {
-                    selectQuery += "AND QuedarLunes = " + filtro.QuedarLunes;
+                    selectQuery += " AND QuedarLunes = " + filtro.QuedarLunes;
                 }
                 if (filtro.QuedarMartes)
                 {
-                    selectQuery += "AND QuedarMartes = " + filtro.QuedarMartes;
+                    selectQuery += " AND QuedarMartes = " + filtro.QuedarMartes;
                 }
                 if (filtro.QuedarMiercoles)
                 {
-                    selectQuery += "AND QuedarMiercoles = " + filtro.QuedarMiercoles;
+                    selectQuery += " AND QuedarMiercoles = " + filtro.QuedarMiercoles;
                 }
                 if (filtro.QuedarJueves)
                 {
-                    selectQuery += "AND QuedarJueves = " + filtro.QuedarJueves;
+                    selectQuery += " AND QuedarJueves = " + filtro.QuedarJueves;
                 }
                 if (filtro.QuedarViernes)
                 {
-                    selectQuery += "AND QuedarViernes = " + filtro.QuedarViernes;
+                    selectQuery += " AND QuedarViernes = " + filtro.QuedarViernes;
                 }
                 if (filtro.QuedarSabado)
                 {
-                    selectQuery += "AND QuedarSabado = " + filtro.QuedarSabado;
+                    selectQuery += " AND QuedarSabado = " + filtro.QuedarSabado;
                 }
                 if (filtro.QuedarDomingo)
                 {
-                    selectQuery += "AND QuedarDomingo = " + filtro.QuedarDomingo;
+                    selectQuery += " AND QuedarDomingo = " + filtro.QuedarDomingo;
                 }
             }
 
@@ -225,6 +225,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
             {
                 conexion.Close();
             }
+            Console.WriteLine(selectQuery);
             return list;
         }
 

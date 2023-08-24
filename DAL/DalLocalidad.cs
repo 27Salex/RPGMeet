@@ -51,7 +51,7 @@ namespace RPGMeet.DAL
             return list;
         }
 
-        public static Localidad SelectById(int idLocalidad)
+        public static Localidad SelectById(int? idLocalidad)
         {
             String selectQuery = "SELECT * FROM Localidad WHERE IdLocalidad = @id";
             Localidad localidadBuscado;
@@ -63,6 +63,7 @@ namespace RPGMeet.DAL
                 SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
                 selectCommand.Parameters.AddWithValue("@id", idLocalidad);
                 SqlDataReader reader = selectCommand.ExecuteReader();
+                
                 reader.Read();
                 localidadBuscado = ReaderLocalidad(reader);
 
@@ -94,6 +95,7 @@ namespace RPGMeet.DAL
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
                 reader.Read();
+
                 localidadBuscada = ReaderLocalidad(reader);
 
                 reader.Close();

@@ -20,7 +20,7 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {   
-            for (int i = 2; i < 11; i++)
+            for (int i = 2; i < 11; i++) //Rellenar MaxPly
             {
                 DropDownMaxPly.Items.Add(new ListItem(i.ToString()));
             }
@@ -119,7 +119,7 @@ namespace RPGMeet
             DalGrupo.Create(grupo);
 
             //Mirar donde enviar al User tras crear una partida (Seguramente a "Mis Partidas")
-            //Response.Redirect("/Mis Partidas");
+            Response.Redirect("/MisPartidas");
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios

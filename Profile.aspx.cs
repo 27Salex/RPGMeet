@@ -31,9 +31,9 @@ namespace RPGMeet
                         List<string> localidades = new List<string>();
                         localidades.Add("Selecciona una opción");
 
-                        foreach (Localidad localidad in DalLocalidad.SelectAll())
+                        foreach (Localidad loc in DalLocalidad.SelectAll())
                         {
-                            localidades.Add(localidad.NombreLocalidad);
+                            localidades.Add(loc.NombreLocalidad);
                         }
 
                         DropDownListUpdateLoc.DataSource = localidades;
@@ -41,7 +41,12 @@ namespace RPGMeet
                     }
                     LbUsername.Text = usuarioActivo.Username;
                     LbEmail.Text = usuarioActivo.Email;
-                    LbLocalidad.Text = DalLocalidad.SelectById(usuarioActivo.FKLocalidad).NombreLocalidad;
+
+                    Localidad localidad = DalLocalidad.SelectById(usuarioActivo.FKLocalidad);
+                    LbLocalidad.Text = "No selecionado";
+                    if (localidad != null)
+                        LbLocalidad.Text = localidad.NombreLocalidad;
+
                     DropDownListUpdateLoc.DataBind();
                 }
             }

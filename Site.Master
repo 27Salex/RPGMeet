@@ -13,7 +13,7 @@
     </asp:PlaceHolder>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="Home.css" >
+    <link rel="stylesheet" type="text/css" href=""  >
     <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -64,7 +64,7 @@
                                 </li>
                                 <!-- Navegacion a pagina mis partidas-->
                                 <li class="nav-item">
-                                    <a class="nav-link" runat="server" href="/MisPartidas">
+                                    <a class="nav-link" runat="server" href="/MyParties">
                                         Mis Partidas
                                     </a>
                                 </li>
@@ -88,7 +88,7 @@
                                     <ul class="dropdown-menu dropAbout">
                                         <li><a class="dropdown-item" href="/About">Contacto</a></li>
                                         <li><a class="dropdown-item" href="#">Equipo</a></li>
-                                        <li><a class="dropdown-item" href="#">Reporte de bugs</a></li>
+                                        <li><a class="dropdown-item" href="https://github.com/27Salex/RPGMeet/issues">Reporte de bugs</a></li>
                                     </ul>
                                 </li>
                                 <!--  Dropdown Prefil y cerrar sesion-->

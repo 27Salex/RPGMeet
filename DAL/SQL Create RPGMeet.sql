@@ -58,7 +58,7 @@ CREATE TABLE Tienda (
     Descripcion VARCHAR(200),
     CodigoPostal INT NOT NULL,
     Web VARCHAR(500),
-    Telefono INT (9),
+    Telefono INT,
     UrlImg VARCHAR (1000),
 );
 /*

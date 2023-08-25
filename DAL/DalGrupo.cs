@@ -203,7 +203,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
                 {
                     selectQuery += " AND QuedarDomingo = " + filtro.QuedarDomingo;
                 }
-            }
+            }       //Añadir la busqueda por tema
 
             try
             {

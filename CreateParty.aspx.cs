@@ -90,7 +90,7 @@ namespace RPGMeet
 
             int juego = DalJuego.GetIdByName(DropDownGame.SelectedValue);
             int temaPri = DalTema.GetIdByName(DropDownPri.SelectedValue);
-            int temaSec = DalTema.GetIdByName(DropDownPri.SelectedValue); //Mirar que no se duplique el valor
+            int temaSec = DalTema.GetIdByName(DropDownSec.SelectedValue); //Mirar que no se duplique el valor
             int gameMaster = int.Parse(Session["UserID"].ToString());
             int localidad = DalLocalidad.GetIdByName(DropDownLoc.SelectedValue);
 

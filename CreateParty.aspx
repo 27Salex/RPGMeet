@@ -10,27 +10,27 @@
                             <div class="col-md-6 col-sm-12">
                                 <label for="TxtBoxCreateTitle" class="form-label">Título:</label>
                                 <asp:TextBox type="text" id="TxtBoxCreateTitle" class="form-control" runat="server"></asp:TextBox>
-                                <asp:Label ID="LbTitleError" runat="server" Font-Italic="True" ForeColor="Red" Text="Se requiere un titulo" Visible="False"></asp:Label>
+                                <asp:Label ID="LbTitleError" runat="server" CssCLass="form-text text-danger" Text="Se requiere un titulo" Visible="False"></asp:Label>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <label for="TxtBoxCreateMaxPly" class="form-label">Máximo de Jugadores:<span runat="server" id="numJugadores"></span></label> <br />
+                                <label for="TxtBoxCreateMaxPly" class="form-label">Máximo de Jugadores:<span runat="server" id="numJugadores">&nbsp;6</span></label> <br />
                                 <asp:TextBox OnTextChanged="TxtBoxCreateMaxPly_TextChanged" AutoPostBack="true" type="range" min="2" max="10" id="TxtBoxCreateMaxPly" class="form-range" runat="server"></asp:TextBox>
-                                <asp:Label ID="LbMaxPlyError" runat="server" Font-Italic="True" ForeColor="Red" Text="Se requiere un número de Jugadores Máximos" Visible="False"></asp:Label>
+                                <asp:Label ID="LbMaxPlyError" runat="server" CssCLass="form-text text-danger" Text="Se requiere un número de Jugadores Máximos" Visible="False"></asp:Label>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <label class="form-label">Dias a jugar:</label>
                                 <div class="list-group">
                                     <asp:CheckBoxList ID="CheckBoxDays" runat="server">
-                                        <asp:ListItem>Lunes</asp:ListItem>
-                                        <asp:ListItem>Martes</asp:ListItem>
-                                        <asp:ListItem>Miercoles</asp:ListItem>
-                                        <asp:ListItem>Jueves</asp:ListItem>
-                                        <asp:ListItem>Viernes</asp:ListItem>
-                                        <asp:ListItem>Sabado</asp:ListItem>
-                                        <asp:ListItem>Domingo</asp:ListItem>
+                                        <asp:ListItem>&nbsp;Lunes</asp:ListItem>
+                                        <asp:ListItem>&nbsp;Martes</asp:ListItem>
+                                        <asp:ListItem>&nbsp;Miercoles</asp:ListItem>
+                                        <asp:ListItem>&nbsp;Jueves</asp:ListItem>
+                                        <asp:ListItem>&nbsp;Viernes</asp:ListItem>
+                                        <asp:ListItem>&nbsp;Sabado</asp:ListItem>
+                                        <asp:ListItem>&nbsp;Domingo</asp:ListItem>
                                     </asp:CheckBoxList>
                                 </div>
-                                <asp:Label ID="LbDaysError" runat="server" Font-Italic="True" ForeColor="Red" Text="Selecciona un dia mínimo" Visible="False"></asp:Label>
+                                <asp:Label ID="LbDaysError" runat="server" CssCLass="form-text text-danger" Text="Selecciona un dia mínimo" Visible="False"></asp:Label>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <label for="TextBox1" class="form-label">Descripción:</label>
@@ -41,7 +41,7 @@
                                 <asp:DropDownList ID="DropDownPri" runat="server" CssClass="form-select">
                                     <asp:ListItem>Selecciona una opción</asp:ListItem>
                                 </asp:DropDownList>
-                                <asp:Label ID="LbTemaPriError" runat="server" Font-Italic="True" ForeColor="Red" Text="Selecciona una temática principal" Visible="False"></asp:Label>
+                                <asp:Label ID="LbTemaPriError" runat="server" CssCLass="form-text text-danger" Text="Selecciona una temática principal" Visible="False"></asp:Label>
                             </div>
                             <div class="col-md-4 col-sm-12">
                                 <label for="DropDownSec" class="form-label">Temática secundaria:</label>
@@ -54,7 +54,7 @@
                                 <asp:DropDownList ID="DropDownGame" runat="server" AutoPostBack="True" CssClass="form-select">
                                     <asp:ListItem>Selecciona una opción</asp:ListItem>
                                 </asp:DropDownList>
-                                <asp:Label ID="LbGameError" runat="server" Font-Italic="True" ForeColor="Red" Text="Selecciona un juego" Visible="False"></asp:Label> <br />
+                                <asp:Label ID="LbGameError" runat="server" CssCLass="form-text text-danger" Text="Selecciona un juego" Visible="False"></asp:Label> <br />
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <asp:Button ID="BtnCreateParty" runat="server" Text="Crear Partida" OnClick="BtnCreateParty_Click" CssClass="btn btn-primary" />

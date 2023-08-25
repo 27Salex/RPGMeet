@@ -25,6 +25,15 @@ namespace RPGMeet
                 Response.Redirect("/Login");
             }
 
+            foreach (TextBox txtbox in this.Controls.OfType<TextBox>())
+                if(txtbox.TextMode == TextBoxMode.Range)
+                    txtbox.CssClass = "form-range";
+                else
+                    txtbox.CssClass = "form-control";
+                
+            foreach (DropDownList dropDownList in this.Controls.OfType<DropDownList>())
+                dropDownList.CssClass = "form-select";
+
             if (!IsPostBack)
             {
                 List<string> localidades = new List<string>();
@@ -118,24 +127,24 @@ namespace RPGMeet
             if (TxtBoxCreateTitle.Text.IsNullOrWhiteSpace())
             {
                 correctCamps = false;
-                TxtBoxCreateTitle.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxCreateTitle.CssClass=" form-control is-invalid";
                 LbTitleError.Visible = true;
             }
             else
             {
-                TxtBoxCreateTitle.BackColor = Color.White;
+                TxtBoxCreateTitle.CssClass=" form-control is-valid";
                 LbTitleError.Visible = false;
             }
 
             if (TxtBoxCreateMaxPly.Text.IsNullOrWhiteSpace())
             {
                 correctCamps = false;
-                TxtBoxCreateMaxPly.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxCreateMaxPly.CssClass=" form-control is-invalid";
                 LbMaxPlyError.Visible = true;
             }
             else
             {
-                TxtBoxCreateMaxPly.BackColor = Color.White;
+                TxtBoxCreateMaxPly.CssClass=" form-control is-valid";
                 LbMaxPlyError.Visible = false;
             }
 
@@ -146,6 +155,7 @@ namespace RPGMeet
             { 
                 correctCamps = false;
                 LbTemaPriError.Visible = true;
+                DropDownPri.CssClass = " form-control is-invalid";
             }
             else
                 LbTemaPriError.Visible = false;
@@ -154,6 +164,7 @@ namespace RPGMeet
             {
                 correctCamps = false;
                 LbGameError.Visible = true;
+                DropDownSec.CssClass = " form-control is-invalid";
             }
             else
                 LbGameError.Visible = false;

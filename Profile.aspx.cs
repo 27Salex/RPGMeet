@@ -26,6 +26,10 @@ namespace RPGMeet
                     Response.Redirect("/Profile");
                 else
                 {
+                    foreach (TextBox txtbox in this.Controls.OfType<TextBox>())
+                        txtbox.CssClass = "form-control";
+                    foreach (DropDownList dropDownList in this.Controls.OfType<DropDownList>())
+                        dropDownList.CssClass = "form-select";
                     if (!IsPostBack)
                     {
                         List<string> localidades = new List<string>();

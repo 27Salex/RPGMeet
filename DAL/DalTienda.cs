@@ -28,7 +28,7 @@ namespace RPGMeet.DAL
             tienda.Nombre = reader["NombreTienda"].ToString();
             tienda.Direccion = reader["Direccion"].ToString();
             tienda.Descripcion = reader["Descripcion"].ToString();
-            tienda.CodigoPostal = (int)reader["CodigoPostal"];
+            tienda.CodigoPostal = reader["CodigoPostal"].ToString();
             tienda.Web = reader["Web"].ToString();
             tienda.Telefono = (int)reader["Telefono"];
             tienda.ImgUrl = reader["UrlImg"].ToString();

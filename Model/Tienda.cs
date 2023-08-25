@@ -23,7 +23,7 @@ namespace RPGMeet.Model
         public string Nombre { get; set; }
         public string Direccion {get; set;}
         public string Descripcion { get; set; }
-        public int CodigoPostal { get; set; }
+        public string CodigoPostal { get; set; }
         public string Web { get; set; }
         public int Telefono { get; set; }
         public string ImgUrl { get; set; }
@@ -37,7 +37,7 @@ namespace RPGMeet.Model
             IdTienda = idTienda;
         }
 
-        public Tienda(int id, string nombre, string descripcion, string urlImagen = "", string direccion = "", string sitioWeb = "", int telefono = 0, int codigoPostal = 0)
+        public Tienda(int id, string nombre, string descripcion, string urlImagen = "", string direccion = "", string sitioWeb = "", int telefono = 0, string codigoPostal = "")
         {
             IdTienda = id;
             Nombre = nombre;

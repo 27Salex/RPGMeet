@@ -76,7 +76,6 @@ CREATE TABLE Tienda (
     Telefono VARCHAR(13),
     Web VARCHAR(50),
     FKLocalidad INT
-
 );
 
 */

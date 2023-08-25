@@ -42,13 +42,13 @@ namespace RPGMeet
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl numJugadores;
 
         /// <summary>
-        /// Control DropDownMaxPly.
+        /// Control TxtBoxCreateMaxPly.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownMaxPly;
+        protected global::System.Web.UI.WebControls.TextBox TxtBoxCreateMaxPly;
 
         /// <summary>
         /// Control LbMaxPlyError.
@@ -78,13 +78,13 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label LbDaysError;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control TxtAreaCreateDesc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TxtAreaCreateDesc;
 
         /// <summary>
         /// Control DropDownPri.

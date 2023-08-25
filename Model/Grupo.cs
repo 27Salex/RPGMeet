@@ -29,7 +29,6 @@ namespace RPGMeet.Models
         public int FKLocalidad { get; set; }
 
         //AL IGUAL QUE USUARIO CREAR FKJuego, FKTemaPrincipal, FKTemaSecundario
-        public Usuario Creador { get; set; }
 
         public Grupo() { }
 
@@ -50,7 +49,6 @@ namespace RPGMeet.Models
         /// <param name="FKTemaPrincipal"></param>
         /// <param name="FKTemaSecundario"></param>
         /// <param name="FKGameMaster"></param>
-        /// <param name="creador"></param>
         public Grupo(
             int IdGrupo,
             string TituloParitda,
@@ -66,8 +64,7 @@ namespace RPGMeet.Models
             int FKJuego,
             int FKTemaPrincipal,
             int FKTemaSecundario,
-            int FKGameMaster,
-            Usuario creador)
+            int FKGameMaster)
         {
             this.IdGrupo = IdGrupo;
             this.TituloParitda = TituloParitda;

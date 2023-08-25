@@ -11,17 +11,44 @@ namespace RPGMeet
 {
 
 
-    public partial class PruebaListaPartidas
+    public partial class Partidas
     {
 
         /// <summary>
-        /// Control pnlFiltros.
+        /// Control chkListDisponibilidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlFiltros;
+        protected global::System.Web.UI.WebControls.CheckBoxList chkListDisponibilidad;
+
+        /// <summary>
+        /// Control txtMaxJugadores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMaxJugadores;
+
+        /// <summary>
+        /// Control cbListTematica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList cbListTematica;
+
+        /// <summary>
+        /// Control btnAplicarFiltros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAplicarFiltros;
 
         /// <summary>
         /// Control pnlPartidas.

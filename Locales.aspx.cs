@@ -1,4 +1,5 @@
-﻿using RPGMeet.Model;
+﻿using RPGMeet.DAL;
+using RPGMeet.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,29 +13,22 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Tienda> locales = new List<Tienda>
-            {
-            };
-
-            for (int i = locales.Count; i < 19; i++)
-            {
-            }
+            List<Tienda> tiendas = DalTienda.SelectAll();
             if (!IsPostBack)
             {
-                foreach (Tienda local in locales)
+                foreach (Tienda tienda in tiendas)
                 {
-
                     string localHtml = $@"
                     <div class=""col-12 col-xl-6 ms-4 me-4 tarjeta bg-light shadow"">
                         <div class=""row"">
                             <div class=""col-12 text-center h3"">
-                                {local.Nombre}
+                                {tienda.Nombre}
                             </div>
                             <div class=""col-6 text-left align-self-center"">
-                                {local.Descripcion}
+                                {tienda.Descripcion}
                             </div>
                             <div class=""col-6"">
-                                <img src=""{local.ImgUrl}"" class=""img-fluid rounded-2"" /> <!-- Imagen del local -->
+                                <img src=""{tienda.ImgUrl}"" class=""img-fluid rounded-2"" /> <!-- Imagen del local -->
                             </div>
                         </div>
                         <div class=""col-12 d-flex justify-content-end"">
@@ -45,7 +39,7 @@ namespace RPGMeet
                                         <img src=""https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Google_Maps_icon_%282020%29.svg/800px-Google_Maps_icon_%282020%29.svg.png"" class=""img-fluid icon"" /> <!-- imagen icono de punto de locaclizacion de google -->
                                         </div>
                                         <div class=""col-9 d-inline"">
-                                            {local.Direccion}
+                                            {tienda.Direccion}
                                         </div>
                                     </div>
                                 </div>
@@ -55,7 +49,7 @@ namespace RPGMeet
                                             <img src=""https://cdn-icons-png.flaticon.com/512/72/72626.png"" class=""img-fluid icon"" /> <!-- imagen icono de sitio web -->
                                         </div>
                                         <div class=""col-9 d-inline"">
-                                            <a>{local.Web}</a>
+                                            <a>{tienda.Web}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -65,15 +59,13 @@ namespace RPGMeet
                                             <img src=""https://cdn2.iconfinder.com/data/icons/font-awesome/1792/phone-512.png"" class=""img-fluid icon"" /> <!-- imagen icono de sitio web -->
                                         </div>
                                         <div class=""col-9 d-inline"">
-                                            {local.Telefono}
+                                            {tienda.Telefono}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>";
-
-                    pnlLocales.Controls.Add(new LiteralControl(localHtml));
                 }
             }
         }

@@ -22,7 +22,6 @@ namespace RPGMeet.Model
         public int IdTienda { get; set; }
         public string Nombre { get; set; }
         public string Direccion { get; set; }
-
         public string Descripcion { get; set; }
         public int CodigoPostal { get; set; }
         public string Web { get; set; }

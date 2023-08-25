@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace RPGMeet.DAL
@@ -162,6 +163,70 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
             }
             return true;
 
+        }
+
+        public static List<Grupo> AplicarFiltros(Filtro filtro) //COMPROBAR QUE DEVUELVE LA QUERY
+        {
+            String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores = @maxJugadores";
+            List<Grupo> list = new List<Grupo>();
+
+            SqlCommand insertCommand = new SqlCommand(selectQuery, conexion);
+            insertCommand.Parameters.AddWithValue("@maxJugadores", filtro.MaxJugadores);
+
+            if (!filtro.QuedarCualquierDia)
+            {
+                if (filtro.QuedarLunes)
+                {
+                    selectQuery += " AND QuedarLunes = " + filtro.QuedarLunes;
+                }
+                if (filtro.QuedarMartes)
+                {
+                    selectQuery += " AND QuedarMartes = " + filtro.QuedarMartes;
+                }
+                if (filtro.QuedarMiercoles)
+                {
+                    selectQuery += " AND QuedarMiercoles = " + filtro.QuedarMiercoles;
+                }
+                if (filtro.QuedarJueves)
+                {
+                    selectQuery += " AND QuedarJueves = " + filtro.QuedarJueves;
+                }
+                if (filtro.QuedarViernes)
+                {
+                    selectQuery += " AND QuedarViernes = " + filtro.QuedarViernes;
+                }
+                if (filtro.QuedarSabado)
+                {
+                    selectQuery += " AND QuedarSabado = " + filtro.QuedarSabado;
+                }
+                if (filtro.QuedarDomingo)
+                {
+                    selectQuery += " AND QuedarDomingo = " + filtro.QuedarDomingo;
+                }
+            }
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo SelectAll\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            Console.WriteLine(selectQuery);
+            return list;
         }
 
     }

@@ -3,45 +3,85 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        .verde {
-            background-color: rgb(53, 232, 71);
-            width: 400px;
-            height: 225px;
-            position: relative;
-        }
+    .slider {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        #slider-content-1 {
-            position: absolute;
-            transform: translate(0%, 50%);
-        }
+    .slider-content-container {
+        position: relative;
+    }
 
-        #slider-content-2 {
-            position: absolute;
-        }
+    .slider-content {
+        display: flex;
+        align-items: center; /* Centrar horizontalmente */
+        justify-content: center; /* Centrar verticalmente */
+        width: 50%;
+        height: 60%;
+        opacity: 0.8;
+        filter: blur(5px);
+        transition: transform 0.75s ease-in-out, height 0.75s ease-in-out, opacity 0.75s ease-in-out, filter 0.75s ease-in-out;
+    }
 
-        #slider-content-3 {
-            position: absolute;
-            transform: translate(-100%, 50%);
-        }
 
-        .slider-content {
-        }
+    .main {
+        height: 65%;
+        width: 65%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        filter: blur(0px);
+    }
 
-        .content {
-            height: 50%;
-            width: 33%;
-            opacity: 0.8;
-            filter: blur(2px);
-            transition: transform 1s ease-in-out, height 1s ease-in-out, opacity, opacity 1s ease-in-out, filter 1s ease-in-out;
-        }
+    #slider-content-1 {
+        position: absolute;
+        transform: translate(0%, -50%);
+    }
 
-        .main {
-            height: 55%;
-            transform: translate(-50%, 40%);
-            opacity: 1;
-            filter: blur(0px);
+    #slider-content-2 {
+        position: absolute;
+    }
+
+    #slider-content-3 {
+        position: absolute;
+        transform: translate(-100%, -50%);
+    }
+
+    @media (max-width: 575.98px) {
+        .slider-container{
+            height: 190px;
         }
-    </style>
+    }
+
+    @media (min-width: 575.98px) {
+        .slider-container{
+            height: 360px;
+        }
+    }
+
+    /* Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) {
+        .slider-container{
+            height: 410px;
+        }
+    }
+
+    /* Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) {
+        .slider-container{
+            height: 550px;
+        }
+    }
+
+    /* Extra large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) {
+        .slider-container{
+            height: 725px;
+        }
+    }
+</style>
     <div class="row m-3">
         <div class="col-6">
             <h2>Nombre App</h2>
@@ -60,19 +100,12 @@
             <h2>Conoce gente:</h2>
             <p>Expliación de la página:consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus. </p>
         </div>
-        <div id="partidaEjemplo" class="col-7 bg-grey pt-3 pb-3">
+        <div id="partidaEjemplo" class="col-7 bg-light shadow rounded-4 pt-3 pb-3">
             <div class="row">
                 <div class="col-6 rounded-pill">
                     <h2>Titulo partida</h2>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                    <img class="imagen-perfil joined rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                    <img class="imagen-perfil joined rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                    <img class="imagen-perfil joined rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                    <img class="imagen-perfil joined rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                    <img class="imagen-perfil empty rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                    <img class="imagen-perfil empty rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                    <img class="imagen-perfil empty rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
                 </div>
                 <div class="col-6">
                     <h4>Descripcíón breve:</h4>
@@ -90,10 +123,10 @@
                 </div>
 
                 <div class="col-6">
-                    <asp:Button ID="Button1" class="btn btn-partida" runat="server" Text="Mas información" />
+                    <asp:Button ID="Button1" class="btn btn-partida btn-primary" runat="server" Text="Mas información" />
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                    <asp:Button ID="Button2" class="btn btn-partida" runat="server" Text="Apuntarse" />
+                    <asp:Button ID="Button2" class="btn btn-partida btn-primary" runat="server" Text="Apuntarse" />
                 </div>
             </div>
         </div>
@@ -114,25 +147,85 @@
         <div class="col-4 d-flex justify-content-end">
             <asp:Button ID="btnCrearCuenta3" CssClass="btn btn-dark" runat="server" Text="Crear cuenta" />
         </div>
-        <div class="col-12 d-flex align-content-center justify-content-center">
-            <div class="d-flex align-items-center ms-2 me-2">
-                <button id="slider-left-btn" class="btn btn-primary btn-lg" value="-1"><</button>
-            </div>
-            <div class="slider box verde">
-                <div id="slider-content-1" class="slider-content content" style="z-index: 0;">
-                    <h6>ALEJANDRO</h6>
-                </div>
-                <div id="slider-content-2" class="slider-content content main" style="z-index: 2;">
-                    <h6>HOLA</h6>
-                </div>
-                <div id="slider-content-3" class="slider-content content" style="z-index: 1;">
-                    <h6>ME LLAMO</h6>
-                </div>
-            </div>
-            <div class="d-flex align-items-center ms-2 me-2">
-                <button id="slider-right-btn" class="btn btn-primary btn-lg" value="1">></button>
-            </div>
-        </div>
     </div>
-    <script src="Default.js"></script>
+        <div class="row slider-container d-flex justify-content-center align-items-center">
+                <div class="col-12 slider bg-light">
+                    <button type="button" class="btn btn-light btn-lg h-25" id="slider-left-btn" value="-1"><</button>
+                    <div class="col-11 slider-content-container h-100 d-flex align-items-center justify-content-center">
+                        <div class="row">
+                            <div class="slider-content bg-light shadow start-50 border border-dark rounded-3" id="slider-content-1" style="z-index: 0;">
+                                <div class="row h-100">
+                                    <div class="col-12">
+                                        <h3>Tienda goku</h3>
+                                    </div>
+                                    <div class="col-6">
+                                        lorem ipsum de la descripcion de la tienda somos especializados en oler mal y ver anime
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="" alt="Imagen Tienda"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                C/Bailen 41, Barcelona, 08001
+                                            </div>
+                                            <div class="col-6">
+                                                <a>www.mamilongas.es</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-content bg-light shadow start-50 border border-dark rounded-3 main" id="slider-content-2" style="z-index: 2;">
+                                <div class="row h-100">
+                                    <div class="col-12">
+                                        <h3>Tienda goku</h3>
+                                    </div>
+                                    <div class="col-6">
+                                        lorem ipsum de la descripcion de la tienda somos especializados en oler mal y ver anime
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="" alt="Imagen Tienda"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                C/Bailen 41, Barcelona, 08001
+                                            </div>
+                                            <div class="col-6">
+                                                <a>www.mamilongas.es</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-content bg-light shadow start-50 border border-dark rounded-3" id="slider-content-3" style="z-index: 1;">
+                                <div class="row h-100">
+                                    <div class="col-12">
+                                        <h3>Tienda goku</h3>
+                                    </div>
+                                    <div class="col-6">
+                                        lorem ipsum de la descripcion de la tienda somos especializados en oler mal y ver anime
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="" alt="Imagen Tienda"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                C/Bailen 41, Barcelona, 08001
+                                            </div>
+                                            <div class="col-6">
+                                                <a>www.mamilongas.es</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-light btn-lg h-25" id="slider-right-btn" value="1">></button>
+                </div>
+            </div>
+    <script type="module" src="Default.js"></script>
 </asp:Content>

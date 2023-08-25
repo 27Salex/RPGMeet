@@ -20,6 +20,15 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Filtro filtro = new Filtro();
+            filtro.QuedarMartes = true;
+            filtro.QuedarViernes = true;
+            DalGrupo.AplicarFiltros(filtro);
+            for (int i = 2; i < 11; i++) //Rellenar MaxPly
+            {
+                DropDownMaxPly.Items.Add(new ListItem(i.ToString()));
+            }
+
             if(Session["UserID"] == null && Session["Username"] == null)
             {
                 Response.Redirect("/Login");
@@ -73,7 +82,7 @@ namespace RPGMeet
         {
             string titulo = TxtBoxCreateTitle.Text;
             string descripcion = TxtAreaCreateDesc.Text;
-            short maxPly = short.Parse(TxtBoxCreateMaxPly.Text);
+            short maxPly = short.Parse(DropDownMaxPly.SelectedValue);
 
             bool lunes = CheckBoxDays.Items[0].Selected;
             bool martes = CheckBoxDays.Items[1].Selected;
@@ -114,7 +123,7 @@ namespace RPGMeet
             DalGrupo.Create(grupo);
 
             //Mirar donde enviar al User tras crear una partida (Seguramente a "Mis Partidas")
-            //Response.Redirect("/Mis Partidas");
+            Response.Redirect("/MisPartidas");
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios
@@ -131,18 +140,6 @@ namespace RPGMeet
             {
                 TxtBoxCreateTitle.BackColor = Color.White;
                 LbTitleError.Visible = false;
-            }
-
-            if (TxtBoxCreateMaxPly.Text.IsNullOrWhiteSpace())
-            {
-                correctCamps = false;
-                TxtBoxCreateMaxPly.BackColor = Color.FromArgb(255, 155, 122);
-                LbMaxPlyError.Visible = true;
-            }
-            else
-            {
-                TxtBoxCreateMaxPly.BackColor = Color.White;
-                LbMaxPlyError.Visible = false;
             }
 
             bool anyDaySel = CheckBoxDays.SelectedIndex != -1; //Mira si algún dia esta marcado

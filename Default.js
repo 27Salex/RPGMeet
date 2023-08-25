@@ -1,7 +1,6 @@
 ﻿const slider = document.querySelector('div .slider');
-const sliderContentList = Array.from(slider.querySelectorAll('.slider-content'));
+const sliderContentList = Array.from(document.querySelectorAll('.slider-content'));
 
-console.log(sliderContentList);
 
 function getTransformXY(element) {
     const style = window.getComputedStyle(element);
@@ -14,14 +13,12 @@ function getTransformXY(element) {
 
 function moveSliderContent(sliderContent, posX, posY) {
     sliderContent.style.transform = `translate(${posX}px, ${posY}px)`;
-    sliderContent.style.transform = `translate(${posX}px, ${posY}px)`;
 }
 
 //check
 function UpdateMain(direction) {
     //Obtiene el contenido central denominado con la clase 'main'
     let main = sliderContentList.findIndex(element => element.classList.contains('main'));
-    console.log("last main: " + main + "and is: " + typeof (main));
     //eliminamos el main actual para posteriormente pasarselo al siguiente correspondiente
     sliderContentList[main].classList.remove('main');
 
@@ -30,10 +27,7 @@ function UpdateMain(direction) {
         main = sliderContentList.length - 1;
     if (main > sliderContentList.length - 1)
         main = 0;
-
-    console.log("new main: " + main + "and is: " + typeof (main));
     sliderContentList[main].className += ' main';
-
     return main;
 }
 

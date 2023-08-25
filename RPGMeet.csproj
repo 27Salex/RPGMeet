@@ -157,7 +157,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Login.aspx" />
-    <Content Include="ListaDePartidasFiltros.aspx" />
+    <Content Include="Partidas.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -219,6 +219,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DalFiltro.cs" />
     <Compile Include="DAL\DalGrupo.cs" />
     <Compile Include="DAL\DalJuego.cs" />
     <Compile Include="DAL\DalLocalidad.cs" />
@@ -299,12 +300,12 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListaDePartidasFiltros.aspx.cs">
-      <DependentUpon>ListaDePartidasFiltros.aspx</DependentUpon>
+    <Compile Include="Partidas.aspx.cs">
+      <DependentUpon>Partidas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListaDePartidasFiltros.aspx.designer.cs">
-      <DependentUpon>ListaDePartidasFiltros.aspx</DependentUpon>
+    <Compile Include="Partidas.aspx.designer.cs">
+      <DependentUpon>Partidas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

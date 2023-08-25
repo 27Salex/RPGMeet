@@ -1,0 +1,267 @@
+[33mcommit e293a66746e70fdc113781785b5938768d2b9dea[m[33m ([m[1;36mHEAD -> [m[1;32malejandro[m[33m)[m
+Author: AlexRmCreative <alejandro.roa.mateo@gmail.com>
+Date:   Thu Aug 24 18:22:41 2023 +0200
+
+    link styles css in Site Master
+
+[33mcommit 55c80785437f9f426a1acff65c79b60434cd89a3[m[33m ([m[1;31morigin/alejandro[m[33m)[m
+Merge: c7e7954 bf9df92
+Author: PolSanchezSala <106833190+PolSanchezSala@users.noreply.github.com>
+Date:   Thu Aug 24 16:17:54 2023 +0200
+
+    Merge pull request #72 from 27Salex/pol
+    
+    DalTienda + Modelo + SQLTienda
+
+[33mcommit bf9df9271f6d4d67531d8dcacc7fd76873970932[m
+Merge: 3924d72 c7e7954
+Author: PolSanchezSala <106833190+PolSanchezSala@users.noreply.github.com>
+Date:   Thu Aug 24 16:17:42 2023 +0200
+
+    Merge branch 'alejandro' into pol
+
+[33mcommit 3924d72aa65bc663b259e752438d7506924c7551[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Thu Aug 24 16:14:19 2023 +0200
+
+    SQL Script + DalTienda + Modelo Tienda
+    Actualizado
+
+[33mcommit c7e79543940c78a0ac53f99ae6aa2721dd47958a[m
+Merge: 5a39f45 4881255
+Author: Alexander Laurencena <76922933+27Salex@users.noreply.github.com>
+Date:   Thu Aug 24 16:09:37 2023 +0200
+
+    Merge pull request #69 from 27Salex/master
+    
+    Update
+
+[33mcommit 5a39f45c35a71b76b1e4075a56edab5d694b6e8c[m
+Author: AlexRmCreative <alejandro.roa.mateo@gmail.com>
+Date:   Thu Aug 24 16:05:33 2023 +0200
+
+    Codigo postal tienda
+
+[33mcommit 29f68b3777109e8b81046cfbec222fee6aa5f877[m
+Author: AlexRmCreative <alejandro.roa.mateo@gmail.com>
+Date:   Thu Aug 24 16:03:34 2023 +0200
+
+    Tienda Model
+
+[33mcommit 68ad2ef713521e51c5b33c22d0cfe3fb63de140b[m
+Merge: 2f9b0ad 4881255
+Author: PolSanchezSala <106833190+PolSanchezSala@users.noreply.github.com>
+Date:   Thu Aug 24 15:51:26 2023 +0200
+
+    Merge pull request #67 from 27Salex/master
+    
+    Recuperando info
+
+[33mcommit 4881255c631ee50513c684086934bd3b43a133cf[m
+Merge: 6a90130 2a2460f
+Author: Alexander Laurencena <76922933+27Salex@users.noreply.github.com>
+Date:   Thu Aug 24 15:50:46 2023 +0200
+
+    Merge pull request #65 from 27Salex/manu
+    
+    Fusion de contenido
+
+[33mcommit 2a2460f781c78070060a5ee8f2dc1b7e0aff8e15[m
+Merge: 541dc8a 2f9b0ad
+Author: Alexander Laurencena <76922933+27Salex@users.noreply.github.com>
+Date:   Thu Aug 24 15:20:18 2023 +0200
+
+    Merge pull request #64 from 27Salex/pol
+    
+    Pol
+
+[33mcommit 541dc8a9265ab80ee26af4d640c2bd4fb96d0c76[m
+Merge: 12c0c30 d4f2dec
+Author: Alexander Laurencena <76922933+27Salex@users.noreply.github.com>
+Date:   Thu Aug 24 15:19:50 2023 +0200
+
+    Merge pull request #63 from 27Salex/jhoeel
+
+[33mcommit 12c0c30f370a8bf6903225d2910697789024b743[m
+Merge: b910c3d 4bdf53f
+Author: Alexander Laurencena <76922933+27Salex@users.noreply.github.com>
+Date:   Thu Aug 24 15:19:10 2023 +0200
+
+    Merge pull request #62 from 27Salex/alex
+
+[33mcommit 2f9b0addf7c05bb215b8f951417381e222b03a6e[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Thu Aug 24 15:16:20 2023 +0200
+
+    save de guardado
+
+[33mcommit 3c5963237273e1cab5bd3ddfd3a4c68b027f2f54[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Thu Aug 24 15:11:19 2023 +0200
+
+    CreateParty completed
+
+[33mcommit 26d250aec31b50c6125a7856a287d6f655b1983e[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Thu Aug 24 02:01:40 2023 +0200
+
+    CreateParty mostrar campos obligatorios
+
+[33mcommit dce38afe211aee57fd713ec0008357a15457a717[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Thu Aug 24 01:04:10 2023 +0200
+
+    DalGrupo Arreglado + Fixes en CreateParty
+    (El User ya puede crear Grupos)
+
+[33mcommit 59e13a56f07ffa53757da88c9e5987f010c92222[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Thu Aug 24 00:35:52 2023 +0200
+
+    Tocando cosas que alomejor no deberia tocar
+
+[33mcommit b910c3da1609e90b278c7249a2a0c52bfa00a36b[m
+Merge: 5b309c9 aa28f44
+Author: roaxen <112213195+roaxen@users.noreply.github.com>
+Date:   Wed Aug 23 19:54:50 2023 +0200
+
+    Merge branch 'manu' of https://github.com/27Salex/RPGMeet into manu
+
+[33mcommit 5b309c94c6521abbcedcce357ad833d5ce9f5b2e[m
+Author: roaxen <112213195+roaxen@users.noreply.github.com>
+Date:   Wed Aug 23 19:54:41 2023 +0200
+
+    cAMBIOS MANU
+
+[33mcommit d4f2dec2fef721b87bf208d6c3360fe151d82752[m
+Author: JmesiasCR <jhoelmesias@gmail.com>
+Date:   Wed Aug 23 19:53:33 2023 +0200
+
+    dosfiltros hechos
+
+[33mcommit aa28f44477b8535a39c85fcf9c50a85cf67a2e9d[m
+Merge: 75bd8e4 0381e5e
+Author: Manuel Alvarez Duran <112213195+roaxen@users.noreply.github.com>
+Date:   Wed Aug 23 19:48:28 2023 +0200
+
+    Merge pull request #61 from 27Salex/alejandro
+    
+    Alejandro
+
+[33mcommit 0381e5e698081257f0d0b0e9676134de76577fd0[m
+Merge: 24f3f7b 75bd8e4
+Author: Manuel Alvarez Duran <112213195+roaxen@users.noreply.github.com>
+Date:   Wed Aug 23 19:48:21 2023 +0200
+
+    Merge branch 'manu' into alejandro
+
+[33mcommit 4bdf53fa531ed1a4e48badc0b197dbd5bdad9872[m
+Author: Alex <alaurencena.edt@gmail.com>
+Date:   Wed Aug 23 19:47:54 2023 +0200
+
+    Estilos aplicados y corregidos en el formulario de update usuario
+
+[33mcommit 24f3f7b2e05454cd56ca2a9e7b86dc3c71fd2e15[m
+Author: AlexRmCreative <alejandro.roa.mateo@gmail.com>
+Date:   Wed Aug 23 19:45:13 2023 +0200
+
+    Carrousel defectuoso
+
+[33mcommit 7173c8958e3cea8f200ca8befe5a9db350fd99e8[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Wed Aug 23 19:04:01 2023 +0200
+
+    Sing Up Small fixes
+
+[33mcommit 75bd8e4836ac4d25ddcb82abf52002ebb4adda3e[m
+Merge: 84d8376 a5d737e
+Author: Manuel Alvarez Duran <112213195+roaxen@users.noreply.github.com>
+Date:   Wed Aug 23 17:54:46 2023 +0200
+
+    Merge pull request #60 from 27Salex/pol
+    
+    Merge pull request #59 from 27Salex/manu
+
+[33mcommit a5d737e6b20d5b638a37a6810404714d0a107356[m
+Merge: b0f27f1 84d8376
+Author: Manuel Alvarez Duran <112213195+roaxen@users.noreply.github.com>
+Date:   Wed Aug 23 17:54:22 2023 +0200
+
+    Merge pull request #59 from 27Salex/manu
+    
+    Aportacion de script
+
+[33mcommit 84d83765127ef866e2c48c83693ea73af19e7d81[m
+Merge: 9684848 b0f27f1
+Author: Manuel Alvarez Duran <112213195+roaxen@users.noreply.github.com>
+Date:   Wed Aug 23 17:53:39 2023 +0200
+
+    Merge branch 'pol' into manu
+
+[33mcommit b0f27f1712dad3bbfc53d19ad0d4a6c62d3c34ae[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Wed Aug 23 17:52:09 2023 +0200
+
+    Save SQL diferencia
+
+[33mcommit 6a9013046634ac132301be0d670be845d338baf8[m
+Merge: d7efb66 2c5c1c5
+Author: PolSanchezSala <106833190+PolSanchezSala@users.noreply.github.com>
+Date:   Wed Aug 23 15:56:32 2023 +0200
+
+    Merge pull request #58 from 27Salex/pol
+    
+    DalLocalidad + fixes
+
+[33mcommit 2c5c1c5f18d05b983d5cb1c089edbe7376bb947e[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Wed Aug 23 15:54:16 2023 +0200
+
+    DalLocalidad new function SelectById
+    SQL Create script tienda modify
+    Modelo Tienda modify
+
+[33mcommit d1ac773aec5ee1abf4f1f77ed00aa34f2aa4ba98[m
+Author: AlexRmCreative <alejandro.roa.mateo@gmail.com>
+Date:   Wed Aug 23 15:31:48 2023 +0200
+
+    nomenclatura Modelos
+
+[33mcommit 8e5078388762f771f7ba9e73a3a42512dab4a2ba[m
+Author: a7lm <A7lm27@gmail.com>
+Date:   Wed Aug 23 14:19:02 2023 +0200
+
+    Estilos en formulario de edit y login
+
+[33mcommit 9d23471c9a9c5d18f22876f4ca3eb5a9299e2d61[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Wed Aug 23 12:50:56 2023 +0200
+
+    Small fixes DalLocalidad
+
+[33mcommit f6620210ff7e06583ef6bcdb22b412409ed0f64c[m
+Author: PolSanchezSala <polsansala@gmail.com>
+Date:   Wed Aug 23 12:49:01 2023 +0200
+
+    Small fixes CreateParty + DalTema
+    DalLocalidad new function .GetIdByName(string)
+
+[33mcommit edc8b8271c68df6b586b4f2c3338c7a22cad333f[m
+Author: AlexRmCreative <alejandro.roa.mateo@gmail.com>
+Date:   Wed Aug 23 02:02:53 2023 +0200
+
+    fixed Locales.aspx
+
+[33mcommit 40f9cf781cfa0b75d7014dde9d798cf9a751eb70[m
+Author: AlexRmCreative <alejandro.roa.mateo@gmail.com>
+Date:   Wed Aug 23 01:53:16 2023 +0200
+
+    guardado de emergencia Alejandro
+
+[33mcommit cbec48adf920c2b0a91ae9eef529c1f2a2bc5c1a[m
+Author: AlexRmCreative <alejandro.roa.mateo@gmail.com>
+Date:   Wed Aug 23 01:38:49 2023 +0200
+
+    Tarjeta local
+
+[33mcommi

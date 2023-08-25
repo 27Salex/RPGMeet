@@ -5,6 +5,19 @@
     margin-bottom: 10px;
 }
 
+div[class*="col"] {
+    margin: 1vh 0 1vh 0;
+}
+
+.tarjeta {
+    border-radius: 3vh;
+    padding: 2vh 3vh 2vh 3vh;
+    background-color: var(--grey);
+}
+
+.icon {
+    height: 1.25rem;
+}
 
 /* Estilos para la login page */
 .login-page > a {

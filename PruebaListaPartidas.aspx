@@ -49,53 +49,6 @@
             </asp:Panel>
             <asp:Panel ID="pnlPartidas" CssClass="col-10" runat="server">
                 <asp:Panel ID="rowPartidas" CssClass="row" runat="server">
-                    <asp:Panel ID="pnlPartida1" CssClass="col-md-12 col-xl-5 ms-4 me-4 tarjeta bg-grey" runat="server">
-                        <asp:Panel CssClass="row" runat="server">
-                            <asp:Panel ID="pnlTituloPartida" CssClass="col-5 h4" runat="server">
-                                <asp:Label ID="lblTituloPartida1" runat="server" Text="Titulo partida"></asp:Label>
-                            </asp:Panel>
-                            <asp:Panel ID="pnlFotoPerfil" CssClass="col-7 d-flex justify-content-end" runat="server">
-                                <asp:Panel CssClass="d-inline" runat="server">
-                                </asp:Panel>
-                            </asp:Panel>
-                            <asp:Panel ID="pnlDescripcion" CssClass="col-6 rounded-pill" runat="server">
-                                <asp:Label CssClass="h4 d-block" runat="server">Descripción: </asp:Label>
-                                <asp:Label ID="lblDescripcion" runat="server" Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown">
-                                </asp:Label>
-                            </asp:Panel>
-                            <asp:Panel ID="pnlInfoCorta" CssClass="col-6 d-flex justify-content-end" runat="server">
-                                <asp:Panel CssClass="row" runat="server">
-                                    <asp:Panel CssClass="col-12 col-md-6 d-flex justify-content-md-end" runat="server">
-                                        <asp:Label runat="server" Text="Disponibilidad:"></asp:Label>
-                                    </asp:Panel>
-                                    <asp:Panel CssClass="col-12 col-md-6" runat="server">
-                                        <asp:Label ID="lblDisponibilidad" runat="server" Text="Fin de semana"></asp:Label>
-                                    </asp:Panel>
-
-                                    <asp:Panel CssClass="col-12 col-md-6 d-flex justify-content-md-end" runat="server">
-                                        <asp:Label runat="server" Text="Tematica:"></asp:Label>
-                                    </asp:Panel>
-                                    <asp:Panel CssClass="col-12 col-md-6" runat="server">
-                                        <asp:Label ID="lblTematica" runat="server" Text="Medieval"></asp:Label>
-                                    </asp:Panel>
-
-                                    <asp:Panel CssClass="col-12 col-md-6 d-flex justify-content-md-end" runat="server">
-                                        <asp:Label runat="server" Text="Jugadores:"></asp:Label>
-                                    </asp:Panel>
-                                    <asp:Panel CssClass="col-12 col-md-6" runat="server">
-                                        <asp:Label ID="lblNumJugadores" runat="server" Text="4/7"></asp:Label>
-                                    </asp:Panel>
-                                </asp:Panel>
-                            </asp:Panel>
-                            <asp:Panel ID="pnlBtnInfo" CssClass="col-6" runat="server">
-                                <asp:Button ID="Button1" class="btn btn-partida" runat="server" Text="Mas información" />
-                            </asp:Panel>
-                            <asp:Panel ID="pnlBtnApuntarse" CssClass="col-6 d-flex justify-content-end" runat="server">
-                                <asp:Button ID="Button2" class="btn btn-partida" runat="server" Text="Apuntarse" />
-                            </asp:Panel>
-                        </asp:Panel>
-                    </asp:Panel>
                 </asp:Panel>
             </asp:Panel>
         </asp:Panel>

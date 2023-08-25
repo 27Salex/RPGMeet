@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0414: El campo 'Conexion.connectionString' está asignado pero su valor nunca se usa
+dotnet_diagnostic.CS0414.severity = none

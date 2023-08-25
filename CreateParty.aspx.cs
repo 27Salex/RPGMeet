@@ -50,11 +50,9 @@ namespace RPGMeet
                     temas.Add(tema.NombreTema);
                 }
 
-                DropDownLoc.DataSource = localidades;
                 DropDownGame.DataSource = juegos;
                 DropDownPri.DataSource = temas;
                 DropDownSec.DataSource = temas;
-                DropDownLoc.DataBind();
                 DropDownGame.DataBind();
                 DropDownPri.DataBind();
                 DropDownSec.DataBind();
@@ -72,7 +70,6 @@ namespace RPGMeet
         void CreateGroup()
         {
             string titulo = TxtBoxCreateTitle.Text;
-            string descripcion = TxtAreaCreateDesc.Text;
             short maxPly = short.Parse(TxtBoxCreateMaxPly.Text);
 
             bool lunes = CheckBoxDays.Items[0].Selected;
@@ -87,12 +84,10 @@ namespace RPGMeet
             int temaPri = DalTema.GetIdByName(DropDownPri.SelectedValue);
             int temaSec = DalTema.GetIdByName(DropDownPri.SelectedValue); //Mirar que no se duplique el valor
             int gameMaster = int.Parse(Session["UserID"].ToString());
-            int localidad = DalLocalidad.GetIdByName(DropDownLoc.SelectedValue);
 
             Grupo grupo = new Grupo();
 
             grupo.TituloParitda = titulo;
-            grupo.Descripcion = descripcion;
             grupo.EstadoGrupo = 0; // De base va a estar buscando, luego el creador podrá elejir si cerrar o no
             grupo.MaxJugadores = maxPly;
 
@@ -108,8 +103,7 @@ namespace RPGMeet
             grupo.FKTemaPrincipal = temaPri;
             grupo.FKTemaSecundario = temaSec; //Mirar que no se pueda insertar el mismo tema en los 2 Dropdowns
             grupo.FKGameMaster = gameMaster;
-            grupo.FKLocalidad = localidad;
-            
+
             //Envia el grupo a la base de datos
             DalGrupo.Create(grupo);
 
@@ -173,6 +167,11 @@ namespace RPGMeet
                 LbDaysError.Visible = false;
 
             return correctCamps;
+        }
+
+        protected void TxtBoxCreateMaxPly_TextChanged(object sender, EventArgs e)
+        {
+            numJugadores.InnerText = " " + TxtBoxCreateMaxPly.Text;
         }
     }
 }

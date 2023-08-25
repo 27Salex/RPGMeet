@@ -26,19 +26,36 @@ namespace RPGMeet
                     Response.Redirect("/Profile");
                 else
                 {
+                    foreach (TextBox txtbox in this.Controls.OfType<TextBox>())
+                        txtbox.CssClass = "form-control";
+                    foreach (DropDownList dropDownList in this.Controls.OfType<DropDownList>())
+                        dropDownList.CssClass = "form-select";
+                    if (!IsPostBack)
+                    {
+                        List<string> localidades = new List<string>();
+                        localidades.Add("Selecciona una opción");
+
+                        foreach (Localidad loc in DalLocalidad.SelectAll())
+                        {
+                            localidades.Add(loc.NombreLocalidad);
+                        }
+
+                        DropDownListUpdateLoc.DataSource = localidades;
+                        DropDownListUpdateLoc.DataBind();
+                    }
                     LbUsername.Text = usuarioActivo.Username;
                     LbEmail.Text = usuarioActivo.Email;
-                    LbLocalidad.Text = usuarioActivo.FKLocalidad.ToString();
+
+                    Localidad localidad = DalLocalidad.SelectById(usuarioActivo.FKLocalidad);
+                    LbLocalidad.Text = "No selecionado";
+                    if (localidad != null)
+                        LbLocalidad.Text = localidad.NombreLocalidad;
+
+                    DropDownListUpdateLoc.DataBind();
                 }
             }
             else
                 Response.Redirect("/Login");
-
-
-            if (IsPostBack)
-            {
-
-            }
         }
 
         
@@ -58,13 +75,19 @@ namespace RPGMeet
         {
             string pass = TxtBoxUpdatePsw.Text.Trim();
             string username = TxtBoxUpdateUser.Text.Trim();
-            int localidad = DropDownListUpdateLoc.TabIndex;
-            Usuario newUser = new Usuario(null, pass, username, localidad);
+            int? idLocalidad = null;
+            if (DropDownListUpdateLoc.SelectedIndex != 0)
+                idLocalidad = DalLocalidad.GetIdByName(DropDownListUpdateLoc.SelectedValue);
+
+            LbLocalidad.Text = DropDownListUpdateLoc.SelectedValue;
+            LbUsername.Text = TxtBoxUpdateUser.Text;
+
+            Usuario newUser = new Usuario(null, pass, username, idLocalidad);
             newUser.IdUsuario = int.Parse(Session["UserID"].ToString());
             Usuario createdUser = DalUsuario.Update(newUser);
             if (createdUser != null)
             {
-                DesactivarEdicion(createdUser, EventArgs.Empty);
+                DesactivarEdicion(null, EventArgs.Empty);
             }
         }
 
@@ -74,31 +97,31 @@ namespace RPGMeet
 
             if (TxtBoxUpdateUser.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxUpdateUser.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxUpdateUser.CssClass = "form-control is-invalid";
                 correctCamps = false;
             }
             else
             {
-                TxtBoxUpdateUser.BackColor = Color.White;
+                TxtBoxUpdateUser.CssClass = "form-control is-valid";
             }
             if (TxtBoxUpdatePsw.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxUpdatePsw.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxUpdatePsw.CssClass = "form-control is-invalid";
                 correctCamps = false;
             }
             else
             {
-                TxtBoxUpdatePsw.BackColor = Color.White;
+                TxtBoxUpdatePsw.CssClass = "form-control is-valid";
             }
 
             if (TxtBoxUpdatePswCon.Text.IsNullOrWhiteSpace())
             {
-                TxtBoxUpdatePswCon.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxUpdatePswCon.CssClass = "form-control is-invalid";
                 correctCamps = false;
             }
             else
             {
-                TxtBoxUpdatePswCon.BackColor = Color.White;
+                TxtBoxUpdatePswCon.CssClass = "form-control is-valid";
             }
 
             return correctCamps;
@@ -106,16 +129,16 @@ namespace RPGMeet
         bool UsedUsername() //Devuelve si el Username ya esta seleccionado
         {
             bool notPicked = false;
-            Usuario user = DalUsuario.CheckUsername(TxtBoxUpdateUser.Text.Trim().ToLower());
-            if (user == null || TxtBoxUpdateUser.Text.Trim().ToLower() == Session["Username"].ToString().ToLower())
+            Usuario user = DalUsuario.CheckUsername(TxtBoxUpdateUser.Text.Trim());
+            if (user == null || TxtBoxUpdateUser.Text.Trim() == Session["Username"].ToString())
             {
                 notPicked = true;
-                TxtBoxUpdateUser.BackColor = Color.White;
+                TxtBoxUpdateUser.CssClass = "form-control is-valid";
                 lbErrorUser.Visible = false;
             }
             else
             {
-                TxtBoxUpdateUser.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxUpdateUser.CssClass = "form-control is-invalid";
                 lbErrorUser.Visible = true;
             }
             return notPicked;
@@ -128,6 +151,9 @@ namespace RPGMeet
             if (regexItem.IsMatch(TxtBoxUpdatePsw.Text)) //La contraseña cumple con los parámetros
             {
                 lbErrorPsw.Visible = false;
+                TxtBoxUpdatePsw.CssClass = "form-control is-invalid";
+                TxtBoxUpdatePswCon.CssClass = "form-control is-invalid";
+
             }
             else
             {
@@ -141,6 +167,8 @@ namespace RPGMeet
             else
             {
                 lbErrorPswCon.Visible = true;
+                TxtBoxUpdatePsw.CssClass = "form-control is-invalid";
+                TxtBoxUpdatePswCon.CssClass = "form-control is-invalid";
             }
 
             //Si las dos condiciones son correctas permite la creación en este apartado
@@ -160,13 +188,24 @@ namespace RPGMeet
             //Cargamos los valores del usuario activo
             TxtBoxUpdateUser.Text = usuarioActivo.Username;
             TxtBoxUpdatePsw.Text = usuarioActivo.Pass;
-            TxtBoxUpdatePswCon.Text = usuarioActivo.Pass;
+            TxtBoxUpdatePswCon.Text = usuarioActivo.Pass; 
             
+            if (usuarioActivo.FKLocalidad != null)
+            {
+                DropDownListUpdateLoc.SelectedIndex = (int)usuarioActivo.FKLocalidad;
+            }
+            TxtBoxUpdateUser.CssClass = "form-control";
+            TxtBoxUpdatePswCon.CssClass = "form-control";
+            TxtBoxUpdateUser.CssClass = "form-control";
+
+
+
         }
         public void DesactivarEdicion(object sender, EventArgs e)
         {
             ShowUser.Visible = true;
             EditUser.Visible = false;
+            // Response.r
         }
     }
 }

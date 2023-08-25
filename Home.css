@@ -1,12 +1,11 @@
-﻿body
-{
-
+﻿*{
+    background-color: purple;
 }
 .imagen-perfil {
-    width: 50px; /* Cambia el tamaño según tus necesidades */
-    height: 50px; /* Cambia el tamaño según tus necesidades */
-    margin-right: 10px; /* Espacio entre imágenes */
-    margin-bottom: 10px; /* Espacio entre filas de imágenes */
+    width: 50px;  Cambia el tamaño según tus necesidades 
+    height: 50px;  Cambia el tamaño según tus necesidades 
+    margin-right: 10px;  Espacio entre imágenes 
+    margin-bottom: 10px;  Espacio entre filas de imágenes 
 }
 
 

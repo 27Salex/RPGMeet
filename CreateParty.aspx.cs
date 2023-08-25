@@ -20,7 +20,6 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if(Session["UserID"] == null && Session["Username"] == null)
             {
                 Response.Redirect("/Login");

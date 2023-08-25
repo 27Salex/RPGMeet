@@ -14,7 +14,7 @@
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <label for="TxtBoxCreateMaxPly" class="form-label">Máximo de Jugadores:<span runat="server" id="numJugadores">&nbsp;6</span></label> <br />
-                                <asp:TextBox OnTextChanged="TxtBoxCreateMaxPly_TextChanged" AutoPostBack="true" type="range" min="2" max="10" id="TxtBoxCreateMaxPly" class="form-range" runat="server"></asp:TextBox>
+                                <asp:TextBox OnTextChanged="TxtBoxCreateMaxPly_TextChanged" AutoPostBack="true" TextMode="Range" min="2" max="10" id="TxtBoxCreateMaxPly" class="form-range" runat="server"></asp:TextBox>
                                 <asp:Label ID="LbMaxPlyError" runat="server" CssCLass="form-text text-danger" Text="Se requiere un número de Jugadores Máximos" Visible="False"></asp:Label>
                             </div>
                             <div class="col-md-6 col-sm-12">
@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <label for="TextBox1" class="form-label">Descripción:</label>
-                                <asp:TextBox id="TextBox1" class="form-control" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                <asp:TextBox id="TxtAreaCreateDesc" class="form-control" runat="server" TextMode="MultiLine"></asp:TextBox>
                             </div>
                             <div class="col-md-4 col-sm-12">
                                 <label for="DropDownPri" class="form-label">Temática principal:</label>

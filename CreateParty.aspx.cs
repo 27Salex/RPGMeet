@@ -20,10 +20,6 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            for (int i = 2; i < 11; i++) //Rellenar MaxPly
-            {
-                DropDownMaxPly.Items.Add(new ListItem(i.ToString()));
-            }
 
             if(Session["UserID"] == null && Session["Username"] == null)
             {
@@ -105,7 +101,7 @@ namespace RPGMeet
             grupo.TituloParitda = titulo;
             grupo.EstadoGrupo = 0; // De base va a estar buscando, luego el creador podrá elejir si cerrar o no
             grupo.MaxJugadores = maxPly;
-
+            grupo.Descripcion = descripcion;
             grupo.QuedarLunes = lunes;
             grupo.QuedarMartes = martes;
             grupo.QuedarMiercoles = miercoles;
@@ -122,8 +118,8 @@ namespace RPGMeet
             //Envia el grupo a la base de datos
             DalGrupo.Create(grupo);
 
-            //Mirar donde enviar al User tras crear una partida (Seguramente a "Mis Partidas")
-            //Response.Redirect("/MisPartidas");
+
+            Response.Redirect("/Partidas");
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios
@@ -158,6 +154,15 @@ namespace RPGMeet
             //Dropdowns de tematica principal y juego
             if (DropDownPri.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema prin
             { 
+                correctCamps = false;
+                LbTemaPriError.Visible = true;
+                DropDownPri.CssClass = " form-control is-invalid";
+            }
+            else
+                LbTemaPriError.Visible = false;
+
+            if (DropDownSec.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema sec
+            {
                 correctCamps = false;
                 LbTemaPriError.Visible = true;
                 DropDownPri.CssClass = " form-control is-invalid";

@@ -20,19 +20,19 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Filtro filtro = new Filtro();
-            filtro.QuedarMartes = true;
-            filtro.QuedarViernes = true;
-            DalGrupo.AplicarFiltros(filtro);
-            for (int i = 2; i < 11; i++) //Rellenar MaxPly
-            {
-                DropDownMaxPly.Items.Add(new ListItem(i.ToString()));
-            }
-
             if(Session["UserID"] == null && Session["Username"] == null)
             {
                 Response.Redirect("/Login");
             }
+
+            foreach (TextBox txtbox in this.Controls.OfType<TextBox>())
+                if(txtbox.TextMode == TextBoxMode.Range)
+                    txtbox.CssClass = "form-range";
+                else
+                    txtbox.CssClass = "form-control";
+                
+            foreach (DropDownList dropDownList in this.Controls.OfType<DropDownList>())
+                dropDownList.CssClass = "form-select";
 
             if (!IsPostBack)
             {
@@ -59,11 +59,9 @@ namespace RPGMeet
                     temas.Add(tema.NombreTema);
                 }
 
-                DropDownLoc.DataSource = localidades;
                 DropDownGame.DataSource = juegos;
                 DropDownPri.DataSource = temas;
                 DropDownSec.DataSource = temas;
-                DropDownLoc.DataBind();
                 DropDownGame.DataBind();
                 DropDownPri.DataBind();
                 DropDownSec.DataBind();
@@ -82,7 +80,7 @@ namespace RPGMeet
         {
             string titulo = TxtBoxCreateTitle.Text;
             string descripcion = TxtAreaCreateDesc.Text;
-            short maxPly = short.Parse(DropDownMaxPly.SelectedValue);
+            short maxPly = short.Parse(TxtBoxCreateMaxPly.Text);
 
             bool lunes = CheckBoxDays.Items[0].Selected;
             bool martes = CheckBoxDays.Items[1].Selected;
@@ -94,17 +92,15 @@ namespace RPGMeet
 
             int juego = DalJuego.GetIdByName(DropDownGame.SelectedValue);
             int temaPri = DalTema.GetIdByName(DropDownPri.SelectedValue);
-            int temaSec = DalTema.GetIdByName(DropDownPri.SelectedValue); //Mirar que no se duplique el valor
+            int temaSec = DalTema.GetIdByName(DropDownSec.SelectedValue); //Mirar que no se duplique el valor
             int gameMaster = int.Parse(Session["UserID"].ToString());
-            int localidad = DalLocalidad.GetIdByName(DropDownLoc.SelectedValue);
 
             Grupo grupo = new Grupo();
 
             grupo.TituloParitda = titulo;
-            grupo.Descripcion = descripcion;
             grupo.EstadoGrupo = 0; // De base va a estar buscando, luego el creador podrá elejir si cerrar o no
             grupo.MaxJugadores = maxPly;
-
+            grupo.Descripcion = descripcion;
             grupo.QuedarLunes = lunes;
             grupo.QuedarMartes = martes;
             grupo.QuedarMiercoles = miercoles;
@@ -117,13 +113,12 @@ namespace RPGMeet
             grupo.FKTemaPrincipal = temaPri;
             grupo.FKTemaSecundario = temaSec; //Mirar que no se pueda insertar el mismo tema en los 2 Dropdowns
             grupo.FKGameMaster = gameMaster;
-            grupo.FKLocalidad = localidad;
-            
+
             //Envia el grupo a la base de datos
             DalGrupo.Create(grupo);
 
-            //Mirar donde enviar al User tras crear una partida (Seguramente a "Mis Partidas")
-            Response.Redirect("/MisPartidas");
+
+            Response.Redirect("/Partidas");
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios
@@ -133,15 +128,26 @@ namespace RPGMeet
             if (TxtBoxCreateTitle.Text.IsNullOrWhiteSpace())
             {
                 correctCamps = false;
-                TxtBoxCreateTitle.BackColor = Color.FromArgb(255, 155, 122);
+                TxtBoxCreateTitle.CssClass=" form-control is-invalid";
                 LbTitleError.Visible = true;
             }
             else
             {
-                TxtBoxCreateTitle.BackColor = Color.White;
+                TxtBoxCreateTitle.CssClass=" form-control is-valid";
                 LbTitleError.Visible = false;
             }
 
+            if (TxtBoxCreateMaxPly.Text.IsNullOrWhiteSpace())
+            {
+                correctCamps = false;
+                TxtBoxCreateMaxPly.CssClass=" form-control is-invalid";
+                LbMaxPlyError.Visible = true;
+            }
+            else
+            {
+                TxtBoxCreateMaxPly.CssClass=" form-control is-valid";
+                LbMaxPlyError.Visible = false;
+            }
             bool anyDaySel = CheckBoxDays.SelectedIndex != -1; //Mira si algún dia esta marcado
 
             //Dropdowns de tematica principal y juego
@@ -149,6 +155,16 @@ namespace RPGMeet
             { 
                 correctCamps = false;
                 LbTemaPriError.Visible = true;
+                DropDownPri.CssClass = " form-control is-invalid";
+            }
+            else
+                LbTemaPriError.Visible = false;
+
+            if (DropDownSec.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema sec
+            {
+                correctCamps = false;
+                LbTemaPriError.Visible = true;
+                DropDownPri.CssClass = " form-control is-invalid";
             }
             else
                 LbTemaPriError.Visible = false;
@@ -157,6 +173,7 @@ namespace RPGMeet
             {
                 correctCamps = false;
                 LbGameError.Visible = true;
+                DropDownSec.CssClass = " form-control is-invalid";
             }
             else
                 LbGameError.Visible = false;
@@ -170,6 +187,11 @@ namespace RPGMeet
                 LbDaysError.Visible = false;
 
             return correctCamps;
+        }
+
+        protected void TxtBoxCreateMaxPly_TextChanged(object sender, EventArgs e)
+        {
+            numJugadores.InnerText = " " + TxtBoxCreateMaxPly.Text;
         }
     }
 }

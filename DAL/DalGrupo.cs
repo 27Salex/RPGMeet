@@ -36,7 +36,6 @@ namespace RPGMeet.DAL
 
 
             // REALIZAR LO MISMO DE CREADOR PARA LOS TEMAS 
-            grupo.Creador = DalUsuario.SelectById(grupo.FKGameMaster);
            
             return grupo;
         }
@@ -165,7 +164,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 
         }
 
-        public static List<Grupo> AplicarFiltros(Filtro filtro) //COMPROBAR QUE DEVUELVE LA QUERY
+        public static List<Grupo> AplicarFiltros(Filtro filtro) //Parece que la Query devuelve bien, Mirar si el True es acceptado en la base de datos
         {
             String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores = @maxJugadores";
             List<Grupo> list = new List<Grupo>();
@@ -203,7 +202,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
                 {
                     selectQuery += " AND QuedarDomingo = " + filtro.QuedarDomingo;
                 }
-            }
+            }       //Añadir la busqueda por tema
 
             try
             {

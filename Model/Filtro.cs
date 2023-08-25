@@ -7,7 +7,9 @@ namespace RPGMeet.Model
 {
     public class Filtro
     {
-        public List<string> ListTematicas { get; set; }
+        List<string>listTematicas = new List<string>();
+        public List<string> ListTematicas { get => listTematicas; set => listTematicas = value; }
+
         public bool QuedarLunes { get; set; }
         public bool QuedarMartes { get; set; }
         public bool QuedarMiercoles { get; set; }
@@ -27,6 +29,7 @@ namespace RPGMeet.Model
         }
             
         public short MaxJugadores { get; set; }
+        
 
         public Filtro(bool quedarLunes = false, bool quedarMartes = false,
             bool quedarMiercoles = false, bool quedarJueves = false, bool quedarViernes = false, 
@@ -44,10 +47,10 @@ namespace RPGMeet.Model
         }
         public override string ToString()
         {
-            return $"QuedarLunes: {QuedarLunes}, QuedarMartes: {QuedarMartes}, " +
-                   $"QuedarMiercoles: {QuedarMiercoles}, QuedarJueves: {QuedarJueves}, " +
-                   $"QuedarViernes: {QuedarViernes}, QuedarSabado: {QuedarSabado}, " +
-                   $"QuedarDomingo: {QuedarDomingo}, MaxJugadores: {MaxJugadores}, "+ $"tematicas = {ListTematicas}, ";
+            string tematicas = string.Join(", ", ListTematicas);
+            string dias = $"Lunes: {QuedarLunes}, Martes: {QuedarMartes}, Miércoles: {QuedarMiercoles}, Jueves: {QuedarJueves}, Viernes: {QuedarViernes}, Sábado: {QuedarSabado}, Domingo: {QuedarDomingo}";
+
+            return $"Temáticas: {tematicas}\nDías: {dias} \nNumJugadores: {MaxJugadores}";
         }
     }
 }

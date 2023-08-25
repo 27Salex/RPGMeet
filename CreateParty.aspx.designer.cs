@@ -42,13 +42,13 @@ namespace RPGMeet
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl numJugadores;
 
         /// <summary>
-        /// Control TxtBoxCreateMaxPly.
+        /// Control DropDownMaxPly.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtBoxCreateMaxPly;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownMaxPly;
 
         /// <summary>
         /// Control LbMaxPlyError.

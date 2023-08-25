@@ -19,15 +19,18 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<string> localidades = new List<string>();
-            localidades.Add("Selecciona una opción");
-
-            foreach (Localidad localidad in DalLocalidad.SelectAll())
+            if (!IsPostBack)
             {
-                localidades.Add(localidad.NombreLocalidad);
+                List<string> localidades = new List<string>();
+                localidades.Add("Selecciona una opción");
+
+                foreach (Localidad localidad in DalLocalidad.SelectAll())
+                {
+                    localidades.Add(localidad.NombreLocalidad);
+                }
+                DropDownListRegisterLoc.DataSource = localidades;
             }
 
-            DropDownListRegisterLoc.DataSource = localidades;
             DropDownListRegisterLoc.DataBind();
             foreach (TextBox txtbox in this.Controls.OfType<TextBox>())
                 txtbox.CssClass = "form-control";
@@ -51,9 +54,11 @@ namespace RPGMeet
             string email = TxtBoxRegisterMail.Text.Trim();
             string pass = TxtBoxRegisterPsw.Text.Trim();
             string username = TxtBoxRegisterUser.Text.Trim();
-            int localidad = DropDownListRegisterLoc.TabIndex;
-            Usuario newUser = new Usuario(email, pass, username, localidad);
+            int? localidad = null;
+            if (DropDownListRegisterLoc.SelectedIndex != 0)
+                localidad = DalLocalidad.GetIdByName(DropDownListRegisterLoc.SelectedValue);
             
+            Usuario newUser = new Usuario(email, pass, username, localidad);
             
             if (DalUsuario.Register(newUser))
             {

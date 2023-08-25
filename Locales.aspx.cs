@@ -8,22 +8,23 @@ using System.Web.UI.WebControls;
 
 namespace RPGMeet
 {
-    public partial class Locales : System.Web.UI.Page
+    public partial class Tiendaes : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Local> locales = new List<Local>
+            List<Tienda> locales = new List<Tienda>
             {
-                new Local(0,"Kaburi" , "Local especializado en juegos de mesa, de rol, merchandising o cartas, con un café donde probar los artículos.", "https://www.carrerdesants.cat/media/carrerdesants/image/fotos//993_Foto.1648810055.png", "Pg. de St. Joan, 11, 08010 Barcelona", "www.kaburi.es", "932459508"),
+                new Tienda(0,"Kaburi" , "Tienda especializado en juegos de mesa, de rol, merchandising o cartas, con un café donde probar los artículos.", "https://www.carrerdesants.cat/media/carrerdesants/image/fotos//993_Foto.1648810055.png", "Pg. de St. Joan, 11, 08010 Barcelona", "www.kaburi.es", 932459508),
             };
 
             for (int i = locales.Count; i < 19; i++)
             {
-                locales.Add(new Local(i ,$"Local {i}", $"Descripción del local {i}\n Vivamus molestie tristique justo, nec tincidunt velit bibendum quis. Nulla ac justo quis mauris consectetur aliquam. Vivamus et volutpat leo. Suspendisse ac porta nisi. Curabitur sed aliquam dui. Ut sodales sodales nibh, ac porttitor dui bibendum non. Etiam auctor lectus eget neque congue dictum. Praesent accumsan metus vitae arcu imperdiet, eu sodales sem congue.", "https://www.carrerdesants.cat/media/carrerdesants/image/fotos//993_Foto.1648810055.png", "Pg. de St. Joan, 11, 08010 Barcelona", "www.kaburi.es", "932459508"));
+                locales.Add(new Tienda(i ,$"Tienda {i}", $"Descripción del local {i}\n Vivamus molestie tristique justo, nec tincidunt velit bibendum quis. Nulla ac justo quis mauris consectetur aliquam. Vivamus et volutpat leo. Suspendisse ac porta nisi. Curabitur sed aliquam dui. Ut sodales sodales nibh, ac porttitor dui bibendum non. Etiam auctor lectus eget neque congue dictum. Praesent accumsan metus vitae arcu imperdiet, eu sodales sem congue.", "https://www.carrerdesants.cat/media/carrerdesants/image/fotos//993_Foto.1648810055.png", "Pg. de St. Joan, 11, 08010 Barcelona", "www.kaburi.es", 932459508));
             }
             if (!IsPostBack)
             {
-                foreach (Local local in locales)
+                /*
+                foreach (Tienda local in locales)
                 {
 
                     string localHtml = $@"
@@ -75,8 +76,8 @@ namespace RPGMeet
                         </div>
                     </div>";
 
-                    pnlLocales.Controls.Add(new LiteralControl(localHtml));
-                }
+                    pnlTiendas.Controls.Add(new LiteralControl(localHtml));
+                }*/
             }
         }
     }

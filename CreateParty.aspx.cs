@@ -20,6 +20,11 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            for (int i = 2; i < 11; i++) //Rellenar MaxPly
+            {
+                DropDownMaxPly.Items.Add(new ListItem(i.ToString()));
+            }
+
             if(Session["UserID"] == null && Session["Username"] == null)
             {
                 Response.Redirect("/Login");
@@ -79,6 +84,7 @@ namespace RPGMeet
         void CreateGroup()
         {
             string titulo = TxtBoxCreateTitle.Text;
+            string descripcion = TxtAreaCreateDesc.Text;
             short maxPly = short.Parse(TxtBoxCreateMaxPly.Text);
 
             bool lunes = CheckBoxDays.Items[0].Selected;
@@ -91,7 +97,7 @@ namespace RPGMeet
 
             int juego = DalJuego.GetIdByName(DropDownGame.SelectedValue);
             int temaPri = DalTema.GetIdByName(DropDownPri.SelectedValue);
-            int temaSec = DalTema.GetIdByName(DropDownPri.SelectedValue); //Mirar que no se duplique el valor
+            int temaSec = DalTema.GetIdByName(DropDownSec.SelectedValue); //Mirar que no se duplique el valor
             int gameMaster = int.Parse(Session["UserID"].ToString());
 
             Grupo grupo = new Grupo();
@@ -117,7 +123,7 @@ namespace RPGMeet
             DalGrupo.Create(grupo);
 
             //Mirar donde enviar al User tras crear una partida (Seguramente a "Mis Partidas")
-            //Response.Redirect("/Mis Partidas");
+            //Response.Redirect("/MisPartidas");
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios
@@ -147,7 +153,6 @@ namespace RPGMeet
                 TxtBoxCreateMaxPly.CssClass=" form-control is-valid";
                 LbMaxPlyError.Visible = false;
             }
-
             bool anyDaySel = CheckBoxDays.SelectedIndex != -1; //Mira si algún dia esta marcado
 
             //Dropdowns de tematica principal y juego

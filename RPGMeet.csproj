@@ -219,6 +219,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DalFiltro.cs" />
     <Compile Include="DAL\DalGrupo.cs" />
     <Compile Include="DAL\DalJuego.cs" />
     <Compile Include="DAL\DalLocalidad.cs" />
@@ -244,7 +245,6 @@
     </Compile>
     <Compile Include="Model\Filtro.cs" />
     <Compile Include="Model\Grupo.cs" />
-    <Compile Include="Model\Local.cs" />
     <Compile Include="Model\Juego.cs" />
     <Compile Include="Model\Localidad.cs" />
     <Compile Include="Model\Tema.cs" />

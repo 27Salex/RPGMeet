@@ -36,7 +36,6 @@ namespace RPGMeet.DAL
 
 
             // REALIZAR LO MISMO DE CREADOR PARA LOS TEMAS 
-            grupo.Creador = DalUsuario.SelectById(grupo.FKGameMaster);
            
             return grupo;
         }

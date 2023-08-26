@@ -43,7 +43,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <%--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="https://i.ibb.co/V26QgkG/Large-Logo-Inverted-Transparent.png" alt="logo" style="width: 150px"/>
@@ -79,7 +79,7 @@
                 </li>
             </div>
           </div>
-        </nav>
+        </nav>--%>
         <!-- -->
         
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark font-monospace">
@@ -159,7 +159,6 @@
             </div>
         </nav>
 
-        -->
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

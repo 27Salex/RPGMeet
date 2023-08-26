@@ -44,10 +44,10 @@
 
     <asp:Panel CssClass="container" runat="server">
         <asp:Panel CssClass="row" runat="server">
-            <asp:Panel ID="pnlFiltros" CssClass="col-2" runat="server">
+            <asp:Panel ID="pnlFiltros" CssClass="col-3" runat="server">
 
             </asp:Panel>
-            <asp:Panel ID="pnlPartidas" CssClass="col-10" runat="server">
+            <asp:Panel ID="pnlPartidas" CssClass="col-9" runat="server">
                 <asp:Panel ID="rowPartidas" CssClass="row" runat="server">
                 </asp:Panel>
             </asp:Panel>

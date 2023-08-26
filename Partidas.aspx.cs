@@ -46,14 +46,14 @@ namespace RPGMeet
             foreach (Grupo grupo in grupos)
             {
                 string localHtml = $@"
-                <div id=""pnlPartida{grupo.IdGrupo}"" class=""col-md-12 col-xl-5 ms-4 me-4 tarjeta bg-grey"">
+                <div id=""pnlPartida{grupo.IdGrupo}"" class=""col-md-12 ms-4 me-4 tarjeta bg-grey"">
                     <div class=""row"">
                         <div class=""col-12"">
                             <h4>{grupo.TituloParitda}</h4>
                         </div>
                         <div class=""col-6 rounded-pill"">
                             <h4>Descripción: </h4>
-                            <p>{grupo.Descripcion}</p>
+                            <p class=""text-break"">{grupo.Descripcion}</p>
                         </div>
                         <div class=""col-6 d-flex justify-content-end"">
                             <div class=""row"">
@@ -61,13 +61,13 @@ namespace RPGMeet
                                     <p>Disponibilidad:</p>
                                 </div>
                                 <div class=""col-12 col-md-6"">
-                                    <p>{GetDiasDisponibles(grupo)}</p>
+                                    <p class=""text-break"">{GetDiasDisponibles(grupo)}</p>
                                 </div>
                                 <div class=""col-12 col-md-6 d-flex justify-content-md-end"">
                                     <p>Tematica:</p>
                                 </div>
                                 <div class=""col-12 col-md-6"">
-                                    <p>{DalTema.SelectById(grupo.FKTemaPrincipal).NombreTema},{DalTema.SelectById(grupo.FKTemaSecundario).NombreTema}</p>
+                                    <p class=""text-break"">{DalTema.SelectById(grupo.FKTemaPrincipal).NombreTema},{DalTema.SelectById(grupo.FKTemaSecundario).NombreTema}</p>
                                 </div>
                                 <div class=""col-12 col-md-6 d-flex justify-content-md-end"">
                                     <p>Jugadores:</p>
@@ -91,7 +91,6 @@ namespace RPGMeet
                 rowPartidas.Controls.Add(literalControl);
             }
         }
-
 
         protected void btnAplicarFiltros_Click(object sender, EventArgs e)
         {

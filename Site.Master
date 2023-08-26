@@ -107,7 +107,7 @@
                                 </li>
                                 <!-- Navegacion a pagina mis partidas-->
                                 <li class="nav-item">
-                                    <a class="nav-link" runat="server" href="/MisPartidas">
+                                    <a class="nav-link" runat="server" href="/MyParties">
                                         Mis Partidas
                                     </a>
                                 </li>
@@ -131,7 +131,7 @@
                                     <ul class="dropdown-menu dropAbout">
                                         <li><a class="dropdown-item" href="/About">Contacto</a></li>
                                         <li><a class="dropdown-item" href="#">Equipo</a></li>
-                                        <li><a class="dropdown-item" href="#">Reporte de bugs</a></li>
+                                        <li><a class="dropdown-item" href="https://github.com/27Salex/RPGMeet/issues">Reporte de bugs</a></li>
                                     </ul>
                                 </li>
                                 <!--  Dropdown Prefil y cerrar sesion-->

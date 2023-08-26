@@ -119,6 +119,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="MyParties.aspx" />
     <Content Include="CreateParty.aspx" />
     <Content Include="DAL\SQL Create RPGMeet.sql" />
     <Content Include="Default.aspx" />
@@ -206,6 +207,14 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Model\Tarjeta.cs" />
+    <Compile Include="MyParties.aspx.cs">
+      <DependentUpon>MyParties.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyParties.aspx.designer.cs">
+      <DependentUpon>MyParties.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreateParty.aspx.cs">
       <DependentUpon>CreateParty.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -280,10 +289,6 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>

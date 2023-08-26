@@ -47,74 +47,72 @@
     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="container">
+            <div class="container m-0">
                 <div class="row">
                     <div class="col-md-4">
                         <!-- Imagen con enlace ancla-->
-                        <a class="navbar-brand d-inline" href="/">
+                        <a class="navbar-brand" href="/">
                             <img src="https://i.ibb.co/V26QgkG/Large-Logo-Inverted-Transparent.png" 
-                                    style="min-width:100px;" width="50%" height="100%" alt="RPG Meet" class="d-inline align-text-center">
+                                    alt="RPG Meet" class="img-fluid">
                         </a>
                     </div>
-                    <div class="col-md-8">
-                        <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                            <ul class=" d-flex align-items-center navbar-nav flex-grow-1 justify-content-end">
-                                <!-- Navegacion a pagina buscar partidas-->
-                                <li class="nav-item">
-                                    <a class="nav-link" runat="server" href="Partidas">
-                                        Buscar Partida
-                                    </a>
-                                </li>
-                                <!-- Navegacion a pagina mis partidas-->
-                                <li class="nav-item">
-                                    <a class="nav-link" runat="server" href="/MyParties">
-                                        Mis Partidas
-                                    </a>
-                                </li>
-                                <!-- Navegacion a pagina locales-->
-                                <li class="nav-item">
-                                    <a class="nav-link" runat="server" href="/Locales">
-                                        Locales
-                                    </a>
-                                </li>
-                                <!-- Navegacion a pagina juegos-->
-                                <%--<li class="nav-item ">
-                                    <a class="nav-link" runat="server" href="~/">
-                                        Juegos
-                                    </a>
-                                </li>--%>
-                                <!-- Dropdown sobre nosotros-->
-                                <li class="nav-item dropdown-center">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-target=".dropAbout" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Sobre nosotros
-                                    </a>
-                                    <ul class="dropdown-menu dropAbout">
-                                        <li><a class="dropdown-item" href="/About">Contacto</a></li>
-                                        <li><a class="dropdown-item" href="#">Equipo</a></li>
-                                        <li><a class="dropdown-item" href="https://github.com/27Salex/RPGMeet/issues">Reporte de bugs</a></li>
-                                    </ul>
-                                </li>
-                                <!--  Dropdown Prefil y cerrar sesion-->
-                                <li class="nav-item dropdown" id="LoggedProfile" runat="server">
-                                    <a class="nav-link dropdown-toggle" role="button" data-bs-target=".dropUser" data-bs-toggle="dropdown" >
-                                        <i class=" h2 bi bi-person-circle"></i>
-                                        <span id="username" runat="server"></span>
-                                    </a>
-                                    <ul class="dropdown-menu dropUser">
-                                        <li><a class="dropdown-item" href="/CreateParty">Crear Grupo</a></li>
-                                        <li><a class="dropdown-item" href="/Profile">Perfil</a></li>
-                                        <li><asp:button id="btnCerrarSesion" onclick="CerrarSesion" runat="server" class="dropdown-item" Text="Cerrar Sesión"></asp:button></li>
-                                    </ul>
-                                </li>
-                                <!-- Navegacion a pagina Login-->
-                                <li class="nav-item" id="UnLoggedProfile" runat="server">
-                                    <a class="nav-link" href="/Login">
-                                        <i class=" h2 bi bi-person-circle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>              
+                    <div class="col-md-8 collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                        <ul class=" d-flex align-items-center navbar-nav flex-grow-1 justify-content-end">
+                            <!-- Navegacion a pagina buscar partidas-->
+                            <li class="nav-item">
+                                <a class="nav-link" runat="server" href="Partidas">
+                                    Buscar Partida
+                                </a>
+                            </li>
+                            <!-- Navegacion a pagina mis partidas-->
+                            <li class="nav-item">
+                                <a class="nav-link" runat="server" href="/MyParties">
+                                    Mis Partidas
+                                </a>
+                            </li>
+                            <!-- Navegacion a pagina locales-->
+                            <li class="nav-item">
+                                <a class="nav-link" runat="server" href="/Locales">
+                                    Locales
+                                </a>
+                            </li>
+                            <!-- Navegacion a pagina juegos-->
+                            <%--<li class="nav-item ">
+                                <a class="nav-link" runat="server" href="~/">
+                                    Juegos
+                                </a>
+                            </li>--%>
+                            <!-- Dropdown sobre nosotros-->
+                            <li class="nav-item dropdown-center">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-target=".dropAbout" data-bs-toggle="dropdown" aria-expanded="false">
+                                Sobre nosotros
+                                </a>
+                                <ul class="dropdown-menu dropAbout">
+                                    <li><a class="dropdown-item" href="/About">Contacto</a></li>
+                                    <li><a class="dropdown-item" href="#">Equipo</a></li>
+                                    <li><a class="dropdown-item" href="https://github.com/27Salex/RPGMeet/issues">Reporte de bugs</a></li>
+                                </ul>
+                            </li>
+                            <!--  Dropdown Prefil y cerrar sesion-->
+                            <li class="nav-item dropdown" id="LoggedProfile" runat="server">
+                                <a class="nav-link dropdown-toggle" role="button" data-bs-target=".dropUser" data-bs-toggle="dropdown" >
+                                    <i class=" h2 bi bi-person-circle"></i>
+                                    <span id="username" runat="server"></span>
+                                </a>
+                                <ul class="dropdown-menu dropUser">
+                                    <li><a class="dropdown-item" href="/CreateParty">Crear Grupo</a></li>
+                                    <li><a class="dropdown-item" href="/Profile">Perfil</a></li>
+                                    <li><asp:button id="btnCerrarSesion" onclick="CerrarSesion" runat="server" class="dropdown-item" Text="Cerrar Sesión"></asp:button></li>
+                                </ul>
+                            </li>
+                            <!-- Navegacion a pagina Login-->
+                            <li class="nav-item" id="UnLoggedProfile" runat="server">
+                                <a class="nav-link" href="/Login">
+                                    <i class=" h2 bi bi-person-circle"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>           
                 </div>      
             </div>
         </nav>

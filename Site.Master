@@ -42,6 +42,46 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://i.ibb.co/V26QgkG/Large-Logo-Inverted-Transparent.png" alt="logo" style="width: 150px"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Buscar partida</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Mis partidas</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Locales</a>
+                  </li>
+                  <li class="nav-item dropdown-center">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-target=".dropAbout" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sobre nosotros
+                    </a>
+                    <ul class="dropdown-menu dropAbout">
+                        <li><a class="dropdown-item" href="/About">Contacto</a></li>
+                        <li><a class="dropdown-item" href="#">Equipo</a></li>
+                        <li><a class="dropdown-item" href="#">Reporte de bugs</a></li>
+                    </ul>
+                </li>
+                  <li class="nav-item" id="Li1" runat="server">
+                    <a class="nav-link" href="/Login">
+                        <i class=" h2 bi bi-person-circle"></i>
+                    </a>
+                </li>
+            </div>
+          </div>
+        </nav>
+        <!-- -->
+        
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark font-monospace">
            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -118,6 +158,8 @@
                 </div>      
             </div>
         </nav>
+
+        -->
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

@@ -126,6 +126,8 @@
     <Content Include="Default.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Img\LogoDesingRPGMeet.png" />
+    <Content Include="Img\LogoTextRPGMEET.png" />
     <Content Include="Img\pngegg.png" />
     <Content Include="Locales.aspx" />
     <Content Include="PruebaListaPartidas.aspx" />
@@ -159,7 +161,6 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Login.aspx" />
     <Content Include="Partidas.aspx" />
-    <Content Include=".editorconfig" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

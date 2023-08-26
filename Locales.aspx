@@ -2,9 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 <asp:Panel CssClass="container" runat="server">
-    <asp:Panel ID="pnlLocales" CssClass="row" runat="server">
-        <div class="col-12 col-xl-6 ms-4 me-4 tarjeta bg-light shadow">
-        </div>
+    <asp:Panel ID="pnlLocales" CssClass="row mh-100" runat="server">
     </asp:Panel>
 </asp:Panel>
 

@@ -66,6 +66,7 @@ namespace RPGMeet
                             </div>
                         </div>
                     </div>";
+                    pnlLocales.Controls.Add(new LiteralControl(localHtml));
                 }
             }
         }

@@ -1,7 +1,9 @@
-﻿using RPGMeet.Models;
+﻿using RPGMeet.DAL;
+using RPGMeet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -20,91 +22,85 @@ namespace RPGMeet.Model
             TargetGrupo = Grupo;
             
         }
-        public Panel Build()
+        public string Build()
         {
-            //crear y meter en rowTargetGrupos
-            Panel pnlTargetGrupo = new Panel();
-            pnlTargetGrupo.CssClass = "col-sm-12 col-md-6 col-xl-5 ms-4 me-4 tarjeta bg-info";
-            Panel pnlTargetGrupoRow = new Panel();
-            pnlTargetGrupoRow.CssClass = "row";
+            //{ TargetGrupo.IdGrupo}
+            //
+            //{ TargetGrupo.Descripcion}
+            //{ DalTema.SelectById(TargetGrupo.FKTemaPrincipal).NombreTema},{ DalTema.SelectById(TargetGrupo.FKTemaSecundario).NombreTema}
+            //0 /{ TargetGrupo.MaxJugadores}
 
-            Panel pnlTituloTargetGrupo = new Panel();
-            pnlTituloTargetGrupo.CssClass = "col-12 h4";
+            string localAsp = $@"
+                <div id=""pnlPartida{TargetGrupo.IdGrupo}"" class=""text-light col-sm-12 col-md-6 col-xl-5 mx-auto tarjeta animate__animated animate__fadeIn"">
+                    <div class=""row"">
+                        <div class=""col-12"">
+                            <label>Titulo:</label>
+                            <h4 class=""h2"">{TargetGrupo.TituloParitda}</h4>
+                        </div>
+                    </div>
+                    <div class=""row"">
+                        <div class=""col-md-6 col-sm-12"">
+                            <label>Descripción:</label>                            
+                            <textarea class=""form-control-plaintext"" readonly="""" style=""Resize:none;"">{TargetGrupo.Descripcion}</textarea>
+                        </div>
+                        <div class=""col-md-6 col-sm-12"">
+                            <label>Temas:</label>
+                            <div class=""form-control-plaintext"">{DalTema.SelectById(TargetGrupo.FKTemaPrincipal).NombreTema},<br>{DalTema.SelectById(TargetGrupo.FKTemaSecundario).NombreTema}</div>
+                        </div>
+                    </div>
+                    <div class=""row"">
+                        <div class=""col-md-6 col-sm-12"">
+                            <label>MaxJugadores:</label>                            
+                            <div class=""form-control-plaintext"">0/{TargetGrupo.MaxJugadores}</div>
+                        </div>
+                        <div class=""col-md-6 col-sm-12"">
+                            <label>Juego:</label>
+                            <div class=""form-control-plaintext"">{TargetGrupo.FKJuego}</div>
+                        </div>
+                    </div>
+                    <div class=""row"">
+                        <div class=""col-md-6 col-sm-12"">
+                            <label>Disponibilidad:</label>                            
+                            <div class=""form-control-plaintext"">{GetDiasDisponibles(TargetGrupo)}</div>
+                        </div>
+                    </div>
+                    <div class=""row"">
+                        <div class=""col-6"">
+                            <asp:button runat=""server"" id=""BtnMasInfo{TargetGrupo.IdGrupo}"" value=""{TargetGrupo.IdGrupo}"" class=""btn btn-light"" text=""Mas información""></asp:button>
+                        </div>
+                        <div class=""col-6"">
+                            <asp:button runat=""server"" id=""BtnApuntarse{TargetGrupo.IdGrupo}"" value=""{TargetGrupo.IdGrupo}"" text=""Apuntarme"" class=""btn btn-light""></asp:button>
+                        </div>
+                    </div>
+                </div>";
 
-            Label lblTituloTargetGrupo = new Label();
-            lblTituloTargetGrupo.Text = TargetGrupo.TituloParitda;
+            return localAsp;
+        }
+        string GetDiasDisponibles(Grupo grupo)
+        {
+            List<string> disponibilidad = new List<string>();
+            if (grupo.QuedarLunes)
+                disponibilidad.Add("Lunes");
 
-            Panel pnlDescripcion = new Panel();
-            pnlDescripcion.CssClass = "col-6 rounded-pill";
+            if (grupo.QuedarMartes)
+                disponibilidad.Add("Martes");
 
-            Label lblDescripcionTitle = new Label();
-            lblDescripcionTitle.CssClass = "h4 d-block";
-            lblDescripcionTitle.Text = "Descripción: ";
+            if (grupo.QuedarMiercoles)
+                disponibilidad.Add("Miércoles");
 
-            Label lblDescripcion = new Label();
-            lblDescripcion.Text = TargetGrupo.Descripcion;
+            if (grupo.QuedarJueves)
+                disponibilidad.Add("Jueves");
 
-            Panel pnlInfoCorta = new Panel();
-            pnlInfoCorta.CssClass = "col-6 d-flex justify-content-end";
+            if (grupo.QuedarViernes)
+                disponibilidad.Add("Viernes");
 
-            Panel innerRow = new Panel();
-            innerRow.CssClass = "row";
+            if (grupo.QuedarSabado)
+                disponibilidad.Add("Sábado");
 
-            string[] labelsText = { "Disponibilidad:", "Tematica:", "Jugadores:" };
-            string[] labelsValues = { "Fin de semana", "Medieval", "4/7" };
+            if (grupo.QuedarDomingo)
+                disponibilidad.Add("Domingo");
 
-            for (int i = 0; i < labelsText.Length; i++)
-            {
-                Panel labelCol = new Panel();
-                labelCol.CssClass = "col-12 col-md-6 d-flex justify-content-md-end";
-
-                Label label = new Label();
-                label.Text = labelsText[i];
-                labelCol.Controls.Add(label);
-
-                Panel valueCol = new Panel();
-                valueCol.CssClass = "col-12 col-md-6";
-
-                Label valueLabel = new Label();
-                valueLabel.Text = labelsValues[i];
-                valueCol.Controls.Add(valueLabel);
-
-                innerRow.Controls.Add(labelCol);
-                innerRow.Controls.Add(valueCol);
-            }
-
-            pnlInfoCorta.Controls.Add(innerRow);
-
-            Panel pnlBtnInfo = new Panel();
-            pnlBtnInfo.ID = "pnlBtnInfo" + TargetGrupo.IdGrupo;
-            pnlBtnInfo.CssClass = "col-6";
-
-            Button btnInfo = new Button();
-            btnInfo.CssClass = "btn btn-info";
-            btnInfo.Text = "Mas información";
-
-            pnlBtnInfo.Controls.Add(btnInfo);
-
-            Panel pnlBtnApuntarse = new Panel();
-            pnlBtnApuntarse.CssClass = "col-6 d-flex justify-content-end";
-
-            Button btnApuntarse = new Button();
-            btnApuntarse.CssClass = "btn btn-info";
-            btnApuntarse.Text = "Apuntarse";
-
-            pnlBtnApuntarse.Controls.Add(btnApuntarse);
-
-            pnlTargetGrupo.Controls.Add(pnlTargetGrupoRow);
-            pnlTargetGrupoRow.Controls.Add(pnlTituloTargetGrupo);
-            pnlTargetGrupoRow.Controls.Add(pnlDescripcion);
-            pnlTargetGrupoRow.Controls.Add(pnlInfoCorta);
-            pnlTargetGrupoRow.Controls.Add(pnlBtnInfo);
-            pnlTargetGrupoRow.Controls.Add(pnlBtnApuntarse);
-
-            pnlTituloTargetGrupo.Controls.Add(lblTituloTargetGrupo);
-            pnlDescripcion.Controls.Add(lblDescripcion);
-
-            return pnlTargetGrupo;
+            return string.Join(", ", disponibilidad);
         }
     }
 }

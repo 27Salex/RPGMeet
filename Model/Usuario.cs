@@ -33,7 +33,7 @@ namespace RPGMeet.Model
         /// <param name="pass"></param>
         /// <param name="username"></param>
         /// <param name="localidad"></param>
-        public Usuario( string email, string pass, string username, int localidad)
+        public Usuario( string email, string pass, string username, int? localidad)
         {
             Email = email;
             Pass = pass;
@@ -42,7 +42,7 @@ namespace RPGMeet.Model
 
         }
 
-        public Usuario(int idUsuario, string email, string pass, string username, int localidad)
+        public Usuario(int idUsuario, string email, string pass, string username, int? localidad)
         {
             IdUsuario = idUsuario;
             Email = email;

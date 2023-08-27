@@ -1,5 +1,5 @@
 ﻿const slider = document.querySelector('div .slider');
-const sliderContentList = Array.from(slider.querySelectorAll('.slider-content'));
+const sliderContentList = Array.from(document.querySelectorAll('.slider-content'));
 
 
 function getTransformXY(element) {
@@ -13,62 +13,101 @@ function getTransformXY(element) {
 
 function moveSliderContent(sliderContent, posX, posY) {
     sliderContent.style.transform = `translate(${posX}px, ${posY}px)`;
-    sliderContent.style.transform = `translate(${posX}px, ${posY}px)`;
 }
 
-function UpdateMain() {
+//check
+function UpdateMain(direction) {
     //Obtiene el contenido central denominado con la clase 'main'
     let main = sliderContentList.findIndex(element => element.classList.contains('main'));
     //eliminamos el main actual para posteriormente pasarselo al siguiente correspondiente
     sliderContentList[main].classList.remove('main');
 
-    if (main > 0)
-        main--;
-    else
+    main += parseInt(direction);
+    if (main < 0)
         main = sliderContentList.length - 1;
+    if (main > sliderContentList.length - 1)
+        main = 0;
     sliderContentList[main].className += ' main';
-
     return main;
 }
 
-function UpdateZIndex(main) {
-    switch (main) {
-        case 0:
-            sliderContentList[2].style.zIndex = 0;
-            sliderContentList[1].style.zIndex = 1;
-            break;
-        case 1:
-            sliderContentList[0].style.zIndex = 0;
-            sliderContentList[2].style.zIndex = 1;
-            break;
-        case 2:
-            sliderContentList[1].style.zIndex = 0;
-            sliderContentList[0].style.zIndex = 1;
-            break;
+//check
+function UpdateZIndex(main, direction) {
+    if (direction < 0) {
+        switch (main) {
+            case 0:
+                sliderContentList[2].style.zIndex = 0;
+                sliderContentList[1].style.zIndex = 1;
+                break;
+            case 1:
+                sliderContentList[0].style.zIndex = 0;
+                sliderContentList[2].style.zIndex = 1;
+                break;
+            case 2:
+                sliderContentList[1].style.zIndex = 0;
+                sliderContentList[0].style.zIndex = 1;
+                break;
+        }
+    }
+    else if (direction > 0) {
+        switch (main) {
+            case 0:
+                sliderContentList[1].style.zIndex = 0;
+                sliderContentList[2].style.zIndex = 1;
+                break;
+            case 1:
+                sliderContentList[2].style.zIndex = 0;
+                sliderContentList[0].style.zIndex = 1;
+                break;
+            case 2:
+                sliderContentList[0].style.zIndex = 0;
+                sliderContentList[1].style.zIndex = 1;
+                break;
+        }
     }
     sliderContentList[main].style.zIndex = 2;
 }
 
-function SlideCarrousel() {
-    //Movemos el slider actual (i) a su siguiente
-    for (let i = 0; i < sliderContentList.length; i++) {
-        let nextElemX;
-        let nextElemY;
-        if (i != sliderContentList.length - 1) {
-            nextElemX = getTransformXY(sliderContentList[i + 1]).transformX;
-            nextElemY = getTransformXY(sliderContentList[i + 1]).transformY;
-        }
-        else {
-            nextElemX = getTransformXY(sliderContentList[0]).transformX;
-            nextElemY = getTransformXY(sliderContentList[0]).transformY;
-        }
-        moveSliderContent(sliderContentList[i], nextElemX, nextElemY);
+function SlideCarrousel(event) {
+    const direction = event.target.value;
+    if (direction < 0) {
+        moveSliderContent(sliderContentList[0], getTransformXY(sliderContentList[1]).transformX, getTransformXY(sliderContentList[1]).transformY);
+        moveSliderContent(sliderContentList[1], getTransformXY(sliderContentList[2]).transformX, getTransformXY(sliderContentList[2]).transformY);
+        moveSliderContent(sliderContentList[2], getTransformXY(sliderContentList[0]).transformX, getTransformXY(sliderContentList[0]).transformY);
     }
-    UpdateZIndex(UpdateMain());
-    console.log(sliderContentList);
+    else if (direction > 0) {
+        moveSliderContent(sliderContentList[2], getTransformXY(sliderContentList[1]).transformX, getTransformXY(sliderContentList[1]).transformY);
+        moveSliderContent(sliderContentList[1], getTransformXY(sliderContentList[0]).transformX, getTransformXY(sliderContentList[0]).transformY);
+        moveSliderContent(sliderContentList[0], getTransformXY(sliderContentList[2]).transformX, getTransformXY(sliderContentList[2]).transformY);
+    }
+    UpdateZIndex(UpdateMain(direction), direction);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     const sliderLeftBtn = document.getElementById('slider-left-btn');
-    sliderLeftBtn.addEventListener('click', SlideCarrousel);
+    const sliderRightBtn = document.getElementById('slider-right-btn');
+
+    sliderLeftBtn.addEventListener('click', handleButtonClick);
+    sliderRightBtn.addEventListener('click', handleButtonClick);
 });
+
+function handleButtonClick(event) {
+    const clickedButton = event.target;
+
+    if (clickedButton.id === 'slider-left-btn' || clickedButton.id === 'slider-right-btn') {
+        const sliderLeftBtn = document.getElementById('slider-left-btn');
+        const sliderRightBtn = document.getElementById('slider-right-btn');
+
+        if (!sliderLeftBtn.disabled && !sliderRightBtn.disabled) {
+            sliderLeftBtn.disabled = true;
+            sliderRightBtn.disabled = true;
+
+            setTimeout(() => {
+                sliderLeftBtn.disabled = false;
+                sliderRightBtn.disabled = false;
+            }, 1000);
+
+            SlideCarrousel(event);
+        }
+    }
+}

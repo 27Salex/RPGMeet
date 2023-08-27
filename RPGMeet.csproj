@@ -119,12 +119,19 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Img\bgTabern.jpeg" />
+    <Content Include="Img\Locales\Gameria.jpg" />
+    <Content Include="Img\LargeLogoNewTransparent.png" />
+    <Content Include="Img\RpgMeetLogo.png" />
+    <Content Include="MyParties.aspx" />
     <Content Include="CreateParty.aspx" />
     <Content Include="DAL\SQL Create RPGMeet.sql" />
     <Content Include="Default.aspx" />
     <Content Include="Default.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Img\LogoDesingRPGMeet.png" />
+    <Content Include="Img\LogoTextRPGMEET.png" />
     <Content Include="Img\pngegg.png" />
     <Content Include="Locales.aspx" />
     <Content Include="PruebaListaPartidas.aspx" />
@@ -188,6 +195,7 @@
     <Content Include="Profile.aspx" />
     <Content Include="SingUp.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="Styles\Default.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -203,6 +211,14 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Model\Tarjeta.cs" />
+    <Compile Include="MyParties.aspx.cs">
+      <DependentUpon>MyParties.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyParties.aspx.designer.cs">
+      <DependentUpon>MyParties.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreateParty.aspx.cs">
       <DependentUpon>CreateParty.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -218,6 +234,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DalFiltro.cs" />
     <Compile Include="DAL\DalGrupo.cs" />
     <Compile Include="DAL\DalJuego.cs" />
     <Compile Include="DAL\DalLocalidad.cs" />
@@ -243,7 +260,6 @@
     </Compile>
     <Compile Include="Model\Filtro.cs" />
     <Compile Include="Model\Grupo.cs" />
-    <Compile Include="Model\Local.cs" />
     <Compile Include="Model\Juego.cs" />
     <Compile Include="Model\Localidad.cs" />
     <Compile Include="Model\Tema.cs" />
@@ -277,10 +293,6 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>

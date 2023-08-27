@@ -15,6 +15,10 @@ namespace RPGMeet
         {
             if (Session["Username"] != null)
                 Response.Redirect("/Profile");
+            foreach (TextBox txtbox in this.Controls.OfType<TextBox>())
+                txtbox.CssClass = "form-control";
+            foreach (DropDownList dropDownList in this.Controls.OfType<DropDownList>())
+                dropDownList.CssClass = "form-select";
         }
 
         protected void BtnLogin_Click(object sender, EventArgs e)

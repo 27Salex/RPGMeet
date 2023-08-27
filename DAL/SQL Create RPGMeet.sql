@@ -150,7 +150,7 @@ ALTER TABLE UsuarioGrupo
 ADD CONSTRAINT FkUsuarioGrupoUsuario FOREIGN KEY (FKUsuario) REFERENCES Usuario(IdUsuario);
 
 ALTER TABLE UsuarioGrupo
-ADD CONSTRAINT FkUsuarioGrupoGrupo FOREIGN KEY (FKGrupo) REFERENCES Grupo(IdGrupo);
+ADD CONSTRAINT FkUsuarioGrupoGrupo FOREIGN KEY (FKGrupo) REFERENCES Grupo(IdGrupo) ON DELETE CASCADE;
 
 
 ALTER TABLE Sesion

@@ -353,5 +353,41 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 
         }
 
+
+        public static bool DeleteGrupo(int idUsuario, int idGrupo)
+        {
+
+
+            String deleteQuery = "DELETE FROM Grupo WHERE FKGameMaster = @idUsuario AND FKGrupo = @idGrupo ";
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand deleteCommand = new SqlCommand(deleteQuery, conexion);
+                deleteCommand.Parameters.AddWithValue("@FKGameMaster", idUsuario);
+                deleteCommand.Parameters.AddWithValue("@idGrupo", idGrupo);
+
+                SqlDataReader reader = deleteCommand.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo ApuntarmePartida\n" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+
+        }
+
+        /*
+         
+        borrar usuario, 
+        y un filtro para buscar partidas por nomrbe
+         */
     }
 }

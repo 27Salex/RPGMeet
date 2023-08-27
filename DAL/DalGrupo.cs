@@ -229,5 +229,70 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
             return list;
         }
 
+        public static List<Grupo> MisPartidasCreadas( int id_User)
+        {
+            String selectQuery = "SELECT * FROM Grupo WHERE FKGameMaster = @idMaster";
+            List<Grupo> list = new List<Grupo>();
+           
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@idMaster", id_User);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo MisPartidasCreadas\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list;
+        }
+
+
+
+        public static List<Grupo> MisPartidasApuntadas(int id_User)
+        {
+            String selectQuery = "SELECT * FROM Grupo WHERE IdGrupo IN (SELECT FKGrupo FROM UsuarioGrupo WHERE FKUsuario = @id_User)";
+            List<Grupo> list = new List<Grupo>();
+
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@id_User", id_User);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo MisPartidasApuntadas\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list;
+        }
+
+
     }
 }

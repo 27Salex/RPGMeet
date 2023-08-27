@@ -100,7 +100,7 @@
             <h2>Conoce gente:</h2>
             <p>Expliación de la página:consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus. </p>
         </div>
-        <div id="partidaEjemplo" class="col-7 bg-light shadow rounded-4 pt-3 pb-3">
+        <div id="partidaEjemplo" class="col-7 bg-glass shadow rounded-4 pt-3 pb-3">
             <div class="row">
                 <div class="col-6 rounded-pill">
                     <h2>Titulo partida</h2>
@@ -149,11 +149,11 @@
         </div>
     </div>
         <div class="row slider-container d-flex justify-content-center align-items-center">
-                <div class="col-12 slider bg-light">
+                <div class="col-12 slider bg-glass">
                     <button type="button" class="btn btn-light btn-lg h-25" id="slider-left-btn" value="-1"><</button>
                     <div class="col-11 slider-content-container h-100 d-flex align-items-center justify-content-center">
                         <div class="row">
-                            <div class="slider-content bg-light shadow start-50 border border-dark rounded-3" id="slider-content-1" style="z-index: 0;">
+                            <div class="slider-content bg-glass shadow start-50 border border-dark rounded-3" id="slider-content-1" style="z-index: 0;">
                                 <div class="row h-100">
                                     <div class="col-12">
                                         <h3>Tienda goku</h3>
@@ -176,7 +176,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="slider-content bg-light shadow start-50 border border-dark rounded-3 main" id="slider-content-2" style="z-index: 2;">
+                            <div class="slider-content bg-glass shadow start-50 border border-dark rounded-3 main" id="slider-content-2" style="z-index: 2;">
                                 <div class="row h-100">
                                     <div class="col-12">
                                         <h3>Tienda goku</h3>
@@ -199,7 +199,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="slider-content bg-light shadow start-50 border border-dark rounded-3" id="slider-content-3" style="z-index: 1;">
+                            <div class="slider-content bg-glass shadow start-50 border border-dark rounded-3" id="slider-content-3" style="z-index: 1;">
                                 <div class="row h-100">
                                     <div class="col-12">
                                         <h3>Tienda goku</h3>

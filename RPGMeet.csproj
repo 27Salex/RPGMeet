@@ -119,6 +119,10 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Img\bgTabern.jpeg" />
+    <Content Include="Img\Locales\Gameria.jpg" />
+    <Content Include="Img\LargeLogoNewTransparent.png" />
+    <Content Include="Img\RpgMeetLogo.png" />
     <Content Include="MyParties.aspx" />
     <Content Include="CreateParty.aspx" />
     <Content Include="DAL\SQL Create RPGMeet.sql" />

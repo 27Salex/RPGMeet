@@ -31,7 +31,7 @@ namespace RPGMeet.Model
             //0 /{ TargetGrupo.MaxJugadores}
 
             string localAsp = $@"
-                <div id=""pnlPartida{TargetGrupo.IdGrupo}"" class=""text-light col-sm-12 col-md-6 col-xl-5 mx-auto tarjeta animate__animated animate__fadeIn"">
+                <div id=""pnlPartida{TargetGrupo.IdGrupo}"" class=""text-dark col-sm-12 col-md-6 col-xl-5 mx-auto tarjeta animate__animated animate__fadeIn"">
                     <div class=""row"">
                         <div class=""col-12"">
                             <label>Titulo:</label>
@@ -41,35 +41,35 @@ namespace RPGMeet.Model
                     <div class=""row"">
                         <div class=""col-md-6 col-sm-12"">
                             <label>Descripción:</label>                            
-                            <textarea class=""form-control-plaintext"" readonly="""" style=""Resize:none;"">{TargetGrupo.Descripcion}</textarea>
+                            <textarea class=""form-control-plaintext text-glass"" readonly="""" style=""Resize:none;"">{TargetGrupo.Descripcion}</textarea>
                         </div>
                         <div class=""col-md-6 col-sm-12"">
                             <label>Temas:</label>
-                            <div class=""form-control-plaintext"">{DalTema.SelectById(TargetGrupo.FKTemaPrincipal).NombreTema},<br>{DalTema.SelectById(TargetGrupo.FKTemaSecundario).NombreTema}</div>
+                            <div class=""form-control-plaintext text-glass"">{DalTema.SelectById(TargetGrupo.FKTemaPrincipal).NombreTema},<br>{DalTema.SelectById(TargetGrupo.FKTemaSecundario).NombreTema}</div>
                         </div>
                     </div>
                     <div class=""row"">
                         <div class=""col-md-6 col-sm-12"">
-                            <label>MaxJugadores:</label>                            
-                            <div class=""form-control-plaintext"">0/{TargetGrupo.MaxJugadores}</div>
+                            <label>Máximo de Jugadores:</label>                            
+                            <div class=""form-control-plaintext text-glass"">0/{TargetGrupo.MaxJugadores}</div>
                         </div>
                         <div class=""col-md-6 col-sm-12"">
                             <label>Juego:</label>
-                            <div class=""form-control-plaintext"">{TargetGrupo.FKJuego}</div>
+                            <div class=""form-control-plaintext text-glass"">{DalJuego.SelectById(TargetGrupo.FKJuego).NombreJuego}</div>
                         </div>
                     </div>
                     <div class=""row"">
-                        <div class=""col-md-6 col-sm-12"">
+                        <div class=""col-md-12 col-sm-12"">
                             <label>Disponibilidad:</label>                            
-                            <div class=""form-control-plaintext"">{GetDiasDisponibles(TargetGrupo)}</div>
+                            <div class=""form-control-plaintext text-glass"">{GetDiasDisponibles(TargetGrupo)}</div>
                         </div>
                     </div>
                     <div class=""row"">
                         <div class=""col-6"">
-                            <asp:button runat=""server"" id=""BtnMasInfo{TargetGrupo.IdGrupo}"" value=""{TargetGrupo.IdGrupo}"" class=""btn btn-light"" text=""Mas información""></asp:button>
+                            <asp:button runat=""server"" id=""BtnMasInfo{TargetGrupo.IdGrupo}"" value=""{TargetGrupo.IdGrupo}"" class=""btn btn-info"" text=""Mas información""></asp:button>
                         </div>
                         <div class=""col-6"">
-                            <asp:button runat=""server"" id=""BtnApuntarse{TargetGrupo.IdGrupo}"" value=""{TargetGrupo.IdGrupo}"" text=""Apuntarme"" class=""btn btn-light""></asp:button>
+                            <asp:button runat=""server"" id=""BtnApuntarse{TargetGrupo.IdGrupo}"" value=""{TargetGrupo.IdGrupo}"" text=""Apuntarme"" class=""btn btn-info""></asp:button>
                         </div>
                     </div>
                 </div>";

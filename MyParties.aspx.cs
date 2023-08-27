@@ -21,9 +21,6 @@ namespace RPGMeet
         private List<Grupo> grupos = DalGrupo.SelectAll();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            
-
             foreach (var grupo in grupos)
             {
                 //Creamos una targeta para poder conseguir el codigo para el control asp
@@ -51,7 +48,7 @@ namespace RPGMeet
             Control c = (Control)sender;
             c.ID.Replace("BtnMasInfo", "");
             int idGrupo = int.Parse(c.ID.Replace("BtnMasInfo", ""));
-            //Response.Redirect("/PartyDetails?id=" + idGrupo);
+            Response.Redirect("/PartyDetails?ID=" + idGrupo);
         }
         protected void BtnApuntarse_Click(Object sender, EventArgs e)
         {

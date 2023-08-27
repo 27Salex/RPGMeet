@@ -13,36 +13,13 @@ namespace RPGMeet
 {
     public partial class Partidas : System.Web.UI.Page
     {
-        string GetDiasDisponibles(Grupo grupo)
-        {
-            List<string> disponibilidad = new List<string>();
-            if (grupo.QuedarLunes)
-                disponibilidad.Add("Lunes");
-
-            if (grupo.QuedarMartes)
-                disponibilidad.Add("Martes");
-
-            if (grupo.QuedarMiercoles)
-                disponibilidad.Add("Miércoles");
-
-            if (grupo.QuedarJueves)
-                disponibilidad.Add("Jueves");
-
-            if (grupo.QuedarViernes)
-                disponibilidad.Add("Viernes");
-
-            if (grupo.QuedarSabado)
-                disponibilidad.Add("Sábado");
-
-            if (grupo.QuedarDomingo)
-                disponibilidad.Add("Domingo");
-
-            return string.Join(", ", disponibilidad);
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             List<Grupo> grupos = DalGrupo.SelectAll();
-
+            MostrarGrupos(grupos);
+        }
+        void MostrarGrupos (List<Grupo> grupos)
+        {
             foreach (Grupo grupo in grupos)
             {
                 string localHtml = $@"
@@ -90,6 +67,32 @@ namespace RPGMeet
 
                 rowPartidas.Controls.Add(literalControl);
             }
+        }
+        string GetDiasDisponibles(Grupo grupo)
+        {
+            List<string> disponibilidad = new List<string>();
+            if (grupo.QuedarLunes)
+                disponibilidad.Add("Lunes");
+
+            if (grupo.QuedarMartes)
+                disponibilidad.Add("Martes");
+
+            if (grupo.QuedarMiercoles)
+                disponibilidad.Add("Miércoles");
+
+            if (grupo.QuedarJueves)
+                disponibilidad.Add("Jueves");
+
+            if (grupo.QuedarViernes)
+                disponibilidad.Add("Viernes");
+
+            if (grupo.QuedarSabado)
+                disponibilidad.Add("Sábado");
+
+            if (grupo.QuedarDomingo)
+                disponibilidad.Add("Domingo");
+
+            return string.Join(", ", disponibilidad);
         }
 
         protected void btnAplicarFiltros_Click(object sender, EventArgs e)

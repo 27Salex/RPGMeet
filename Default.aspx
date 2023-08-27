@@ -82,6 +82,7 @@
         }
     }
 </style>
+<div class="container BackTabern">
     <div class="row m-3">
         <div class="col-6">
             <h2>Nombre App</h2>
@@ -91,10 +92,9 @@
             <p> Aquí va una imagen...</p>
         </div>
         <div class="col-6">
-            <asp:Button ID="btnCrearCuenta1" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"/>
+            <asp:Button ID="btnCrearCuenta1" CssClass="btn btn-dark" runat="server" PostBackUrl Text="Crear cuenta"/>
         </div>
     </div>
-
     <div class="row m-3">
         <div class="col-5">
             <h2>Conoce gente:</h2>
@@ -123,10 +123,10 @@
                 </div>
 
                 <div class="col-6">
-                    <asp:Button ID="Button1" class="btn btn-partida btn-primary" runat="server" Text="Mas información" />
+                    <asp:Button ID="btnMasInfo" class="btn btn-partida btn-primary" runat="server" Text="Mas información" />
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                    <asp:Button ID="Button2" class="btn btn-partida btn-primary" runat="server" Text="Apuntarse" />
+                    <asp:Button ID="btnApuntarse" class="btn btn-partida btn-primary" runat="server" Text="Apuntarse" />
                 </div>
             </div>
         </div>
@@ -134,7 +134,6 @@
             <asp:Button ID="btnCrearCuenta2" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"  />
         </div>
     </div>
-
     <div class="row m-3 d-flex justify-content-center align-content-center">
         <div class="col-12">
             <h2>Descubre Locales:</h2>
@@ -145,10 +144,10 @@
             <h2>Locales colaboradores</h2>
         </div>
         <div class="col-4 d-flex justify-content-end">
-            <asp:Button ID="btnCrearCuenta3" CssClass="btn btn-dark" runat="server" Text="Crear cuenta" />
+            <asp:Button ID="btnCrearCuenta3" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"/>
         </div>
     </div>
-        <div class="row slider-container d-flex justify-content-center align-items-center">
+    <div class="row slider-container d-flex justify-content-center align-items-center">
                 <div class="col-12 slider bg-light">
                     <button type="button" class="btn btn-light btn-lg h-25" id="slider-left-btn" value="-1"><</button>
                     <div class="col-11 slider-content-container h-100 d-flex align-items-center justify-content-center">
@@ -228,4 +227,5 @@
                 </div>
             </div>
     <script type="module" src="Default.js"></script>
+</div>
 </asp:Content>

@@ -294,5 +294,64 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
         }
 
 
+
+        public static bool ApuntarmePartida(int idUsuario, int idGrupo)
+        {
+           
+            String insertQuery = "INSERT INTO UsuarioGrupo (FKUsuario,FKGrupo)VALUES(@idUsuario, @idGrupo)";
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand insertCommand = new SqlCommand(insertQuery, conexion);
+                insertCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
+                insertCommand.Parameters.AddWithValue("@idGrupo", idGrupo); 
+               
+                SqlDataReader reader = insertCommand.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo ApuntarmePartida\n" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+
+        }
+        public static bool BorrarmePartida(int idUsuario, int idGrupo)
+        {
+
+
+            String deleteQuery = "DELETE FROM UsuarioGrupo WHERE FKUsuario = @idUsuario AND FKGrupo = @idGrupo ";
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand deleteCommand = new SqlCommand(deleteQuery, conexion);
+                deleteCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
+                deleteCommand.Parameters.AddWithValue("@idGrupo", idGrupo);
+
+                SqlDataReader reader = deleteCommand.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo ApuntarmePartida\n" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+
+        }
+
     }
 }

@@ -15,15 +15,6 @@ namespace RPGMeet
     {
 
         /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
         /// Control TxtBoxRegisterUser.
         /// </summary>
         /// <remarks>
@@ -40,15 +31,6 @@ namespace RPGMeet
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbErrorUser;
-
-        /// <summary>
-        /// Control Label2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
         /// Control TxtBoxRegisterMail.
@@ -69,15 +51,6 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label lbErrorMail;
 
         /// <summary>
-        /// Control Label3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-
-        /// <summary>
         /// Control TxtBoxRegisterPsw.
         /// </summary>
         /// <remarks>
@@ -96,15 +69,6 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Label lbErrorPsw;
 
         /// <summary>
-        /// Control Label4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
-
-        /// <summary>
         /// Control TxtBoxRegisterPswCon.
         /// </summary>
         /// <remarks>
@@ -121,15 +85,6 @@ namespace RPGMeet
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbErrorPswCon;
-
-        /// <summary>
-        /// Control Label5.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
 
         /// <summary>
         /// Control DropDownListRegisterLoc.

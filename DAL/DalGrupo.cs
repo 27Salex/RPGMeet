@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace RPGMeet.DAL
@@ -35,11 +36,52 @@ namespace RPGMeet.DAL
 
 
             // REALIZAR LO MISMO DE CREADOR PARA LOS TEMAS 
-            grupo.Creador = DalUsuario.SelectById(grupo.FKGameMaster);
+            //grupo.Creador = DalUsuario.SelectById(grupo.FKGameMaster);
            
             return grupo;
         }
 
+        // NUEVA VERSION 
+
+        public static List<Grupo> SelectAll(int ? idUsuario)
+        {
+            List<Grupo> list = new List<Grupo>();
+           
+            String selectQuery = "SELECT * FROM Grupo";
+            if (idUsuario != null)
+            
+                selectQuery += " WHERE FKGameMaster <> @idUsuario ";
+
+            selectQuery += " ORDER BY IdGrupo DESC";
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                if (idUsuario != null)
+                {
+                    command.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                }
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo SelectAll\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list;
+        }
+
+/*
         public static List<Grupo> SelectAll()
         {
             String selectQuery = "SELECT * FROM Grupo";
@@ -68,6 +110,7 @@ namespace RPGMeet.DAL
             }
             return list;
         }
+*/
 
         public static Grupo SelectById(int idGrupo)
         {
@@ -82,6 +125,7 @@ namespace RPGMeet.DAL
                 selectCommand.Parameters.AddWithValue("@id", idGrupo);
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
+                reader.Read();
                 grupoBuscado = ReaderGrupo(reader);
 
                 reader.Close();
@@ -164,5 +208,254 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 
         }
 
+        public static List<Grupo> AplicarFiltros(Filtro filtro) //--
+        {
+            String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores <= @maxJugadores";
+            List<int> temasId = new List<int>();
+            List<int> juegosId = new List<int>();
+            string temasIds = "";
+            string juegosIds = "";
+            List<Grupo> list = new List<Grupo>();
+
+            if (filtro.ListJuegos.Count > 0) //Mira si hay juegos
+            {
+                foreach (string juego in filtro.ListJuegos) //Consigue los todos los Ids          
+                    juegosId.Add(DalJuego.GetIdByName(juego));
+                for (int i = 0; i < juegosId.Count(); i++) //Pasa los Ids a un formato para la Query
+                    juegosIds += juegosId[i] + ",";
+                juegosIds = juegosIds.Remove(juegosIds.Length - 1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
+
+                selectQuery += " AND FKJuego IN (" + juegosIds + ") "; //Carga este fragmento a la mainQuery
+            }
+
+            if(filtro.ListTematicas.Count > 0) //Mira si hay temas
+            {         
+                foreach (string tema in filtro.ListTematicas) //Consigue los todos los Ids          
+                    temasId.Add(DalTema.GetIdByName(tema));
+                for(int i = 0; i<temasId.Count(); i++) //Pasa los Ids a un formato para la Query
+                    temasIds += temasId[i] + ",";
+                temasIds = temasIds.Remove(temasIds.Length -1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
+
+                selectQuery += " AND (FKTemaPrincipal IN (" + temasIds + ") OR FKTemaSecundario IN (" + temasIds +")) "; //Carga este fragmento a la mainQuery
+            }
+
+            if (!filtro.QuedarCualquierDia)
+            {
+                if (filtro.QuedarLunes)
+                {
+                    selectQuery += " AND QuedarLunes = '" + filtro.QuedarLunes + "'";
+                }
+                if (filtro.QuedarMartes)
+                {
+                    selectQuery += " AND QuedarMartes = '" + filtro.QuedarMartes + "'";
+                }
+                if (filtro.QuedarMiercoles)
+                {
+                    selectQuery += " AND QuedarMiercoles = '" + filtro.QuedarMiercoles + "'";
+                }
+                if (filtro.QuedarJueves)
+                {
+                    selectQuery += " AND QuedarJueves = '" + filtro.QuedarJueves + "'";
+                }
+                if (filtro.QuedarViernes)
+                {
+                    selectQuery += " AND QuedarViernes = '" + filtro.QuedarViernes + "'";
+                }
+                if (filtro.QuedarSabado)
+                {
+                    selectQuery += " AND QuedarSabado = '" + filtro.QuedarSabado + "'";
+                }
+                if (filtro.QuedarDomingo)
+                {
+                    selectQuery += " AND QuedarDomingo = '" + filtro.QuedarDomingo + "'";
+                }
+            }
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@maxJugadores", filtro.MaxJugadores);
+                selectQuery += " ORDER BY IdGrupo DESC";
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo AplicarFiltros\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            Console.WriteLine(selectQuery);
+            return list;
+        }
+
+        public static List<Grupo> MisPartidasCreadas( int id_User)
+        {
+            String selectQuery = "SELECT * FROM Grupo WHERE FKGameMaster = @idMaster";
+            List<Grupo> list = new List<Grupo>();
+           
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@idMaster", id_User);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo MisPartidasCreadas\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list;
+        }
+
+
+
+        public static List<Grupo> MisPartidasApuntadas(int id_User)
+        {
+            String selectQuery = "SELECT * FROM Grupo WHERE IdGrupo IN (SELECT FKGrupo FROM UsuarioGrupo WHERE FKUsuario = @id_User)";
+            List<Grupo> list = new List<Grupo>();
+
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@id_User", id_User);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo MisPartidasApuntadas\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list;
+        }
+
+
+
+        public static bool ApuntarmePartida(int idUsuario, int idGrupo)
+        {
+           
+            String insertQuery = "INSERT INTO UsuarioGrupo (FKUsuario,FKGrupo)VALUES(@idUsuario, @idGrupo)";
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand insertCommand = new SqlCommand(insertQuery, conexion);
+                insertCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
+                insertCommand.Parameters.AddWithValue("@idGrupo", idGrupo); 
+               
+                SqlDataReader reader = insertCommand.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo ApuntarmePartida\n" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+
+        }
+        public static bool BorrarmePartida(int idUsuario, int idGrupo)
+        {
+
+
+            String deleteQuery = "DELETE FROM UsuarioGrupo WHERE FKUsuario = @idUsuario AND FKGrupo = @idGrupo ";
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand deleteCommand = new SqlCommand(deleteQuery, conexion);
+                deleteCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
+                deleteCommand.Parameters.AddWithValue("@idGrupo", idGrupo);
+
+                SqlDataReader reader = deleteCommand.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo ApuntarmePartida\n" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+
+        }
+
+
+        public static bool DeleteGrupo(int idUsuario, int idGrupo)
+        {
+
+
+            String deleteQuery = "DELETE FROM Grupo WHERE FKGameMaster = @idUsuario AND idGrupo = @idGrupo ";
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand deleteCommand = new SqlCommand(deleteQuery, conexion);
+                deleteCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
+                deleteCommand.Parameters.AddWithValue("@idGrupo", idGrupo);
+
+                SqlDataReader reader = deleteCommand.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo ApuntarmePartida\n" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+
+        }
+
+        /*
+         
+        borrar usuario, 
+        y un filtro para buscar partidas por nomrbe
+         */
     }
 }

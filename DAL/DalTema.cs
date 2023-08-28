@@ -51,6 +51,36 @@ namespace RPGMeet.DAL
             return list;
         }
 
+        public static Tema SelectById(int? idTema)
+        {
+            String selectQuery = "SELECT * FROM Tema WHERE IdTema = @id";
+            Tema temaBuscado;
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                selectCommand.Parameters.AddWithValue("@id", idTema);
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                reader.Read();
+                temaBuscado = ReaderTema(reader);
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalTema SelectById\n" + ex.Message);
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return temaBuscado;
+        }
+
         public static int GetIdByName(string nombreTema)
         {
             String selectQuery = "SELECT * FROM Tema WHERE NombreTema = @nombreTema";

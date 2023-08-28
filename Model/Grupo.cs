@@ -1,5 +1,6 @@
 ﻿using RPGMeet.Model;
 using System;
+using System.Collections.Generic;
 
 namespace RPGMeet.Models
 {
@@ -29,7 +30,6 @@ namespace RPGMeet.Models
         public int FKLocalidad { get; set; }
 
         //AL IGUAL QUE USUARIO CREAR FKJuego, FKTemaPrincipal, FKTemaSecundario
-        public Usuario Creador { get; set; }
 
         public Grupo() { }
 
@@ -50,7 +50,6 @@ namespace RPGMeet.Models
         /// <param name="FKTemaPrincipal"></param>
         /// <param name="FKTemaSecundario"></param>
         /// <param name="FKGameMaster"></param>
-        /// <param name="creador"></param>
         public Grupo(
             int IdGrupo,
             string TituloParitda,
@@ -66,8 +65,7 @@ namespace RPGMeet.Models
             int FKJuego,
             int FKTemaPrincipal,
             int FKTemaSecundario,
-            int FKGameMaster,
-            Usuario creador)
+            int FKGameMaster)
         {
             this.IdGrupo = IdGrupo;
             this.TituloParitda = TituloParitda;
@@ -120,5 +118,31 @@ namespace RPGMeet.Models
             this.FKGameMaster = FKGameMaster;
         }
 
+        public string GetDiasDisponibles()
+        {
+            List<string> disponibilidad = new List<string>();
+            if (QuedarLunes)
+                disponibilidad.Add("Lunes");
+
+            if (QuedarMartes)
+                disponibilidad.Add("Martes");
+
+            if (QuedarMiercoles)
+                disponibilidad.Add("Miércoles");
+
+            if (QuedarJueves)
+                disponibilidad.Add("Jueves");
+
+            if (QuedarViernes)
+                disponibilidad.Add("Viernes");
+
+            if (QuedarSabado)
+                disponibilidad.Add("Sábado");
+
+            if (QuedarDomingo)
+                disponibilidad.Add("Domingo");
+
+            return string.Join(", ", disponibilidad);
+        }
     }
 }

@@ -41,6 +41,49 @@ namespace RPGMeet.DAL
             return grupo;
         }
 
+        // NUEVA VERSION 
+
+        public static List<Grupo> SelectAll(int ? idUsuario)
+        {
+            String selectQuery = "SELECT * FROM Grupo";
+            if (idUsuario != null)
+            {
+                selectQuery += " WHERE FKGameMaster <> @idUsuario ";
+
+            }
+
+            List<Grupo> list = new List<Grupo>();
+
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                if (idUsuario != null)
+                {
+                    command.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                }
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo SelectAll\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list;
+        }
+
+
         public static List<Grupo> SelectAll()
         {
             String selectQuery = "SELECT * FROM Grupo";

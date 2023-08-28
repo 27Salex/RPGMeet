@@ -166,10 +166,23 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 
         }
 
-        public static List<Grupo> AplicarFiltros(Filtro filtro) //COMPROBAR QUE DEVUELVE LA QUERY
+        public static List<Grupo> AplicarFiltros(Filtro filtro) //--
         {
-            String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores = @maxJugadores";
+            String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores <= @maxJugadores";
+            List<int> temasId = new List<int>();
+            string ids = "";
             List<Grupo> list = new List<Grupo>();
+
+            if(filtro.ListTematicas.Count > 0) //Mira si hay temas
+            {         
+                foreach (string tema in filtro.ListTematicas) //Consigue los todos los Ids          
+                    temasId.Add(DalTema.GetIdByName(tema));
+                for(int i = 0; i<temasId.Count(); i++) //Pasa los Ids a un formato para la Query
+                    ids += temasId[i] + ",";
+                ids = ids.Remove(ids.Length -1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
+
+                selectQuery += " AND FKTemaPrincipal IN (" + ids + ") OR FKTemaSecundario IN (" + ids +") "; //Carga este fragmento a la mainQuery
+            }
 
             SqlCommand insertCommand = new SqlCommand(selectQuery, conexion);
             insertCommand.Parameters.AddWithValue("@maxJugadores", filtro.MaxJugadores);
@@ -230,5 +243,165 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
             return list;
         }
 
+        public static List<Grupo> MisPartidasCreadas( int id_User)
+        {
+            String selectQuery = "SELECT * FROM Grupo WHERE FKGameMaster = @idMaster";
+            List<Grupo> list = new List<Grupo>();
+           
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@idMaster", id_User);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo MisPartidasCreadas\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list;
+        }
+
+
+
+        public static List<Grupo> MisPartidasApuntadas(int id_User)
+        {
+            String selectQuery = "SELECT * FROM Grupo WHERE IdGrupo IN (SELECT FKGrupo FROM UsuarioGrupo WHERE FKUsuario = @id_User)";
+            List<Grupo> list = new List<Grupo>();
+
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@id_User", id_User);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo MisPartidasApuntadas\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list;
+        }
+
+
+
+        public static bool ApuntarmePartida(int idUsuario, int idGrupo)
+        {
+           
+            String insertQuery = "INSERT INTO UsuarioGrupo (FKUsuario,FKGrupo)VALUES(@idUsuario, @idGrupo)";
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand insertCommand = new SqlCommand(insertQuery, conexion);
+                insertCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
+                insertCommand.Parameters.AddWithValue("@idGrupo", idGrupo); 
+               
+                SqlDataReader reader = insertCommand.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo ApuntarmePartida\n" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+
+        }
+        public static bool BorrarmePartida(int idUsuario, int idGrupo)
+        {
+
+
+            String deleteQuery = "DELETE FROM UsuarioGrupo WHERE FKUsuario = @idUsuario AND FKGrupo = @idGrupo ";
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand deleteCommand = new SqlCommand(deleteQuery, conexion);
+                deleteCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
+                deleteCommand.Parameters.AddWithValue("@idGrupo", idGrupo);
+
+                SqlDataReader reader = deleteCommand.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo ApuntarmePartida\n" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+
+        }
+
+
+        public static bool DeleteGrupo(int idUsuario, int idGrupo)
+        {
+
+
+            String deleteQuery = "DELETE FROM Grupo WHERE FKGameMaster = @idUsuario AND idGrupo = @idGrupo ";
+
+            try
+            {
+                conexion.Open();
+
+                SqlCommand deleteCommand = new SqlCommand(deleteQuery, conexion);
+                deleteCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
+                deleteCommand.Parameters.AddWithValue("@idGrupo", idGrupo);
+
+                SqlDataReader reader = deleteCommand.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo ApuntarmePartida\n" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+
+        }
+
+        /*
+         
+        borrar usuario, 
+        y un filtro para buscar partidas por nomrbe
+         */
     }
 }

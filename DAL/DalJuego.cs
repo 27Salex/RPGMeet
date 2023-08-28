@@ -55,6 +55,36 @@ namespace RPGMeet.DAL
             return list;
         }
 
+        public static Juego SelectById(int idJuego)
+        {
+            String selectQuery = "SELECT * FROM Juego WHERE IdJuego = @id";
+            Juego JuegoBuscado = null;
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                selectCommand.Parameters.AddWithValue("@id", idJuego);
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                reader.Read();
+
+                JuegoBuscado = ReaderJuego(reader);
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalJuego SelectById\n" + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return JuegoBuscado;
+        }
+
         public static int GetIdByName(string nombreJuego)
         {
             String selectQuery = "SELECT * FROM Juego WHERE NombreJuego = @nombreJuego";

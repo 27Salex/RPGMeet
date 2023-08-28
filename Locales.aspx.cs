@@ -19,7 +19,7 @@ namespace RPGMeet
                 foreach (Tienda tienda in tiendas)
                 {
                     string localHtml = $@"
-                    <div class=""col-12 col-xl-6 ms-4 me-4 tarjeta bg-light shadow"">
+                    <div class=""col-12 col-xl-6 ms-4 me-4 tarjeta shadow"">
                         <div class=""row"">
                             <div class=""col-12 text-center h3"">
                                 {tienda.Nombre}

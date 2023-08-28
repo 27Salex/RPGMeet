@@ -14,14 +14,14 @@ namespace RPGMeet
 {
     public partial class Partidas : System.Web.UI.Page
     {
-        private Filtro filtro;
+        private static Filtro filtro;
         protected void Page_Load(object sender, EventArgs e)
         {
             List<Grupo> grupos;
-            if (filtro == null)
+            if (Session["Filtro"] == null)
                 grupos = DalGrupo.SelectAll();
             else
-                grupos = DalGrupo.AplicarFiltros(filtro);
+                grupos = DalGrupo.AplicarFiltros((Filtro)Session["Filtro"]);
 
             foreach (var grupo in grupos)
             {
@@ -95,7 +95,8 @@ namespace RPGMeet
                     filtro.ListTematicas.Add(juego.Value);
                 }
             }
-
+            Session.Add("Filtro", filtro);
+            Response.Redirect("/Parties");
         }
         protected void BtnMore_Click(Object sender, EventArgs e)
         {

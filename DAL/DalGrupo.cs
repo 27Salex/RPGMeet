@@ -184,9 +184,6 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
                 selectQuery += " AND FKTemaPrincipal IN (" + ids + ") OR FKTemaSecundario IN (" + ids +") "; //Carga este fragmento a la mainQuery
             }
 
-            SqlCommand insertCommand = new SqlCommand(selectQuery, conexion);
-            insertCommand.Parameters.AddWithValue("@maxJugadores", filtro.MaxJugadores);
-
             if (!filtro.QuedarCualquierDia)
             {
                 if (filtro.QuedarLunes)
@@ -224,6 +221,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
                 conexion.Open();
 
                 SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@maxJugadores", filtro.MaxJugadores);
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())

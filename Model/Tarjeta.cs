@@ -41,7 +41,7 @@ namespace RPGMeet.Model
                     <div class=""row"">
                         <div class=""col-md-6 col-sm-12"">
                             <label>Descripción:</label>                            
-                            <textarea class=""form-control-plaintext text-glass"" readonly="""" style=""Resize:none;"">{TargetGrupo.Descripcion}</textarea>
+                            <textarea class=""form-control-plaintext"" readonly="""" style=""Resize:none; Color:#FFFFFF;"">{TargetGrupo.Descripcion}</textarea>
                         </div>
                         <div class=""col-md-6 col-sm-12"">
                             <label>Temas:</label>

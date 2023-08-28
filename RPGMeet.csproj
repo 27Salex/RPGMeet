@@ -134,7 +134,7 @@
     <Content Include="Img\LogoTextRPGMEET.png" />
     <Content Include="Img\pngegg.png" />
     <Content Include="Locales.aspx" />
-    <Content Include="PruebaListaPartidas.aspx" />
+    <Content Include="PartidaInfo.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -265,14 +265,14 @@
     <Compile Include="Model\Tema.cs" />
     <Compile Include="Model\Tienda.cs" />
     <Compile Include="Model\Usuario.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PruebaListaPartidas.aspx.cs">
-      <DependentUpon>PruebaListaPartidas.aspx</DependentUpon>
+    <Compile Include="PartidaInfo.aspx.cs">
+      <DependentUpon>PartidaInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PruebaListaPartidas.aspx.designer.cs">
-      <DependentUpon>PruebaListaPartidas.aspx</DependentUpon>
+    <Compile Include="PartidaInfo.aspx.designer.cs">
+      <DependentUpon>PartidaInfo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -356,6 +356,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties content_4bootstrap-utilities_1min_1css_1map__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

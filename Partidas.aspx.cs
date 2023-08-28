@@ -71,41 +71,17 @@ namespace RPGMeet
             filtro = new Filtro();
             // CODIGO PARA EL FILTRO DE DIAS DISPONIBLES
 
-            foreach (ListItem dia in chkListDisponibilidad.Items)
-            {
-                switch (dia.Value)
-                {
-                    case "Lunes":
-                        filtro.QuedarLunes = dia.Selected;
-                        break;
-                    case "Martes":
-                        filtro.QuedarMartes = dia.Selected;
-                            break;
-                    case "Miercoles":
-                        filtro.QuedarMiercoles = dia.Selected;
-                        break;
-                    case "Jueves":
-                        filtro.QuedarJueves = dia.Selected;
-                        break;
-                    case "Viernes":
-                        filtro.QuedarViernes = dia.Selected;
-                        break;
-                    case "Sabado":
-                        filtro.QuedarSabado = dia.Selected;
-                        break;
-                    case "Domingo":
-                        filtro.QuedarDomingo = dia.Selected;
-                        break;
-                }
-               
-            }
+            filtro.QuedarLunes = chkListDisponibilidad.Items[0].Selected;
+            filtro.QuedarMartes = chkListDisponibilidad.Items[1].Selected;
+            filtro.QuedarMiercoles = chkListDisponibilidad.Items[2].Selected;
+            filtro.QuedarJueves = chkListDisponibilidad.Items[3].Selected;
+            filtro.QuedarViernes = chkListDisponibilidad.Items[4].Selected;
+            filtro.QuedarSabado = chkListDisponibilidad.Items[5].Selected;
+            filtro.QuedarDomingo = chkListDisponibilidad.Items[6].Selected;
             //CODIGO PARA EL FILTRO DEL NUMERO DE JUGADORES
 
             filtro.MaxJugadores = short.Parse(txtMaxJugadores.Text);
-           
-            // LABEL DE PRUEBAS
             
-
             foreach (ListItem tema in cbListTematica.Items ) 
             {
                 if (tema.Selected== true)

@@ -5,6 +5,7 @@ using RPGMeet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,83 +14,50 @@ namespace RPGMeet
 {
     public partial class Partidas : System.Web.UI.Page
     {
-        string GetDiasDisponibles(Grupo grupo)
-        {
-            List<string> disponibilidad = new List<string>();
-            if (grupo.QuedarLunes)
-                disponibilidad.Add("Lunes");
-
-            if (grupo.QuedarMartes)
-                disponibilidad.Add("Martes");
-
-            if (grupo.QuedarMiercoles)
-                disponibilidad.Add("Miércoles");
-
-            if (grupo.QuedarJueves)
-                disponibilidad.Add("Jueves");
-
-            if (grupo.QuedarViernes)
-                disponibilidad.Add("Viernes");
-
-            if (grupo.QuedarSabado)
-                disponibilidad.Add("Sábado");
-
-            if (grupo.QuedarDomingo)
-                disponibilidad.Add("Domingo");
-
-            return string.Join(", ", disponibilidad);
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             List<Grupo> grupos = DalGrupo.SelectAll();
 
-            foreach (Grupo grupo in grupos)
+            foreach (var grupo in grupos)
             {
-                string localHtml = $@"
-                <div id=""pnlPartida{grupo.IdGrupo}"" class=""col-md-12 col-xl-5 ms-4 me-4 tarjeta bg-grey"">
-                    <div class=""row"">
-                        <div class=""col-12"">
-                            <h4>{grupo.TituloParitda}</h4>
-                        </div>
-                        <div class=""col-6 rounded-pill"">
-                            <h4>Descripción: </h4>
-                            <p>{grupo.Descripcion}</p>
-                        </div>
-                        <div class=""col-6 d-flex justify-content-end"">
-                            <div class=""row"">
-                                <div class=""col-12 col-md-6 d-flex justify-content-md-end"">
-                                    <p>Disponibilidad:</p>
-                                </div>
-                                <div class=""col-12 col-md-6"">
-                                    <p>{GetDiasDisponibles(grupo)}</p>
-                                </div>
-                                <div class=""col-12 col-md-6 d-flex justify-content-md-end"">
-                                    <p>Tematica:</p>
-                                </div>
-                                <div class=""col-12 col-md-6"">
-                                    <p>{DalTema.SelectById(grupo.FKTemaPrincipal).NombreTema},{DalTema.SelectById(grupo.FKTemaSecundario).NombreTema}</p>
-                                </div>
-                                <div class=""col-12 col-md-6 d-flex justify-content-md-end"">
-                                    <p>Jugadores:</p>
-                                </div>
-                                <div class=""col-12 col-md-6"">
-                                    <p>0/{grupo.MaxJugadores}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=""col-6"">
-                            <button class=""btn btn-partida"">Mas información</button>
-                        </div>
-                        <div class=""col-6 d-flex justify-content-end"">
-                            <button class=""btn btn-partida"">Apuntarse</button>
-                        </div>
-                    </div>
-                </div>";
+                //Creamos una targeta para poder conseguir el codigo para el control asp
+                Tarjeta tarjeta = new Tarjeta(grupo);
 
-                LiteralControl literalControl = new LiteralControl(localHtml);
+                //Creamos el control usando el string
+                Control control = ParseControl(tarjeta.Build());
 
-                rowPartidas.Controls.Add(literalControl);
+                foreach (Button b in control.Controls.OfType<Button>())
+                {
+                    //Assignamos un evento segun el tipo de boton
+                    if (b.ID.Contains("BtnMasInfo"))
+                        b.Click += new EventHandler(BtnMore_Click);
+                    if (b.ID.Contains("BtnApuntarse"))
+                        b.Click += new EventHandler(BtnApuntarse_Click);
+                }
+
+                //Finalmente añadimos el control
+                PanelPartidas.Controls.Add(control);
             }
+            
+
+            if(!IsPostBack)
+            {
+                
+                foreach (Tema tema in DalTema.SelectAll())
+                {
+                    ListItem item = new ListItem("&nbsp;&nbsp;" + tema.NombreTema);
+                    item.Value = tema.NombreTema;
+                    cbListTematica.Items.Add(item);
+                }
+                foreach (Juego juego in DalJuego.SelectAll())
+                {
+                    ListItem item = new ListItem("&nbsp;&nbsp;" + juego.NombreJuego);
+                    item.Value = juego.NombreJuego;
+                    cbListJuego.Items.Add(item);
+                }
+            }
+            else
+                valorJugadores.InnerHtml = "&nbsp;&nbsp;" + txtMaxJugadores.Text;
         }
 
 
@@ -129,26 +97,41 @@ namespace RPGMeet
             }
             //CODIGO PARA EL FILTRO DEL NUMERO DE JUGADORES
 
-            if  (string.IsNullOrEmpty(txtMaxJugadores.Text))
-           {
-                short numDefecto = 10;
-                filtro.MaxJugadores = numDefecto;
-            }
-            else 
-            {
-                filtro.MaxJugadores = short.Parse(txtMaxJugadores.Text);
-            }
+            filtro.MaxJugadores = short.Parse(txtMaxJugadores.Text);
            
             // LABEL DE PRUEBAS
             
 
-            foreach (ListItem tematicas in cbListTematica.Items ) 
+            foreach (ListItem tema in cbListTematica.Items ) 
             {
-                if (tematicas.Selected== true)
+                if (tema.Selected== true)
                 {
-                    filtro.ListTematicas.Add(tematicas.Value);
+                    filtro.ListTematicas.Add(tema.Value);
                 }
             }
+            foreach (ListItem juego in cbListTematica.Items)
+            {
+                if (juego.Selected == true)
+                {
+                    filtro.ListTematicas.Add(juego.Value);
+                }
+            }
+
+        }
+        protected void BtnMore_Click(Object sender, EventArgs e)
+        {
+            //Obtenemos la id de la partida a la que pertenece el boton pulsado
+            Control c = (Control)sender;
+            c.ID.Replace("BtnMasInfo", "");
+            int idGrupo = int.Parse(c.ID.Replace("BtnMasInfo", ""));
+            Response.Redirect("/PartyDetails?ID=" + idGrupo);
+        }
+        protected void BtnApuntarse_Click(Object sender, EventArgs e)
+        {
+            //Obtenemos la id de la partida a la que pertenece el boton pulsado
+            Control c = (Control)sender;
+            int idGrupo = int.Parse(c.ID.Replace("BtnApuntarse", ""));
+            //DalGrupo.AgregarJugador(int.Parse(Session["UserID"].ToString(),idGrupo);
         }
     }
 }

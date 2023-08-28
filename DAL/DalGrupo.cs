@@ -170,7 +170,9 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
         {
             String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores <= @maxJugadores";
             List<int> temasId = new List<int>();
-            string ids = "";
+            List<int> juegosId = new List<int>();
+            string temasIds = "";
+            string juegosIds = "";
             List<Grupo> list = new List<Grupo>();
 
             if(filtro.ListTematicas.Count > 0) //Mira si hay temas
@@ -178,10 +180,21 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
                 foreach (string tema in filtro.ListTematicas) //Consigue los todos los Ids          
                     temasId.Add(DalTema.GetIdByName(tema));
                 for(int i = 0; i<temasId.Count(); i++) //Pasa los Ids a un formato para la Query
-                    ids += temasId[i] + ",";
-                ids = ids.Remove(ids.Length -1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
+                    temasIds += temasId[i] + ",";
+                temasIds = temasIds.Remove(temasIds.Length -1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
 
-                selectQuery += " AND FKTemaPrincipal IN (" + ids + ") OR FKTemaSecundario IN (" + ids +") "; //Carga este fragmento a la mainQuery
+                selectQuery += " AND FKTemaPrincipal IN (" + temasIds + ") OR FKTemaSecundario IN (" + temasIds +") "; //Carga este fragmento a la mainQuery
+            }
+
+            if (filtro.ListJuegos.Count > 0) //Mira si hay juegos
+            {
+                foreach (string juego in filtro.ListJuegos) //Consigue los todos los Ids          
+                    juegosId.Add(DalJuego.GetIdByName(juego));
+                for (int i = 0; i < juegosId.Count(); i++) //Pasa los Ids a un formato para la Query
+                    juegosIds += juegosId[i] + ",";
+                juegosIds = juegosIds.Remove(juegosIds.Length - 1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
+
+                selectQuery += " AND FKJuego IN (" + juegosIds + ") "; //Carga este fragmento a la mainQuery
             }
 
             if (!filtro.QuedarCualquierDia)
@@ -231,7 +244,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ERROR: DalGrupo SelectAll\n" + ex.Message);
+                Console.WriteLine("ERROR: DalGrupo AplicarFiltros\n" + ex.Message);
             }
             finally
             {

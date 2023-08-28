@@ -24,6 +24,15 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.CheckBoxList chkListDisponibilidad;
 
         /// <summary>
+        /// Control valorJugadores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl valorJugadores;
+
+        /// <summary>
         /// Control txtMaxJugadores.
         /// </summary>
         /// <remarks>
@@ -42,6 +51,15 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.CheckBoxList cbListTematica;
 
         /// <summary>
+        /// Control cbListJuego.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList cbListJuego;
+
+        /// <summary>
         /// Control btnAplicarFiltros.
         /// </summary>
         /// <remarks>
@@ -51,21 +69,12 @@ namespace RPGMeet
         protected global::System.Web.UI.WebControls.Button btnAplicarFiltros;
 
         /// <summary>
-        /// Control pnlPartidas.
+        /// Control PanelPartidas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlPartidas;
-
-        /// <summary>
-        /// Control rowPartidas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel rowPartidas;
+        protected global::System.Web.UI.WebControls.Panel PanelPartidas;
     }
 }

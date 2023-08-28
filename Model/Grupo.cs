@@ -1,5 +1,6 @@
 ﻿using RPGMeet.Model;
 using System;
+using System.Collections.Generic;
 
 namespace RPGMeet.Models
 {
@@ -117,5 +118,31 @@ namespace RPGMeet.Models
             this.FKGameMaster = FKGameMaster;
         }
 
+        public string GetDiasDisponibles()
+        {
+            List<string> disponibilidad = new List<string>();
+            if (QuedarLunes)
+                disponibilidad.Add("Lunes");
+
+            if (QuedarMartes)
+                disponibilidad.Add("Martes");
+
+            if (QuedarMiercoles)
+                disponibilidad.Add("Miércoles");
+
+            if (QuedarJueves)
+                disponibilidad.Add("Jueves");
+
+            if (QuedarViernes)
+                disponibilidad.Add("Viernes");
+
+            if (QuedarSabado)
+                disponibilidad.Add("Sábado");
+
+            if (QuedarDomingo)
+                disponibilidad.Add("Domingo");
+
+            return string.Join(", ", disponibilidad);
+        }
     }
 }

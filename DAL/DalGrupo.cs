@@ -83,6 +83,7 @@ namespace RPGMeet.DAL
                 selectCommand.Parameters.AddWithValue("@id", idGrupo);
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
+                reader.Read();
                 grupoBuscado = ReaderGrupo(reader);
 
                 reader.Close();
@@ -165,13 +166,36 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 
         }
 
-        public static List<Grupo> AplicarFiltros(Filtro filtro) //COMPROBAR QUE DEVUELVE LA QUERY
+        public static List<Grupo> AplicarFiltros(Filtro filtro) //--
         {
-            String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores = @maxJugadores";
+            String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores <= @maxJugadores";
+            List<int> temasId = new List<int>();
+            List<int> juegosId = new List<int>();
+            string temasIds = "";
+            string juegosIds = "";
             List<Grupo> list = new List<Grupo>();
 
-            SqlCommand insertCommand = new SqlCommand(selectQuery, conexion);
-            insertCommand.Parameters.AddWithValue("@maxJugadores", filtro.MaxJugadores);
+            if(filtro.ListTematicas.Count > 0) //Mira si hay temas
+            {         
+                foreach (string tema in filtro.ListTematicas) //Consigue los todos los Ids          
+                    temasId.Add(DalTema.GetIdByName(tema));
+                for(int i = 0; i<temasId.Count(); i++) //Pasa los Ids a un formato para la Query
+                    temasIds += temasId[i] + ",";
+                temasIds = temasIds.Remove(temasIds.Length -1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
+
+                selectQuery += " AND FKTemaPrincipal IN (" + temasIds + ") OR FKTemaSecundario IN (" + temasIds +") "; //Carga este fragmento a la mainQuery
+            }
+
+            if (filtro.ListJuegos.Count > 0) //Mira si hay juegos
+            {
+                foreach (string juego in filtro.ListJuegos) //Consigue los todos los Ids          
+                    juegosId.Add(DalJuego.GetIdByName(juego));
+                for (int i = 0; i < juegosId.Count(); i++) //Pasa los Ids a un formato para la Query
+                    juegosIds += juegosId[i] + ",";
+                juegosIds = juegosIds.Remove(juegosIds.Length - 1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
+
+                selectQuery += " AND FKJuego IN (" + juegosIds + ") "; //Carga este fragmento a la mainQuery
+            }
 
             if (!filtro.QuedarCualquierDia)
             {
@@ -210,6 +234,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
                 conexion.Open();
 
                 SqlCommand command = new SqlCommand(selectQuery, conexion);
+                command.Parameters.AddWithValue("@maxJugadores", filtro.MaxJugadores);
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -219,7 +244,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ERROR: DalGrupo SelectAll\n" + ex.Message);
+                Console.WriteLine("ERROR: DalGrupo AplicarFiltros\n" + ex.Message);
             }
             finally
             {
@@ -358,14 +383,14 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
         {
 
 
-            String deleteQuery = "DELETE FROM Grupo WHERE FKGameMaster = @idUsuario AND FKGrupo = @idGrupo ";
+            String deleteQuery = "DELETE FROM Grupo WHERE FKGameMaster = @idUsuario AND idGrupo = @idGrupo ";
 
             try
             {
                 conexion.Open();
 
                 SqlCommand deleteCommand = new SqlCommand(deleteQuery, conexion);
-                deleteCommand.Parameters.AddWithValue("@FKGameMaster", idUsuario);
+                deleteCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
                 deleteCommand.Parameters.AddWithValue("@idGrupo", idGrupo);
 
                 SqlDataReader reader = deleteCommand.ExecuteReader();

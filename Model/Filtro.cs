@@ -7,7 +7,9 @@ namespace RPGMeet.Model
 {
     public class Filtro
     {
-        List<string>listTematicas = new List<string>();
+        List<string>listJuegos = new List<string>();
+        public List<string> ListJuegos { get => listJuegos; set => listJuegos = value; }
+        List<string> listTematicas = new List<string>();
         public List<string> ListTematicas { get => listTematicas; set => listTematicas = value; }
 
         public bool QuedarLunes { get; set; }
@@ -34,7 +36,7 @@ namespace RPGMeet.Model
         public Filtro(bool quedarLunes = false, bool quedarMartes = false,
             bool quedarMiercoles = false, bool quedarJueves = false, bool quedarViernes = false, 
             bool quedarSabado = false, bool quedarDomingo = false,
-             short maxJugadores = 50)
+             short maxJugadores = 10)
         {
             QuedarLunes = quedarLunes;
             QuedarMartes = quedarMartes;

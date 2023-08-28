@@ -25,13 +25,13 @@ namespace RPGMeet
                 Response.Redirect("/Login");
             }
 
-            foreach (TextBox txtbox in this.Controls.OfType<TextBox>())
+            foreach (TextBox txtbox in RowControls.Controls.OfType<TextBox>())
                 if(txtbox.TextMode == TextBoxMode.Range)
                     txtbox.CssClass = "form-range";
                 else
                     txtbox.CssClass = "form-control";
                 
-            foreach (DropDownList dropDownList in this.Controls.OfType<DropDownList>())
+            foreach (DropDownList dropDownList in RowControls.Controls.OfType<DropDownList>())
                 dropDownList.CssClass = "form-select";
 
             if (!IsPostBack)

@@ -19,7 +19,10 @@ namespace RPGMeet
         {
             List<Grupo> grupos;
             if (Session["Filtro"] == null)
-                grupos = DalGrupo.SelectAll();
+            { 
+                grupos = DalGrupo.SelectAll((int?)Session["UserID"]);
+            }
+
             else
                 grupos = DalGrupo.AplicarFiltros((Filtro)Session["Filtro"]);
 

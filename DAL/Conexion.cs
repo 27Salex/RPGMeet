@@ -14,7 +14,7 @@ namespace RPGMeet.DAL
         public SqlConnection Connection { get; }
 
         private static String dataSource = "Data Source=185.253.153.20,54321;";
-        private static String initialCatalog = "Initial Catalog=ManuelRPG;";
+        private static String initialCatalog = "Initial Catalog=RPGMeet;";
         private static String user = "User ID=sa;";
         private static String pass = "Password=123456789;";
 

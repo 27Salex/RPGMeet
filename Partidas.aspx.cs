@@ -15,15 +15,24 @@ namespace RPGMeet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            bool logged;
             List<Grupo> grupos = DalGrupo.SelectAll();
-            MostrarGrupos(grupos);
+            if (Session["UserID"] != null)
+            {
+                logged = true;
+            }
+            else
+            {
+                logged = false;
+            }
+            MostrarGrupos(grupos, logged);
         }
-        void MostrarGrupos (List<Grupo> grupos)
+        void MostrarGrupos (List<Grupo> grupos, bool Logged)
         {
             foreach (Grupo grupo in grupos)
             {
                 string localHtml = $@"
-                <div id=""pnlPartida{grupo.IdGrupo}"" class=""col-md-12 ms-4 me-4 tarjeta bg-grey"">
+                <div id=""pnlPartida{grupo.IdGrupo}"" class=""col-md-12 ms-4 me-4 tarjeta bg-light shadow"">
                     <div class=""row"">
                         <div class=""col-12"">
                             <h4>{grupo.TituloParitda}</h4>
@@ -38,7 +47,7 @@ namespace RPGMeet
                                     <p>Disponibilidad:</p>
                                 </div>
                                 <div class=""col-12 col-md-6"">
-                                    <p class=""text-break"">{GetDiasDisponibles(grupo)}</p>
+                                    <p class=""text-break"">{grupo.GetDiasDisponibles()}</p>
                                 </div>
                                 <div class=""col-12 col-md-6 d-flex justify-content-md-end"">
                                     <p>Tematica:</p>
@@ -55,10 +64,10 @@ namespace RPGMeet
                             </div>
                         </div>
                         <div class=""col-6"">
-                            <button class=""btn btn-partida"">Mas información</button>
+                            <button class=""btn btn-partida"" onclick=""location.href='{(Logged ? $"./PartidaInfo.aspx?Id={grupo.IdGrupo}" : "./SingUp.aspx")}'"" type=""button"">Mas información</button>
                         </div>
                         <div class=""col-6 d-flex justify-content-end"">
-                            <button class=""btn btn-partida"">Apuntarse</button>
+                            <button class=""btn btn-partida"" onclick=""location.href='{(Logged ? "./Default.aspx" : "./SingUp.aspx")}'"" type=""button"">Apuntarse</button>
                         </div>
                     </div>
                 </div>";
@@ -67,32 +76,6 @@ namespace RPGMeet
 
                 rowPartidas.Controls.Add(literalControl);
             }
-        }
-        string GetDiasDisponibles(Grupo grupo)
-        {
-            List<string> disponibilidad = new List<string>();
-            if (grupo.QuedarLunes)
-                disponibilidad.Add("Lunes");
-
-            if (grupo.QuedarMartes)
-                disponibilidad.Add("Martes");
-
-            if (grupo.QuedarMiercoles)
-                disponibilidad.Add("Miércoles");
-
-            if (grupo.QuedarJueves)
-                disponibilidad.Add("Jueves");
-
-            if (grupo.QuedarViernes)
-                disponibilidad.Add("Viernes");
-
-            if (grupo.QuedarSabado)
-                disponibilidad.Add("Sábado");
-
-            if (grupo.QuedarDomingo)
-                disponibilidad.Add("Domingo");
-
-            return string.Join(", ", disponibilidad);
         }
 
         protected void btnAplicarFiltros_Click(object sender, EventArgs e)

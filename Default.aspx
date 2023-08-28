@@ -57,14 +57,14 @@
 
     @media (min-width: 575.98px) {
         .slider-container{
-            height: 360px;
+            height: 350px;
         }
     }
 
     /* Medium devices (tablets, 768px and up) */
     @media (min-width: 768px) {
         .slider-container{
-            height: 410px;
+            height: 400px;
         }
     }
 
@@ -78,7 +78,7 @@
     /* Extra large devices (large desktops, 1200px and up) */
     @media (min-width: 1200px) {
         .slider-container{
-            height: 725px;
+            height: 875px;
         }
     }
 </style>
@@ -92,7 +92,7 @@
             <p> Aquí va una imagen...</p>
         </div>
         <div class="col-6">
-            <asp:Button ID="btnCrearCuenta1" CssClass="btn btn-dark" runat="server" PostBackUrl Text="Crear cuenta"/>
+            <asp:Button ID="btnCrearCuenta1" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"/>
         </div>
     </div>
     <div class="row m-3">
@@ -150,7 +150,7 @@
     <div class="row slider-container d-flex justify-content-center align-items-center">
                 <div class="col-12 slider bg-light">
                     <button type="button" class="btn btn-light btn-lg h-25" id="slider-left-btn" value="-1"><</button>
-                    <div class="col-11 slider-content-container h-100 d-flex align-items-center justify-content-center">
+                    <div class="col-11 slider-content-container h-100 w-100 d-flex align-items-center justify-content-center">
                         <div class="row">
                             <div class="slider-content bg-light shadow start-50 border border-dark rounded-3" id="slider-content-1" style="z-index: 0;">
                                 <div class="row h-100">

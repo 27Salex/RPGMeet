@@ -1,88 +1,8 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="RPGMeet._Default" %>
+﻿
+<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="RPGMeet._Default" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<style>
-    .slider {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .slider-content-container {
-        width: 100%;
-        position: relative;
-    }
-
-    .slider-content {
-        display: flex;
-        align-items: center; /* Centrar horizontalmente */
-        justify-content: center; /* Centrar verticalmente */
-        width: 50%;
-        height: 60%;
-        opacity: 0.8;
-        filter: blur(5px);
-        transition: transform 0.75s ease-in-out, height 0.75s ease-in-out, opacity 0.75s ease-in-out, filter 0.75s ease-in-out;
-    }
-
-
-    .main {
-        height: 65%;
-        width: 65%;
-        transform: translate(-50%, -50%);
-        opacity: 1;
-        filter: blur(0px);
-    }
-
-    #slider-content-1 {
-        position: absolute;
-        transform: translate(0%, -50%);
-    }
-
-    #slider-content-2 {
-        position: absolute;
-    }
-
-    #slider-content-3 {
-        position: absolute;
-        transform: translate(-100%, -50%);
-    }
-
-    @media (max-width: 575.98px) {
-        .slider-container{
-            height: 190px;
-        }
-    }
-
-    @media (min-width: 575.98px) {
-        .slider-container{
-            height: 350px;
-        }
-    }
-
-    /* Medium devices (tablets, 768px and up) */
-    @media (min-width: 768px) {
-        .slider-container{
-            height: 400px;
-        }
-    }
-
-    /* Large devices (desktops, 992px and up) */
-    @media (min-width: 992px) {
-        .slider-container{
-            height: 550px;
-        }
-    }
-
-    /* Extra large devices (large desktops, 1200px and up) */
-    @media (min-width: 1200px) {
-        .slider-container{
-            height: 875px;
-        }
-    }
-</style>
 <div class="container BackTabern">
     <div class="row m-3">
         <div class="col-6">
@@ -99,7 +19,7 @@
     <div class="row m-3">
         <div class="col-5">
             <h2>Conoce gente:</h2>
-            <p>Expliación de la página:consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus. </p>
+            <p>RPG Meet un portal de encuentros y aventuras: Donde las historias de juego de rol toman forma!</p>
         </div>
         <div id="partidaEjemplo" class="col-7 bg-glass shadow rounded-4 pt-3 pb-3">
             <div class="row">

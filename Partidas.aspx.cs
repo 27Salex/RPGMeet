@@ -65,7 +65,6 @@ namespace RPGMeet
                 valorJugadores.InnerHtml = "&nbsp;&nbsp;" + txtMaxJugadores.Text;
         }
 
-
         protected void btnAplicarFiltros_Click(object sender, EventArgs e)
         {
             filtro = new Filtro();

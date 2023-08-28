@@ -134,6 +134,7 @@
     <Content Include="Img\LogoTextRPGMEET.png" />
     <Content Include="Img\pngegg.png" />
     <Content Include="Locales.aspx" />
+    <Content Include="PartidaInfo.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -264,6 +265,13 @@
     <Compile Include="Model\Tema.cs" />
     <Compile Include="Model\Tienda.cs" />
     <Compile Include="Model\Usuario.cs" />
+    <Compile Include="PartidaInfo.aspx.cs">
+      <DependentUpon>PartidaInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PartidaInfo.aspx.designer.cs">
+      <DependentUpon>PartidaInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

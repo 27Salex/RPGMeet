@@ -83,6 +83,7 @@ namespace RPGMeet.DAL
                 selectCommand.Parameters.AddWithValue("@id", idGrupo);
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
+                reader.Read();
                 grupoBuscado = ReaderGrupo(reader);
 
                 reader.Close();

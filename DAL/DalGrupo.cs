@@ -165,10 +165,23 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 
         }
 
-        public static List<Grupo> AplicarFiltros(Filtro filtro) //COMPROBAR QUE DEVUELVE LA QUERY
+        public static List<Grupo> AplicarFiltros(Filtro filtro) //--
         {
-            String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores = @maxJugadores";
+            String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores <= @maxJugadores";
+            List<int> temasId = new List<int>();
+            string ids = "";
             List<Grupo> list = new List<Grupo>();
+
+            if(filtro.ListTematicas.Count > 0) //Mira si hay temas
+            {         
+                foreach (string tema in filtro.ListTematicas) //Consigue los todos los Ids          
+                    temasId.Add(DalTema.GetIdByName(tema));
+                for(int i = 0; i<temasId.Count(); i++) //Pasa los Ids a un formato para la Query
+                    ids += temasId[i] + ",";
+                ids = ids.Remove(ids.Length -1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
+
+                selectQuery += " AND FKTemaPrincipal IN (" + ids + ") OR FKTemaSecundario IN (" + ids +") "; //Carga este fragmento a la mainQuery
+            }
 
             SqlCommand insertCommand = new SqlCommand(selectQuery, conexion);
             insertCommand.Parameters.AddWithValue("@maxJugadores", filtro.MaxJugadores);

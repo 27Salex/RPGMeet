@@ -36,7 +36,7 @@ namespace RPGMeet.Model
         public Filtro(bool quedarLunes = false, bool quedarMartes = false,
             bool quedarMiercoles = false, bool quedarJueves = false, bool quedarViernes = false, 
             bool quedarSabado = false, bool quedarDomingo = false,
-             short maxJugadores = 50)
+             short maxJugadores = 10)
         {
             QuedarLunes = quedarLunes;
             QuedarMartes = quedarMartes;

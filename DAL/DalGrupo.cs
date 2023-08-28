@@ -41,6 +41,47 @@ namespace RPGMeet.DAL
             return grupo;
         }
 
+        // NUEVA VERSION 
+
+        public static List<Grupo> SelectAll(int ? idUsuario)
+        {
+            List<Grupo> list = new List<Grupo>();
+           
+            String selectQuery = "SELECT * FROM Grupo";
+            if (idUsuario != null)
+            
+                selectQuery += " WHERE FKGameMaster <> @idUsuario ";
+
+            selectQuery += " ORDER BY IdGrupo DESC";
+            try
+            {
+                conexion.Open();
+
+                SqlCommand command = new SqlCommand(selectQuery, conexion);
+                if (idUsuario != null)
+                {
+                    command.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                }
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(ReaderGrupo(reader));
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DalGrupo SelectAll\n" + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return list;
+        }
+
+/*
         public static List<Grupo> SelectAll()
         {
             String selectQuery = "SELECT * FROM Grupo";
@@ -69,6 +110,7 @@ namespace RPGMeet.DAL
             }
             return list;
         }
+*/
 
         public static Grupo SelectById(int idGrupo)
         {
@@ -170,49 +212,62 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
         {
             String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores <= @maxJugadores";
             List<int> temasId = new List<int>();
-            string ids = "";
+            List<int> juegosId = new List<int>();
+            string temasIds = "";
+            string juegosIds = "";
             List<Grupo> list = new List<Grupo>();
+
+            if (filtro.ListJuegos.Count > 0) //Mira si hay juegos
+            {
+                foreach (string juego in filtro.ListJuegos) //Consigue los todos los Ids          
+                    juegosId.Add(DalJuego.GetIdByName(juego));
+                for (int i = 0; i < juegosId.Count(); i++) //Pasa los Ids a un formato para la Query
+                    juegosIds += juegosId[i] + ",";
+                juegosIds = juegosIds.Remove(juegosIds.Length - 1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
+
+                selectQuery += " AND FKJuego IN (" + juegosIds + ") "; //Carga este fragmento a la mainQuery
+            }
 
             if(filtro.ListTematicas.Count > 0) //Mira si hay temas
             {         
                 foreach (string tema in filtro.ListTematicas) //Consigue los todos los Ids          
                     temasId.Add(DalTema.GetIdByName(tema));
                 for(int i = 0; i<temasId.Count(); i++) //Pasa los Ids a un formato para la Query
-                    ids += temasId[i] + ",";
-                ids = ids.Remove(ids.Length -1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
+                    temasIds += temasId[i] + ",";
+                temasIds = temasIds.Remove(temasIds.Length -1); //Elimina la ultima coma (no se podria ejecutar la Query si estubiera)
 
-                selectQuery += " AND FKTemaPrincipal IN (" + ids + ") OR FKTemaSecundario IN (" + ids +") "; //Carga este fragmento a la mainQuery
+                selectQuery += " AND (FKTemaPrincipal IN (" + temasIds + ") OR FKTemaSecundario IN (" + temasIds +")) "; //Carga este fragmento a la mainQuery
             }
 
             if (!filtro.QuedarCualquierDia)
             {
                 if (filtro.QuedarLunes)
                 {
-                    selectQuery += " AND QuedarLunes = " + filtro.QuedarLunes;
+                    selectQuery += " AND QuedarLunes = '" + filtro.QuedarLunes + "'";
                 }
                 if (filtro.QuedarMartes)
                 {
-                    selectQuery += " AND QuedarMartes = " + filtro.QuedarMartes;
+                    selectQuery += " AND QuedarMartes = '" + filtro.QuedarMartes + "'";
                 }
                 if (filtro.QuedarMiercoles)
                 {
-                    selectQuery += " AND QuedarMiercoles = " + filtro.QuedarMiercoles;
+                    selectQuery += " AND QuedarMiercoles = '" + filtro.QuedarMiercoles + "'";
                 }
                 if (filtro.QuedarJueves)
                 {
-                    selectQuery += " AND QuedarJueves = " + filtro.QuedarJueves;
+                    selectQuery += " AND QuedarJueves = '" + filtro.QuedarJueves + "'";
                 }
                 if (filtro.QuedarViernes)
                 {
-                    selectQuery += " AND QuedarViernes = " + filtro.QuedarViernes;
+                    selectQuery += " AND QuedarViernes = '" + filtro.QuedarViernes + "'";
                 }
                 if (filtro.QuedarSabado)
                 {
-                    selectQuery += " AND QuedarSabado = " + filtro.QuedarSabado;
+                    selectQuery += " AND QuedarSabado = '" + filtro.QuedarSabado + "'";
                 }
                 if (filtro.QuedarDomingo)
                 {
-                    selectQuery += " AND QuedarDomingo = " + filtro.QuedarDomingo;
+                    selectQuery += " AND QuedarDomingo = '" + filtro.QuedarDomingo + "'";
                 }
             }
 
@@ -222,6 +277,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 
                 SqlCommand command = new SqlCommand(selectQuery, conexion);
                 command.Parameters.AddWithValue("@maxJugadores", filtro.MaxJugadores);
+                selectQuery += " ORDER BY IdGrupo DESC";
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -231,7 +287,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ERROR: DalGrupo SelectAll\n" + ex.Message);
+                Console.WriteLine("ERROR: DalGrupo AplicarFiltros\n" + ex.Message);
             }
             finally
             {

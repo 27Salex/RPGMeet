@@ -14,9 +14,14 @@ namespace RPGMeet
 {
     public partial class Partidas : System.Web.UI.Page
     {
+        private Filtro filtro;
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Grupo> grupos = DalGrupo.SelectAll();
+            List<Grupo> grupos;
+            if (filtro == null)
+                grupos = DalGrupo.SelectAll();
+            else
+                grupos = DalGrupo.AplicarFiltros(filtro);
 
             foreach (var grupo in grupos)
             {
@@ -63,8 +68,7 @@ namespace RPGMeet
 
         protected void btnAplicarFiltros_Click(object sender, EventArgs e)
         {
-            Filtro filtro = new Filtro();
-
+            filtro = new Filtro();
             // CODIGO PARA EL FILTRO DE DIAS DISPONIBLES
 
             foreach (ListItem dia in chkListDisponibilidad.Items)
@@ -131,7 +135,7 @@ namespace RPGMeet
             //Obtenemos la id de la partida a la que pertenece el boton pulsado
             Control c = (Control)sender;
             int idGrupo = int.Parse(c.ID.Replace("BtnApuntarse", ""));
-            //DalGrupo.AgregarJugador(int.Parse(Session["UserID"].ToString(),idGrupo);
+            DalGrupo.ApuntarmePartida(int.Parse(Session["UserID"].ToString()),idGrupo);
         }
     }
 }

@@ -358,14 +358,14 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
         {
 
 
-            String deleteQuery = "DELETE FROM Grupo WHERE FKGameMaster = @idUsuario AND FKGrupo = @idGrupo ";
+            String deleteQuery = "DELETE FROM Grupo WHERE FKGameMaster = @idUsuario AND idGrupo = @idGrupo ";
 
             try
             {
                 conexion.Open();
 
                 SqlCommand deleteCommand = new SqlCommand(deleteQuery, conexion);
-                deleteCommand.Parameters.AddWithValue("@FKGameMaster", idUsuario);
+                deleteCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
                 deleteCommand.Parameters.AddWithValue("@idGrupo", idGrupo);
 
                 SqlDataReader reader = deleteCommand.ExecuteReader();

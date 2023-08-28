@@ -15,12 +15,21 @@ namespace RPGMeet
     {
 
         /// <summary>
-        /// Control PanelPartidas.
+        /// Control PanelMisPartidas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelPartidas;
+        protected global::System.Web.UI.WebControls.Panel PanelMisPartidas;
+
+        /// <summary>
+        /// Control PanelPartidasParticipa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelPartidasParticipa;
     }
 }

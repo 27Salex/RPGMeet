@@ -45,16 +45,14 @@ namespace RPGMeet.DAL
 
         public static List<Grupo> SelectAll(int ? idUsuario)
         {
+            List<Grupo> list = new List<Grupo>();
+           
             String selectQuery = "SELECT * FROM Grupo";
             if (idUsuario != null)
-            {
+            
                 selectQuery += " WHERE FKGameMaster <> @idUsuario ";
 
-            }
-
-            List<Grupo> list = new List<Grupo>();
-
-
+            selectQuery += " ORDER BY IdGrupo DESC";
             try
             {
                 conexion.Open();
@@ -83,7 +81,7 @@ namespace RPGMeet.DAL
             return list;
         }
 
-
+/*
         public static List<Grupo> SelectAll()
         {
             String selectQuery = "SELECT * FROM Grupo";
@@ -112,6 +110,7 @@ namespace RPGMeet.DAL
             }
             return list;
         }
+*/
 
         public static Grupo SelectById(int idGrupo)
         {

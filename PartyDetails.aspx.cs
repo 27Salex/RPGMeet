@@ -22,13 +22,19 @@ namespace RPGMeet
                 {
                     grupo = DalGrupo.SelectById(Int32.Parse(Request.QueryString["Id"]));
                     lblTituloPartida.Text = grupo.TituloParitda;
-                    lblNombreUsuario.Text = "Xx_PakitoGameMaster79_xX"; // Esto parece estático en tu ejemplo
+                    lblJuego.Text = DalJuego.SelectById(grupo.FKJuego).NombreJuego;
                     lblDescripcion.Text = grupo.Descripcion;
                     lblDiasDisponibles.Text = grupo.GetDiasDisponibles();
                     lblTemas.Text = $"{DalTema.SelectById(grupo.FKTemaPrincipal).NombreTema}, {DalTema.SelectById(grupo.FKTemaSecundario).NombreTema}";
                     lblJugadores.Text = $"0/{grupo.MaxJugadores}";
+                    lblGameMasterNombre.Text = DalUsuario.SelectById(grupo.FKGameMaster).Username;
                 }
             }
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Parties.aspx");
         }
     }
 }

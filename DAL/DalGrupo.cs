@@ -59,10 +59,8 @@ namespace RPGMeet.DAL
 
                 SqlCommand command = new SqlCommand(selectQuery, conexion);
                 if (idUsuario != null)
-                {
                     command.Parameters.AddWithValue("@idUsuario", idUsuario);
 
-                }
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -208,14 +206,21 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 
         }
 
-        public static List<Grupo> AplicarFiltros(Filtro filtro) //--
+        public static List<Grupo> AplicarFiltros(Filtro filtro, int? idUsuario)
+        //SELECT * FROM Grupo WHERE IdGrupo NOT IN (SELECT FKGrupo FROM UsuarioGrupo WHERE FKUsuario = 1) AND MaxJugadores <= 10 AND FKGameMaster <> 1
+        //SELECT * FROM Grupo WHERE MaxJugadores <= @maxJugadores;
         {
-            String selectQuery = "SELECT * FROM Grupo WHERE MaxJugadores <= @maxJugadores";
+            String selectQuery = "SELECT * FROM Grupo WHERE ";  //Query base
             List<int> temasId = new List<int>();
             List<int> juegosId = new List<int>();
             string temasIds = "";
             string juegosIds = "";
             List<Grupo> list = new List<Grupo>();
+
+            if (idUsuario != null) // Se ejecuta primero por sintaxis de SQL, si no hay un usuario logeado esta parte se omite
+                selectQuery += " IdGrupo NOT IN (SELECT FKGrupo FROM UsuarioGrupo WHERE FKUsuario = @idUsuario) AND FKGameMaster <> @idUsuario ";
+
+            selectQuery += " MaxJugadores <= @maxJugadores "; //Siempre se filtra por jugadores
 
             if (filtro.ListJuegos.Count > 0) //Mira si hay juegos
             {
@@ -277,6 +282,8 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
 
                 SqlCommand command = new SqlCommand(selectQuery, conexion);
                 command.Parameters.AddWithValue("@maxJugadores", filtro.MaxJugadores);
+                if (idUsuario != null)
+                    command.Parameters.AddWithValue("@idUsuario", idUsuario);
                 selectQuery += " ORDER BY IdGrupo DESC";
                 SqlDataReader reader = command.ExecuteReader();
 

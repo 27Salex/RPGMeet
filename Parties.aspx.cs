@@ -24,7 +24,7 @@ namespace RPGMeet
             }
 
             else
-                grupos = DalGrupo.AplicarFiltros((Filtro)Session["Filtro"]);
+                grupos = DalGrupo.AplicarFiltros((Filtro)Session["Filtro"], (int?)Session["UserID"]);
 
             foreach (var grupo in grupos)
             {
@@ -111,6 +111,10 @@ namespace RPGMeet
         }
         protected void BtnApuntarse_Click(Object sender, EventArgs e)
         {
+            if (Session["UserID"] == null)
+            {
+                Response.Redirect("/Login");
+            }
             //Obtenemos la id de la partida a la que pertenece el boton pulsado
             Control c = (Control)sender;
             int idGrupo = int.Parse(c.ID.Replace("BtnApuntarse", ""));

@@ -52,6 +52,7 @@
     backdrop-filter: blur(6.1px);
     -webkit-backdrop-filter: blur(6.1px);
     border: 1px solid rgba(0, 0, 0, 0.45);
+    z-index: 10000;
 }
 
 .scrollable-panel {

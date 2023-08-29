@@ -118,7 +118,7 @@ namespace RPGMeet
             DalGrupo.Create(grupo);
 
 
-            Response.Redirect("/Partidas");
+            Response.Redirect("/MyParties");
         }
 
         bool CheckCamps() //Mostrar si los campos estan vacios

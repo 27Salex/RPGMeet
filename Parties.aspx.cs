@@ -91,11 +91,11 @@ namespace RPGMeet
                     filtro.ListTematicas.Add(tema.Value);
                 }
             }
-            foreach (ListItem juego in cbListTematica.Items)
+            foreach (ListItem juego in cbListJuego.Items)
             {
                 if (juego.Selected == true)
                 {
-                    filtro.ListTematicas.Add(juego.Value);
+                    filtro.ListJuegos.Add(juego.Value);
                 }
             }
             Session.Add("Filtro", filtro);

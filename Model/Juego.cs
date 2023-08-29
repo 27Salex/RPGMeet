@@ -10,7 +10,6 @@ namespace RPGMeet.Model
         public int IdJuego { get; set;}
         public string NombreJuego { get; set;}
         public string Reglas { get; set; }
-        public short MinJugadores { get; set;}
         public short MaxJugadores { get; set; }
 
         public Juego() { }
@@ -20,12 +19,11 @@ namespace RPGMeet.Model
             IdJuego = idJuego;
         }
 
-        public Juego(int idJuego, string nombreJuego, string reglas, short minJugadores, short maxJugadores)
+        public Juego(int idJuego, string nombreJuego, string reglas, short maxJugadores)
         {
             IdJuego = idJuego;
             NombreJuego = nombreJuego;
             Reglas = reglas;
-            MinJugadores = minJugadores;
             MaxJugadores = maxJugadores;
         }
     }

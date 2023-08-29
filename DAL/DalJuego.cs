@@ -19,7 +19,6 @@ namespace RPGMeet.DAL
             juego.IdJuego = (int)reader["IdJuego"];
             juego.NombreJuego = reader["NombreJuego"].ToString();
             juego.Reglas = reader["Reglas"].ToString();
-            juego.MinJugadores = (short)reader["MinJugadores"];
             juego.MaxJugadores = (short)reader["MaxJugadores"];
             
             return juego;

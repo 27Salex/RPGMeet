@@ -218,7 +218,7 @@ VALUES (@TituloParitda, @Descripcion, @EstadoGrupo, @MaxJugadores,
             List<Grupo> list = new List<Grupo>();
 
             if (idUsuario != null) // Se ejecuta primero por sintaxis de SQL, si no hay un usuario logeado esta parte se omite
-                selectQuery += " IdGrupo NOT IN (SELECT FKGrupo FROM UsuarioGrupo WHERE FKUsuario = @idUsuario) AND FKGameMaster <> @idUsuario ";
+                selectQuery += " IdGrupo NOT IN (SELECT FKGrupo FROM UsuarioGrupo WHERE FKUsuario = @idUsuario) AND FKGameMaster <> @idUsuario AND ";
 
             selectQuery += " MaxJugadores <= @maxJugadores "; //Siempre se filtra por jugadores
 

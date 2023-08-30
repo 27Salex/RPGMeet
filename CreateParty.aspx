@@ -14,7 +14,6 @@
                         <div class="col-md-6 col-sm-12">
                             <label for="TxtBoxCreateMaxPly" class="form-label">M&aacute;ximo de Jugadores:<span runat="server" id="numJugadores">&nbsp;6</span></label> <br />
                             <asp:TextBox OnTextChanged="TxtBoxCreateMaxPly_TextChanged" AutoPostBack="true" TextMode="Range" min="2" max="10" id="TxtBoxCreateMaxPly" class="form-range" runat="server"></asp:TextBox>
-                            <asp:Label ID="LbMaxPlyError" runat="server" CssCLass="form-text text-danger" Text="Se requiere un número de Jugadores M&aacute;ximos" Visible="False"></asp:Label>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <label class="form-label">Dias a jugar:</label>
@@ -45,8 +44,9 @@
                         <div class="col-md-4 col-sm-12">
                             <label for="DropDownSec" class="form-label">Tem&aacute;tica secundaria:</label>
                             <asp:DropDownList ID="DropDownSec" runat="server" CssClass="form-select">
-                                <asp:ListItem>Selecciona una opci&oacute;n</asp:ListItem>
+                                <asp:ListItem>Selecciona una opci&oacute;n</asp:ListItem>                      
                             </asp:DropDownList>
+                            <asp:Label ID="LbTemaSecError" runat="server" CssCLass="form-text text-danger" Text="Selecciona una tem&aacute;tica secundaria" Visible="False"></asp:Label>
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <label for="DropDownGame" class="form-label">Juego:</label>

@@ -30,6 +30,8 @@ namespace RPGMeet.Model
             //{ DalTema.SelectById(TargetGrupo.FKTemaPrincipal).NombreTema},{ DalTema.SelectById(TargetGrupo.FKTemaSecundario).NombreTema}
             //0 /{ TargetGrupo.MaxJugadores}
 
+            int maxLength = 70; // Límite máximo de caracteres
+            string displayedText = TargetGrupo.Descripcion.Length > maxLength ? TargetGrupo.Descripcion.Substring(0, maxLength) + "..." : TargetGrupo.Descripcion;
             string localAsp = $@"
                 <div id=""pnlPartida{TargetGrupo.IdGrupo}"" class=""text-dark col-sm-12 col-md-6 col-xl-5 mx-auto tarjeta animate__animated animate__fadeIn"">
                     <div class=""row"">
@@ -40,8 +42,8 @@ namespace RPGMeet.Model
                     </div>
                     <div class=""row"">
                         <div class=""col-md-6 col-sm-12"">
-                            <label>Descripción:</label>                            
-                            <textarea class=""form-control-plaintext"" readonly="""" style=""Resize:none; Color:#FFFFFF;"">{TargetGrupo.Descripcion}</textarea>
+                            <label class=""d-block"">Descripción:</label>
+                            {displayedText}
                         </div>
                         <div class=""col-md-6 col-sm-12"">
                             <label>Temas:</label>

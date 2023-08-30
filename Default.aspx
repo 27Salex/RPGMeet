@@ -124,11 +124,9 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <label>Descripción:</label>                            
-                    <textarea class="form-control-plaintext" readonly="" style="Resize:none; Color:#FFFFFF;">
+                    <label class="d-block">Descripción:</label>                            
                         ¡Únete hoy y forma parte de nuestra comunidad en RPG Meet! Conoce a amantes del rol,
                         organiza quedadas y disfruta de emocionantes aventuras juntos. ¡La diversión te espera!
-                    </textarea>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label>Temas:</label>

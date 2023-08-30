@@ -119,6 +119,7 @@ namespace RPGMeet
             Control c = (Control)sender;
             int idGrupo = int.Parse(c.ID.Replace("BtnApuntarse", ""));
             DalGrupo.ApuntarmePartida(int.Parse(Session["UserID"].ToString()),idGrupo);
+            Response.Redirect("/Parties");
         }
     }
 }

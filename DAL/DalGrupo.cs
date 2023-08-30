@@ -50,8 +50,7 @@ namespace RPGMeet.DAL
             String selectQuery = "SELECT * FROM Grupo";
             if (idUsuario != null)
             
-                selectQuery += "     ";
-
+                selectQuery += " WHERE IdGrupo NOT IN (SELECT FKGrupo FROM UsuarioGrupo WHERE FKUsuario = @idUsuario) AND FKGameMaster <> @idUsuario ";
             selectQuery += " ORDER BY IdGrupo DESC";
             try
             {

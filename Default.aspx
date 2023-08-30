@@ -153,7 +153,7 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <asp:button Irunat="server" class="btn btn-info" text="Empezar a buscar"></asp:button>
+                    <asp:button runat="server" class="btn btn-info" text="Empezar a buscar"></asp:button>
                 </div>
                 <div class="col-6">
                     <asp:button runat="server" class="btn btn-info" text="Unete!"></asp:button>

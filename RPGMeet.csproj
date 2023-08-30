@@ -123,6 +123,7 @@
     <Content Include="Img\Locales\Gameria.jpg" />
     <Content Include="Img\LargeLogoNewTransparent.png" />
     <Content Include="Img\RpgMeetLogo.png" />
+    <Content Include="Img\tabernero.png" />
     <Content Include="MyParties.aspx" />
     <Content Include="CreateParty.aspx" />
     <Content Include="DAL\SQL Create RPGMeet.sql" />

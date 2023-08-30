@@ -50,7 +50,7 @@ namespace RPGMeet.DAL
             String selectQuery = "SELECT * FROM Grupo";
             if (idUsuario != null)
             
-                selectQuery += " WHERE FKGameMaster <> @idUsuario ";
+                selectQuery += "     ";
 
             selectQuery += " ORDER BY IdGrupo DESC";
             try

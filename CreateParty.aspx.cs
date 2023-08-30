@@ -136,18 +136,6 @@ namespace RPGMeet
                 TxtBoxCreateTitle.CssClass=" form-control is-valid";
                 LbTitleError.Visible = false;
             }
-
-            if (TxtBoxCreateMaxPly.Text.IsNullOrWhiteSpace())
-            {
-                correctCamps = false;
-                TxtBoxCreateMaxPly.CssClass=" form-control is-invalid";
-                LbMaxPlyError.Visible = true;
-            }
-            else
-            {
-                TxtBoxCreateMaxPly.CssClass=" form-control is-valid";
-                LbMaxPlyError.Visible = false;
-            }
             bool anyDaySel = CheckBoxDays.SelectedIndex != -1; //Mira si algún dia esta marcado
 
             //Dropdowns de tematica principal y juego
@@ -163,11 +151,11 @@ namespace RPGMeet
             if (DropDownSec.SelectedIndex == 0) //Fuerza a seleccionar un juego, tema sec
             {
                 correctCamps = false;
-                LbTemaPriError.Visible = true;
-                DropDownPri.CssClass = " form-control is-invalid";
+                LbTemaSecError.Visible = true; //cambiar por label tema secundario
+                DropDownSec.CssClass = " form-control is-invalid";
             }
             else
-                LbTemaPriError.Visible = false;
+                LbTemaSecError.Visible = false;
 
             if (DropDownGame.SelectedIndex == 0)
             {

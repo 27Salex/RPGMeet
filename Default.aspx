@@ -3,7 +3,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<div class="container">
+<div class="container BackTabern">
     <div class="row m-3">
         <div class="col-6">
             <h2>¡Bienvenidos a RPG Meet!</h2>
@@ -43,11 +43,9 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <label>Descripción:</label>                            
-                    <textarea class="form-control-plaintext" readonly="" style="Resize:none; Color:#FFFFFF;">
+                    <label class="d-block">Descripción:</label>                            
                         ¡Únete hoy y forma parte de nuestra comunidad en RPG Meet! Conoce a amantes del rol,
                         organiza quedadas y disfruta de emocionantes aventuras juntos. ¡La diversión te espera!
-                    </textarea>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label>Temas:</label>
@@ -72,10 +70,10 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <asp:button runat="server" class="btn btn-info" text="Empezar a buscar"></asp:button>
+                    <asp:button ID="btnMasInfo" runat="server" class="btn btn-info" text="Empezar a buscar"></asp:button>
                 </div>
                 <div class="col-6">
-                    <asp:button runat="server" class="btn btn-info" text="Unete!"></asp:button>
+                    <asp:button ID="btnApuntarse" runat="server" class="btn btn-info" text="Unete!"></asp:button>
                 </div>
             </div>
         </div>

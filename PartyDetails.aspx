@@ -1,12 +1,17 @@
 ﻿<%@ Page Title="Partida" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PartyDetails.aspx.cs" Inherits="RPGMeet.PartidaInfo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Panel ID="MainContainer" runat="server">
-            <div class="row">
-                <div class="col-12 col-xl-8 text-center d-flex justify-content-center">
+        <asp:Button ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click"/>
+            <div class="row rounded-3 shadow" style="background-color: rgba(0, 0, 0, 0.5);">
+                <div class="col-12 col-xl-8 text-center d-flex justify-content-center justify-content-xl-start">
                     <h2><asp:Literal ID="lblTituloPartida" runat="server"></asp:Literal></h2>
                 </div>
-                <div class="col-12 col-xl-4 text-end d-flex justify-content-end text-break">
-                    <h4><asp:Literal ID="lblNombreUsuario" runat="server"></asp:Literal></h4>
+                <div class="col-12 col-xl-4 text-end d-flex justify-content-start justify-content-xl-end text-break">
+                    <h5>Creador: <asp:Literal ID="lblGameMasterNombre" runat="server">Xx_PakitoGameMaster79_xX</asp:Literal></h5>
+                </div>
+                <div class="col-12">
+                    <h3>Juego:</h3>
+                    <p class="h4"><asp:Literal ID="lblJuego" runat="server"></asp:Literal></p>
                 </div>
                 <div class="col-12">
                     <h3>Descripción:</h3>

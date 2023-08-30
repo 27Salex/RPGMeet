@@ -16,9 +16,12 @@ namespace RPGMeet
             {
                 if (Session["UserID"] != null)
                 {
+                    string urlPartidas = "./Parties.aspx";
                     btnCrearCuenta1.Visible = false;
                     btnCrearCuenta2.Visible = false;
                     btnCrearCuenta3.Visible = false;
+                    btnApuntarse.PostBackUrl = urlPartidas;
+                    btnMasInfo.PostBackUrl = urlPartidas;
                 }
                 else
                 {
@@ -26,6 +29,8 @@ namespace RPGMeet
                     btnCrearCuenta1.PostBackUrl = urlSingUp;
                     btnCrearCuenta2.PostBackUrl = urlSingUp;
                     btnCrearCuenta3.PostBackUrl = urlSingUp;
+                    btnApuntarse.PostBackUrl = urlSingUp;
+                    btnMasInfo.PostBackUrl = urlSingUp;
                 }
             }
         }

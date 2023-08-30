@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Partida" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PartyDetails.aspx.cs" Inherits="RPGMeet.PartidaInfo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Panel ID="MainContainer" runat="server">
-            <div class="row">
-                <asp:Button class="col-5" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click"/>
+        <asp:Button ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click"/>
+            <div class="row rounded-3 shadow" style="background-color: rgba(0, 0, 0, 0.5);">
                 <div class="col-12 col-xl-8 text-center d-flex justify-content-center justify-content-xl-start">
                     <h2><asp:Literal ID="lblTituloPartida" runat="server"></asp:Literal></h2>
                 </div>

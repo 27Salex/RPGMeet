@@ -70,10 +70,10 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <asp:button ID="btnMasInfo" runat="server" class="btn btn-info" text="Empezar a buscar"></asp:button>
+                    <a href="Parties.aspx"class="btn btn-info">Empezar a buscar!</a>
                 </div>
                 <div class="col-6">
-                    <asp:button ID="btnApuntarse" runat="server" class="btn btn-info" text="Unete!"></asp:button>
+                    <a  href="Profile.aspx" class="btn btn-info">Unete a nosotros!</a>
                 </div>
             </div>
         </div>

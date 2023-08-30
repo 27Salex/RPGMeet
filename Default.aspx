@@ -3,150 +3,119 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<div class="container BackTabern">
+<div class="container">
     <div class="row m-3">
         <div class="col-6">
-            <h2>Nombre App</h2>
-            <p>Expliación de la página: consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus. Ut venenatis tellus in metus. Id diam maecenas ultricies mi eget mauris pharetra et. Ullamcorper dignissim cras tincidunt lobortis.</p>
-        </div>
-        <div class="col-6 bg-black text-center text-white align-content-center">
-            <p> Aquí va una imagen...</p>
-        </div>
-        <div class="col-6">
+            <h2>¡Bienvenidos a RPG Meet!</h2>
+            <p>
+               Tu plataforma de encuentros para los amantes de los juegos de rol y afines.
+                Conecta con personas apasionadas por los mundos de fantasía mientras recuperamos
+                el contacto físico post-pandemia. 
+                <br>
+                <br>
+                Aquí, podrás crear y unirte a quedadas
+                presenciales donde la diversión cobra vida a través de aventuras de rol, estrategia
+                y más. Ya sea que quieras ser un valiente caballero o un astuto mago, nuestra
+                comunidad te espera para explorar reinos y forjar amistades en el mundo real.
+                Únete a la emocionante travesía de volver a compartir risas, dados y momentos épicos
+                en persona. ¡Tu próxima aventura comienza aquí en RPG Meet!
+            </p>
             <asp:Button ID="btnCrearCuenta1" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"/>
+        </div>
+        <div class="col-6 text-center text-white align-content-center">
+            <img src="Img/tabernero.png" alt="tabernero" class="img-fluid">
         </div>
     </div>
     <div class="row m-3">
         <div class="col-5">
             <h2>Conoce gente:</h2>
-            <p>RPG Meet un portal de encuentros y aventuras: Donde las historias de juego de rol toman forma!</p>
+            <p>
+                Conoce compañeros de rol en tu área uniéndote a eventos locales o crea los tuyos.
+                RPG Meet te conecta con jugadores apasionados para compartir aventuras y crear vínculos duraderos.
+            </p>
         </div>
-        <div id="partidaEjemplo" class="col-7 bg-glass shadow rounded-4 pt-3 pb-3">
+        <div id="pnlPartida{TargetGrupo.IdGrupo}" class="text-dark col-sm-12 col-md-6 col-xl-5 mx-auto tarjeta animate__animated animate__fadeIn">
             <div class="row">
-                <div class="col-6 rounded-pill">
-                    <h2>Titulo partida</h2>
+                <div class="col-12">
+                    <label>Titulo:</label>
+                    <h4 class="h2">Empieza a buscar partidas!</h4>
                 </div>
-                <div class="col-6 d-flex justify-content-end">
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <label>Descripción:</label>                            
+                    <textarea class="form-control-plaintext" readonly="" style="Resize:none; Color:#FFFFFF;">
+                        ¡Únete hoy y forma parte de nuestra comunidad en RPG Meet! Conoce a amantes del rol,
+                        organiza quedadas y disfruta de emocionantes aventuras juntos. ¡La diversión te espera!
+                    </textarea>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label>Temas:</label>
+                    <div class="form-control-plaintext text-glass">Para todo el mundo <3</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <label>Máximo de Jugadores:</label>                            
+                    <div class="form-control-plaintext text-glass">0/&infin;</div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label>Juego:</label>
+                    <div class="form-control-plaintext text-glass">El que quieras</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <label>Disponibilidad:</label>                            
+                    <div class="form-control-plaintext text-glass">¡Siempre!</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <asp:button runat="server" class="btn btn-info" text="Empezar a buscar"></asp:button>
                 </div>
                 <div class="col-6">
-                    <h4>Descripcíón breve:</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown </p>
-                </div>
-
-                <div class="col-6 d-flex justify-content-end">
-                    <div>
-                        <asp:Label ID="lblDisponibilidad" class="d-block" runat="server" Text="Disponibilidad: Fin de semana"></asp:Label>
-
-                        <asp:Label ID="lblTematica" class="d-block" runat="server" Text="Tematica: Medieval"></asp:Label>
-
-                        <asp:Label ID="lblNumJugadores" class="d-block" runat="server" Text="Jugadores: 4/7"></asp:Label>
-                    </div>
-                </div>
-
-                <div class="col-6">
-                    <asp:Button ID="btnMasInfo" class="btn btn-partida btn-primary" runat="server" Text="Mas información" />
-                </div>
-                <div class="col-6 d-flex justify-content-end">
-                    <asp:Button ID="btnApuntarse" class="btn btn-partida btn-primary" runat="server" Text="Apuntarse" />
+                    <asp:button runat="server" class="btn btn-info" text="Unete!"></asp:button>
                 </div>
             </div>
         </div>
-        <div class="col-6">
-            <asp:Button ID="btnCrearCuenta2" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"  />
-        </div>
-    </div>
-    <div class="row m-3 d-flex justify-content-center align-content-center">
-        <div class="col-12">
-            <h2>Descubre Locales:</h2>
-            <p><span class="d-block">Expliación de la página:</span>
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus</p>
-        </div>
-        <div class="col-8">
-            <h2>Locales colaboradores</h2>
-        </div>
-        <div class="col-4 d-flex justify-content-end">
-            <asp:Button ID="btnCrearCuenta3" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"/>
-        </div>
-    </div>
-    <div class="row slider-container d-flex justify-content-center align-items-center">
-                <div class="col-12 slider bg-light">
-                    <button type="button" class="btn btn-light btn-lg h-25" id="slider-left-btn" value="-1"><</button>
-                    <div class="col-11 slider-content-container h-100 w-100 d-flex align-items-center justify-content-center">
-                        <div class="row">
-                            <div class="slider-content shadow start-50 border border-dark rounded-3" id="slider-content-1" style="z-index: 0;">
-                                <div class="row h-100">
-                                    <div class="col-12">
-                                        <h3>Tienda goku</h3>
-                                    </div>
-                                    <div class="col-6">
-                                        lorem ipsum de la descripcion de la tienda somos especializados en oler mal y ver anime
-                                    </div>
-                                    <div class="col-6">
-                                        <img src="" alt="Imagen Tienda"/>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                C/Bailen 41, Barcelona, 08001
-                                            </div>
-                                            <div class="col-6">
-                                                <a>www.mamilongas.es</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slider-content shadow start-50 border border-dark rounded-3 main" id="slider-content-2" style="z-index: 2;">
-                                <div class="row h-100">
-                                    <div class="col-12">
-                                        <h3>Tienda goku</h3>
-                                    </div>
-                                    <div class="col-6">
-                                        lorem ipsum de la descripcion de la tienda somos especializados en oler mal y ver anime
-                                    </div>
-                                    <div class="col-6">
-                                        <img src="" alt="Imagen Tienda"/>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                C/Bailen 41, Barcelona, 08001
-                                            </div>
-                                            <div class="col-6">
-                                                <a>www.mamilongas.es</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slider-content shadow start-50 border border-dark rounded-3" id="slider-content-3" style="z-index: 1;">
-                                <div class="row h-100">
-                                    <div class="col-12">
-                                        <h3>Tienda goku</h3>
-                                    </div>
-                                    <div class="col-6">
-                                        lorem ipsum de la descripcion de la tienda somos especializados en oler mal y ver anime
-                                    </div>
-                                    <div class="col-6">
-                                        <img src="" alt="Imagen Tienda"/>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                C/Bailen 41, Barcelona, 08001
-                                            </div>
-                                            <div class="col-6">
-                                                <a>www.mamilongas.es</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-light btn-lg h-25" id="slider-right-btn" value="1">></button>
-                </div>
+            <div class="col-6">
+                <asp:Button ID="btnCrearCuenta2" Class="btn btn-dark" runat="server" Text="Crear cuenta"></asp:Button>
             </div>
-    <script type="module" src="Default.js"></script>
+        </div>
+        <div class="row m-3 d-flex justify-content-center align-content-center">
+            <div class="col-12">
+                <h2>Descubre Locales:</h2>
+                <p><span class="d-block">Expliación de la página:</span>
+                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus</p>
+            </div>
+            <div class="col-8">
+                <h2>Locales colaboradores</h2>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <asp:Button ID="btnCrearCuenta3" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"/>
+            </div>
+        </div>
+    <div id="carouselLocales" class="carrouseLocales carousel slide shadow rounded-5 border border-3 border-light" data-bs-touch="false">
+      <div class="carousel-inner rounded-5">
+        <div class="carousel-item active">
+          <img src="img/bgTabern.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="img/bgTabern.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="img/bgTabern.jpeg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselLocales" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselLocales" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
 </div>
 </asp:Content>

@@ -1,0 +1,104 @@
+﻿/*Fuente*/
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    color: #FFFFFFFF;
+    font-family: 'Inknut Antiqua', serif;
+    font-weight: 300;
+    font-size: 10pt;
+}
+/* Estilos para la login page */
+.login-page > a {
+    text-decoration: none;
+}
+
+.form-right i {
+    font-size: 100px;
+}
+
+.tarjeta {
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.1px);
+    -webkit-backdrop-filter: blur(6.1px);
+    border: 1px solid rgba(0, 0, 0, 0.45);
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 15px 20px;
+    padding: 20px;
+    transition: all .2s ease-in-out;
+}
+.tarjeta:hover {
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.1px);
+    -webkit-backdrop-filter: blur(6.1px);
+    border: 1px solid rgba(0, 0, 0, 0.45);
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 15px 20px;
+    padding: 20px;
+    transform: scale(1.1);
+}
+
+.nav-link {
+    color: #FFFFFF;
+    font-family: 'Inknut Antiqua', serif;
+    font-weight: 700;
+    font-size: 14pt;
+}
+
+.text-glass {
+    color: #FFFFFF;
+    font-family: 'Inknut Antiqua', serif;
+    font-weight: 300;
+    font-size: 14pt;
+}
+
+.bg-glass {
+    background: rgba(0, 0, 0, 0.45);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.1px);
+    -webkit-backdrop-filter: blur(6.1px);
+    border: 1px solid rgba(0, 0, 0, 0.45);
+    z-index: 10000;
+}
+
+.scrollable-panel {
+    max-height: 700px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+body {
+    background: url(../Img/bgTabern.jpeg) no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+.carrouselLocales {
+    -webkit-box-shadow: 0px 0px 50px 30px #000000;
+    -moz-box-shadow: 0px 0px 50px 30px #000000;
+    box-shadow: 0px 0px 50px 30px #000000FF;
+}
+.imagen-contenedor {
+    width: 200px; /* Ancho deseado para el contenedor */
+    height: 200px; /* Alto deseado para el contenedor */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.imagen-contenedor img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+    

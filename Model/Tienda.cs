@@ -7,23 +7,24 @@ namespace RPGMeet.Model
 {
 
     /*
-     CREATE TABLE Tienda (
+    CREATE TABLE Tienda (
     IdTienda INT IDENTITY(1,1) PRIMARY KEY,
-    NombreTienda VARCHAR(50) NOT NULL,
-    Direccion VARCHAR(50) NOT NULL,
-    HoraApertura TIME,
-    HoraCierre TIME,
-    CodigoPostal INT NOT NULL,
-    FKLocalidad INT,
+    NombreTienda NVARCHAR(50) NOT NULL,
+    Direccion NVARCHAR(50) NOT NULL,
+    Descripcion NVARCHAR(200),
+    CodigoPostal VARCHAR(5) NOT NULL,
+    Web NVARCHAR(MAX),
+    Telefono INT,
+    UrlImg NVARCHAR (MAX),
 );
      */
     public class Tienda
     {
         public int IdTienda { get; set; }
         public string Nombre { get; set; }
-        public string Direccion {get; set;}
+        public string Direccion { get; set; }
         public string Descripcion { get; set; }
-        public int CodigoPostal { get; set; }
+        public string CodigoPostal { get; set; }
         public string Web { get; set; }
         public int Telefono { get; set; }
         public string ImgUrl { get; set; }
@@ -37,7 +38,7 @@ namespace RPGMeet.Model
             IdTienda = idTienda;
         }
 
-        public Tienda(int id, string nombre, string descripcion, string urlImagen = "", string direccion = "", string sitioWeb = "", int telefono = 0, int codigoPostal = 0)
+        public Tienda(int id, string nombre, string descripcion, string urlImagen = "", string direccion = "", string sitioWeb = "", int telefono = 0, string codigoPostal = "")
         {
             IdTienda = id;
             Nombre = nombre;

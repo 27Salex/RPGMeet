@@ -1,153 +1,86 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="RPGMeet._Default" %>
+﻿
+<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="RPGMeet._Default" %>
 
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <main>
-        <!-- meter este style en el sire.master/head acciendo referencia a la carpeta de estilos Home.css -->
-        <style>
-            :root {
-                --grey: #D9D9D9;
-            }
-            .bg-grey{
-                background-color: var(--grey);
-            }
-
-            div[class*="col"] {
-                margin: 1vh 0 1vh 0;
-            }
-            #partidaEjemplo{
-                border-radius: 3vh;
-            }
-            .imagen-perfil {
-                width: 2.25rem;
-                height: 2.25rem;
-                margin-left: 0.5rem;
-                margin-bottom: 0.5rem;
-            }
-            .joined {
-                background-color: #8DD761;
-            }
-            .empty {
-                background-color: #D76161;
-            }
-            .btn-partida {
-                background-color: #8B8EDF;
-            }
-            .slider {
-                width: 800px;
-                height: 500px;
-                background-color: var(--grey);
-            }
-            .my-grey{
-                background-color: #D9D9D9;
-            }
-            .container{
-                display: flex;
-                justify-content: center;
-            }
-            .box{
-                border-radius: 10px;
-            }
-
-            .verde {
-                background-color: rgb(53, 232, 71);
-                width: 400px;
-                height: 225px;
-                position: relative;
-            }
-
-            .amarillo {
-                background-color: rgb(232, 223, 53);
-                position: absolute;
-                left: 50%;
-                transform: translate(0%, 50%);
-            }
-
-            .azul {
-                background-color: rgb(53, 166, 232);
-                position: absolute;
-                left: 50%;
-                transform: translate(-50%, 50%);
-            }
-
-            .rojo {
-                background-color: rgb(232, 53, 53);
-                position: absolute;
-                left: 50%;
-                transform: translate(-100%, 50%);
-            }
-
-            .content{
-                height: 50%;
-                width: 33%;
-                transition: transform 1s ease-in-out, height 1s ease-in-out, opacity ;
-            }
-
-            .main {
-                height: 55%;
-                transform: translate(-50%, 40%);
-            }
-        </style>
-        <div class="row m-3">
-            <div class="col-6">
-                <h2>Nombre App</h2>
-                <p>Expliación de la página: consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus. Ut venenatis tellus in metus. Id diam maecenas ultricies mi eget mauris pharetra et. Ullamcorper dignissim cras tincidunt lobortis.</p>
-            </div>
-            <div class="col-6 bg-black text-center text-white align-content-center">
-                <p> Aquí va una imagen...</p>
-            </div>
-            <div class="col-6">
-                <asp:Button ID="btnCrearCuenta1" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"/>
-            </div>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<div class="container BackTabern">
+    <div class="row m-3">
+        <div class="col-6">
+            <h2>¡Bienvenidos a RPG Meet!</h2>
+            <p>
+               Tu plataforma de encuentros para los amantes de los juegos de rol y afines.
+                Conecta con personas apasionadas por los mundos de fantasía mientras recuperamos
+                el contacto físico post-pandemia. 
+                <br>
+                <br>
+                Aquí, podrás crear y unirte a quedadas
+                presenciales donde la diversión cobra vida a través de aventuras de rol, estrategia
+                y más. Ya sea que quieras ser un valiente caballero o un astuto mago, nuestra
+                comunidad te espera para explorar reinos y forjar amistades en el mundo real.
+                Únete a la emocionante travesía de volver a compartir risas, dados y momentos épicos
+                en persona. ¡Tu próxima aventura comienza aquí en RPG Meet!
+            </p>
+            <asp:Button ID="btnCrearCuenta1" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"/>
         </div>
-
-        <div class="row m-3">
-            <div class="col-5">
-                <h2>Conoce gente:</h2>
-                <p>Expliación de la página:consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus. </p>
-            </div>
-            <div id="partidaEjemplo" class="col-7 bg-grey pt-3 pb-3">
-                <div class="row">
-                    <div class="col-6 rounded-pill" CssClass="background-color: #D9D9D9">
-                        <h2>Titulo partida</h2>
-                    </div>
-                    <div class="col-6 d-flex justify-content-end">
-                        <img class="imagen-perfil joined rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                        <img class="imagen-perfil joined rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                        <img class="imagen-perfil joined rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                        <img class="imagen-perfil joined rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                        <img class="imagen-perfil empty rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                        <img class="imagen-perfil empty rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                        <img class="imagen-perfil empty rounded-circle" src="Img/pngegg.png" alt="fotoDePerfil"/>
-                    </div>
-                    <div class="col-6">
-                        <h4>Descripcíón breve:</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown </p>
-                    </div>
-
-                    <div class="col-6 d-flex justify-content-end">
-                        <div>
-                            <asp:Label ID="lblDisponibilidad" class="d-block" runat="server" Text="Disponibilidad: Fin de semana"></asp:Label>
-
-                            <asp:Label ID="lblTematica" class="d-block" runat="server" Text="Tematica: Medieval"></asp:Label>
-
-                            <asp:Label ID="lblNumJugadores" class="d-block" runat="server" Text="Jugadores: 4/7"></asp:Label>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <asp:Button ID="Button1" class="btn btn-partida" runat="server" Text="Mas información" />
-                    </div>
-                    <div class="col-6 d-flex justify-content-end">
-                        <asp:Button ID="Button2" class="btn btn-partida" runat="server" Text="Apuntarse" />
-                    </div>
+        <div class="col-6 text-center text-white align-content-center">
+            <img src="Img/tabernero.png" alt="tabernero" class="img-fluid">
+        </div>
+    </div>
+    <div class="row m-3">
+        <div class="col-5">
+            <h2>Conoce gente:</h2>
+            <p>
+                Conoce compañeros de rol en tu área uniéndote a eventos locales o crea los tuyos.
+                RPG Meet te conecta con jugadores apasionados para compartir aventuras y crear vínculos duraderos.
+            </p>
+        </div>
+        <div id="pnlPartida{TargetGrupo.IdGrupo}" class="text-dark col-sm-12 col-md-6 col-xl-5 mx-auto tarjeta animate__animated animate__fadeIn">
+            <div class="row">
+                <div class="col-12">
+                    <label>Titulo:</label>
+                    <h4 class="h2">Empieza a buscar partidas!</h4>
                 </div>
             </div>
-            <div class="col-6">
-                <asp:Button ID="btnCrearCuenta2" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"  />
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <label class="d-block">Descripción:</label>                            
+                        ¡Únete hoy y forma parte de nuestra comunidad en RPG Meet! Conoce a amantes del rol,
+                        organiza quedadas y disfruta de emocionantes aventuras juntos. ¡La diversión te espera!
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label>Temas:</label>
+                    <div class="form-control-plaintext text-glass">Para todo el mundo <3</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <label>Máximo de Jugadores:</label>                            
+                    <div class="form-control-plaintext text-glass">0/&infin;</div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label>Juego:</label>
+                    <div class="form-control-plaintext text-glass">El que quieras</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <label>Disponibilidad:</label>                            
+                    <div class="form-control-plaintext text-glass">¡Siempre!</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <a href="Parties.aspx"class="btn btn-info">Empezar a buscar!</a>
+                </div>
+                <div class="col-6">
+                    <a  href="Profile.aspx" class="btn btn-info">Unete a nosotros!</a>
+                </div>
             </div>
         </div>
-
+            <div class="col-6">
+                <asp:Button ID="btnCrearCuenta2" Class="btn btn-dark" runat="server" Text="Crear cuenta"></asp:Button>
+            </div>
+        </div>
         <div class="row m-3 d-flex justify-content-center align-content-center">
             <div class="col-12">
                 <h2>Descubre Locales:</h2>
@@ -158,22 +91,29 @@
                 <h2>Locales colaboradores</h2>
             </div>
             <div class="col-4 d-flex justify-content-end">
-                <asp:Button ID="btnCrearCuenta3" CssClass="btn btn-dark" runat="server" Text="Crear cuenta" />
-            </div>
-            <div class="col slider">
-                <button type="button" id="slider-left-btn" value="-1"><</button>
-                <div class="slider box verde">
-                    <div style="z-index: 1"class="slider-content box content amarillo ">
-                    </div>
-                    <div style="z-index: 2" class="slider-content main box content azul ">
-                    </div>
-                    <div style="z-index: 0" class="slider-content box content rojo ">
-
-                    </div>
-                </div>
-                <button type="button" id="slider-right-btn" value="1">></button>
+                <asp:Button ID="btnCrearCuenta3" CssClass="btn btn-dark" runat="server" Text="Crear cuenta"/>
             </div>
         </div>
-        <script type="module" src="Default.js"></script>
-    </main>
+    <div id="carouselLocales" class="carrouseLocales carousel slide shadow rounded-5 border border-3 border-light" data-bs-touch="false">
+      <div class="carousel-inner rounded-5">
+        <div class="carousel-item active">
+          <img src="img/bgTabern.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="img/bgTabern.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="img/bgTabern.jpeg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselLocales" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselLocales" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+</div>
 </asp:Content>
